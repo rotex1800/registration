@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\Redirector;
 
 class LoginForm extends Component
 {
@@ -25,7 +26,7 @@ class LoginForm extends Component
     }
 
 
-    public function login(): RedirectResponse
+    public function login(): RedirectResponse|Redirector
     {
         $this->validate();
 

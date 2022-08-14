@@ -4,11 +4,14 @@ namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\EventSummary;
 use App\Models\Event;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Livewire\Livewire;
 use Tests\TestCase;
 
 class EventSummaryTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /** @test */
     public function the_component_can_render()
     {

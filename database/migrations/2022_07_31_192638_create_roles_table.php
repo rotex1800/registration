@@ -24,7 +24,7 @@ return new class extends Migration
             $table->bigInteger('role_id');
         });
 
-        Schema::create('role_event', function (Blueprint $table) {
+        Schema::create('event_role', function (Blueprint $table) {
             $table->bigInteger('role_id');
             $table->bigInteger('event_id');
         });
@@ -39,6 +39,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('roles');
         Schema::dropIfExists('role_user');
-        Schema::dropIfExists('role_event');
+        Schema::dropIfExists('event_role');
     }
 };

@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\Redirector;
 
 class MainNavigation extends Component
 {
@@ -28,7 +29,7 @@ class MainNavigation extends Component
     }
 
 
-    public function logout(): RedirectResponse
+    public function logout(): RedirectResponse|Redirector
     {
         Auth::logout();
         return redirect()->route('login');
