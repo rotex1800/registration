@@ -16,6 +16,7 @@ test('event summary can render', function () {
         ->assertSee($event->name)
         ->assertSee($event->start->isoFormat('d. MMMM Y'))
         ->assertSee($event->end->isoFormat('d. MMMM Y'))
+        ->assertMethodWired('show')
         ->assertSee("Details");
 });
 
