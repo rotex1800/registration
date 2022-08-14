@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class MainNavigation extends Component
@@ -13,12 +15,12 @@ class MainNavigation extends Component
     public bool $loggedIn;
 
 
-    public function mount()
+    public function mount(): void
     {
         $this->loggedIn = Auth::user() != null;
     }
 
-    public function render()
+    public function render(): View
     {
         $this->applicationName = config('app.name');
         $this->name = Auth::user()?->name ?: '';
@@ -26,7 +28,7 @@ class MainNavigation extends Component
     }
 
 
-    public function logout()
+    public function logout(): RedirectResponse
     {
         Auth::logout();
         return redirect()->route('login');

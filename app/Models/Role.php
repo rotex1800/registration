@@ -31,11 +31,19 @@ class Role extends Model
 {
     use HasFactory;
 
+    /**
+     * @return BelongsToMany
+     * @phpstan-return BelongsToMany<User>
+     */
     function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
 
+    /**
+     * @return BelongsToMany
+     * @phpstan-return BelongsToMany<Event>
+     */
     public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class);

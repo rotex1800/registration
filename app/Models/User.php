@@ -79,11 +79,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return BelongsToMany
+     * @phpstan-return BelongsToMany<Event>
+     */
     public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class);
     }
 
+    /**
+     * @return BelongsToMany
+     * @phpstan-return BelongsToMany<Role>
+     */
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);

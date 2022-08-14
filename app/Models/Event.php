@@ -45,11 +45,19 @@ class Event extends Model
         'end' => 'datetime',
     ];
 
+    /**
+     * @return BelongsToMany
+     * @phpstan-return BelongsToMany<User>
+     */
     public function attendees(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
 
+    /**
+     * @return BelongsToMany
+     * @phpstan-return BelongsToMany<Role>
+     */
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
