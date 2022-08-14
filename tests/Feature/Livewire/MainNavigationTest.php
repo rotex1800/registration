@@ -1,0 +1,54 @@
+<?php
+
+namespace Tests\Feature\Livewire;
+
+use App\Http\Livewire\MainNavigation;
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Livewire\Livewire;
+
+
+uses(DatabaseMigrations::class);
+
+it('shows the application name', function () {
+    $applicationName = config('app.name');
+    Livewire::test(MainNavigation::class)
+            ->assertSee($applicationName)
+    ;
+});
+
+it('shows the users name', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user);
+    Livewire::test(MainNavigation::class)
+            ->assertSee($user->name)
+    ;
+});
+
+it('handles logged out state', function () {
+    Livewire::test(MainNavigation::class)
+            ->assertDontSee('Logout')
+            ->assertStatus(200)
+    ;
+});
+
+it('shows logout button for logged in users', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user);
+    Livewire::test(MainNavigation::class)
+            ->assertSee('Logout')
+    ;
+});
+
+it('logs the user out when logout is clicked', function () {
+    $user = User::factory()->create();
+    Livewire::
+    actingAs($user)
+            ->test(MainNavigation::class)
+            ->set('loggedIn', true)
+            ->assertMethodWired('logout')
+            ->call('logout')
+            ->assertRedirect('/login')
+    ;
+
+});
