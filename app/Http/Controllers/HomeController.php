@@ -2,29 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use Illuminate\Database\Eloquent\Builder;
+use App\Service\EventService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
 
+    private EventService $eventService;
+
+    public function __construct(EventService $eventService)
+    {
+        $this->eventService = $eventService;
+    }
+
+
     public function home(): View
     {
         $user = Auth::user();
-        $events = $user?->events()->get();
-        $userRoles = $user->roles()->allRelatedIds();
-
-        $otherEventsBuilder = Event::whereHas(
-            'roles', function (Builder $q) use ($userRoles) {
-                $q->whereIn('id', $userRoles);
-        });
-        $otherEvents = $otherEventsBuilder->get();
+        $participatingEvents = $this->eventService->participating($user);
+        $registrationPossible = $this->eventService->registrationPossible($user);
 
         return view('home', [
-            'events' => $events,
-            'otherEvents' => $otherEvents,
+            'participating' => $participatingEvents,
+            'registrationPossible' => $registrationPossible,
         ]);
     }
 }
