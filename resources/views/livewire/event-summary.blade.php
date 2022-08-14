@@ -8,4 +8,5 @@
         <div class="mr-2">Bis:</div>
         <div>{{ $this->event->end->isoFormat('d. MMMM Y') }}</div>
     </div>
+    <button class="bg-blue-800 text-white rounded p-2 m-2">Details</button>
 </div>

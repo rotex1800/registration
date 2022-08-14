@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +22,9 @@ Route::get('/', function () {
 
 Route::post('login', [AuthenticationController::class, 'authenticate']);
 
-
 Route::get('/home', [HomeController::class, 'home'])
-     ->name('home')
-     ->middleware('auth')
-;
+    ->name('home')
+    ->middleware('auth');
+
+Route::get('/event/{id}', [EventController::class, 'show'])
+    ->name('event.show');
