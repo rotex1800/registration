@@ -4,12 +4,6 @@ use App\Models\Event;
 use App\Models\User;
 use function Pest\Laravel\actingAs;
 
-it('is not accessible when logged out', function () {
-    $event = Event::factory()->create();
-    $this->get("/event/$event->id")
-        ->assertRedirect('/login');
-});
-
 
 it('shows main navigation', function () {
     $event = Event::factory()->create();
@@ -20,12 +14,17 @@ it('shows main navigation', function () {
         ->assertStatus(200);
 });
 
-it('shows event information', function () {
+it('is not accessible when logged out', function () {
+    $event = Event::factory()->create();
+    $this->get("/event/$event->id")
+        ->assertRedirect('/login');
+});
+
+it('shows event details component', function () {
     $event = Event::factory()->create();
     $user = User::factory()->create();
     actingAs($user)
         ->get("/event/$event->id")
-        ->assertSee($event->name)
-        ->assertSee($event->start->isoFormat('d. MMMM Y'))
-        ->assertSee($event->end->isoFormat('d. MMMM Y'));
+        ->assertSeeLivewire('event-details')
+        ->assertStatus(200);
 });

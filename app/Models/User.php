@@ -89,6 +89,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Checks whether the user has registered for the given event.
+     *
+     * @param Event $event
+     * @return bool
+     */
+    public function hasRegisteredFor(Event $event): bool
+    {
+        return $this->events()->get()->contains($event);
+    }
+
+    /**
      * @return BelongsToMany
      * @phpstan-return BelongsToMany<Role>
      */
