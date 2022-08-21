@@ -10,7 +10,7 @@
     </div>
     <div class="my-1">
         @if($this->hasUserRegistered())
-            <button>Abmelden</button>
+            <button wire:click="unregister">Abmelden</button>
         @else
             <button wire:click="register">Anmelden</button>
         @endif

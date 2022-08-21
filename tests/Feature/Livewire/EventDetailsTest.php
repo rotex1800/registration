@@ -56,6 +56,11 @@ it('contains button to de-register if already registered', function () {
         'event' => $event
     ]);
     $component
+        ->assertMethodWired("unregister")
         ->assertSee("Abmelden")
         ->assertDontSee("Anmelden");
+
+    $component->call('unregister');
+
+    assertFalse($user->hasRegisteredFor($event));
 });

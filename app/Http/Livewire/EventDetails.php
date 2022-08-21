@@ -27,4 +27,11 @@ class EventDetails extends Component
         $user->events()->attach($this->event);
         $user->save();
     }
+
+    public function unregister(): void
+    {
+        $user = Auth::user();
+        $user->events()->detach($this->event);
+        $user->save();
+    }
 }
