@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -52,7 +54,7 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
         'name',
@@ -63,7 +65,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -73,7 +75,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be cast.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -91,7 +93,7 @@ class User extends Authenticatable
     /**
      * Checks whether the user has registered for the given event.
      *
-     * @param Event $event
+     * @param  Event  $event
      * @return bool
      */
     public function hasRegisteredFor(Event $event): bool
@@ -106,5 +108,27 @@ class User extends Authenticatable
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * @return Collection
+     * @phpstan-return Collection<Event>
+     */
+    public function participatesIn(): Collection
+    {
+        return $this->events()->get();
+    }
+
+    /**
+     * @return Collection
+     * @phpstan-return Collection<Event>
+     */
+    public function canRegisterFor(): Collection
+    {
+        $roleIds = $this->roles()->allRelatedIds();
+        return Event::whereHas(
+            'roles', function (Builder $q) use ($roleIds) {
+            $q->whereIn('id', $roleIds);
+        })->get()->diff($this->participatesIn());
     }
 }

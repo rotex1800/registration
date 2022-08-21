@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
 
@@ -22,4 +24,31 @@ it('belongs to roles', function () {
     $user = User::factory()->create();
     expect($user->roles())
         ->toBeInstanceOf(BelongsToMany::class);
+});
+
+it('returns registered-for events', function () {
+    $user = User::factory()->create();
+    $expected = \App\Models\Event::factory()->count(2)->create();
+    $user->events()->saveMany($expected);
+
+    $actual = $user->participatesIn();
+    assertEquals(0, $actual->diff($expected)->count());
+    assertEquals(0, $expected->diff($actual)->count());
+});
+
+it('returns events the user can still register for', function () {
+    $role = Role::factory()->create();
+    $user = User::factory()->create();
+    $user->roles()->attach($role);
+
+    $attends = \App\Models\Event::factory()->create();
+    $attends->roles()->attach($role);
+    $user->events()->attach($attends);
+
+    $canAttend = \App\Models\Event::factory()->create();
+    $canAttend->roles()->attach($role);
+
+    assertFalse($user->canRegisterFor()->contains($attends));
+    assertTrue($user->participatesIn()->contains($attends));
+
 });

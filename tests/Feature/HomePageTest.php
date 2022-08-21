@@ -11,14 +11,13 @@ it('shows main navigation', function () {
     $user = User::factory()->create();
     actingAs($user)
         ->get('/home')
-        ->assertSeeLivewire('main-navigation')
-    ;
+        ->assertSeeLivewire('main-navigation');
 });
 
 it('shows events the user attends', function () {
     $user = User::factory()
                 ->has(Event::factory()->count(2))
-        ->create();
+                ->create();
 
     actingAs($user)
         ->get('/home')
@@ -35,16 +34,15 @@ it('does not show my events section if the user does not attend any events', fun
 });
 
 it('shows events the user can attend', function () {
-
     $role = Role::factory()->create();
 
     $user = User::factory()
-        ->create();
+                ->create();
     $user->roles()->attach($role);
     $user->save();
 
     $event = Event::factory()
-        ->create();
+                  ->create();
     $event->roles()->attach($role);
     $event->save();
 
@@ -53,19 +51,27 @@ it('shows events the user can attend', function () {
         ->assertSee('Weitere Events');
 });
 
+it('does not show events the user is attending in further events', function () {
+    $user = User::factory()->create();
+    $event = Event::factory()->create();
+    $user->events()->attach($event);
+    actingAs($user)
+        ->get("/home")
+        ->assertSeeLivewire("event-summary")
+        ->assertDontSee("Weitere Events")
+        ->assertSee($event->name);
+});
 
 it('does not show events the user can not attend', function () {
-
     $user = User::factory()
-        ->has(Role::factory())
-        ->create();
+                ->has(Role::factory())
+                ->create();
 
-    $event = Event::factory()
-        ->has(Role::factory())
-        ->create();
+    Event::factory()
+         ->has(Role::factory())
+         ->create();
 
     actingAs($user)
         ->get('/home')
-        ->assertDontSee('Weitere Events')
-    ;
+        ->assertDontSee('Weitere Events');
 });

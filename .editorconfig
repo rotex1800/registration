@@ -7,6 +7,9 @@ insert_final_newline = true
 indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
+ij_php_blank_lines_after_function = 1
+ij_php_multiline_chained_calls_semicolon_on_new_line = false
+ij_php_align_multiline_chained_methods = true
 
 [*.md]
 trim_trailing_whitespace = false
