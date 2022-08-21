@@ -13,31 +13,27 @@ uses(DatabaseMigrations::class);
 it('shows the application name', function () {
     $applicationName = config('app.name');
     Livewire::test(MainNavigation::class)
-            ->assertSee($applicationName)
-    ;
+            ->assertSee($applicationName);
 });
 
 it('shows the users name', function () {
     $user = User::factory()->create();
     $this->actingAs($user);
     Livewire::test(MainNavigation::class)
-            ->assertSee($user->name)
-    ;
+            ->assertSee($user->name);
 });
 
 it('handles logged out state', function () {
     Livewire::test(MainNavigation::class)
             ->assertDontSee('Logout')
-            ->assertStatus(200)
-    ;
+            ->assertStatus(200);
 });
 
 it('shows logout button for logged in users', function () {
     $user = User::factory()->create();
     $this->actingAs($user);
     Livewire::test(MainNavigation::class)
-            ->assertSee('Logout')
-    ;
+            ->assertSee('Logout');
 });
 
 it('logs the user out when logout is clicked', function () {
@@ -48,7 +44,16 @@ it('logs the user out when logout is clicked', function () {
             ->set('loggedIn', true)
             ->assertMethodWired('logout')
             ->call('logout')
-            ->assertRedirect('/login')
-    ;
+            ->assertRedirect('/login');
 
+});
+
+it('can navigate back to home', function () {
+    $user = User::factory()->create();
+    Livewire::actingAs($user)
+            ->test(MainNavigation::class)
+            ->assertSee("Home")
+            ->assertMethodWired('toHome')
+            ->call('toHome')
+            ->assertRedirect("/home");
 });

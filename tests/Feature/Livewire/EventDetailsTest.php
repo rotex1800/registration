@@ -5,10 +5,13 @@ namespace Tests\Feature\Livewire;
 use App\Http\Livewire\EventDetails;
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
+
+uses(RefreshDatabase::class);
 
 it('shows event information', function () {
     $event = Event::factory()->create();

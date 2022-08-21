@@ -2,8 +2,10 @@
 
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\actingAs;
 
+uses(RefreshDatabase::class);
 
 it('shows main navigation', function () {
     $event = Event::factory()->create();

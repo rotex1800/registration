@@ -4,7 +4,10 @@ namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\LoginForm;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+
+uses(RefreshDatabase::class);
 
 test('login form can render', function () {
     $component = Livewire::test(LoginForm::class);

@@ -35,5 +35,8 @@ class MainNavigation extends Component
         return redirect()->route('login');
     }
 
-
+    public function toHome(): RedirectResponse|Redirector
+    {
+        return redirect()->route('home');
+    }
 }
