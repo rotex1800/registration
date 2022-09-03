@@ -110,6 +110,15 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+        /**
+     * Indicates whether the user has a role of the given name
+     * @return bool
+     */
+    public function hasRole(string $roleName): bool
+    {
+        return $this->roles()->where('name', $roleName)->get()->count() > 0;
+    }
+
     /**
      * @return Collection
      * @phpstan-return Collection<Event>
@@ -127,8 +136,10 @@ class User extends Authenticatable
     {
         $roleIds = $this->roles()->allRelatedIds();
         return Event::whereHas(
-            'roles', function (Builder $q) use ($roleIds) {
-            $q->whereIn('id', $roleIds);
-        })->get()->diff($this->participatesIn());
+            'roles',
+            function (Builder $q) use ($roleIds) {
+                $q->whereIn('id', $roleIds);
+            }
+        )->get()->diff($this->participatesIn());
     }
 }

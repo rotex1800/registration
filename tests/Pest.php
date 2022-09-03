@@ -11,7 +11,10 @@
 |
 */
 
+use App\Models\User;
+use App\Models\Role;
 use Tests\DuskTestCase;
+use Illuminate\Auth\Access\Response;
 
 uses(Tests\TestCase::class)->in('Livewire');
 uses(Tests\TestCase::class)->in('Feature');
@@ -32,6 +35,19 @@ expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
 
+expect()->extend('toBeAllowed', function () {
+    return $this
+    ->toBeInstanceOf(Response::class)
+    ->allowed()->toBeTrue();
+});
+
+expect()->extend('toBeDenied', function () {
+    return $this
+    ->toBeInstanceOf(Response::class)
+    ->allowed()->toBeFalse();
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Functions
@@ -43,7 +59,11 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function createUserWithRole(string $role): User
 {
-    // ..
+    return User::factory()
+        ->has(Role::factory()->state([
+            'name' => $role
+        ]))
+         ->create();
 }

@@ -52,3 +52,12 @@ it('returns events the user can still register for', function () {
     assertTrue($user->participatesIn()->contains($attends));
 
 });
+
+
+it('can check if it has a role', function() {
+    $user = createUserWithRole('role');
+    expect($user->hasRole('role'))
+    ->toBeTrue()
+    ->and($user->hasRole('other'))
+    ->toBeFalse();
+});
