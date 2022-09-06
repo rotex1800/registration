@@ -1,5 +1,9 @@
 name: gitleaks
-on: [pull_request, push, workflow_dispatch]
+on:
+  workflow_dispatch:
+  workflow_call:
+    secrets: inherit
+
 jobs:
   scan:
     name: gitleaks
