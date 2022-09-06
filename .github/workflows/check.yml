@@ -35,4 +35,4 @@ jobs:
       run: vendor/bin/pest --exclude-group=browser
 
   scan:
-    uses: .github/workflows/gitleaks.yml
+    uses: ./.github/workflows/gitleaks.yml
