@@ -36,3 +36,4 @@ jobs:
 
   scan:
     uses: ./.github/workflows/gitleaks.yml
+    secrets: inherit
