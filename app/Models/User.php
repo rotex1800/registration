@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -110,7 +111,34 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-        /**
+    /**
+     * @return HasMany
+     * @phpstan-return HasMany<Comment>
+     */
+    public function authoredComments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'author_id');
+    }
+
+    /**
+     * @return HasMany
+     * @phpstan-return HasMany<Document>
+     */
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Document::class, 'owner_id');
+    }
+
+    /**
+     * @return bool
+     */
+    public function owns(Document $document): bool
+    {
+        return $document->owner->id == $this->id;
+    }
+
+
+    /**
      * Indicates whether the user has a role of the given name
      * @return bool
      */

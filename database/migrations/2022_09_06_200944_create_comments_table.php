@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('type');
-            $table->boolean('is_required')->default(true);
-            $table->boolean('is_approved')->default(false);
-            $table->string('name');
-            $table->foreignId('owner_id');
+            $table->bigInteger('author_id');
+            $table->string('content');
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('comments');
     }
 };

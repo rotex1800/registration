@@ -20,4 +20,28 @@ class RoleFactory extends Factory
             'name' => fake()->word()
         ];
     }
+
+    /**
+     * Indicate that the role is that of a Rotex member.
+     */
+    public function participant()
+    {
+        return $this->state(function (array $attributes) {
+           return [
+            'name' => 'participant',
+           ];
+        });
+    }
+
+    /**
+     * Indicate that the role is that of a Rotex member.
+     */
+    public function rotex()
+    {
+        return $this->state(function (array $attributes) {
+           return [
+            'name' => 'rotex',
+           ];
+        });
+    }
 }

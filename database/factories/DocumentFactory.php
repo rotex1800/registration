@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Document;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,8 @@ class DocumentFactory extends Factory
             'type' => fake()->numberBetween(0, count(Document::TYPES) - 1),
             'is_required' => fake()->boolean(),
             'is_approved' => fake()->boolean(),
-            'name' => fake()->word()
+            'name' => fake()->word(),
+            'owner_id' => User::factory()
         ];
     }
 

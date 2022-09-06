@@ -2,6 +2,8 @@
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Document;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 uses(RefreshDatabase::class);
 
@@ -23,4 +25,13 @@ it('can be required', function() {
 it('can be approved', function() {
     expect(Document::factory()->create()->is_approved)
     ->toBeBool();
+});
+
+
+it('is owned by a user', function () {
+    $document = Document::factory()->create();
+    expect($document->owner())
+    ->toBeInstanceOf(BelongsTo::class)
+    ->and($document->owner)
+    ->toBeInstanceOf(User::class);
 });
