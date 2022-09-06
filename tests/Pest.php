@@ -19,6 +19,7 @@ use Illuminate\Auth\Access\Response;
 uses(Tests\TestCase::class)->in('Livewire');
 uses(Tests\TestCase::class)->in('Feature');
 uses(DuskTestCase::class)->in('Browser');
+uses()->group('browser')->in('Browser');
 
 /*
 |--------------------------------------------------------------------------
