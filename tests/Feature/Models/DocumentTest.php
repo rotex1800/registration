@@ -8,7 +8,11 @@ uses(RefreshDatabase::class);
 it('has a type', function () {
     expect(Document::factory()->create()->type)
     ->toBeInt();
+});
 
+it('has a name', function() {
+    expect(Document::factory()->create()->name)
+    ->toBeString();
 });
 
 it('can be required', function() {

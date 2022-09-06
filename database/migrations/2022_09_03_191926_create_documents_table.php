@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('type');
             $table->boolean('is_required')->default(true);
             $table->boolean('is_approved')->default(false);
+            $table->string('name');
         });
     }
 
