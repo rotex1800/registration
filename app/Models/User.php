@@ -157,10 +157,12 @@ class User extends Authenticatable
     }
 
     /**
+     * All events that the user shares at least one role with.
+     *
      * @return Collection
      * @phpstan-return Collection<Event>
      */
-    public function canRegisterFor(): Collection
+    public function possibleEvents(): Collection
     {
         $roleIds = $this->roles()->allRelatedIds();
 
@@ -169,6 +171,16 @@ class User extends Authenticatable
             function (Builder $q) use ($roleIds) {
                 $q->whereIn('id', $roleIds);
             }
-        )->get()->diff($this->participatesIn());
+        )->get();
+    }
+
+    /**
+     * @return Collection
+     * @phpstan-return Collection<Event>
+     */
+    public function canRegisterFor(): Collection
+    {
+        return $this->possibleEvents()
+            ->diff($this->participatesIn());
     }
 }

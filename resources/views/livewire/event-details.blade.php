@@ -19,4 +19,7 @@
             <button class="bg-blue-800 p-3 rounded" wire:click="register">Anmelden</button>
         @endif
     </div>
+    @if ($this->canEdit())
+        <button class="bg-yellow-500 p-3 rounded" wire:click="edit">Bearbeiten</button>
+    @endif
 </div>

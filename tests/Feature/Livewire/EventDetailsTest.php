@@ -18,8 +18,9 @@ it('shows event information', function () {
     $user = User::factory()->create();
     actingAs($user);
     $component = Livewire::test(EventDetails::class, [
-        'event' => $event
+        'event' => $event,
     ]);
+
     $component
         ->assertSee($event->name)
         ->assertSee($event->start->isoFormat('d. MMMM Y'))
@@ -31,12 +32,12 @@ it('contains button to register if not yet registered', function () {
     $user = User::factory()->create();
     actingAs($user);
     $component = Livewire::test(EventDetails::class, [
-        'event' => $event
+        'event' => $event,
     ]);
     $component
-        ->assertMethodWired("register")
-        ->assertSee("Anmelden")
-        ->assertDontSee("Abmelden");
+        ->assertMethodWired('register')
+        ->assertSee('Anmelden')
+        ->assertDontSee('Abmelden');
 
     assertFalse(
         $user->hasRegisteredFor($event)
@@ -56,14 +57,39 @@ it('contains button to de-register if already registered', function () {
     $user->events()->attach($event);
     actingAs($user);
     $component = Livewire::test(EventDetails::class, [
-        'event' => $event
+        'event' => $event,
     ]);
     $component
-        ->assertMethodWired("unregister")
-        ->assertSee("Abmelden")
-        ->assertDontSee("Anmelden");
+        ->assertMethodWired('unregister')
+        ->assertSee('Abmelden')
+        ->assertDontSee('Anmelden');
 
     $component->call('unregister');
 
     assertFalse($user->hasRegisteredFor($event));
+});
+
+it('shows edit button for user with correct role', function () {
+    $user = createUserWithRole('rotex');
+    $event = Event::factory()->create();
+    $user->events()->attach($event);
+    actingAs($user);
+    $component = Livewire::test(EventDetails::class, [
+        'event' => $event,
+    ]);
+    actingAs($user);
+    $component
+        ->assertSee('Bearbeiten');
+});
+
+it('does not show edit button for user with some role', function () {
+    $user = createUserWithRole('role');
+    $event = Event::factory()->create();
+    actingAs($user);
+    $component = Livewire::test(EventDetails::class, [
+        'event' => $event,
+    ]);
+    $component
+        ->assertDontSee('Bearbeiten')
+        ->assertMethodNotWired('edit');
 });

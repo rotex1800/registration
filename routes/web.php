@@ -23,12 +23,14 @@ Route::get('/', function () {
 Route::post('login', [AuthenticationController::class, 'authenticate']);
 
 Route::middleware(['auth'])->group(function () {
-
     Route::get('/home', [HomeController::class, 'home'])
         ->name('home')
         ->middleware('auth');
 
-    Route::get('/event/{id}', [EventController::class, 'show'])
-        ->name('event.show');
+    Route::get('/event/{event}', [EventController::class, 'show'])
+        ->name('event.show')
+        ->middleware('can:show,event');
 
+    Route::get('/event/{id}/edit', [EventController::class, 'edit'])
+    ->name('event.edit');
 });
