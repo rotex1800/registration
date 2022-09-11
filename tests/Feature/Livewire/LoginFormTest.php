@@ -18,17 +18,14 @@ test('login form can render', function () {
               ->assertMethodWiredToForm('login')
               ->assertSee('Passwort')
               ->assertSee('E-Mail')
-              ->assertSee('Login')
-    ;
+              ->assertSee('Login');
 });
 
 it('logs in the user', function () {
-
     $user = User::factory()->create();
     $component = Livewire::test(LoginForm::class);
     $component->set('password', 'password')
               ->set('email', $user->email)
               ->call('login')
-              ->assertRedirect("/home")
-    ;
+              ->assertRedirect('/home');
 });

@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Livewire\Livewire;
 
-
 uses(DatabaseMigrations::class);
 
 it('shows the application name', function () {
@@ -38,22 +37,20 @@ it('shows logout button for logged in users', function () {
 
 it('logs the user out when logout is clicked', function () {
     $user = User::factory()->create();
-    Livewire::
-    actingAs($user)
+    Livewire::actingAs($user)
             ->test(MainNavigation::class)
             ->set('loggedIn', true)
             ->assertMethodWired('logout')
             ->call('logout')
             ->assertRedirect('/login');
-
 });
 
 it('can navigate back to home', function () {
     $user = User::factory()->create();
     Livewire::actingAs($user)
             ->test(MainNavigation::class)
-            ->assertSee("Home")
+            ->assertSee('Home')
             ->assertMethodWired('toHome')
             ->call('toHome')
-            ->assertRedirect("/home");
+            ->assertRedirect('/home');
 });

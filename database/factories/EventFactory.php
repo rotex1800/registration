@@ -20,7 +20,7 @@ class EventFactory extends Factory
         return [
             'name' => fake()->words(asText: true),
             'start' => new Carbon(fake()->dateTime),
-            'end' => new Carbon(fake()->dateTime)
+            'end' => new Carbon(fake()->dateTime),
         ];
     }
 

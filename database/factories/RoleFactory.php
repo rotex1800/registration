@@ -17,7 +17,7 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->word()
+            'name' => fake()->word(),
         ];
     }
 
@@ -27,9 +27,9 @@ class RoleFactory extends Factory
     public function participant()
     {
         return $this->state(function (array $attributes) {
-           return [
-            'name' => 'participant',
-           ];
+            return [
+                'name' => 'participant',
+            ];
         });
     }
 
@@ -39,9 +39,9 @@ class RoleFactory extends Factory
     public function rotex()
     {
         return $this->state(function (array $attributes) {
-           return [
-            'name' => 'rotex',
-           ];
+            return [
+                'name' => 'rotex',
+            ];
         });
     }
 }

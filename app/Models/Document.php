@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\User;
 
 class Document extends Model
 {
@@ -18,7 +17,7 @@ class Document extends Model
      */
     public const TYPES = [
         'digital' => 0,
-        'physical' => 1
+        'physical' => 1,
     ];
 
     /**

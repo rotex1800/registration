@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property-read int|null $events_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
  * @property-read int|null $users_count
+ *
  * @method static \Database\Factories\RoleFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role newQuery()
@@ -35,7 +36,7 @@ class Role extends Model
      * @return BelongsToMany
      * @phpstan-return BelongsToMany<User>
      */
-    function users(): BelongsToMany
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }

@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
@@ -19,7 +19,7 @@ class CommentFactory extends Factory
     {
         return [
             'author_id' => User::factory(),
-            'content' => fake()->words(10, asText: true)
+            'content' => fake()->words(10, asText: true),
         ];
     }
 }

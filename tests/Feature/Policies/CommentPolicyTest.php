@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-
 it('allows participant user to comment on own document', function () {
     $policy = new CommentPolicy();
     $document = Document::factory()->create();
@@ -27,7 +26,6 @@ it('denies participant user to comment other document', function () {
 
     expect($policy->userCanCommentDocument($user, $document))
     ->toBeDenied();
-
 });
 
 it('allows rotex user to comment on own document', function () {

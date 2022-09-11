@@ -23,7 +23,7 @@ class DocumentFactory extends Factory
             'is_required' => fake()->boolean(),
             'is_approved' => fake()->boolean(),
             'name' => fake()->word(),
-            'owner_id' => User::factory()
+            'owner_id' => User::factory(),
         ];
     }
 
@@ -32,11 +32,11 @@ class DocumentFactory extends Factory
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function  digital()
+    public function digital()
     {
         return $this->state(function (array $attributes) {
             return [
-                'type' => Document::TYPES['digital']
+                'type' => Document::TYPES['digital'],
             ];
         });
     }

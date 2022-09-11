@@ -20,7 +20,7 @@ class EventSummary extends Component
     public function show(): Redirector|RedirectResponse
     {
         return redirect()->route('event.show', [
-            'id' => $this->event->id
+            'id' => $this->event->id,
         ]);
     }
 }

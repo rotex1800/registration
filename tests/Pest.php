@@ -11,10 +11,10 @@
 |
 */
 
-use App\Models\User;
 use App\Models\Role;
-use Tests\DuskTestCase;
+use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Tests\DuskTestCase;
 
 uses(Tests\TestCase::class)->in('Livewire');
 uses(Tests\TestCase::class)->in('Feature');
@@ -48,7 +48,6 @@ expect()->extend('toBeDenied', function () {
     ->allowed()->toBeFalse();
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Functions
@@ -64,7 +63,7 @@ function createUserWithRole(string $role): User
 {
     return User::factory()
         ->has(Role::factory()->state([
-            'name' => $role
+            'name' => $role,
         ]))
          ->create();
 }

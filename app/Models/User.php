@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-
 /**
  * App\Models\User
  *
@@ -31,6 +30,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
  * @property-read int|null $roles_count
+ *
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -137,9 +137,9 @@ class User extends Authenticatable
         return $document->owner->id == $this->id;
     }
 
-
     /**
      * Indicates whether the user has a role of the given name
+     *
      * @return bool
      */
     public function hasRole(string $roleName): bool
@@ -163,6 +163,7 @@ class User extends Authenticatable
     public function canRegisterFor(): Collection
     {
         $roleIds = $this->roles()->allRelatedIds();
+
         return Event::whereHas(
             'roles',
             function (Builder $q) use ($roleIds) {

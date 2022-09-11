@@ -31,7 +31,7 @@ it('shows events the user attends', function () {
 it('does not show my events section if the user does not attend any events', function () {
     $user = User::factory()->create();
     actingAs($user)
-        ->get("/home")
+        ->get('/home')
         ->assertDontSee('Meine Events')
         ->assertDontSeeLivewire('event-summary');
 });
@@ -59,9 +59,9 @@ it('does not show events the user is attending in further events', function () {
     $event = Event::factory()->create();
     $user->events()->attach($event);
     actingAs($user)
-        ->get("/home")
-        ->assertSeeLivewire("event-summary")
-        ->assertDontSee("Weitere Events")
+        ->get('/home')
+        ->assertSeeLivewire('event-summary')
+        ->assertDontSee('Weitere Events')
         ->assertSee($event->name);
 });
 

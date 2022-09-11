@@ -6,14 +6,12 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 it('belongs to many users', function () {
-
     $role = Role::factory()->create();
     $relation = $role->users();
     expect($relation)
         ->toBeInstanceOf(BelongsToMany::class)
         ->and($relation->getRelated())
-        ->toBeInstanceOf(User::class)
-    ;
+        ->toBeInstanceOf(User::class);
 });
 
 it('belongs to many events', function () {
@@ -22,6 +20,5 @@ it('belongs to many events', function () {
     expect($relation)
         ->toBeInstanceOf(BelongsToMany::class)
         ->and($relation->getRelated())
-        ->toBeInstanceOf(Event::class)
-    ;
+        ->toBeInstanceOf(Event::class);
 });

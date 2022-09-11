@@ -10,15 +10,13 @@ uses(RefreshDatabase::class);
 
 test('event has attendees relation', function () {
     expect((new Event())->attendees())
-        ->toBeInstanceOf(BelongsToMany::class)
-    ;
+        ->toBeInstanceOf(BelongsToMany::class);
 });
 
 test('event can retrieve attendees', function () {
     $event = Event::factory()
                   ->has(User::factory()->count(3), 'attendees')
-                  ->create()
-    ;
+                  ->create();
 
     expect($event->attendees()->get())
         ->toHaveCount(3)
@@ -27,7 +25,7 @@ test('event can retrieve attendees', function () {
 
 test('event has name', function () {
     $event = Event::factory()->state([
-        'name' => 'Deutschland Tour'
+        'name' => 'Deutschland Tour',
     ])->create();
     expect($event->name)->toBe('Deutschland Tour');
 

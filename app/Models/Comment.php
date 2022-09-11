@@ -10,9 +10,8 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function author(): BelongsTo {
+    public function author(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
-
-
 }

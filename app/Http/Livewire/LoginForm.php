@@ -10,21 +10,21 @@ use Livewire\Redirector;
 
 class LoginForm extends Component
 {
-
     public string $email = '';
+
     public string $password = '';
+
     public bool $remember = false;
 
     protected array $rules = [
         'email' => 'required|email',
-        'password' => 'required|min:6'
+        'password' => 'required|min:6',
     ];
 
     public function render(): View
     {
         return view('livewire.login-form');
     }
-
 
     public function login(): RedirectResponse|Redirector
     {
@@ -36,6 +36,7 @@ class LoginForm extends Component
         )) {
             return redirect()->route('home');
         }
+
         return redirect()->route('login');
     }
 }

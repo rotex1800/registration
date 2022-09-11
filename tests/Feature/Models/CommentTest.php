@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 
 uses(RefreshDatabase::class);

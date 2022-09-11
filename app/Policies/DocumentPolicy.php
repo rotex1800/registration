@@ -26,5 +26,4 @@ class DocumentPolicy
         Response::allow() :
         Response::deny('You are not allowed to approve this document');
     }
-
 }

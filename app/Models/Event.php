@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property-read int|null $attendees_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
  * @property-read int|null $roles_count
+ *
  * @method static \Database\Factories\EventFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Event newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Event newQuery()

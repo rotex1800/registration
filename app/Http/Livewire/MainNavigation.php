@@ -10,11 +10,11 @@ use Livewire\Redirector;
 
 class MainNavigation extends Component
 {
-
     public string $applicationName;
-    public string $name;
-    public bool $loggedIn;
 
+    public string $name;
+
+    public bool $loggedIn;
 
     public function mount(): void
     {
@@ -25,13 +25,14 @@ class MainNavigation extends Component
     {
         $this->applicationName = config('app.name');
         $this->name = Auth::user()?->name ?: '';
+
         return view('livewire.main-navigation');
     }
-
 
     public function logout(): RedirectResponse|Redirector
     {
         Auth::logout();
+
         return redirect()->route('login');
     }
 

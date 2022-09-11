@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
@@ -55,18 +54,15 @@ it('returns events the user can still register for', function () {
 
     assertFalse($user->canRegisterFor()->contains($attends));
     assertTrue($user->participatesIn()->contains($attends));
-
 });
 
-
-it('can check if it has a role', function() {
+it('can check if it has a role', function () {
     $user = createUserWithRole('role');
     expect($user->hasRole('role'))
     ->toBeTrue()
     ->and($user->hasRole('other'))
     ->toBeFalse();
 });
-
 
 it('is author of many comments', function () {
     $user = User::factory()
@@ -100,7 +96,6 @@ it('can check it owns a document', function () {
     expect($user->owns($document))
     ->toBeTrue();
 });
-
 
 it('can check it does not own a document', function () {
     $user = User::factory()->create();
