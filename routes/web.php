@@ -31,6 +31,6 @@ Route::middleware(['auth'])->group(function () {
         ->name('event.show')
         ->middleware('can:show,event');
 
-    Route::get('/event/{id}/edit', [EventController::class, 'edit'])
+    Route::get('/event/{event}/edit', [EventController::class, 'edit'])
     ->name('event.edit');
 });

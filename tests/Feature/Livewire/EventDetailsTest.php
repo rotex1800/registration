@@ -79,7 +79,21 @@ it('shows edit button for user with correct role', function () {
     ]);
     actingAs($user);
     $component
-        ->assertSee('Bearbeiten');
+        ->assertSee('Bearbeiten')
+        ->assertMethodWired('edit');
+});
+
+test('edit method redirects to edit page', function () {
+    $user = createUserWithRole('rotex');
+    $event = Event::factory()->create();
+    $user->events()->attach($event);
+    actingAs($user);
+    Livewire::test(EventDetails::class, [
+        'event' => $event
+    ])
+    ->call('edit')
+    ->assertRedirect("/event/$event->id/edit");
+
 });
 
 it('does not show edit button for user with some role', function () {

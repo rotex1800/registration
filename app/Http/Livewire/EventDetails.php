@@ -44,4 +44,10 @@ class EventDetails extends Component
 
         return $policy->canEditEvent($user)->allowed();
     }
+
+    public function edit() {
+        return redirect()->route('event.edit', [
+            'event' => $this->event->id
+        ]);
+    }
 }
