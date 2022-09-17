@@ -4,6 +4,9 @@ use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
 
 it('belongs to many users', function () {
     $role = Role::factory()->create();

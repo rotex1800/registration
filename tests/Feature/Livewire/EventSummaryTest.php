@@ -4,7 +4,10 @@ namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\EventSummary;
 use App\Models\Event;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+
+uses(RefreshDatabase::class);
 
 beforeEach(function () {
     $this->event = Event::factory()->create();
