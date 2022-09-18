@@ -7,13 +7,13 @@ use App\Policies\EventPolicy;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class EventDetails extends Component
+class EventRegistration extends Component
 {
     public Event $event;
 
     public function render()
     {
-        return view('livewire.event-details');
+        return view('livewire.event-registration');
     }
 
     public function hasUserRegistered(): bool

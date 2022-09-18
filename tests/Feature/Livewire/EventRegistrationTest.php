@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\EventDetails;
+use App\Http\Livewire\EventRegistration;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,7 +17,7 @@ it('shows event information', function () {
     $event = Event::factory()->create();
     $user = User::factory()->create();
     actingAs($user);
-    $component = Livewire::test(EventDetails::class, [
+    $component = Livewire::test(EventRegistration::class, [
         'event' => $event,
     ]);
 
@@ -31,7 +31,7 @@ it('contains button to register if not yet registered', function () {
     $event = Event::factory()->create();
     $user = User::factory()->create();
     actingAs($user);
-    $component = Livewire::test(EventDetails::class, [
+    $component = Livewire::test(EventRegistration::class, [
         'event' => $event,
     ]);
     $component
@@ -56,7 +56,7 @@ it('contains button to de-register if already registered', function () {
     $user = User::factory()->create();
     $user->events()->attach($event);
     actingAs($user);
-    $component = Livewire::test(EventDetails::class, [
+    $component = Livewire::test(EventRegistration::class, [
         'event' => $event,
     ]);
     $component
@@ -74,7 +74,7 @@ it('shows edit button for user with correct role', function () {
     $event = Event::factory()->create();
     $user->events()->attach($event);
     actingAs($user);
-    $component = Livewire::test(EventDetails::class, [
+    $component = Livewire::test(EventRegistration::class, [
         'event' => $event,
     ]);
     actingAs($user);
@@ -88,7 +88,7 @@ test('edit method redirects to edit page', function () {
     $event = Event::factory()->create();
     $user->events()->attach($event);
     actingAs($user);
-    Livewire::test(EventDetails::class, [
+    Livewire::test(EventRegistration::class, [
         'event' => $event
     ])
     ->call('edit')
@@ -100,7 +100,7 @@ it('does not show edit button for user with some role', function () {
     $user = createUserWithRole('role');
     $event = Event::factory()->create();
     actingAs($user);
-    $component = Livewire::test(EventDetails::class, [
+    $component = Livewire::test(EventRegistration::class, [
         'event' => $event,
     ]);
     $component

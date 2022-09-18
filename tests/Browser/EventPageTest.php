@@ -51,6 +51,6 @@ it('shows event details component', function () {
 
     actingAs($user)
         ->get("/event/$event->id")
-        ->assertSeeLivewire('event-details')
+        ->assertSeeLivewire('event-registration')
         ->assertStatus(200);
 });
