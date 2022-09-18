@@ -12,6 +12,7 @@ class EventController extends Controller
         $user = Auth::user();
 
         $hasRegistered = $user->hasRegisteredFor($event);
+
         return view('event.registration')->with([
             'event' => $event,
             'hasRegistered' => $hasRegistered,

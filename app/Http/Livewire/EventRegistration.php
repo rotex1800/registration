@@ -15,7 +15,9 @@ use Livewire\Redirector;
 class EventRegistration extends Component
 {
     public Event $event;
+
     public array $districts;
+
     public User $user;
 
     protected array $rules = [
@@ -26,7 +28,6 @@ class EventRegistration extends Component
         'user.mobile_phone' => 'nullable',
         'user.health_issues' => 'nullable',
     ];
-
 
     public function mount()
     {
@@ -59,13 +60,14 @@ class EventRegistration extends Component
     public function canEdit(): bool
     {
         $policy = new EventPolicy();
+
         return $policy->canEditEvent($this->user)->allowed();
     }
 
     public function edit(): Redirector|RedirectResponse
     {
         return redirect()->route('event.edit', [
-            'event' => $this->event->id
+            'event' => $this->event->id,
         ]);
     }
 

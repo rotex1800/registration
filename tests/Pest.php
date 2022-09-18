@@ -68,9 +68,10 @@ function createUserWithRole(string $role): User
                ->create();
 }
 
-function createInboundRegisteredFor(\App\Models\Event $event): User
+function createInboundRegisteredFor(App\Models\Event $event): User
 {
     $inbound = createUserWithRole('inbound');
     $inbound->events()->attach($event);
+
     return $inbound;
 }

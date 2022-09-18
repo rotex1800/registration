@@ -24,7 +24,7 @@ it('can be required', function () {
 
 it('can be approved', function () {
     expect(Document::factory()->create([
-        'state' => Document::APPROVED
+        'state' => Document::APPROVED,
     ])->isApproved())
         ->toBeBool()
         ->toBeTrue();
@@ -32,7 +32,7 @@ it('can be approved', function () {
 
 it('can be submitted', function () {
     expect(Document::factory()->create([
-        'state' => Document::SUBMITTED
+        'state' => Document::SUBMITTED,
     ])->isSubmitted())
         ->toBeBool()
         ->toBeTrue();

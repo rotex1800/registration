@@ -21,10 +21,12 @@ class Document extends Model
     ];
 
     public const APPROVED = 'approved';
+
     public const SUBMITTED = 'submitted';
 
     /**
      * Indicates whether the document is approved.
+     *
      * @return bool
      */
     public function isApproved(): bool
@@ -34,6 +36,7 @@ class Document extends Model
 
     /**
      * Indicates whether the document is submitted.
+     *
      * @return bool
      */
     public function isSubmitted(): bool

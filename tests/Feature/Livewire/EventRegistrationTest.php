@@ -88,11 +88,10 @@ test('edit method redirects to edit page', function () {
     $user->events()->attach($this->event);
     actingAs($user);
     Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ])
             ->call('edit')
             ->assertRedirect(route('event.edit', $this->event));
-
 });
 
 it('does not show edit button for user with some role', function () {
@@ -110,7 +109,7 @@ it('has section for information about the person', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
     $component->assertSeeTextInOrder([
         __('registration.about-you'),
@@ -127,7 +126,7 @@ it('has section for information about passport', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $component->assertSeeTextInOrder([
@@ -143,7 +142,7 @@ it('has section for information about rotary', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $component->assertSeeTextInOrder([
@@ -151,7 +150,7 @@ it('has section for information about rotary', function () {
         __('registration.rotary.host-club'),
         __('registration.rotary.host-district'),
         __('registration.rotary.sponsor-club'),
-        __('registration.rotary.sponsor-district')
+        __('registration.rotary.sponsor-district'),
     ]);
 });
 
@@ -159,7 +158,7 @@ it('has section for information about counselor', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $component->assertSeeTextInOrder([
@@ -174,7 +173,7 @@ it('has section for information about yeo', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $component->assertSeeTextInOrder([
@@ -189,7 +188,7 @@ it('has section for family in home country', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $component->assertSeeTextInOrder([
@@ -205,7 +204,7 @@ it('has section for first host family', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
     $component->assertSeeTextInOrder([
         __('registration.about-host-family-one'),
@@ -219,7 +218,7 @@ it('has section for second host family', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
     $component->assertSeeTextInOrder([
         __('registration.about-host-family-two'),
@@ -233,7 +232,7 @@ it('has section for third host family', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
     $component->assertSeeTextInOrder([
         __('registration.about-host-family-three'),
@@ -247,11 +246,11 @@ it('has text area for comments', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $component->assertSeeTextInOrder([
-        __('registration.comment')
+        __('registration.comment'),
     ]);
 });
 
@@ -259,7 +258,7 @@ it('has user inputs bound to component', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $fakeFirstName = fake()->firstName;
@@ -294,5 +293,4 @@ it('has user inputs bound to component', function () {
                                 ->and($inbound->birthday->toDateString())->toBe($fakeBirthday)
                                 ->and($inbound->mobile_phone)->toBe($fakeMobilePhone)
                                 ->and($inbound->health_issues)->toBe($fakeHealthIssues);
-
 });
