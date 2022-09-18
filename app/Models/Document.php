@@ -20,6 +20,27 @@ class Document extends Model
         'physical' => 1,
     ];
 
+    public const APPROVED = 'approved';
+    public const SUBMITTED = 'submitted';
+
+    /**
+     * Indicates whether the document is approved.
+     * @return bool
+     */
+    public function isApproved(): bool
+    {
+        return self::APPROVED == $this->state;
+    }
+
+    /**
+     * Indicates whether the document is submitted.
+     * @return bool
+     */
+    public function isSubmitted(): bool
+    {
+        return self::SUBMITTED == $this->state;
+    }
+
     /**
      * @return BelongsTo
      * @phpstan-return BelongsTo<User>

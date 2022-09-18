@@ -21,7 +21,6 @@ class DocumentFactory extends Factory
         return [
             'type' => fake()->numberBetween(0, count(Document::TYPES) - 1),
             'is_required' => fake()->boolean(),
-            'is_approved' => fake()->boolean(),
             'name' => fake()->word(),
             'owner_id' => User::factory(),
         ];

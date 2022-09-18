@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('type');
             $table->boolean('is_required')->default(true);
-            $table->boolean('is_approved')->default(false);
+            $table->string('state')->nullable(true)->default(null);
             $table->string('name');
             $table->foreignId('owner_id');
         });
