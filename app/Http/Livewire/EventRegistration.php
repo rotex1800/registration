@@ -5,11 +5,18 @@ namespace App\Http\Livewire;
 use App\Models\Event;
 use App\Policies\EventPolicy;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class EventRegistration extends Component
 {
     public Event $event;
+    public array $districts;
+
+    public function mount()
+    {
+        $this->districts = json_decode(Storage::disk('local')->get('districts.json'));
+    }
 
     public function render()
     {

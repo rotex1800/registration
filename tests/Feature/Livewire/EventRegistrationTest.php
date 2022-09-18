@@ -105,3 +105,152 @@ it('does not show edit button for user with some role', function () {
         ->assertDontSee('Bearbeiten')
         ->assertMethodNotWired('edit');
 });
+
+it('has section for information about the person', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+    $component->assertSeeTextInOrder([
+        __('registration.about-you'),
+        __('registration.first-name'),
+        __('registration.familiy-name'),
+        __('registration.birthday'),
+        __('registration.gender.gender'),
+        __('registration.mobilephone'),
+        __('registration.health-issues'),
+    ]);
+});
+
+it('has section for information about passport', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $component->assertSeeTextInOrder([
+        __('registration.passport'),
+        __('registration.nationality'),
+        __('registration.passport-number'),
+        __('registration.passport-issue-date'),
+        __('registration.passport-expiration-date'),
+    ]);
+});
+
+it('has section for information about rotary', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $component->assertSeeTextInOrder([
+        __('registration.about-rotary'),
+        __('registration.rotary.host-club'),
+        __('registration.rotary.host-district'),
+        __('registration.rotary.sponsor-club'),
+        __('registration.rotary.sponsor-district')
+    ]);
+});
+
+it('has section for information about counselor', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $component->assertSeeTextInOrder([
+        __('registration.about-counselor'),
+        __('registration.counselor.name'),
+        __('registration.counselor.telephone'),
+        __('registration.counselor.email'),
+    ]);
+});
+
+it('has section for information about yeo', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $component->assertSeeTextInOrder([
+        __('registration.about-yeo'),
+        __('registration.yeo.name'),
+        __('registration.yeo.telephone'),
+        __('registration.yeo.email'),
+    ]);
+});
+
+it('has section for family in home country', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $component->assertSeeTextInOrder([
+        __('registration.about-bio-family'),
+        __('registration.bio-family.parent-one'),
+        __('registration.bio-family.parent-two'),
+        __('registration.bio-family.email'),
+        __('registration.bio-family.telephone'),
+    ]);
+});
+
+it('has section for first host family', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+    $component->assertSeeTextInOrder([
+        __('registration.about-host-family-one'),
+        __('registration.host-family.name'),
+        __('registration.host-family.email'),
+        __('registration.host-family.address'),
+    ]);
+});
+
+it('has section for second host family', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+    $component->assertSeeTextInOrder([
+        __('registration.about-host-family-two'),
+        __('registration.host-family.name'),
+        __('registration.host-family.email'),
+        __('registration.host-family.address'),
+    ]);
+});
+
+it('has section for third host family', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+    $component->assertSeeTextInOrder([
+        __('registration.about-host-family-three'),
+        __('registration.host-family.name'),
+        __('registration.host-family.email'),
+        __('registration.host-family.address'),
+    ]);
+});
+
+it('has text area for comments', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $component->assertSeeTextInOrder([
+        __('registration.comment')
+    ]);
+});

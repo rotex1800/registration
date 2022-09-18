@@ -5,7 +5,11 @@ module.exports = {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ], theme: {
-        extend: {},
+        extend: {
+            gridTemplateColumns: {
+                'input': 'max-content auto'
+            }
+        },
     },
     plugins: [
         require('@tailwindcss/forms'),

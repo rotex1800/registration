@@ -1,0 +1,57 @@
+<?php
+
+return [
+    'gender' => [
+        'na' => 'Keine Angabe',
+        'diverse' => 'Divers',
+        'male' => 'Männlich',
+        'female' => 'Weiblich',
+        'gender' => 'Geschlecht',
+    ],
+    'health-issues' => 'Gesundheitliche Einschränkungen oder Probleme',
+    'mobilephone' => 'Handy Nummer',
+    'birthday' => 'Geburtstag',
+    'family-name' => 'Familienname',
+    'first-name' => 'Vorname',
+    'about-you' => 'Zu Dir',
+    'passport' => 'Reisepass',
+    'nationality' => 'Nationalität',
+    'passport-number' => 'Passnummer',
+    'passport-issue-date' => 'Ausstellungsdatum',
+    'passport-expiration-date' => 'Ablaufdatum',
+    'about-rotary' => 'Zu Rotary',
+    'rotary' => [
+        'host-club' => 'Host Club',
+        'host-district' => 'Host Distrikt',
+        'sponsor-club' => 'Sponsor Club',
+        'sponsor-district' => 'Sponsor Distrikt',
+    ],
+    'about-counselor' => 'Counselor:in',
+    'counselor' => [
+        'name' => 'Name',
+        'telephone' => 'Telefonnummer',
+        'email' => 'E-Mail',
+    ],
+    'about-yeo' => 'YEO',
+    'yeo' => [
+        'name' => 'Name',
+        'telephone' => 'Telefonnummer',
+        'email' => 'E-Mail',
+    ],
+    'about-bio-family' => 'Familie im Heimatland',
+    'bio-family' => [
+        'parent-one' => 'Elternteil 1',
+        'parent-two' => 'Elternteil 2',
+        'email' => 'E-Mail',
+        'telephone' => 'Telefonnummer',
+    ],
+    'about-host-family-one' => 'Erste Gastfamilie',
+    'about-host-family-two' => 'Zweite Gastfamilie',
+    'about-host-family-three' => 'Dritte Gastfamilie',
+    'host-family' => [
+        'name' => 'Name',
+        'email' => 'E-Mail',
+        'address' => 'Adresse',
+    ],
+    'comment' => 'Kommentar',
+];
