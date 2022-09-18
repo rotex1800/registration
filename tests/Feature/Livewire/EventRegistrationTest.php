@@ -13,26 +13,28 @@ use function PHPUnit\Framework\assertTrue;
 
 uses(RefreshDatabase::class);
 
+beforeEach(function () {
+    $this->event = Event::factory()->create();
+});
+
 it('shows event information', function () {
-    $event = Event::factory()->create();
     $user = User::factory()->create();
     actingAs($user);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $event,
+        'event' => $this->event,
     ]);
 
     $component
-        ->assertSee($event->name)
-        ->assertSee($event->start->isoFormat('d. MMMM Y'))
-        ->assertSee($event->end->isoFormat('d. MMMM Y'));
+        ->assertSee($this->event->name)
+        ->assertSee($this->event->start->isoFormat('d. MMMM Y'))
+        ->assertSee($this->event->end->isoFormat('d. MMMM Y'));
 });
 
 it('contains button to register if not yet registered', function () {
-    $event = Event::factory()->create();
     $user = User::factory()->create();
     actingAs($user);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $event,
+        'event' => $this->event,
     ]);
     $component
         ->assertMethodWired('register')
@@ -40,24 +42,23 @@ it('contains button to register if not yet registered', function () {
         ->assertDontSee('Abmelden');
 
     assertFalse(
-        $user->hasRegisteredFor($event)
+        $user->hasRegisteredFor($this->event)
     );
 
     $component
         ->call('register');
 
     assertTrue(
-        $user->hasRegisteredFor($event)
+        $user->hasRegisteredFor($this->event)
     );
 });
 
 it('contains button to de-register if already registered', function () {
-    $event = Event::factory()->create();
     $user = User::factory()->create();
-    $user->events()->attach($event);
+    $user->events()->attach($this->event);
     actingAs($user);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $event,
+        'event' => $this->event,
     ]);
     $component
         ->assertMethodWired('unregister')
@@ -66,16 +67,15 @@ it('contains button to de-register if already registered', function () {
 
     $component->call('unregister');
 
-    assertFalse($user->hasRegisteredFor($event));
+    assertFalse($user->hasRegisteredFor($this->event));
 });
 
 it('shows edit button for user with correct role', function () {
     $user = createUserWithRole('rotex');
-    $event = Event::factory()->create();
-    $user->events()->attach($event);
+    $user->events()->attach($this->event);
     actingAs($user);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $event,
+        'event' => $this->event,
     ]);
     actingAs($user);
     $component
@@ -85,23 +85,21 @@ it('shows edit button for user with correct role', function () {
 
 test('edit method redirects to edit page', function () {
     $user = createUserWithRole('rotex');
-    $event = Event::factory()->create();
-    $user->events()->attach($event);
+    $user->events()->attach($this->event);
     actingAs($user);
     Livewire::test(EventRegistration::class, [
-        'event' => $event
+        'event' => $this->event
     ])
-    ->call('edit')
-    ->assertRedirect("/event/$event->id/edit");
+            ->call('edit')
+            ->assertRedirect(route('event.edit', $this->event));
 
 });
 
 it('does not show edit button for user with some role', function () {
     $user = createUserWithRole('role');
-    $event = Event::factory()->create();
     actingAs($user);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $event,
+        'event' => $this->event,
     ]);
     $component
         ->assertDontSee('Bearbeiten')
