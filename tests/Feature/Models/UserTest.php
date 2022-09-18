@@ -4,6 +4,7 @@ use App\Models\Comment;
 use App\Models\Document;
 use App\Models\Role;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -97,7 +98,7 @@ it('can check it owns a document', function () {
     $document = $user->documents()->first();
 
     expect($user->owns($document))
-    ->toBeTrue();
+        ->toBeTrue();
 });
 
 it('can check it does not own a document', function () {
@@ -105,5 +106,31 @@ it('can check it does not own a document', function () {
     $document = Document::factory()->create();
 
     expect($user->owns($document))
-    ->toBeFalse();
+        ->toBeFalse();
+});
+
+it('has first name', function () {
+    $user = User::factory()->create();
+    expect($user->first_name)->toBeString();
+});
+
+it('has birthday', function () {
+    $user = User::factory()->create();
+    expect($user->birthday)
+        ->toBeInstanceOf(Carbon::class);
+});
+
+it('has gender', function () {
+    expect(User::factory()->create()->gender)
+        ->toBeString();
+});
+
+it('has mobile phone number', function () {
+    expect(User::factory()->create()->mobile_phone)
+        ->toBeString();
+});
+
+it('has health issues text field', function () {
+    expect(User::factory()->create()->health_issues)
+        ->toBeString();
 });

@@ -26,28 +26,31 @@
     @if($this->hasUserRegistered())
         <h2 class="text-2xl mt-8">{{ __('registration.about-you') }}</h2>
         <div class="mt-4 grid grid-cols-input gap-4 items-center">
-            <label for="firstname">{{ __('registration.first-name') }}</label>
-            <input class="rounded" type="text" id="firstname">
+            <label for="firstname">{{ __('registration.first_name') }}</label>
+            <input class="rounded" type="text" id="firstname" wire:model.debounce="user.first_name">
 
-            <label for="family-name">{{ __('registration.familiy-name') }}</label>
-            <input class="rounded" type="text" id="family-name">
+            <label for="family-name">{{ __('registration.family_name') }}</label>
+            <input class="rounded" type="text" id="family-name" wire:model.debounce="user.family_name">
 
             <label for="birthday">{{ __('registration.birthday') }}</label>
-            <input class="rounded" type="date" id="birthday">
+            <input class="rounded" type="date" id="birthday" wire:model.debounce="user.birthday">
 
             <label for="gender">{{ __('registration.gender.gender') }}</label>
-            <select class="rounded" id="gender">
+            <select class="rounded" id="gender" wire:model.debounce="user.gender">
                 <option value="female">{{ __('registration.gender.female') }}</option>
                 <option value="male">{{ __('registration.gender.male') }}</option>
                 <option value="diverse">{{ __('registration.gender.diverse') }}</option>
                 <option value="na">{{ __('registration.gender.na') }}</option>
             </select>
 
-            <label for="mobilephone">{{ __('registration.mobilephone') }}</label>
-            <input type="tel" id="mobilephone" class="rounded">
+            <label for="mobile_phone">{{ __('registration.mobile_phone') }}</label>
+            <input type="tel" id="mobile_phone" class="rounded" wire:model.debounce="user.mobile_phone">
 
-            <label for="health-issues">{{ __('registration.health-issues') }}</label>
-            <textarea class="rounded min-h-40" id="health-issues"></textarea>
+            <label for="health-issues">{{ __('registration.health_issues') }}</label>
+            <textarea class="rounded min-h-40" id="health-issues" wire:model.debounce="user.health_issues"></textarea>
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="saveUser">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{  __('registration.passport') }}</h2>

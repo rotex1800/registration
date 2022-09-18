@@ -3,58 +3,74 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
+use App\Models\User;
 use App\Policies\EventPolicy;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\Redirector;
 
 class EventRegistration extends Component
 {
     public Event $event;
     public array $districts;
+    public User $user;
+
+    protected array $rules = [
+        'user.first_name' => 'nullable',
+        'user.family_name' => 'nullable',
+        'user.gender' => 'nullable|in:female,male,diverse,na',
+        'user.birthday' => 'nullable|date',
+        'user.mobile_phone' => 'nullable',
+        'user.health_issues' => 'nullable',
+    ];
+
 
     public function mount()
     {
         $this->districts = json_decode(Storage::disk('local')->get('districts.json'));
+        $this->user = Auth::user();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.event-registration');
     }
 
     public function hasUserRegistered(): bool
     {
-        $user = Auth::user();
-
-        return $user->hasRegisteredFor($this->event);
+        return $this->user->hasRegisteredFor($this->event);
     }
 
     public function register(): void
     {
-        $user = Auth::user();
-        $user->events()->attach($this->event);
-        $user->save();
+        $this->user->events()->attach($this->event);
+        $this->user->save();
     }
 
     public function unregister(): void
     {
-        $user = Auth::user();
-        $user->events()->detach($this->event);
-        $user->save();
+        $this->user->events()->detach($this->event);
+        $this->user->save();
     }
 
-    public function canEdit()
+    public function canEdit(): bool
     {
-        $user = Auth::user();
         $policy = new EventPolicy();
-
-        return $policy->canEditEvent($user)->allowed();
+        return $policy->canEditEvent($this->user)->allowed();
     }
 
-    public function edit() {
+    public function edit(): Redirector|RedirectResponse
+    {
         return redirect()->route('event.edit', [
             'event' => $this->event->id
         ]);
+    }
+
+    public function saveUser()
+    {
+        $this->user->save();
     }
 }

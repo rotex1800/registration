@@ -9,7 +9,7 @@ return [
         'gender' => 'Geschlecht',
     ],
     'health-issues' => 'Gesundheitliche Einschränkungen oder Probleme',
-    'mobilephone' => 'Handy Nummer',
+    'mobile_phone' => 'Handy Nummer',
     'birthday' => 'Geburtstag',
     'family-name' => 'Familienname',
     'first-name' => 'Vorname',
@@ -54,4 +54,5 @@ return [
         'address' => 'Adresse',
     ],
     'comment' => 'Kommentar',
+    'save' => 'Speichern',
 ];

@@ -114,12 +114,12 @@ it('has section for information about the person', function () {
     ]);
     $component->assertSeeTextInOrder([
         __('registration.about-you'),
-        __('registration.first-name'),
-        __('registration.familiy-name'),
+        __('registration.first_name'),
+        __('registration.family_name'),
         __('registration.birthday'),
         __('registration.gender.gender'),
-        __('registration.mobilephone'),
-        __('registration.health-issues'),
+        __('registration.mobile_phone'),
+        __('registration.health_issues'),
     ]);
 });
 
@@ -253,4 +253,46 @@ it('has text area for comments', function () {
     $component->assertSeeTextInOrder([
         __('registration.comment')
     ]);
+});
+
+it('has user inputs bound to component', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $fakeFirstName = fake()->firstName;
+    $fakeLastName = fake()->lastName;
+    $fakeGender = fake()->randomElement(['female', 'male', 'diverse', 'na']);
+    $fakeBirthday = fake()->date;
+    $fakeMobilePhone = fake()->phoneNumber;
+    $fakeHealthIssues = fake()->paragraph;
+
+    $component
+        ->assertPropertyWired('user.first_name')
+        ->assertPropertyWired('user.family_name')
+        ->assertPropertyWired('user.birthday')
+        ->assertPropertyWired('user.gender')
+        ->assertPropertyWired('user.mobile_phone')
+        ->assertPropertyWired('user.health_issues')
+        ->assertMethodWired('saveUser')
+        ->set('user.first_name', $fakeFirstName)
+        ->set('user.family_name', $fakeLastName)
+        ->set('user.gender', $fakeGender)
+        ->set('user.birthday', $fakeBirthday)
+        ->set('user.mobile_phone', $fakeMobilePhone)
+        ->set('user.health_issues', $fakeHealthIssues)
+        ->assertHasNoErrors()
+        ->call('saveUser')
+        ->assertStatus(200);
+
+    $inbound->refresh();
+    expect($inbound->first_name)->toBe($fakeFirstName)
+                                ->and($inbound->family_name)->toBe($fakeLastName)
+                                ->and($inbound->gender)->toBe($fakeGender)
+                                ->and($inbound->birthday->toDateString())->toBe($fakeBirthday)
+                                ->and($inbound->mobile_phone)->toBe($fakeMobilePhone)
+                                ->and($inbound->health_issues)->toBe($fakeHealthIssues);
+
 });
