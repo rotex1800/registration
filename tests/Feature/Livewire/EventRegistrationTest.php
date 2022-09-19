@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+use Livewire\Testing\TestableLivewire;
 use function Pest\Laravel\actingAs;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
@@ -294,3 +295,48 @@ it('has user inputs bound to component', function () {
                                 ->and($inbound->mobile_phone)->toBe($fakeMobilePhone)
                                 ->and($inbound->health_issues)->toBe($fakeHealthIssues);
 });
+
+it('has passport inputs bound to component', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    $properties_and_values = [
+        'passport.nationality' => fake()->country,
+        'passport.passport_number' => fake()->words(asText: true),
+        'passport.issue_date' => fake()->date,
+        'passport.expiration_date' => fake()->date,
+    ];
+
+    foreach ($properties_and_values as $property => $value) {
+        assertPropertyTwoWayBound($component, $property, $value);
+    }
+
+    $component
+        ->assertMethodWired('savePassport')
+        ->call('savePassport');
+
+    $inbound->refresh();
+    $passport = $inbound->passport()->first();
+    expect($passport)->not()->toBeNull()
+                     ->and($passport->nationality)->toBe($properties_and_values["passport.nationality"])
+                     ->and($passport->passport_number)->toBe($properties_and_values["passport.passport_number"])
+                     ->and($passport->issue_date->toDateString())->toBe($properties_and_values["passport.issue_date"])
+                     ->and($passport->expiration_date->toDateString())->toBe($properties_and_values["passport.expiration_date"]);
+
+});
+
+/**
+ * @param  TestableLivewire  $component
+ * @param  string  $property
+ * @param  $update_value
+ * @return void
+ */
+function assertPropertyTwoWayBound(TestableLivewire $component, string $property, $update_value): void
+{
+    $component->assertPropertyWired($property)
+              ->set($property, $update_value)
+              ->assertHasNoErrors();
+}

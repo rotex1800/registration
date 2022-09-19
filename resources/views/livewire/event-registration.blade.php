@@ -56,16 +56,20 @@
         <h2 class="text-2xl mt-8">{{  __('registration.passport') }}</h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
             <label for="nationality">{{ __('registration.nationality') }}</label>
-            <input id="nationality" type="text" class="rounded">
+            <input id="nationality" type="text" class="rounded" wire:model.debounce="passport.nationality">
 
             <label for="passport-number">{{ __('registration.passport-number') }}</label>
-            <input type="text" id="passport-number" class="rounded">
+            <input type="text" id="passport-number" class="rounded" wire:model.debounce="passport.passport_number">
 
             <label for="passport-issue-date">{{ __('registration.passport-issue-date') }}</label>
-            <input type="date" id="passport-issue-date" class="rounded">
+            <input type="date" id="passport-issue-date" class="rounded" wire:model.debounce="passport.issue_date">
 
             <label for="passport-expiration-date">{{ __('registration.passport-expiration-date') }}</label>
-            <input id="passport-expiration-date" type="date" class="rounded">
+            <input id="passport-expiration-date" type="date" class="rounded"
+                   wire:model.debounce="passport.expiration_date">
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="savePassport">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-rotary') }}</h2>

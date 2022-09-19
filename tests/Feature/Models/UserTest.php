@@ -2,12 +2,14 @@
 
 use App\Models\Comment;
 use App\Models\Document;
+use App\Models\Passport;
 use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
@@ -63,37 +65,37 @@ it('returns events the user can still register for', function () {
 it('can check if it has a role', function () {
     $user = createUserWithRole('role');
     expect($user->hasRole('role'))
-    ->toBeTrue()
-    ->and($user->hasRole('other'))
-    ->toBeFalse();
+        ->toBeTrue()
+        ->and($user->hasRole('other'))
+        ->toBeFalse();
 });
 
 it('is author of many comments', function () {
     $user = User::factory()
-        ->has(Comment::factory()->count(3), 'authoredComments')
-        ->create();
+                ->has(Comment::factory()->count(3), 'authoredComments')
+                ->create();
     expect($user->authoredComments())
-    ->toBeInstanceOf(HasMany::class)
-    ->and($user->authoredComments)
-    ->toBeInstanceOf(Collection::class)
-    ->toHaveCount(3);
+        ->toBeInstanceOf(HasMany::class)
+        ->and($user->authoredComments)
+        ->toBeInstanceOf(Collection::class)
+        ->toHaveCount(3);
 });
 
 it('owns documents', function () {
     $user = User::factory()
-        ->has(Document::factory()->count(2))
-        ->create();
+                ->has(Document::factory()->count(2))
+                ->create();
     expect($user->documents())
-    ->toBeInstanceOf(HasMany::class)
-    ->and($user->documents)
-    ->toBeInstanceOf(Collection::class)
-    ->toHaveCount(2);
+        ->toBeInstanceOf(HasMany::class)
+        ->and($user->documents)
+        ->toBeInstanceOf(Collection::class)
+        ->toHaveCount(2);
 });
 
 it('can check it owns a document', function () {
     $user = User::factory()
-    ->has(Document::factory())
-    ->create();
+                ->has(Document::factory())
+                ->create();
 
     $document = $user->documents()->first();
 
@@ -133,4 +135,21 @@ it('has mobile phone number', function () {
 it('has health issues text field', function () {
     expect(User::factory()->create()->health_issues)
         ->toBeString();
+});
+
+it('has one passport', function () {
+    $user = User::factory()
+                ->has(Passport::factory())
+                ->create();
+    expect($user->passport())
+        ->toBeInstanceOf(HasOne::class)
+        ->and($user->passport)
+        ->toBeInstanceOf(Passport::class);
+});
+
+test('birthday is cast correctly', function () {
+    $user = User::factory()->create();
+    expect($user->hasCast('birthday'))
+        ->toBeTrue()
+        ->and($user->getCasts()['birthday'])->toBe('date:Y-m-d');
 });

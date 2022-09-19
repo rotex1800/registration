@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -80,7 +81,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'birthday' => 'date',
+        'birthday' => 'date:Y-m-d',
     ];
 
     /**
@@ -128,6 +129,15 @@ class User extends Authenticatable
     public function documents(): HasMany
     {
         return $this->hasMany(Document::class, 'owner_id');
+    }
+
+    /**
+     * @return HasOne
+     * @phpstan-return HasOne<Passport>
+     */
+    public function passport(): HasOne
+    {
+        return $this->hasOne(Passport::class, 'user_id');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
+use App\Models\Passport;
 use App\Models\User;
 use App\Policies\EventPolicy;
 use Illuminate\Contracts\View\View;
@@ -14,25 +15,33 @@ use Livewire\Redirector;
 
 class EventRegistration extends Component
 {
+    private const NULLABLE_DATE = 'nullable|date';
+    private const NULLABLE = 'nullable';
     public Event $event;
 
     public array $districts;
 
     public User $user;
+    public Passport $passport;
 
     protected array $rules = [
-        'user.first_name' => 'nullable',
-        'user.family_name' => 'nullable',
+        'user.first_name' => self::NULLABLE,
+        'user.family_name' => self::NULLABLE,
         'user.gender' => 'nullable|in:female,male,diverse,na',
-        'user.birthday' => 'nullable|date',
-        'user.mobile_phone' => 'nullable',
-        'user.health_issues' => 'nullable',
+        'user.birthday' => self::NULLABLE_DATE,
+        'user.mobile_phone' => self::NULLABLE,
+        'user.health_issues' => self::NULLABLE,
+        'passport.nationality' => self::NULLABLE,
+        'passport.passport_number' => self::NULLABLE,
+        'passport.issue_date' => self::NULLABLE_DATE,
+        'passport.expiration_date' => self::NULLABLE_DATE,
     ];
 
     public function mount()
     {
         $this->districts = json_decode(Storage::disk('local')->get('districts.json'));
         $this->user = Auth::user();
+        $this->passport = $this->user->passport()->firstOrNew();
     }
 
     public function render(): View
@@ -74,5 +83,10 @@ class EventRegistration extends Component
     public function saveUser()
     {
         $this->user->save();
+    }
+
+    public function savePassport()
+    {
+        $this->user->passport()->save($this->passport);
     }
 }
