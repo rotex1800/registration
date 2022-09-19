@@ -8,7 +8,7 @@ return [
         'female' => 'Weiblich',
         'gender' => 'Geschlecht',
     ],
-    'health-issues' => 'Gesundheitliche Einschränkungen oder Probleme',
+    'health_issues' => 'Gesundheitliche Einschränkungen oder Probleme',
     'mobile_phone' => 'Handy Nummer',
     'birthday' => 'Geburtstag',
     'family-name' => 'Familienname',
