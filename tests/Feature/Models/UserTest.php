@@ -164,8 +164,19 @@ test('has one rotary info', function () {
     $user->rotaryInfo()->save($info);
 
     $user->refresh();
-    dump($user->rotaryInfo, $info);
     expect($user->rotaryInfo)
         ->toBeInstanceOf(RotaryInfo::class)
         ->toBeSameEntityAs($info);
+});
+
+it('has person info for counselor', function () {
+    $user = User::factory()->create();
+    expect($user->counselor())
+        ->toBeInstanceOf(HasOne::class);
+
+    $counselor = \App\Models\PersonInfo::factory()->create();
+    $user->counselor()->save($counselor);
+    expect($user->counselor)
+        ->toBeSameEntityAs($counselor);
+
 });
