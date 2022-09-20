@@ -340,3 +340,34 @@ function assertPropertyTwoWayBound(TestableLivewire $component, string $property
               ->set($property, $update_value)
               ->assertHasNoErrors();
 }
+
+it('has rotary inputs bound to component', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    $properties_and_values = [
+        'rotary.host_district' => fake()->words(asText: true),
+        'rotary.host_club' => fake()->words(asText: true),
+        'rotary.sponsor_district' => fake()->words(asText: true),
+        'rotary.sponsor_club' => fake()->words(asText: true),
+    ];
+
+    foreach ($properties_and_values as $property => $value) {
+        assertPropertyTwoWayBound($component, $property, $value);
+    }
+
+    $component
+        ->assertMethodWired('saveRotary')
+        ->call('saveRotary');
+
+    $inbound->refresh();
+    $passport = $inbound->rotaryInfo()->first();
+    expect($passport)->not()->toBeNull()
+                     ->and($passport->host_district)->toBe($properties_and_values["rotary.host_district"])
+                     ->and($passport->host_club)->toBe($properties_and_values["rotary.host_club"])
+                     ->and($passport->sponsor_district)->toBe($properties_and_values["rotary.sponsor_district"])
+                     ->and($passport->sponsor_club)->toBe($properties_and_values["rotary.sponsor_club"]);
+});

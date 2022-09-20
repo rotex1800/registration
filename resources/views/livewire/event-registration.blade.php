@@ -76,20 +76,23 @@
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="host-club">{{ __('registration.rotary.host-club') }}</label>
-            <input id="host-club" class="rounded" type="text">
+            <input id="host-club" class="rounded" type="text" wire:model.debounce="rotary.host_club">
 
             <label for="host-district">{{ __('registration.rotary.host-district') }}</label>
-            <input id="host-district" type="text" class="rounded">
+            <input id="host-district" type="text" class="rounded" wire:model.debounce="rotary.host_district">
 
             <label for="sponsor-club">{{ __('registration.rotary.sponsor-club') }}</label>
-            <input id="sponsor-club" type="text" class="rounded">
+            <input id="sponsor-club" type="text" class="rounded" wire:model.debounce="rotary.sponsor_club">
 
             <label for="sponsor-district">{{ __('registration.rotary.sponsor-district') }}</label>
-            <select class="rounded" id="sponsor-district">
+            <select class="rounded" id="sponsor-district" wire:model.debounce="rotary.sponsor_district">
                 @foreach($this->districts as $district)
                     <option value="{{$district}}">{{$district}}</option>
                 @endforeach
             </select>
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="saveRotary">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-counselor') }}</h2>

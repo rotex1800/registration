@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Event;
 use App\Models\Passport;
+use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Policies\EventPolicy;
 use Illuminate\Contracts\View\View;
@@ -18,6 +19,7 @@ class EventRegistration extends Component
     private const NULLABLE_DATE = 'nullable|date';
     private const NULLABLE = 'nullable';
     public Event $event;
+    public RotaryInfo $rotary;
 
     public array $districts;
 
@@ -31,10 +33,16 @@ class EventRegistration extends Component
         'user.birthday' => self::NULLABLE_DATE,
         'user.mobile_phone' => self::NULLABLE,
         'user.health_issues' => self::NULLABLE,
+
         'passport.nationality' => self::NULLABLE,
         'passport.passport_number' => self::NULLABLE,
         'passport.issue_date' => self::NULLABLE_DATE,
         'passport.expiration_date' => self::NULLABLE_DATE,
+
+        'rotary.host_district' => self::NULLABLE,
+        'rotary.host_club' => self::NULLABLE,
+        'rotary.sponsor_district' => self::NULLABLE,
+        'rotary.sponsor_club' => self::NULLABLE,
     ];
 
     public function mount()
@@ -42,6 +50,7 @@ class EventRegistration extends Component
         $this->districts = json_decode(Storage::disk('local')->get('districts.json'));
         $this->user = Auth::user();
         $this->passport = $this->user->passport()->firstOrNew();
+        $this->rotary = $this->user->rotaryInfo()->firstOrNew();
     }
 
     public function render(): View
@@ -89,4 +98,10 @@ class EventRegistration extends Component
     {
         $this->user->passport()->save($this->passport);
     }
+
+    public function saveRotary()
+    {
+        $this->user->rotaryInfo()->save($this->rotary);
+    }
+
 }
