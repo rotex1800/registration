@@ -4,6 +4,7 @@ use App\Models\Comment;
 use App\Models\Document;
 use App\Models\Passport;
 use App\Models\Role;
+use App\Models\RotaryInfo;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -152,4 +153,19 @@ test('birthday is cast correctly', function () {
     expect($user->hasCast('birthday'))
         ->toBeTrue()
         ->and($user->getCasts()['birthday'])->toBe('date:Y-m-d');
+});
+
+test('has one rotary info', function () {
+    $user = User::factory()->create();
+    expect($user->rotaryInfo())
+        ->toBeInstanceOf(HasOne::class);
+
+    $info = RotaryInfo::factory()->create();
+    $user->rotaryInfo()->save($info);
+
+    $user->refresh();
+    dump($user->rotaryInfo, $info);
+    expect($user->rotaryInfo)
+        ->toBeInstanceOf(RotaryInfo::class)
+        ->toBeSameEntityAs($info);
 });

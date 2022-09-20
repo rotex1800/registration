@@ -141,6 +141,15 @@ class User extends Authenticatable
     }
 
     /**
+     * @retrun HasOne
+     * @phpstan-return HasOne<RotaryInfo>
+     */
+    public function rotaryInfo(): HasOne
+    {
+        return $this->hasOne(RotaryInfo::class, 'user_id');
+    }
+
+    /**
      * @return bool
      */
     public function owns(Document $document): bool

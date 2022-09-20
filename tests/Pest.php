@@ -14,6 +14,7 @@
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Database\Eloquent\Model;
 use Tests\DuskTestCase;
 
 uses(Tests\TestCase::class)->in('Livewire');
@@ -38,15 +39,22 @@ expect()->extend('toBeOne', function () {
 
 expect()->extend('toBeAllowed', function () {
     return $this
-    ->toBeInstanceOf(Response::class)
-    ->allowed()->toBeTrue();
+        ->toBeInstanceOf(Response::class)
+        ->allowed()->toBeTrue();
 });
 
 expect()->extend('toBeDenied', function () {
     return $this
-    ->toBeInstanceOf(Response::class)
-    ->allowed()->toBeFalse();
+        ->toBeInstanceOf(Response::class)
+        ->allowed()->toBeFalse();
 });
+
+expect()->extend('toBeSameEntityAs', function (Model $other) {
+    return $this
+        ->toBeInstanceOf(Model::class)
+        ->and($other->is($this->value))->toBeTrue();
+});
+
 
 /*
 |--------------------------------------------------------------------------
