@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Event;
 use App\Models\Passport;
+use App\Models\PersonInfo;
 use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Policies\EventPolicy;
@@ -30,6 +31,8 @@ class EventRegistration extends Component
 
     public Passport $passport;
 
+    public PersonInfo $counselor;
+
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
@@ -47,6 +50,10 @@ class EventRegistration extends Component
         'rotary.host_club' => self::NULLABLE,
         'rotary.sponsor_district' => self::NULLABLE,
         'rotary.sponsor_club' => self::NULLABLE,
+
+        'counselor.name' => self::NULLABLE,
+        'counselor.phone' => self::NULLABLE,
+        'counselor.email' => self::NULLABLE,
     ];
 
     public function mount()
@@ -55,6 +62,7 @@ class EventRegistration extends Component
         $this->user = Auth::user();
         $this->passport = $this->user->passport()->firstOrNew();
         $this->rotary = $this->user->rotaryInfo()->firstOrNew();
+        $this->counselor = $this->user->counselor()->firstOrNew();
     }
 
     public function render(): View
@@ -106,5 +114,10 @@ class EventRegistration extends Component
     public function saveRotary()
     {
         $this->user->rotaryInfo()->save($this->rotary);
+    }
+
+    public function saveCounselor()
+    {
+        $this->user->counselor()->save($this->counselor);
     }
 }

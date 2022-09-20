@@ -99,13 +99,16 @@
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="counselor-name">{{ __('registration.counselor.name') }}</label>
-            <input id="counselor-name" class="rounded" type="text">
+            <input id="counselor-name" class="rounded" type="text" wire:model.debounce="counselor.name">
 
             <label for="counselor-telephone">{{ __('registration.counselor.telephone') }}</label>
-            <input id="counselor-telephone" type="tel" class="rounded">
+            <input id="counselor-telephone" type="tel" class="rounded" wire:model.debounce="counselor.phone">
 
             <label for="counselor-email">{{ __('registration.counselor.email') }}</label>
-            <input id="counselor-email" type="email" class="rounded">
+            <input id="counselor-email" type="email" class="rounded" wire:model.debounce="counselor.email">
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="saveCounselor">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-yeo') }}</h2>

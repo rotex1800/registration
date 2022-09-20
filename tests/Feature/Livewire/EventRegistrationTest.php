@@ -319,7 +319,7 @@ it('has passport inputs bound to component', function () {
         ->call('savePassport');
 
     $inbound->refresh();
-    $passport = $inbound->passport()->first();
+    $passport = $inbound->passport;
     expect($passport)->not()->toBeNull()
                      ->and($passport->nationality)->toBe($properties_and_values['passport.nationality'])
                      ->and($passport->passport_number)->toBe($properties_and_values['passport.passport_number'])
@@ -363,10 +363,41 @@ it('has rotary inputs bound to component', function () {
         ->call('saveRotary');
 
     $inbound->refresh();
-    $passport = $inbound->rotaryInfo()->first();
+    $passport = $inbound->rotaryInfo;
     expect($passport)->not()->toBeNull()
                      ->and($passport->host_district)->toBe($properties_and_values['rotary.host_district'])
                      ->and($passport->host_club)->toBe($properties_and_values['rotary.host_club'])
                      ->and($passport->sponsor_district)->toBe($properties_and_values['rotary.sponsor_district'])
                      ->and($passport->sponsor_club)->toBe($properties_and_values['rotary.sponsor_club']);
+});
+
+
+it('has rotary counselor bound to component', function () {
+
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    $properties_and_values = [
+        'counselor.email' => fake()->words(asText: true),
+        'counselor.name' => fake()->words(asText: true),
+        'counselor.phone' => fake()->words(asText: true),
+    ];
+
+    foreach ($properties_and_values as $property => $value) {
+        assertPropertyTwoWayBound($component, $property, $value);
+    }
+
+    $component
+        ->assertMethodWired('saveCounselor')
+        ->call('saveCounselor');
+
+    $inbound->refresh();
+    $counselor = $inbound->counselor;
+    expect($counselor)->not->toBeNull()
+                           ->and($counselor->name)->toBe($properties_and_values['counselor.name'])
+                           ->and($counselor->phone)->toBe($properties_and_values['counselor.phone'])
+                           ->and($counselor->email)->toBe($properties_and_values['counselor.email']);
 });
