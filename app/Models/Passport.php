@@ -19,7 +19,7 @@ class Passport extends Model
         'issue_date' => 'date:Y-m-d',
         'expiration_date' => 'date:Y-m-d',
         'passport_number' => 'string',
-        'nationality' => 'string'
+        'nationality' => 'string',
     ];
 
     public function user(): BelongsTo

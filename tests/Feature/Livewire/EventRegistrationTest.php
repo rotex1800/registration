@@ -321,17 +321,16 @@ it('has passport inputs bound to component', function () {
     $inbound->refresh();
     $passport = $inbound->passport()->first();
     expect($passport)->not()->toBeNull()
-                     ->and($passport->nationality)->toBe($properties_and_values["passport.nationality"])
-                     ->and($passport->passport_number)->toBe($properties_and_values["passport.passport_number"])
-                     ->and($passport->issue_date->toDateString())->toBe($properties_and_values["passport.issue_date"])
-                     ->and($passport->expiration_date->toDateString())->toBe($properties_and_values["passport.expiration_date"]);
-
+                     ->and($passport->nationality)->toBe($properties_and_values['passport.nationality'])
+                     ->and($passport->passport_number)->toBe($properties_and_values['passport.passport_number'])
+                     ->and($passport->issue_date->toDateString())->toBe($properties_and_values['passport.issue_date'])
+                     ->and($passport->expiration_date->toDateString())->toBe($properties_and_values['passport.expiration_date']);
 });
 
 /**
  * @param  TestableLivewire  $component
  * @param  string  $property
- * @param  $update_value
+ * @param    $update_value
  * @return void
  */
 function assertPropertyTwoWayBound(TestableLivewire $component, string $property, $update_value): void
@@ -366,8 +365,8 @@ it('has rotary inputs bound to component', function () {
     $inbound->refresh();
     $passport = $inbound->rotaryInfo()->first();
     expect($passport)->not()->toBeNull()
-                     ->and($passport->host_district)->toBe($properties_and_values["rotary.host_district"])
-                     ->and($passport->host_club)->toBe($properties_and_values["rotary.host_club"])
-                     ->and($passport->sponsor_district)->toBe($properties_and_values["rotary.sponsor_district"])
-                     ->and($passport->sponsor_club)->toBe($properties_and_values["rotary.sponsor_club"]);
+                     ->and($passport->host_district)->toBe($properties_and_values['rotary.host_district'])
+                     ->and($passport->host_club)->toBe($properties_and_values['rotary.host_club'])
+                     ->and($passport->sponsor_district)->toBe($properties_and_values['rotary.sponsor_district'])
+                     ->and($passport->sponsor_club)->toBe($properties_and_values['rotary.sponsor_club']);
 });

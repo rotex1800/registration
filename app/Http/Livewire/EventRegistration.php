@@ -17,13 +17,17 @@ use Livewire\Redirector;
 class EventRegistration extends Component
 {
     private const NULLABLE_DATE = 'nullable|date';
+
     private const NULLABLE = 'nullable';
+
     public Event $event;
+
     public RotaryInfo $rotary;
 
     public array $districts;
 
     public User $user;
+
     public Passport $passport;
 
     protected array $rules = [
@@ -103,5 +107,4 @@ class EventRegistration extends Component
     {
         $this->user->rotaryInfo()->save($this->rotary);
     }
-
 }

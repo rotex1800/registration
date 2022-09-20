@@ -55,7 +55,6 @@ expect()->extend('toBeSameEntityAs', function (Model $other) {
         ->and($other->is($this->value))->toBeTrue();
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Functions
