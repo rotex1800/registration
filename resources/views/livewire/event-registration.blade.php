@@ -115,13 +115,16 @@
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="yeo-name">{{ __('registration.yeo.name') }}</label>
-            <input id="yeo-name" class="rounded" type="text">
+            <input id="yeo-name" class="rounded" type="text" wire:model.debounce="yeo.name">
 
             <label for="yeo-telephone">{{ __('registration.yeo.telephone') }}</label>
-            <input id="yeo-telephone" type="tel" class="rounded">
+            <input id="yeo-telephone" type="tel" class="rounded" wire:model.debounce="yeo.phone">
 
             <label for="yeo-email">{{ __('registration.yeo.email') }}</label>
-            <input id="yeo-email" type="email" class="rounded">
+            <input id="yeo-email" type="email" class="rounded" wire:model.debounce="yeo.email">
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="saveYeo">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-bio-family') }}</h2>

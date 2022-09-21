@@ -33,6 +33,8 @@ class EventRegistration extends Component
 
     public PersonInfo $counselor;
 
+    public PersonInfo $yeo;
+
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
@@ -54,6 +56,10 @@ class EventRegistration extends Component
         'counselor.name' => self::NULLABLE,
         'counselor.phone' => self::NULLABLE,
         'counselor.email' => self::NULLABLE,
+
+        'yeo.name' => self::NULLABLE,
+        'yeo.phone' => self::NULLABLE,
+        'yeo.email' => self::NULLABLE,
     ];
 
     public function mount()
@@ -63,6 +69,7 @@ class EventRegistration extends Component
         $this->passport = $this->user->passport()->firstOrNew();
         $this->rotary = $this->user->rotaryInfo()->firstOrNew();
         $this->counselor = $this->user->counselor()->firstOrNew();
+        $this->yeo = $this->user->yeo()->firstOrNew();
     }
 
     public function render(): View
@@ -119,5 +126,10 @@ class EventRegistration extends Component
     public function saveCounselor()
     {
         $this->user->counselor()->save($this->counselor);
+    }
+
+    public function saveYeo()
+    {
+        $this->user->yeo()->save($this->yeo);
     }
 }

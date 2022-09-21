@@ -3,6 +3,7 @@
 use App\Models\Comment;
 use App\Models\Document;
 use App\Models\Passport;
+use App\Models\PersonInfo;
 use App\Models\Role;
 use App\Models\RotaryInfo;
 use App\Models\User;
@@ -174,9 +175,19 @@ it('has person info for counselor', function () {
     expect($user->counselor())
         ->toBeInstanceOf(HasOne::class);
 
-    $counselor = \App\Models\PersonInfo::factory()->create();
+    $counselor = PersonInfo::factory()->create();
     $user->counselor()->save($counselor);
     expect($user->counselor)
         ->toBeSameEntityAs($counselor);
+});
 
+it('has person info for yeo', function () {
+    $user = User::factory()->create();
+    expect($user->yeo())
+        ->toBeInstanceOf(HasOne::class);
+
+    $yeo = PersonInfo::factory()->create();
+    $user->yeo()->save($yeo);
+    expect($user->yeo)
+        ->toBeSameEntityAs($yeo);
 });

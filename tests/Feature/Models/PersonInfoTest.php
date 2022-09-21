@@ -34,5 +34,4 @@ it('belongs to user', function () {
     expect($user->counselor)
         ->toBeInstanceOf(PersonInfo::class)
         ->toBeSameEntityAs($this->info);
-
 });

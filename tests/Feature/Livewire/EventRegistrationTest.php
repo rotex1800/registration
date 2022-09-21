@@ -371,9 +371,7 @@ it('has rotary inputs bound to component', function () {
                      ->and($passport->sponsor_club)->toBe($properties_and_values['rotary.sponsor_club']);
 });
 
-
 it('has rotary counselor bound to component', function () {
-
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
@@ -400,4 +398,33 @@ it('has rotary counselor bound to component', function () {
                            ->and($counselor->name)->toBe($properties_and_values['counselor.name'])
                            ->and($counselor->phone)->toBe($properties_and_values['counselor.phone'])
                            ->and($counselor->email)->toBe($properties_and_values['counselor.email']);
+});
+
+it('has rotary yeo bound to component', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    $properties_and_values = [
+        'yeo.email' => fake()->words(asText: true),
+        'yeo.name' => fake()->words(asText: true),
+        'yeo.phone' => fake()->words(asText: true),
+    ];
+
+    foreach ($properties_and_values as $property => $value) {
+        assertPropertyTwoWayBound($component, $property, $value);
+    }
+
+    $component
+        ->assertMethodWired('saveYeo')
+        ->call('saveYeo');
+
+    $inbound->refresh();
+    $yeo = $inbound->yeo;
+    expect($yeo)->not->toBeNull()
+                     ->and($yeo->name)->toBe($properties_and_values['yeo.name'])
+                     ->and($yeo->phone)->toBe($properties_and_values['yeo.phone'])
+                     ->and($yeo->email)->toBe($properties_and_values['yeo.email']);
 });

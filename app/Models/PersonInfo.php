@@ -12,6 +12,7 @@ class PersonInfo extends Model
 
     /**
      * Inverse of the one-to-one relation between a user and PersonInfo
+     *
      * @retrun BelongsTo
      * @phpstan-return BelongsTo<User>
      */
@@ -19,5 +20,4 @@ class PersonInfo extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
 }

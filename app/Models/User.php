@@ -151,6 +151,15 @@ class User extends Authenticatable
 
     /**
      * @retrun HasOne
+     * @phpstan-return HasOne<PersonInfo>
+     */
+    public function yeo(): HasOne
+    {
+        return $this->hasOne(PersonInfo::class, 'user_id');
+    }
+
+    /**
+     * @retrun HasOne
      * @phpstan-return HasOne<RotaryInfo>
      */
     public function rotaryInfo(): HasOne
