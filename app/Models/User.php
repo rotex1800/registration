@@ -173,6 +173,15 @@ class User extends Authenticatable
     }
 
     /**
+     * @return HasMany
+     * @phpstan-return HasMany<HostFamily>
+     */
+    public function hostFamilies(): HasMany
+    {
+        return $this->hasMany(HostFamily::class, 'user_id');
+    }
+
+    /**
      * @param  Document  $document
      * @return bool
      */

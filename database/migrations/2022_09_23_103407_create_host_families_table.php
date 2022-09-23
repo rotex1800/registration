@@ -6,23 +6,32 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
-        Schema::create('bio_families', function (Blueprint $table) {
+        Schema::create('host_families', function (Blueprint $table) {
             $table->id();
 
-            $table->string('parent_one')->nullable();
-            $table->string('parent_two')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('name')->nullable();
             $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
 
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::dropIfExists('bio_families');
+        Schema::dropIfExists('host_families');
     }
 };

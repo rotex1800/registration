@@ -436,7 +436,6 @@ it('has bio family bound to component', function () {
         'event' => $this->event,
     ]);
 
-
     $properties_and_values = [
         'bioFamily.parent_one' => fake()->words(asText: true),
         'bioFamily.parent_two' => fake()->words(asText: true),

@@ -214,3 +214,9 @@ it('has one bio family', function () {
     expect($user->bioFamily())
         ->toBeInstanceOf(HasOne::class);
 });
+
+it('has many host families', function () {
+    $user = User::factory()->create();
+    expect($user->hostFamilies())
+        ->toBeInstanceOf(HasMany::class);
+});
