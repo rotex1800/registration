@@ -164,6 +164,16 @@ class User extends Authenticatable
     }
 
     /**
+     * @retrun HasOne
+     * @phpstan-return HasOne<BioFamily>
+     */
+    public function bioFamily(): HasOne
+    {
+        return $this->hasOne(BioFamily::class, 'user_id');
+    }
+
+    /**
+     * @param  Document  $document
      * @return bool
      */
     public function owns(Document $document): bool
@@ -174,6 +184,7 @@ class User extends Authenticatable
     /**
      * Indicates whether the user has a role of the given name
      *
+     * @param  string  $roleName
      * @return bool
      */
     public function hasRole(string $roleName): bool

@@ -428,3 +428,35 @@ it('has rotary yeo bound to component', function () {
                      ->and($yeo->phone)->toBe($properties_and_values['yeo.phone'])
                      ->and($yeo->email)->toBe($properties_and_values['yeo.email']);
 });
+
+it('has bio family bound to component', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+
+    $properties_and_values = [
+        'bioFamily.parent_one' => fake()->words(asText: true),
+        'bioFamily.parent_two' => fake()->words(asText: true),
+        'bioFamily.email' => fake()->words(asText: true),
+        'bioFamily.phone' => fake()->words(asText: true),
+    ];
+
+    foreach ($properties_and_values as $property => $value) {
+        assertPropertyTwoWayBound($component, $property, $value);
+    }
+
+    $component
+        ->assertMethodWired('saveBioFamily')
+        ->call('saveBioFamily');
+
+    $inbound->refresh();
+    $family = $inbound->bioFamily;
+    expect($family)->not->toBeNull()
+                        ->and($family->parent_one)->toBe($properties_and_values['bioFamily.parent_one'])
+                        ->and($family->parent_two)->toBe($properties_and_values['bioFamily.parent_two'])
+                        ->and($family->email)->toBe($properties_and_values['bioFamily.email'])
+                        ->and($family->phone)->toBe($properties_and_values['bioFamily.phone']);
+});

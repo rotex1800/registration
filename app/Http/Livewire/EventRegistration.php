@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\BioFamily;
 use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\Passport;
@@ -36,6 +37,8 @@ class EventRegistration extends Component
 
     public YeoInfo $yeo;
 
+    public BioFamily $bioFamily;
+
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
@@ -61,6 +64,11 @@ class EventRegistration extends Component
         'yeo.name' => self::NULLABLE,
         'yeo.phone' => self::NULLABLE,
         'yeo.email' => self::NULLABLE,
+
+        'bioFamily.parent_one' => self::NULLABLE,
+        'bioFamily.parent_two' => self::NULLABLE,
+        'bioFamily.email' => self::NULLABLE,
+        'bioFamily.phone' => self::NULLABLE,
     ];
 
     public function mount()
@@ -71,6 +79,7 @@ class EventRegistration extends Component
         $this->rotary = $this->user->rotaryInfo()->firstOrNew();
         $this->counselor = $this->user->counselor()->firstOrNew();
         $this->yeo = $this->user->yeo()->firstOrNew();
+        $this->bioFamily = $this->user->bioFamily()->firstOrNew();
     }
 
     public function render(): View
@@ -132,5 +141,10 @@ class EventRegistration extends Component
     public function saveYeo()
     {
         $this->user->yeo()->save($this->yeo);
+    }
+
+    public function saveBioFamily()
+    {
+        $this->user->bioFamily()->save($this->bioFamily);
     }
 }

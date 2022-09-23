@@ -208,3 +208,9 @@ it('has different models for yeo and counselor', function () {
         ->and($user->yeo)
         ->not->toBeSameEntityAs($user->counselor);
 });
+
+it('has one bio family', function () {
+    $user = User::factory()->create();
+    expect($user->bioFamily())
+        ->toBeInstanceOf(HasOne::class);
+});

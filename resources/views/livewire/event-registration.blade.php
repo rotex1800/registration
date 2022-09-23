@@ -131,16 +131,19 @@
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="bio-mother">{{ __('registration.bio-family.parent-one') }}</label>
-            <input type="text" id="bio-mother" class="rounded">
+            <input type="text" id="bio-mother" class="rounded" wire:model.debounce="bioFamily.parent_one">
 
             <label for="bio-father">{{ __('registration.bio-family.parent-two') }}</label>
-            <input type="text" id="bio-father" class="rounded">
+            <input type="text" id="bio-father" class="rounded"  wire:model.debounce="bioFamily.parent_two">
 
             <label for="bio-email">{{ __('registration.bio-family.email') }}</label>
-            <input type="email" id="bio-email" class="rounded">
+            <input type="email" id="bio-email" class="rounded" wire:model.debounce="bioFamily.email">
 
             <label for="bio-telephone">{{ __('registration.bio-family.telephone') }}</label>
-            <input type="tel" id="bio-telephone" class="rounded">
+            <input type="tel" id="bio-telephone" class="rounded" wire:model.debounce="bioFamily.phone">
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="saveBioFamily">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-one') }}</h2>
