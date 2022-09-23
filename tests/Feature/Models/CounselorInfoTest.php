@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\PersonInfo;
+use App\Models\CounselorInfo;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 beforeEach(function () {
-    $this->info = PersonInfo::factory()->create();
+    $this->info = CounselorInfo::factory()->create();
 });
 
 it('has name', function () {
@@ -32,6 +32,6 @@ it('belongs to user', function () {
     $user = User::factory()->create();
     $user->counselor()->save($this->info);
     expect($user->counselor)
-        ->toBeInstanceOf(PersonInfo::class)
+        ->toBeInstanceOf(CounselorInfo::class)
         ->toBeSameEntityAs($this->info);
 });

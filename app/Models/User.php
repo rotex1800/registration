@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Database\Factories\UserFactory;
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +11,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\User
@@ -17,37 +22,37 @@ use Illuminate\Notifications\Notifiable;
  * @property int $id
  * @property string $name
  * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
  * @property string|null $two_factor_confirmed_at
  * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Event[] $events
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Event[] $events
  * @property-read int|null $events_count
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @property-read Collection|Role[] $roles
  * @property-read int|null $roles_count
  *
- * @method static \Database\Factories\UserFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User query()
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorConfirmedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @method static UserFactory factory(...$parameters)
+ * @method static Builder|User newModelQuery()
+ * @method static Builder|User newQuery()
+ * @method static Builder|User query()
+ * @method static Builder|User whereCreatedAt($value)
+ * @method static Builder|User whereEmail($value)
+ * @method static Builder|User whereEmailVerifiedAt($value)
+ * @method static Builder|User whereId($value)
+ * @method static Builder|User whereName($value)
+ * @method static Builder|User wherePassword($value)
+ * @method static Builder|User whereRememberToken($value)
+ * @method static Builder|User whereTwoFactorConfirmedAt($value)
+ * @method static Builder|User whereTwoFactorRecoveryCodes($value)
+ * @method static Builder|User whereTwoFactorSecret($value)
+ * @method static Builder|User whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class User extends Authenticatable
 {
@@ -85,15 +90,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * @return BelongsToMany
-     * @phpstan-return BelongsToMany<Event>
-     */
-    public function events(): BelongsToMany
-    {
-        return $this->belongsToMany(Event::class);
-    }
-
-    /**
      * Checks whether the user has registered for the given event.
      *
      * @param  Event  $event
@@ -106,11 +102,11 @@ class User extends Authenticatable
 
     /**
      * @return BelongsToMany
-     * @phpstan-return BelongsToMany<Role>
+     * @phpstan-return BelongsToMany<Event>
      */
-    public function roles(): BelongsToMany
+    public function events(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Event::class);
     }
 
     /**
@@ -142,20 +138,20 @@ class User extends Authenticatable
 
     /**
      * @retrun HasOne
-     * @phpstan-return HasOne<PersonInfo>
+     * @phpstan-return HasOne<CounselorInfo>
      */
     public function counselor(): HasOne
     {
-        return $this->hasOne(PersonInfo::class, 'user_id');
+        return $this->hasOne(CounselorInfo::class, 'user_id');
     }
 
     /**
      * @retrun HasOne
-     * @phpstan-return HasOne<PersonInfo>
+     * @phpstan-return HasOne<YeoInfo>
      */
     public function yeo(): HasOne
     {
-        return $this->hasOne(PersonInfo::class, 'user_id');
+        return $this->hasOne(YeoInfo::class, 'user_id');
     }
 
     /**
@@ -186,12 +182,22 @@ class User extends Authenticatable
     }
 
     /**
+     * @return BelongsToMany
+     * @phpstan-return BelongsToMany<Role>
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    /**
      * @return Collection
      * @phpstan-return Collection<Event>
      */
-    public function participatesIn(): Collection
+    public function canRegisterFor(): Collection
     {
-        return $this->events()->get();
+        return $this->possibleEvents()
+                    ->diff($this->participatesIn());
     }
 
     /**
@@ -216,9 +222,8 @@ class User extends Authenticatable
      * @return Collection
      * @phpstan-return Collection<Event>
      */
-    public function canRegisterFor(): Collection
+    public function participatesIn(): Collection
     {
-        return $this->possibleEvents()
-            ->diff($this->participatesIn());
+        return $this->events()->get();
     }
 }

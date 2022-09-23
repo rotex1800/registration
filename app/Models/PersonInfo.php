@@ -2,14 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class PersonInfo extends Model
+trait PersonInfo
 {
-    use HasFactory;
-
     /**
      * Inverse of the one-to-one relation between a user and PersonInfo
      *

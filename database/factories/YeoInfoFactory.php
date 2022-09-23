@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\PersonInfo;
+use App\Models\YeoInfo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PersonInfoFactory extends Factory
+class YeoInfoFactory extends Factory
 {
-    protected $model = PersonInfo::class;
+    protected $model = YeoInfo::class;
 
     /**
      * Define the model's default state.

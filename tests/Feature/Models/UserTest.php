@@ -1,12 +1,13 @@
 <?php
 
 use App\Models\Comment;
+use App\Models\CounselorInfo;
 use App\Models\Document;
 use App\Models\Passport;
-use App\Models\PersonInfo;
 use App\Models\Role;
 use App\Models\RotaryInfo;
 use App\Models\User;
+use App\Models\YeoInfo;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -175,7 +176,7 @@ it('has person info for counselor', function () {
     expect($user->counselor())
         ->toBeInstanceOf(HasOne::class);
 
-    $counselor = PersonInfo::factory()->create();
+    $counselor = CounselorInfo::factory()->create();
     $user->counselor()->save($counselor);
     expect($user->counselor)
         ->toBeSameEntityAs($counselor);
@@ -186,8 +187,24 @@ it('has person info for yeo', function () {
     expect($user->yeo())
         ->toBeInstanceOf(HasOne::class);
 
-    $yeo = PersonInfo::factory()->create();
+    $yeo = YeoInfo::factory()->create();
     $user->yeo()->save($yeo);
     expect($user->yeo)
         ->toBeSameEntityAs($yeo);
+});
+
+it('has different models for yeo and counselor', function () {
+    $user = User::factory()->create();
+    $counselor = CounselorInfo::factory()->create();
+    $yeo = YeoInfo::factory()->create();
+
+    $user->yeo()->save($yeo);
+    $user->counselor()->save($counselor);
+
+    expect($user->counselor)
+        ->toBeSameEntityAs($counselor)
+        ->and($user->yeo)
+        ->toBeSameEntityAs($yeo)
+        ->and($user->yeo)
+        ->not->toBeSameEntityAs($user->counselor);
 });

@@ -7,7 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('person_infos', function (Blueprint $table) {
+        Schema::create('counselor_infos', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+
+            $table->timestamps();
+        });
+
+        Schema::create('yeo_infos', function (Blueprint $table) {
             $table->id();
 
             $table->string('name')->nullable();

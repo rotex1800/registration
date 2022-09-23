@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\Passport;
-use App\Models\PersonInfo;
 use App\Models\RotaryInfo;
 use App\Models\User;
+use App\Models\YeoInfo;
 use App\Policies\EventPolicy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -31,9 +32,9 @@ class EventRegistration extends Component
 
     public Passport $passport;
 
-    public PersonInfo $counselor;
+    public CounselorInfo $counselor;
 
-    public PersonInfo $yeo;
+    public YeoInfo $yeo;
 
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
