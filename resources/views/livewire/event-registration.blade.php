@@ -134,7 +134,7 @@
             <input type="text" id="bio-mother" class="rounded" wire:model.debounce="bioFamily.parent_one">
 
             <label for="bio-father">{{ __('registration.bio-family.parent-two') }}</label>
-            <input type="text" id="bio-father" class="rounded"  wire:model.debounce="bioFamily.parent_two">
+            <input type="text" id="bio-father" class="rounded" wire:model.debounce="bioFamily.parent_two">
 
             <label for="bio-email">{{ __('registration.bio-family.email') }}</label>
             <input type="email" id="bio-email" class="rounded" wire:model.debounce="bioFamily.email">
@@ -150,39 +150,57 @@
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="host-name-one">{{ __('registration.host-family.name') }}</label>
-            <input type="text" id="host-name-one" class="rounded">
+            <input type="text" id="host-name-one" class="rounded" wire:model.debounce="hostFamilyOne.name">
 
             <label for="host-email-one">{{ __('registration.host-family.email') }}</label>
-            <input type="text" id="host-email-one" class="rounded">
+            <input type="text" id="host-email-one" class="rounded" wire:model.debounce="hostFamilyOne.email">
+
+            <label for="host-phone-one">{{ __('registration.host-family.phone') }}</label>
+            <input type="text" id="host-phone-one" class="rounded" wire:model.debounce="hostFamilyOne.phone">
 
             <label for="host-address-one">{{ __('registration.host-family.address') }}</label>
-            <input type="text" id="host-address-one" class="rounded">
+            <input type="text" id="host-address-one" class="rounded" wire:model.debounce="hostFamilyOne.address">
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="saveHostFamilyOne">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-two') }}</h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="host-name-two">{{ __('registration.host-family.name') }}</label>
-            <input type="text" id="host-name-two" class="rounded">
+            <input type="text" id="host-name-two" class="rounded" wire:model.debounce="hostFamilyTwo.name">
 
             <label for="host-email-two">{{ __('registration.host-family.email') }}</label>
-            <input type="text" id="host-email-two" class="rounded">
+            <input type="text" id="host-email-two" class="rounded" wire:model.debounce="hostFamilyTwo.email">
 
-            <label for="host-address-one">{{ __('registration.host-family.address') }}</label>
-            <input type="text" id="host-address-one" class="rounded">
+            <label for="host-phone-two">{{ __('registration.host-family.phone') }}</label>
+            <input type="text" id="host-phone-two" class="rounded" wire:model.debounce="hostFamilyTwo.phone">
+
+            <label for="host-address-two">{{ __('registration.host-family.address') }}</label>
+            <input type="text" id="host-address-two" class="rounded" wire:model.debounce="hostFamilyTwo.address">
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="saveHostFamilyTwo">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-three') }}</h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="host-name-three">{{ __('registration.host-family.name') }}</label>
-            <input type="text" id="host-name-three" class="rounded">
+            <input type="text" id="host-name-three" class="rounded" wire:model.debounce="hostFamilyThree.name">
 
             <label for="host-email-three">{{ __('registration.host-family.email') }}</label>
-            <input type="text" id="host-email-three" class="rounded">
+            <input type="text" id="host-email-three" class="rounded" wire:model.debounce="hostFamilyThree.email">
 
-            <label for="host-address-one">{{ __('registration.host-family.address') }}</label>
-            <input type="text" id="host-address-one" class="rounded">
+            <label for="host-phone-three">{{ __('registration.host-family.phone') }}</label>
+            <input type="text" id="host-phone-three" class="rounded" wire:model.debounce="hostFamilyThree.phone">
+
+            <label for="host-address-three">{{ __('registration.host-family.address') }}</label>
+            <input type="text" id="host-address-three" class="rounded" wire:model.debounce="hostFamilyThree.address">
+
+            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
+                    wire:click.prevent="saveHostFamilyThree">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.comment') }}</h2>

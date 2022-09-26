@@ -211,6 +211,7 @@ it('has section for first host family', function () {
         __('registration.about-host-family-one'),
         __('registration.host-family.name'),
         __('registration.host-family.email'),
+        __('registration.host-family.phone'),
         __('registration.host-family.address'),
     ]);
 });
@@ -225,6 +226,7 @@ it('has section for second host family', function () {
         __('registration.about-host-family-two'),
         __('registration.host-family.name'),
         __('registration.host-family.email'),
+        __('registration.host-family.phone'),
         __('registration.host-family.address'),
     ]);
 });
@@ -239,6 +241,7 @@ it('has section for third host family', function () {
         __('registration.about-host-family-three'),
         __('registration.host-family.name'),
         __('registration.host-family.email'),
+        __('registration.host-family.phone'),
         __('registration.host-family.address'),
     ]);
 });
@@ -458,4 +461,70 @@ it('has bio family bound to component', function () {
                         ->and($family->parent_two)->toBe($properties_and_values['bioFamily.parent_two'])
                         ->and($family->email)->toBe($properties_and_values['bioFamily.email'])
                         ->and($family->phone)->toBe($properties_and_values['bioFamily.phone']);
+});
+
+it('has host families wired to component', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    $properties_and_values = [
+        'hostFamilyOne.name' => fake()->words(asText: true),
+        'hostFamilyOne.email' => fake()->words(asText: true),
+        'hostFamilyOne.phone' => fake()->phoneNumber,
+        'hostFamilyOne.address' => fake()->words(asText: true),
+
+        'hostFamilyTwo.name' => fake()->words(asText: true),
+        'hostFamilyTwo.email' => fake()->words(asText: true),
+        'hostFamilyTwo.phone' => fake()->phoneNumber,
+        'hostFamilyTwo.address' => fake()->words(asText: true),
+
+        'hostFamilyThree.name' => fake()->words(asText: true),
+        'hostFamilyThree.email' => fake()->words(asText: true),
+        'hostFamilyThree.phone' => fake()->phoneNumber,
+        'hostFamilyThree.address' => fake()->words(asText: true),
+    ];
+
+    foreach ($properties_and_values as $property => $value) {
+        assertPropertyTwoWayBound($component, $property, $value);
+    }
+
+    $component
+        ->assertMethodWired('saveHostFamilyOne')
+        ->call('saveHostFamilyOne');
+
+    $inbound->refresh();
+    $family = $inbound->firstHostFamily();
+    expect($family)->not->toBeNull()
+                        ->and($family->name)->toBe($properties_and_values['hostFamilyOne.name'])
+                        ->and($family->email)->toBe($properties_and_values['hostFamilyOne.email'])
+                        ->and($family->phone)->toBe($properties_and_values['hostFamilyOne.phone'])
+                        ->and($family->address)->toBe($properties_and_values['hostFamilyOne.address']);
+
+    $component
+        ->assertMethodWired('saveHostFamilyTwo')
+        ->call('saveHostFamilyTwo');
+
+    $inbound->refresh();
+    $family = $inbound->secondHostFamily();
+    expect($family)->not->toBeNull()
+                        ->and($family->name)->toBe($properties_and_values['hostFamilyTwo.name'])
+                        ->and($family->email)->toBe($properties_and_values['hostFamilyTwo.email'])
+                        ->and($family->phone)->toBe($properties_and_values['hostFamilyTwo.phone'])
+                        ->and($family->address)->toBe($properties_and_values['hostFamilyTwo.address']);
+
+    $component
+        ->assertMethodWired('saveHostFamilyThree')
+        ->call('saveHostFamilyThree');
+
+    $inbound->refresh();
+    $family = $inbound->thirdHostFamily();
+    expect($family)->not->toBeNull()
+                        ->and($family->name)->toBe($properties_and_values['hostFamilyThree.name'])
+                        ->and($family->email)->toBe($properties_and_values['hostFamilyThree.email'])
+                        ->and($family->phone)->toBe($properties_and_values['hostFamilyThree.phone'])
+                        ->and($family->address)->toBe($properties_and_values['hostFamilyThree.address']);
+
 });

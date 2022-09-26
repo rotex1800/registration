@@ -16,7 +16,40 @@ class HostFamilyFactory extends Factory
         return [
             'name' => fake()->name,
             'email' => fake()->email,
+            'address' => fake()->address,
             'phone' => fake()->phoneNumber,
+            'order' => fake()->numberBetween(int1: 20, int2: 50),
         ];
+    }
+
+    public function first(): Factory
+    {
+        return $this->state(function () {
+            return [
+                'order' => 1,
+            ];
+        });
+    }
+
+    public function nth($n): HostFamilyFactory
+    {
+        return $this->state(function () use ($n) {
+            return [
+                'order' => $n,
+            ];
+        });
+    }
+
+    public function empty(): HostFamilyFactory
+    {
+        return $this->state(function () {
+            return [
+                'name' => '',
+                'email' => '',
+                'phone' => '',
+                'address' => '',
+                'order' => 0,
+            ];
+        });
     }
 }

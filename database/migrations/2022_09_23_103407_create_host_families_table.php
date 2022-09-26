@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedInteger('order')->nullable();
 
             $table->timestamps();
         });

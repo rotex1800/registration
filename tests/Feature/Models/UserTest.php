@@ -3,6 +3,7 @@
 use App\Models\Comment;
 use App\Models\CounselorInfo;
 use App\Models\Document;
+use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\Role;
 use App\Models\RotaryInfo;
@@ -219,4 +220,86 @@ it('has many host families', function () {
     $user = User::factory()->create();
     expect($user->hostFamilies())
         ->toBeInstanceOf(HasMany::class);
+});
+
+it('can access nth host family', function () {
+    // Create additional user not used in test explicitly to ensure
+    // that the
+    User::factory()
+        ->has(HostFamily::factory())
+        ->create();
+
+    $n = fake()->numberBetween(1, 15);
+
+    $nthHostFamily = HostFamily::factory()->nth($n)->create();
+    $user = User::factory()
+                ->has(HostFamily::factory()->count(3))
+                ->create();
+    $user->hostFamilies()->save($nthHostFamily);
+
+    expect($user->hostFamily($n))
+        ->toBeSameEntityAs($nthHostFamily);
+});
+
+it('can access first host family', function () {
+    // Create additional user not used in test explicitly to ensure
+    // that the host family is not accidentally the first in the array
+    User::factory()
+        ->has(HostFamily::factory())
+        ->create();
+
+    $n = 1;
+
+    $nthHostFamily = HostFamily::factory()->nth($n)->create();
+    $user = User::factory()
+                ->has(HostFamily::factory()->count(3))
+                ->create();
+    $user->hostFamilies()->save($nthHostFamily);
+
+    expect($user->firstHostFamily())
+        ->toBeSameEntityAs($nthHostFamily);
+});
+
+it('can access second host family', function () {
+    User::factory()
+        ->has(HostFamily::factory())
+        ->create();
+
+    $n = 2;
+
+    $nthHostFamily = HostFamily::factory()->nth($n)->create();
+    $user = User::factory()
+                ->has(HostFamily::factory()->count(3))
+                ->create();
+    $user->hostFamilies()->save($nthHostFamily);
+
+    expect($user->secondHostFamily())
+        ->toBeSameEntityAs($nthHostFamily);
+});
+
+it('can access third host family', function () {
+    User::factory()
+        ->has(HostFamily::factory())
+        ->create();
+
+    $n = 3;
+
+    $nthHostFamily = HostFamily::factory()->nth($n)->create();
+    $user = User::factory()
+                ->has(HostFamily::factory()->count(3))
+                ->create();
+    $user->hostFamilies()->save($nthHostFamily);
+
+    expect($user->thirdHostFamily())
+        ->toBeSameEntityAs($nthHostFamily);
+});
+
+it('makes a new host family if no matching exists', function () {
+    $user = User::factory()->create();
+
+    $hostFamily = $user->hostFamily(2);
+    expect($hostFamily)
+        ->not->toBeNull()
+        ->toBeInstanceOf(HostFamily::class)
+        ->and($hostFamily->exists())->toBeFalse();
 });

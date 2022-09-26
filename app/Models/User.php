@@ -172,6 +172,24 @@ class User extends Authenticatable
         return $this->hasOne(BioFamily::class, 'user_id');
     }
 
+    public function firstHostFamily(): ?HostFamily
+    {
+        return $this->hostFamily(1);
+    }
+
+    public function hostFamily(int $order): HostFamily
+    {
+        $familyOrNull = $this
+            ->hostFamilies()
+            ->order($order)
+            ->get()
+            ->first();
+        if ($familyOrNull == null) {
+            $familyOrNull = HostFamily::factory()->empty()->nth($order)->make();
+        }
+        return $familyOrNull;
+    }
+
     /**
      * @return HasMany
      * @phpstan-return HasMany<HostFamily>
@@ -179,6 +197,16 @@ class User extends Authenticatable
     public function hostFamilies(): HasMany
     {
         return $this->hasMany(HostFamily::class, 'user_id');
+    }
+
+    public function secondHostFamily(): ?HostFamily
+    {
+        return $this->hostFamily(2);
+    }
+
+    public function thirdHostFamily(): ?HostFamily
+    {
+        return $this->hostFamily(3);
     }
 
     /**

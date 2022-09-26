@@ -52,6 +52,7 @@ return [
         'name' => 'Name',
         'email' => 'E-Mail',
         'address' => 'Adresse',
+        'phone' => 'Telefonnummer',
     ],
     'comment' => 'Kommentar',
     'save' => 'Speichern',

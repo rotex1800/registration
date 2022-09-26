@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\BioFamily;
 use App\Models\CounselorInfo;
 use App\Models\Event;
+use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\RotaryInfo;
 use App\Models\User;
@@ -39,6 +40,10 @@ class EventRegistration extends Component
 
     public BioFamily $bioFamily;
 
+    public ?HostFamily $hostFamilyOne;
+    public ?HostFamily $hostFamilyTwo;
+    public ?HostFamily $hostFamilyThree;
+
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
@@ -69,6 +74,21 @@ class EventRegistration extends Component
         'bioFamily.parent_two' => self::NULLABLE,
         'bioFamily.email' => self::NULLABLE,
         'bioFamily.phone' => self::NULLABLE,
+
+        'hostFamilyOne.name' => self::NULLABLE,
+        'hostFamilyOne.email' => self::NULLABLE,
+        'hostFamilyOne.address' => self::NULLABLE,
+        'hostFamilyOne.phone' => self::NULLABLE,
+
+        'hostFamilyTwo.name' => self::NULLABLE,
+        'hostFamilyTwo.email' => self::NULLABLE,
+        'hostFamilyTwo.address' => self::NULLABLE,
+        'hostFamilyTwo.phone' => self::NULLABLE,
+
+        'hostFamilyThree.name' => self::NULLABLE,
+        'hostFamilyThree.email' => self::NULLABLE,
+        'hostFamilyThree.address' => self::NULLABLE,
+        'hostFamilyThree.phone' => self::NULLABLE,
     ];
 
     public function mount()
@@ -80,6 +100,9 @@ class EventRegistration extends Component
         $this->counselor = $this->user->counselor()->firstOrNew();
         $this->yeo = $this->user->yeo()->firstOrNew();
         $this->bioFamily = $this->user->bioFamily()->firstOrNew();
+        $this->hostFamilyOne = $this->user->firstHostFamily();
+        $this->hostFamilyTwo = $this->user->secondHostFamily();
+        $this->hostFamilyThree = $this->user->thirdHostFamily();
     }
 
     public function render(): View
@@ -146,5 +169,23 @@ class EventRegistration extends Component
     public function saveBioFamily()
     {
         $this->user->bioFamily()->save($this->bioFamily);
+    }
+
+    public function saveHostFamilyOne()
+    {
+        $this->hostFamilyOne->order = 1;
+        $this->user->hostFamilies()->save($this->hostFamilyOne);
+    }
+
+    public function saveHostFamilyTwo()
+    {
+        $this->hostFamilyTwo->order = 2;
+        $this->user->hostFamilies()->save($this->hostFamilyTwo);
+    }
+
+    public function saveHostFamilyThree()
+    {
+        $this->hostFamilyThree->order = 3;
+        $this->user->hostFamilies()->save($this->hostFamilyThree);
     }
 }
