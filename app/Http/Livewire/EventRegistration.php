@@ -41,7 +41,9 @@ class EventRegistration extends Component
     public BioFamily $bioFamily;
 
     public ?HostFamily $hostFamilyOne;
+
     public ?HostFamily $hostFamilyTwo;
+
     public ?HostFamily $hostFamilyThree;
 
     protected array $rules = [

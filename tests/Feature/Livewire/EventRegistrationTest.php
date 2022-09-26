@@ -526,5 +526,4 @@ it('has host families wired to component', function () {
                         ->and($family->email)->toBe($properties_and_values['hostFamilyThree.email'])
                         ->and($family->phone)->toBe($properties_and_values['hostFamilyThree.phone'])
                         ->and($family->address)->toBe($properties_and_values['hostFamilyThree.address']);
-
 });

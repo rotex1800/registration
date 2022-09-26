@@ -187,6 +187,7 @@ class User extends Authenticatable
         if ($familyOrNull == null) {
             $familyOrNull = HostFamily::factory()->empty()->nth($order)->make();
         }
+
         return $familyOrNull;
     }
 
