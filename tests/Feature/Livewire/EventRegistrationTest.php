@@ -605,6 +605,47 @@ it('displays check for complete bio family section', function () {
     assertSeesCompletenessIndication($component, 'registration.about-bio-family', 'bioFamily.parent_two');
 });
 
+it('displays check for complete host family one section', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    $rotary = RotaryInfo::factory()->make();
+    $inbound->rotaryInfo()->save($rotary);
+
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    assertSeesCompletenessIndication($component, 'registration.about-host-family-one', 'hostFamilyOne.email');
+});
+
+it('displays check for complete host family two section', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    $rotary = RotaryInfo::factory()->make();
+    $inbound->rotaryInfo()->save($rotary);
+
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    assertSeesCompletenessIndication($component, 'registration.about-host-family-two', 'hostFamilyTwo.email');
+});
+
+
+it('displays check for complete host family three section', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    $rotary = RotaryInfo::factory()->make();
+    $inbound->rotaryInfo()->save($rotary);
+
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    assertSeesCompletenessIndication($component, 'registration.about-host-family-three', 'hostFamilyThree.email');
+});
+
+
 /**
  * @param  TestableLivewire  $component
  * @param $headlineKey

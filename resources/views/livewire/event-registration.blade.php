@@ -115,7 +115,9 @@
             <input id="yeo-email" type="email" class="rounded" wire:model.debounce="yeo.email">
         </div>
 
-        <h2 class="text-2xl mt-8">{{  __('registration.about-bio-family') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
+        <h2 class="text-2xl mt-8">
+            {{  __('registration.about-bio-family') }} {{ $passport->isComplete() ? '✅' : '' }}
+        </h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="bio-mother">{{ __('registration.bio-family.parent-one') }}</label>
@@ -132,7 +134,9 @@
 
         </div>
 
-        <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-one') }}</h2>
+        <h2 class="text-2xl mt-8">
+            {{  __('registration.about-host-family-one') }} {{ $passport->isComplete() ? '✅' : '' }}
+        </h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="host-name-one">{{ __('registration.host-family.name') }}</label>
@@ -149,7 +153,9 @@
 
         </div>
 
-        <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-two') }}</h2>
+        <h2 class="text-2xl mt-8">
+            {{  __('registration.about-host-family-two') }} {{ $passport->isComplete() ? '✅' : '' }}
+        </h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="host-name-two">{{ __('registration.host-family.name') }}</label>
@@ -166,7 +172,9 @@
 
         </div>
 
-        <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-three') }}</h2>
+        <h2 class="text-2xl mt-8">
+            {{  __('registration.about-host-family-three') }} {{ $passport->isComplete() ? '✅' : '' }}
+        </h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="host-name-three">{{ __('registration.host-family.name') }}</label>
