@@ -6,6 +6,7 @@ use App\Http\Livewire\EventRegistration;
 use App\Models\Event;
 use App\Models\Passport;
 use App\Models\RegistrationComment;
+use App\Models\RotaryInfo;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -550,6 +551,20 @@ it('displays check for complete user section', function () {
 
     assertSeesCompletenessIndication($component, 'registration.about-you', 'user.birthday');
 });
+
+it('displays check for complete rotary section', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    $rotary = RotaryInfo::factory()->make();
+    $inbound->rotaryInfo()->save($rotary);
+
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    assertSeesCompletenessIndication($component, 'registration.about-rotary', 'rotary.host_district');
+});
+
 
 /**
  * @param  TestableLivewire  $component

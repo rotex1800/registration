@@ -67,7 +67,7 @@
 
         </div>
 
-        <h2 class="text-2xl mt-8">{{ __('registration.about-rotary') }}</h2>
+        <h2 class="text-2xl mt-8">{{  __('registration.about-rotary') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="host-club">{{ __('registration.rotary.host-club') }}</label>
