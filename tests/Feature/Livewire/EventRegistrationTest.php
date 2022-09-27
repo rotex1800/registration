@@ -4,6 +4,7 @@ namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\EventRegistration;
 use App\Models\Event;
+use App\Models\Passport;
 use App\Models\RegistrationComment;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -560,4 +561,17 @@ it('has host families wired to component', function () {
                         ->and($family->email)->toBe($properties_and_values['hostFamilyThree.email'])
                         ->and($family->phone)->toBe($properties_and_values['hostFamilyThree.phone'])
                         ->and($family->address)->toBe($properties_and_values['hostFamilyThree.address']);
+});
+
+it('displays check for complete passport section', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    $passport = Passport::factory()->make();
+    $inbound->passport()->save($passport);
+
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    $component->assertSeeText(__('registration.passport').' ✅');
 });

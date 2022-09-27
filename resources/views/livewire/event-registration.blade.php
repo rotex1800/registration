@@ -53,10 +53,10 @@
                     wire:click.prevent="saveUser">{{ __('registration.save') }}</button>
         </div>
 
-        <h2 class="text-2xl mt-8">{{  __('registration.passport') }}</h2>
+        <h2 class="text-2xl mt-8">{{  __('registration.passport') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
             <label for="nationality">{{ __('registration.nationality') }}</label>
-            <input id="nationality" type="text" class="rounded" wire:model.debounce="passport.nationality">
+            <input id="nationality" type="text" class="rounded" wire:model.lazy="passport.nationality">
 
             <label for="passport-number">{{ __('registration.passport-number') }}</label>
             <input type="text" id="passport-number" class="rounded" wire:model.debounce="passport.passport_number">

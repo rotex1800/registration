@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Passport extends Model
 {
     use HasFactory;
+    use HasCompletnessCheck;
 
     /**
      * The attributes that should be cast.
@@ -25,5 +26,18 @@ class Passport extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function isComplete(): bool
+    {
+        $complete = true;
+        foreach ($this->attributes as $attribute) {
+            if ($attribute == null || trim($attribute) == '') {
+                $complete = false;
+                break;
+            }
+        }
+
+        return $complete;
     }
 }
