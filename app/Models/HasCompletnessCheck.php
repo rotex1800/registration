@@ -4,5 +4,19 @@ namespace App\Models;
 
 trait HasCompletnessCheck
 {
-    abstract public function isComplete(): bool;
+
+    protected $attributes = [];
+
+    public function isComplete(): bool
+    {
+        $complete = true;
+        foreach ($this->attributes as $attribute) {
+            if ($attribute == null || trim($attribute) == '') {
+                $complete = false;
+                break;
+            }
+        }
+
+        return $complete;
+    }
 }
