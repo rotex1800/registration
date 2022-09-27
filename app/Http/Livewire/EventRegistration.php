@@ -7,6 +7,7 @@ use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\HostFamily;
 use App\Models\Passport;
+use App\Models\RegistrationComment;
 use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
@@ -45,6 +46,8 @@ class EventRegistration extends Component
     public ?HostFamily $hostFamilyTwo;
 
     public ?HostFamily $hostFamilyThree;
+
+    public RegistrationComment $comment;
 
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
@@ -91,6 +94,8 @@ class EventRegistration extends Component
         'hostFamilyThree.email' => self::NULLABLE,
         'hostFamilyThree.address' => self::NULLABLE,
         'hostFamilyThree.phone' => self::NULLABLE,
+
+        'comment.body' => self::NULLABLE,
     ];
 
     public function mount()
@@ -105,6 +110,7 @@ class EventRegistration extends Component
         $this->hostFamilyOne = $this->user->firstHostFamily();
         $this->hostFamilyTwo = $this->user->secondHostFamily();
         $this->hostFamilyThree = $this->user->thirdHostFamily();
+        $this->comment = $this->user->registrationComment()->firstOrNew();
     }
 
     public function render(): View
@@ -189,5 +195,10 @@ class EventRegistration extends Component
     {
         $this->hostFamilyThree->order = 3;
         $this->user->hostFamilies()->save($this->hostFamilyThree);
+    }
+
+    public function saveComment()
+    {
+        $this->user->registrationComment()->save($this->comment);
     }
 }

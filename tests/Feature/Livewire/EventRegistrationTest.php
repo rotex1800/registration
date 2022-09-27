@@ -4,6 +4,7 @@ namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\EventRegistration;
 use App\Models\Event;
+use App\Models\RegistrationComment;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -256,6 +257,39 @@ it('has text area for comments', function () {
     $component->assertSeeTextInOrder([
         __('registration.comment'),
     ]);
+});
+
+it('has comment bound to component', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $comment = fake()->paragraph;
+    $component->set('comment.body', $comment);
+
+    $component->assertMethodWired('saveComment')
+              ->call('saveComment');
+
+    $inbound->refresh();
+    expect($inbound->registrationComment->body)
+        ->toBe($comment);
+});
+
+it('shows comment body in text area', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+
+    $body = fake()->paragraph;
+    $comment = RegistrationComment::factory()->state(['body' => $body])->make();
+    $inbound->registrationComment()->save($comment);
+
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event
+    ]);
+
+    $component->assertSee($body);
 });
 
 it('has user inputs bound to component', function () {
