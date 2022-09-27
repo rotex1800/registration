@@ -191,7 +191,9 @@
 
         </div>
 
-        <h2 class="text-2xl mt-8">{{ __('registration.comment') }}</h2>
+        <h2 class="text-2xl mt-8">
+            {{  __('registration.comment') }} {{ $passport->isComplete() ? '✅' : '' }}
+        </h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
             <label for="comment">{{ __('registration.comment') }}</label>
             <textarea class="rounded min-h-40" id="comment"
