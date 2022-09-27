@@ -300,6 +300,13 @@ it('makes a new host family if no matching exists', function () {
     $hostFamily = $user->hostFamily(2);
     expect($hostFamily)
         ->not->toBeNull()
-        ->toBeInstanceOf(HostFamily::class)
-        ->and($hostFamily->exists())->toBeFalse();
+             ->toBeInstanceOf(HostFamily::class)
+             ->and($hostFamily->exists())->toBeFalse();
+});
+
+it('has registration comment', function () {
+    $user = User::factory()->create();
+
+    expect($user->registrationComment())
+        ->toBeInstanceOf(HasOne::class);
 });

@@ -118,6 +118,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class, 'author_id');
     }
 
+    public function registrationComment(): HasOne
+    {
+        return $this->hasOne(RegistrationComment::class);
+    }
+
     /**
      * @return HasMany
      * @phpstan-return HasMany<Document>
