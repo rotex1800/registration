@@ -102,7 +102,7 @@
             <input id="counselor-email" type="email" class="rounded" wire:model.debounce="counselor.email">
         </div>
 
-        <h2 class="text-2xl mt-8">{{ __('registration.about-yeo') }}</h2>
+        <h2 class="text-2xl mt-8">{{  __('registration.about-yeo') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="yeo-name">{{ __('registration.yeo.name') }}</label>
