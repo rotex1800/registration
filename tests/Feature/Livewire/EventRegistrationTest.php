@@ -565,6 +565,19 @@ it('displays check for complete rotary section', function () {
     assertSeesCompletenessIndication($component, 'registration.about-rotary', 'rotary.host_district');
 });
 
+it('displays check for complete counselor section', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    $rotary = RotaryInfo::factory()->make();
+    $inbound->rotaryInfo()->save($rotary);
+
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    assertSeesCompletenessIndication($component, 'registration.about-counselor', 'counselor.name');
+});
+
 
 /**
  * @param  TestableLivewire  $component

@@ -87,7 +87,9 @@
             </select>
         </div>
 
-        <h2 class="text-2xl mt-8">{{ __('registration.about-counselor') }}</h2>
+        <h2 class="text-2xl mt-8">
+            {{  __('registration.about-counselor') }} {{ $passport->isComplete() ? '✅' : '' }}
+        </h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="counselor-name">{{ __('registration.counselor.name') }}</label>
