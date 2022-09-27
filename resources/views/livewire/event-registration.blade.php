@@ -48,9 +48,6 @@
 
             <label for="health-issues">{{ __('registration.health_issues') }}</label>
             <textarea class="rounded min-h-40" id="health-issues" wire:model.debounce="user.health_issues"></textarea>
-
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveUser">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{  __('registration.passport') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
@@ -68,8 +65,6 @@
             <input id="passport-expiration-date" type="date" class="rounded"
                    wire:model.debounce="passport.expiration_date">
 
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="savePassport">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-rotary') }}</h2>
@@ -90,9 +85,6 @@
                     <option value="{{$district}}">{{$district}}</option>
                 @endforeach
             </select>
-
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveRotary">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-counselor') }}</h2>
@@ -106,9 +98,6 @@
 
             <label for="counselor-email">{{ __('registration.counselor.email') }}</label>
             <input id="counselor-email" type="email" class="rounded" wire:model.debounce="counselor.email">
-
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveCounselor">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-yeo') }}</h2>
@@ -122,9 +111,6 @@
 
             <label for="yeo-email">{{ __('registration.yeo.email') }}</label>
             <input id="yeo-email" type="email" class="rounded" wire:model.debounce="yeo.email">
-
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveYeo">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-bio-family') }}</h2>
@@ -142,8 +128,6 @@
             <label for="bio-telephone">{{ __('registration.bio-family.telephone') }}</label>
             <input type="tel" id="bio-telephone" class="rounded" wire:model.debounce="bioFamily.phone">
 
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveBioFamily">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-one') }}</h2>
@@ -161,8 +145,6 @@
             <label for="host-address-one">{{ __('registration.host-family.address') }}</label>
             <input type="text" id="host-address-one" class="rounded" wire:model.debounce="hostFamilyOne.address">
 
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveHostFamilyOne">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-two') }}</h2>
@@ -180,8 +162,6 @@
             <label for="host-address-two">{{ __('registration.host-family.address') }}</label>
             <input type="text" id="host-address-two" class="rounded" wire:model.debounce="hostFamilyTwo.address">
 
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveHostFamilyTwo">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.about-host-family-three') }}</h2>
@@ -199,8 +179,6 @@
             <label for="host-address-three">{{ __('registration.host-family.address') }}</label>
             <input type="text" id="host-address-three" class="rounded" wire:model.debounce="hostFamilyThree.address">
 
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveHostFamilyThree">{{ __('registration.save') }}</button>
         </div>
 
         <h2 class="text-2xl mt-8">{{ __('registration.comment') }}</h2>
@@ -209,8 +187,6 @@
             <textarea class="rounded min-h-40" id="comment"
                       wire:model.defer="comment.body">{{ $comment->body }}</textarea>
 
-            <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
-                    wire:click.prevent="saveComment">{{ __('registration.save') }}</button>
         </div>
 
     @endif

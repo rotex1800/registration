@@ -270,9 +270,6 @@ it('has comment bound to component', function () {
     $comment = fake()->paragraph;
     $component->set('comment.body', $comment);
 
-    $component->assertMethodWired('saveComment')
-              ->call('saveComment');
-
     $inbound->refresh();
     expect($inbound->registrationComment->body)
         ->toBe($comment);
@@ -314,7 +311,6 @@ it('has user inputs bound to component', function () {
         ->assertPropertyWired('user.gender')
         ->assertPropertyWired('user.mobile_phone')
         ->assertPropertyWired('user.health_issues')
-        ->assertMethodWired('saveUser')
         ->set('user.first_name', $fakeFirstName)
         ->set('user.family_name', $fakeLastName)
         ->set('user.gender', $fakeGender)
@@ -322,7 +318,6 @@ it('has user inputs bound to component', function () {
         ->set('user.mobile_phone', $fakeMobilePhone)
         ->set('user.health_issues', $fakeHealthIssues)
         ->assertHasNoErrors()
-        ->call('saveUser')
         ->assertStatus(200);
 
     $inbound->refresh();
@@ -351,10 +346,6 @@ it('has passport inputs bound to component', function () {
     foreach ($properties_and_values as $property => $value) {
         assertPropertyTwoWayBound($component, $property, $value);
     }
-
-    $component
-        ->assertMethodWired('savePassport')
-        ->call('savePassport');
 
     $inbound->refresh();
     $passport = $inbound->passport;
@@ -396,10 +387,6 @@ it('has rotary inputs bound to component', function () {
         assertPropertyTwoWayBound($component, $property, $value);
     }
 
-    $component
-        ->assertMethodWired('saveRotary')
-        ->call('saveRotary');
-
     $inbound->refresh();
     $passport = $inbound->rotaryInfo;
     expect($passport)->not()->toBeNull()
@@ -426,10 +413,6 @@ it('has rotary counselor bound to component', function () {
         assertPropertyTwoWayBound($component, $property, $value);
     }
 
-    $component
-        ->assertMethodWired('saveCounselor')
-        ->call('saveCounselor');
-
     $inbound->refresh();
     $counselor = $inbound->counselor;
     expect($counselor)->not->toBeNull()
@@ -454,10 +437,6 @@ it('has rotary yeo bound to component', function () {
     foreach ($properties_and_values as $property => $value) {
         assertPropertyTwoWayBound($component, $property, $value);
     }
-
-    $component
-        ->assertMethodWired('saveYeo')
-        ->call('saveYeo');
 
     $inbound->refresh();
     $yeo = $inbound->yeo;
@@ -484,10 +463,6 @@ it('has bio family bound to component', function () {
     foreach ($properties_and_values as $property => $value) {
         assertPropertyTwoWayBound($component, $property, $value);
     }
-
-    $component
-        ->assertMethodWired('saveBioFamily')
-        ->call('saveBioFamily');
 
     $inbound->refresh();
     $family = $inbound->bioFamily;
@@ -526,10 +501,6 @@ it('has host families wired to component', function () {
         assertPropertyTwoWayBound($component, $property, $value);
     }
 
-    $component
-        ->assertMethodWired('saveHostFamilyOne')
-        ->call('saveHostFamilyOne');
-
     $inbound->refresh();
     $family = $inbound->firstHostFamily();
     expect($family)->not->toBeNull()
@@ -538,10 +509,6 @@ it('has host families wired to component', function () {
                         ->and($family->phone)->toBe($properties_and_values['hostFamilyOne.phone'])
                         ->and($family->address)->toBe($properties_and_values['hostFamilyOne.address']);
 
-    $component
-        ->assertMethodWired('saveHostFamilyTwo')
-        ->call('saveHostFamilyTwo');
-
     $inbound->refresh();
     $family = $inbound->secondHostFamily();
     expect($family)->not->toBeNull()
@@ -549,10 +516,6 @@ it('has host families wired to component', function () {
                         ->and($family->email)->toBe($properties_and_values['hostFamilyTwo.email'])
                         ->and($family->phone)->toBe($properties_and_values['hostFamilyTwo.phone'])
                         ->and($family->address)->toBe($properties_and_values['hostFamilyTwo.address']);
-
-    $component
-        ->assertMethodWired('saveHostFamilyThree')
-        ->call('saveHostFamilyThree');
 
     $inbound->refresh();
     $family = $inbound->thirdHostFamily();

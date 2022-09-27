@@ -149,55 +149,55 @@ class EventRegistration extends Component
         ]);
     }
 
-    public function saveUser()
+    public function updatedUser()
     {
         $this->user->save();
     }
 
-    public function savePassport()
+    public function updatedPassport()
     {
         $this->user->passport()->save($this->passport);
     }
 
-    public function saveRotary()
+    public function updatedRotary()
     {
         $this->user->rotaryInfo()->save($this->rotary);
     }
 
-    public function saveCounselor()
+    public function updatedCounselor()
     {
         $this->user->counselor()->save($this->counselor);
     }
 
-    public function saveYeo()
+    public function updatedYeo()
     {
         $this->user->yeo()->save($this->yeo);
     }
 
-    public function saveBioFamily()
+    public function updatedBioFamily()
     {
         $this->user->bioFamily()->save($this->bioFamily);
     }
 
-    public function saveHostFamilyOne()
+    public function updatedHostFamilyOne()
     {
         $this->hostFamilyOne->order = 1;
         $this->user->hostFamilies()->save($this->hostFamilyOne);
     }
 
-    public function saveHostFamilyTwo()
+    public function updatedHostFamilyTwo()
     {
         $this->hostFamilyTwo->order = 2;
         $this->user->hostFamilies()->save($this->hostFamilyTwo);
     }
 
-    public function saveHostFamilyThree()
+    public function updatedHostFamilyThree()
     {
         $this->hostFamilyThree->order = 3;
         $this->user->hostFamilies()->save($this->hostFamilyThree);
     }
 
-    public function saveComment()
+    public function updatedComment()
     {
         $this->user->registrationComment()->save($this->comment);
     }
