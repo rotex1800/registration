@@ -115,7 +115,7 @@
             <input id="yeo-email" type="email" class="rounded" wire:model.debounce="yeo.email">
         </div>
 
-        <h2 class="text-2xl mt-8">{{ __('registration.about-bio-family') }}</h2>
+        <h2 class="text-2xl mt-8">{{  __('registration.about-bio-family') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
             <label for="bio-mother">{{ __('registration.bio-family.parent-one') }}</label>
