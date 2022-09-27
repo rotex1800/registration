@@ -9,4 +9,5 @@ class CounselorInfo extends Model
 {
     use HasFactory;
     use PersonInfo;
+    use HasCompletnessCheck;
 }

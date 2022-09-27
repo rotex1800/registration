@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\CounselorInfo;
+use App\Models\HasCompletnessCheck;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -34,4 +35,9 @@ it('belongs to user', function () {
     expect($user->counselor)
         ->toBeInstanceOf(CounselorInfo::class)
         ->toBeSameEntityAs($this->info);
+});
+
+it('implements completeness check', function () {
+    $result = in_array(HasCompletnessCheck::class, class_uses_recursive(CounselorInfo::class));
+    expect($result)->toBeTrue();
 });

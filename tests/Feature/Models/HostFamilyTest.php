@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\HasCompletnessCheck;
 use App\Models\HostFamily;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
@@ -82,4 +83,9 @@ it('can combine empty and nth states', function () {
         ->and($family->email)->toBe('')
         ->and($family->phone)->toBe('')
         ->and($family->order)->toBe(2);
+});
+
+it('implements completeness check', function () {
+    $result = in_array(HasCompletnessCheck::class, class_uses_recursive(HostFamily::class));
+    expect($result)->toBeTrue();
 });

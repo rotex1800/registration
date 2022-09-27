@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RotaryInfo extends Model
 {
-    use HasFactory;
+    use HasFactory, HasCompletnessCheck;
 
     /**
      * Inverse of the one-to-one relation between a user and RotaryInfo

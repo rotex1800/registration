@@ -536,5 +536,31 @@ it('displays check for complete passport section', function () {
         'event' => $this->event,
     ]);
 
-    $component->assertSeeText(__('registration.passport').' ✅');
+    assertSeesCompletenessIndication($component, 'registration.passport', 'passport.passport_number');
 });
+
+
+it('displays check for complete user section', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    assertSeesCompletenessIndication($component, 'registration.about-you', 'user.birthday');
+});
+
+/**
+ * @param  TestableLivewire  $component
+ * @param $headlineKey
+ * @param $removingProperty
+ * @return void
+ */
+function assertSeesCompletenessIndication(TestableLivewire $component, $headlineKey, $removingProperty): void
+{
+    $component->assertSeeText(__($headlineKey).' ✅')
+              ->set($removingProperty, '')
+              ->assertDontSeeText(__($headlineKey).' ✅')
+              ->assertSeeText(__($headlineKey));
+}

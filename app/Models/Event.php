@@ -34,7 +34,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Event extends Model
 {
-    use HasFactory;
+    use HasFactory, HasCompletnessCheck;
 
     /**
      * The attributes that should be cast.

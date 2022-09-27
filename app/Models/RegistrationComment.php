@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RegistrationComment extends Model
 {
-    use HasFactory;
+    use HasFactory, HasCompletnessCheck;
 
     public function user(): BelongsTo
     {

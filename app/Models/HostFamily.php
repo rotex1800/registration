@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class HostFamily extends Model
 {
-    use HasFactory;
+    use HasFactory, HasCompletnessCheck;
 
     public function inbound(): BelongsTo
     {

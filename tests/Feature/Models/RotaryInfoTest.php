@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\HasCompletnessCheck;
 use App\Models\RotaryInfo;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -41,4 +42,9 @@ it('belongs to user', function () {
     expect($this->info->user)
         ->toBeInstanceOf(User::class)
         ->toBeSameEntityAs($user);
+});
+
+it('implements completeness check', function () {
+    $result = in_array(HasCompletnessCheck::class, class_uses_recursive(RotaryInfo::class));
+    expect($result)->toBeTrue();
 });
