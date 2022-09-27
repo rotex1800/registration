@@ -17,7 +17,7 @@ class RegistrationCommentFactory extends Factory
     public function definition()
     {
         return [
-            'body' => fake()->paragraph
+            'body' => fake()->paragraph,
         ];
     }
 }

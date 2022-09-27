@@ -263,7 +263,7 @@ it('has comment bound to component', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $comment = fake()->paragraph;
@@ -286,7 +286,7 @@ it('shows comment body in text area', function () {
 
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 
     $component->assertSee($body);

@@ -206,7 +206,8 @@
         <h2 class="text-2xl mt-8">{{ __('registration.comment') }}</h2>
         <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
             <label for="comment">{{ __('registration.comment') }}</label>
-            <textarea class="rounded min-h-40" id="comment" wire:model.defer="comment.body">{{ $comment->body }}</textarea>
+            <textarea class="rounded min-h-40" id="comment"
+                      wire:model.defer="comment.body">{{ $comment->body }}</textarea>
 
             <button class="col-span-2 text-white bg-blue-800 p-3 rounded" type="button"
                     wire:click.prevent="saveComment">{{ __('registration.save') }}</button>
