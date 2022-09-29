@@ -316,3 +316,46 @@ it('implements completeness check', function () {
     $result = in_array(HasCompletnessCheck::class, class_uses_recursive(User::class));
     expect($result)->toBeTrue();
 });
+
+/*
+ * Expected: First Name, Last Name, Birthday, Gender, Mobile Phone, Health
+ */
+it('is complete for expected attributes', function () {
+    $user = User::factory()->state([
+        'first_name' => fake()->firstName,
+        'family_name' => fake()->lastName,
+        'birthday' => fake()->date,
+        'gender' => fake()->word,
+        'mobile_phone' => fake()->phoneNumber,
+        'health_issues' => fake()->paragraphs(asText: true),
+    ])->make();
+
+    expect($user->isComplete())->toBeTrue();
+});
+
+
+/*
+ * Expected: First Name, Last Name, Birthday, Gender, Mobile Phone, Health
+ */
+it('is NOT complete if one expected attribute is null', function () {
+
+    $requiredAttributes = [
+        'first_name' => fake()->firstName,
+        'family_name' => fake()->lastName,
+        'birthday' => fake()->date,
+        'gender' => fake()->word,
+        'mobile_phone' => fake()->phoneNumber,
+        'health_issues' => fake()->paragraphs(asText: true),
+    ];
+
+
+    foreach (array_keys($requiredAttributes) as $attribute) {
+        $user = User::factory()->state($requiredAttributes)
+                    ->state([
+                        $attribute => null
+                    ])
+                    ->make();
+        $complete = $user->isComplete();
+        expect($complete)->toBeFalse();
+    }
+});

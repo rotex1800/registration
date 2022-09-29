@@ -280,4 +280,21 @@ class User extends Authenticatable
     {
         return $this->events()->get();
     }
+
+    public function isComplete(): bool
+    {
+        return
+            $this->notBlankOrEmpty($this->first_name)
+            && $this->notBlankOrEmpty($this->family_name)
+            && $this->notBlankOrEmpty($this->birthday)
+            && $this->notBlankOrEmpty($this->gender)
+            && $this->notBlankOrEmpty($this->mobile_phone)
+            && $this->notBlankOrEmpty($this->health_issues);
+
+    }
+
+    private function notBlankOrEmpty(?string $value): bool
+    {
+        return $value != null && trim($value) != '';
+    }
 }

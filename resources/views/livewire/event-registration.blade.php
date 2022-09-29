@@ -24,7 +24,7 @@
     @endif
 
     @if($this->hasUserRegistered())
-        <h2 class="text-2xl mt-8">{{  __('registration.about-you') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
+        <h2 class="text-2xl mt-8">{{  __('registration.about-you') }} {{ $user->isComplete() ? '✅' : '' }}</h2>
         <div class="mt-4 grid grid-cols-input gap-4 items-center">
             <label for="firstname">{{ __('registration.first_name') }}</label>
             <input class="rounded" type="text" id="firstname" wire:model.debounce.500ms="user.first_name">
