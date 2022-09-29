@@ -66,3 +66,27 @@ it('is complete once all attributes are non-empty', function () {
     $emptyPassportNumber = Passport::factory()->state(['passport_number' => ''])->create();
     expect($emptyPassportNumber->isComplete())->toBeFalse();
 });
+
+/*
+ * Nationality, Passport Number, Issue data, expiration date
+ */
+it('is complete with required attributes', function () {
+    $attrs = [
+        'nationality' => fake()->country,
+        'passport_number' => fake()->words(asText: true),
+        'issue_date' => fake()->date,
+        'expiration_date' => fake()->date
+    ];
+    $passport = Passport::factory()->state($attrs)->make();
+
+    expect($passport->isComplete())->toBeTrue();
+
+    foreach (array_keys($attrs) as $attribute) {
+        $passport = Passport::factory()->state($attrs)
+                            ->state([
+                                $attribute => null
+                            ])
+                            ->make();
+        expect($passport->isComplete())->toBeFalse();
+    }
+});
