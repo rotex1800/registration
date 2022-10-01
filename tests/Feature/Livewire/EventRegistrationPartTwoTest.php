@@ -78,15 +78,15 @@ it('hides part one when calling method to show part two', function () {
         ->toBe('two');
 });
 
-it('hides part two when calling method to show part one', function () {
-    // Act
-    $this->component->call('showPartOne');
-
-    // Assert it shows
-    $this->component->assertStatus(200)
-        // headlines from part one
-                    ->assertSeeTextInOrder($this->headlinesPartOne);
-    // sets active part to one
-    expect($this->component->activePart)
-        ->toBe('one');
-});
+//it('hides part two when calling method to show part one', function () {
+//    // Act
+//    $this->component->call('showPartOne');
+//
+//    // Assert it shows
+//    $this->component->assertStatus(200)
+//        // headlines from part one
+//                    ->assertSeeTextInOrder($this->headlinesPartOne);
+//    // sets active part to one
+//    expect($this->component->activePart)
+//        ->toBe('one');
+//});

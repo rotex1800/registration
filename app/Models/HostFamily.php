@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class HostFamily extends Model
 {
-    use HasFactory, HasCompletnessCheck;
+    use HasFactory, HasCompletenessCheck;
 
     public function inbound(): BelongsTo
     {
@@ -20,4 +20,10 @@ class HostFamily extends Model
     {
         return $builder->where('order', $order);
     }
+
+    public function isComplete(): bool
+    {
+        return $this->isCompleteCheck(HostFamily::factory()->definition());
+    }
+
 }

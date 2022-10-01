@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class YeoInfo extends Model
 {
     use HasFactory;
-    use HasCompletnessCheck;
+    use HasCompletenessCheck;
     use PersonInfo;
+
+    public function isComplete(): bool
+    {
+        return $this->isCompleteCheck(
+            YeoInfo::factory()->definition()
+        );
+    }
 }

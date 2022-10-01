@@ -2,7 +2,7 @@
 
 use App\Models\BioFamily;
 use App\Models\CounselorInfo;
-use App\Models\HasCompletnessCheck;
+use App\Models\HasCompletenessCheck;
 use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\RegistrationComment;
@@ -14,12 +14,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-/*
- * Nationality, Passport Number, Issue data, expiration date
- */
 /**
  * @param  Factory  $factory
- * @param  array  $attrs
  * @return void
  */
 function assertCompletenessCheck(Factory $factory): void
@@ -52,7 +48,7 @@ test('models implement completeness check', function () {
         User::class,
     ];
     foreach ($models as $model) {
-        $result = in_array(HasCompletnessCheck::class, class_uses_recursive($model));
+        $result = in_array(HasCompletenessCheck::class, class_uses_recursive($model));
         expect($result)->toBeTrue();
     }
 });

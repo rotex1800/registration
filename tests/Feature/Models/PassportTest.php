@@ -46,3 +46,26 @@ test('dates are cast correctly', function () {
         ->toBe('date:Y-m-d')
         ->and($passport->getCasts()['expiration_date'])->toBe('date:Y-m-d');
 });
+
+it('requires passport number, nationality, issue and expiration date', function () {
+    $passport = Passport::factory()->make();
+    expect($passport->isComplete())->toBeTrue();
+
+    $passport->passport_number = '';
+    expect($passport->isComplete())->toBeFalse();
+    $passport->passport_number = fake()->words(asText: true);
+
+    $passport->nationality = '';
+    expect($passport->isComplete())->toBeFalse();
+    $passport->nationality = fake()->country;
+
+    $passport->issue_date = null;
+    expect($passport->isComplete())->toBeFalse();
+    $passport->issue_date = fake()->date;
+
+    $passport->expiration_date = null;
+    expect($passport->isComplete())->toBeFalse();
+    $passport->expiration_date = fake()->date;
+
+    expect($passport->isComplete())->toBeTrue();
+});

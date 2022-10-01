@@ -57,7 +57,7 @@ use Illuminate\Support\Carbon;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasCompletnessCheck;
+    use HasFactory, Notifiable, HasCompletenessCheck;
 
     /**
      * The attributes that are mass assignable.

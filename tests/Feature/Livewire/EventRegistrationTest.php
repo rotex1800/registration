@@ -641,6 +641,86 @@ it('displays check for complete comment section', function () {
     assertSeesCompletenessIndication($component, 'registration.comment', 'comment.body');
 });
 
+it('displays no checkmark for empty passport on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.passport').' ✅');
+});
+
+it('displays no checkmark for empty rotary info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-rotary').' ✅');
+});
+
+it('displays no checkmark for empty counselor info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-counselor').' ✅');
+});
+
+it('displays no checkmark for empty yeo info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-yeo').' ✅');
+});
+
+it('displays no checkmark for empty bio family info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-bio-family').' ✅');
+});
+
+it('displays no checkmark for empty host family one info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-host-family-one').' ✅');
+});
+
+it('displays no checkmark for empty host family two info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-host-family-two').' ✅');
+});
+
+it('displays no checkmark for empty host family three info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-host-family-three').' ✅');
+});
+
+it('displays no checkmark for empty comment on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.comment').' ✅');
+});
 /**
  * @param  TestableLivewire  $component
  * @param $headlineKey
