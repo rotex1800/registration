@@ -54,7 +54,6 @@ it('shows event details component', function () {
 });
 
 it('shows file upload for passport in part two', function () {
-
     $this->browse(function (Browser $browser) {
         $role = Role::factory()
                     ->has(User::factory())
@@ -67,6 +66,5 @@ it('shows file upload for passport in part two', function () {
         loginAs($user)
                 ->get(route('event.show', $event))
                 ->assertStatus(200);
-
     });
 });
