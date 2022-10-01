@@ -290,7 +290,6 @@ class User extends Authenticatable
             && $this->notBlankOrEmpty($this->gender)
             && $this->notBlankOrEmpty($this->mobile_phone)
             && $this->notBlankOrEmpty($this->health_issues);
-
     }
 
     private function notBlankOrEmpty(?string $value): bool

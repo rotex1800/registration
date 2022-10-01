@@ -327,12 +327,10 @@ it('is complete for expected attributes', function () {
     expect($user->isComplete())->toBeTrue();
 });
 
-
 /*
  * Expected: First Name, Last Name, Birthday, Gender, Mobile Phone, Health
  */
 it('is NOT complete if one expected attribute is null', function () {
-
     $requiredAttributes = [
         'first_name' => fake()->firstName,
         'family_name' => fake()->lastName,
@@ -342,11 +340,10 @@ it('is NOT complete if one expected attribute is null', function () {
         'health_issues' => fake()->paragraphs(asText: true),
     ];
 
-
     foreach (array_keys($requiredAttributes) as $attribute) {
         $user = User::factory()->state($requiredAttributes)
                     ->state([
-                        $attribute => null
+                        $attribute => null,
                     ])
                     ->make();
         $complete = $user->isComplete();

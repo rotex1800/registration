@@ -24,7 +24,9 @@ class EventRegistration extends Component
     private const NULLABLE_DATE = 'nullable|date';
 
     private const NULLABLE = 'nullable';
+
     private const PART_ONE = 'one';
+
     private const PART_TWO = 'two';
 
     public Event $event;

@@ -18,18 +18,18 @@ beforeEach(function () {
         __('registration.about-host-family-one'),
         __('registration.about-host-family-two'),
         __('registration.about-host-family-three'),
-        __('registration.comment')
+        __('registration.comment'),
     ];
 
     $this->headlinesPartTwo = [
-        __('registration.passport-upload')
+        __('registration.passport-upload'),
     ];
 
     $this->event = \App\Models\Event::factory()->create();
     $this->user = createInboundRegisteredFor($this->event);
     actingAs($this->user);
     $this->component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event
+        'event' => $this->event,
     ]);
 });
 
@@ -37,7 +37,7 @@ it('shows button for part one', function () {
     // Act & Assert
     $this->component->assertSeeTextInOrder([
         __('registration.part_one'),
-        __('registration.about-you')
+        __('registration.about-you'),
     ]);
 });
 
@@ -48,7 +48,7 @@ it('does not show button for unregistered user', function () {
     // Act & Assert
     $this->component->assertSeeTextInOrder([
         __('registration.part_one'),
-        __('registration.about-you')
+        __('registration.about-you'),
     ]);
 });
 
@@ -56,7 +56,7 @@ it('shows button for part two', function () {
     // Act & Assert
     $this->component->assertSeeTextInOrder([
         __('registration.part_one'),
-        __('registration.part_two')
+        __('registration.part_two'),
     ]);
 });
 

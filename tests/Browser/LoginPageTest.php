@@ -3,10 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\actingAs;
-
-uses(RefreshDatabase::class);
 
 it('shows the login form for non authenticated users', function () {
     $response = $this->get('/login');

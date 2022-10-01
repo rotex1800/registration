@@ -4,7 +4,6 @@ namespace App\Models;
 
 trait HasCompletnessCheck
 {
-
     protected $attributes = [];
 
     public function isComplete(): bool
