@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="my-1 text-white ">
+    <div class="my-1 text-white my-4">
         @if($this->hasUserRegistered())
             <button class="bg-yellow-500 p-3 rounded" wire:click="unregister">Abmelden</button>
         @else
@@ -25,8 +25,18 @@
 
     @if($this->hasUserRegistered())
 
-        <h1 wire:click="showPartOne">{{ __('registration.part_one') }}</h1>
-        <h1 wire:click="showPartTwo">{{ __('registration.part_two') }}</h1>
+        <button
+            class="{{ $this->isPartOneActive()
+                        ? "bg-blue-500 font-bold text-white"
+                        : 'border-blue-400 bg-blue-300' }}
+                        mr-4 py-2 px-4 border-2 rounded-full hover:bg-blue-400"
+            wire:click="showPartOne" active>{{ __('registration.part_one') }}</button>
+
+        <button class="{{ $this->isPartTwoActive()
+                        ? "bg-blue-500 font-bold text-white"
+                        : 'border-blue-400 bg-blue-300' }}
+                        mr-4 py-2 px-4 border-2 rounded-full hover:bg-blue-400"
+                wire:click="showPartTwo">{{ __('registration.part_two') }}</button>
 
         {{-- Part One --}}
         @if($this->isPartOneActive())
