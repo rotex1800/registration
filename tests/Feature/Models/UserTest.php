@@ -120,6 +120,18 @@ it('has first name', function () {
     expect($user->first_name)->toBeString();
 });
 
+it('has family name', function () {
+    $user = User::factory()->create();
+    expect($user->family_name)->toBeString();
+});
+
+it('has full name accessor', function () {
+    $user = User::factory()->create();
+    expect($user->fullName)
+        ->toBeString()
+        ->toBe($user->first_name.' '.$user->family_name);
+});
+
 it('has birthday', function () {
     $user = User::factory()->create();
     expect($user->birthday)

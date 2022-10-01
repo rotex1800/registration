@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -88,6 +89,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'birthday' => 'date:Y-m-d',
     ];
+
+    /**
+     * Accessor combining first name and family name
+     */
+    public function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
+        );
+    }
 
     /**
      * Checks whether the user has registered for the given event.
