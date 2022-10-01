@@ -24,6 +24,8 @@ class EventRegistration extends Component
     private const NULLABLE_DATE = 'nullable|date';
 
     private const NULLABLE = 'nullable';
+    private const PART_ONE = 'one';
+    private const PART_TWO = 'two';
 
     public Event $event;
 
@@ -48,6 +50,8 @@ class EventRegistration extends Component
     public ?HostFamily $hostFamilyThree;
 
     public RegistrationComment $comment;
+
+    public string $activePart;
 
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
@@ -111,6 +115,27 @@ class EventRegistration extends Component
         $this->hostFamilyTwo = $this->user->secondHostFamily();
         $this->hostFamilyThree = $this->user->thirdHostFamily();
         $this->comment = $this->user->registrationComment()->firstOrNew();
+        $this->activePart = self::PART_ONE;
+    }
+
+    public function showPartOne()
+    {
+        $this->activePart = self::PART_ONE;
+    }
+
+    public function showPartTwo()
+    {
+        $this->activePart = self::PART_TWO;
+    }
+
+    public function isPartOneActive(): bool
+    {
+        return $this->activePart == self::PART_ONE;
+    }
+
+    public function isPartTwoActive(): bool
+    {
+        return $this->activePart == self::PART_TWO;
     }
 
     public function render(): View
