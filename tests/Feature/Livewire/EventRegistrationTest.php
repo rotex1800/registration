@@ -3,10 +3,15 @@
 namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\EventRegistration;
+use App\Models\BioFamily;
+use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\HostFamily;
+use App\Models\Passport;
 use App\Models\RegistrationComment;
+use App\Models\RotaryInfo;
 use App\Models\User;
+use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
@@ -528,7 +533,7 @@ it('has host families wired to component', function () {
 
 it('displays check for complete passport section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-
+    $inbound->passport()->save(Passport::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -545,12 +550,14 @@ it('displays check for complete user section', function () {
         'event' => $this->event,
     ]);
 
-    assertSeesCompletenessIndication($component, 'registration.about-you', 'user.birthday');
+    assertSeesCompletenessIndication($component, 'registration.about-you', 'user.gender');
 });
 
 it('displays check for complete rotary section', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
+    $rotary = RotaryInfo::factory()->create();
+    $inbound->rotaryInfo()->save($rotary);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
@@ -560,6 +567,7 @@ it('displays check for complete rotary section', function () {
 
 it('displays check for complete counselor section', function () {
     $inbound = createInboundRegisteredFor($this->event);
+    $inbound->counselor()->save(CounselorInfo::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -570,7 +578,7 @@ it('displays check for complete counselor section', function () {
 
 it('displays check for complete yeo section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-
+    $inbound->yeo()->save(YeoInfo::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -581,7 +589,7 @@ it('displays check for complete yeo section', function () {
 
 it('displays check for complete bio family section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-
+    $inbound->bioFamily()->save(BioFamily::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -632,7 +640,7 @@ it('displays check for complete host family three section', function () {
 
 it('displays check for complete comment section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-
+    $inbound->registrationComment()->save(RegistrationComment::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
