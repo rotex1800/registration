@@ -3,7 +3,6 @@
 use App\Models\Comment;
 use App\Models\CounselorInfo;
 use App\Models\Document;
-use App\Models\HasCompletnessCheck;
 use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\Role;
@@ -310,11 +309,6 @@ it('has registration comment', function () {
 
     expect($user->registrationComment())
         ->toBeInstanceOf(HasOne::class);
-});
-
-it('implements completeness check', function () {
-    $result = in_array(HasCompletnessCheck::class, class_uses_recursive(User::class));
-    expect($result)->toBeTrue();
 });
 
 /*

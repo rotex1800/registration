@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Event;
-use App\Models\HasCompletnessCheck;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -62,9 +61,4 @@ it('has role relation', function () {
     $event = Event::factory()->create();
     expect($event->roles())
         ->toBeInstanceOf(BelongsToMany::class);
-});
-
-it('implements completeness check', function () {
-    $result = in_array(HasCompletnessCheck::class, class_uses_recursive(Event::class));
-    expect($result)->toBeTrue();
 });

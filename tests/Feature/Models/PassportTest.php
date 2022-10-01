@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\HasCompletnessCheck;
 use App\Models\Passport;
 use App\Models\User;
 use Carbon\Carbon;
@@ -46,47 +45,4 @@ test('dates are cast correctly', function () {
     expect($passport->getCasts()['issue_date'])
         ->toBe('date:Y-m-d')
         ->and($passport->getCasts()['expiration_date'])->toBe('date:Y-m-d');
-});
-
-it('implements completeness check', function () {
-    $result = in_array(HasCompletnessCheck::class, class_uses_recursive(Passport::class));
-    expect($result)->toBeTrue();
-});
-
-it('is complete once all attributes are non-empty', function () {
-    $complete = Passport::factory()->create();
-    expect($complete->isComplete())->toBeTrue();
-
-    $nullExpirationDate = Passport::factory()->state(['expiration_date' => null])->create();
-    expect($nullExpirationDate->isComplete())->toBeFalse();
-
-    $blankNationality = Passport::factory()->state(['nationality' => '    '])->create();
-    expect($blankNationality->isComplete())->toBeFalse();
-
-    $emptyPassportNumber = Passport::factory()->state(['passport_number' => ''])->create();
-    expect($emptyPassportNumber->isComplete())->toBeFalse();
-});
-
-/*
- * Nationality, Passport Number, Issue data, expiration date
- */
-it('is complete with required attributes', function () {
-    $attrs = [
-        'nationality' => fake()->country,
-        'passport_number' => fake()->words(asText: true),
-        'issue_date' => fake()->date,
-        'expiration_date' => fake()->date
-    ];
-    $passport = Passport::factory()->state($attrs)->make();
-
-    expect($passport->isComplete())->toBeTrue();
-
-    foreach (array_keys($attrs) as $attribute) {
-        $passport = Passport::factory()->state($attrs)
-                            ->state([
-                                $attribute => null
-                            ])
-                            ->make();
-        expect($passport->isComplete())->toBeFalse();
-    }
 });

@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\BioFamily;
-use App\Models\HasCompletnessCheck;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -28,9 +27,4 @@ it('has phone', function () {
 it('has email', function () {
     expect($this->family->email)
         ->toBeString();
-});
-
-it('implements completeness check', function () {
-    $result = in_array(HasCompletnessCheck::class, class_uses_recursive(BioFamily::class));
-    expect($result)->toBeTrue();
 });
