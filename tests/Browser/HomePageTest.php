@@ -5,10 +5,7 @@ namespace Tests\Feature;
 use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\actingAs;
-
-uses(RefreshDatabase::class);
 
 it('shows main navigation', function () {
     $user = User::factory()->create();
