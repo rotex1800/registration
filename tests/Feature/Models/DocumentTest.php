@@ -67,3 +67,13 @@ test('factory can create digital document', function () {
     $doc = Document::factory()->digital()->make();
     expect($doc->type)->toBe(Document::TYPE_DIGITAL);
 });
+
+test('factory can create approved document', function () {
+    $doc = Document::factory()->approved()->make();
+    expect($doc->state)->toBe(Document::APPROVED);
+});
+
+test('factory can create submitted document', function () {
+    $doc = Document::factory()->submitted()->make();
+    expect($doc->state)->toBe(Document::SUBMITTED);
+});

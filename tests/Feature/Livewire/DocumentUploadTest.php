@@ -4,6 +4,8 @@ namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\DocumentUpload;
 use App\Models\Document;
+use App\Models\DocumentCategory;
+use App\Models\Passport;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -75,4 +77,65 @@ it('uploading file creates entry in document table', function () {
 it('has consts for document types', function () {
     expect(Document::TYPE_DIGITAL)->toBe(0)
                                   ->and(Document::TYPE_ANALOG)->toBe(1);
+});
+
+it('it shows approved status', function () {
+    $document = Document::factory()->approved()->make();
+    $passport = Passport::factory()->make();
+    $this->user->passport()->save($passport);
+    $this->user->passport->document()->save($document);
+
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::PassportCopy->rawValue(),
+    ])
+            ->assertStatus(200)
+            ->assertSee(__('document.state_approved'));
+});
+
+it('it shows submitted status', function () {
+    $document = Document::factory()->submitted()->make();
+    $passport = Passport::factory()->make();
+    $this->user->passport()->save($passport);
+    $this->user->passport->document()->save($document);
+
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::PassportCopy->rawValue(),
+    ])
+            ->assertStatus(200)
+            ->assertSee(__('document.state_submitted'));
+});
+
+it('it shows not uploaded status', function () {
+    $passport = Passport::factory()->make();
+    $this->user->passport()->save($passport);
+
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::PassportCopy->rawValue(),
+    ])
+            ->assertStatus(200)
+            ->assertSee(__('document.state_not_uploaded'));
+});
+
+it('is disabled if the related info is not complete', function () {
+    $passport = Passport::factory()->make();
+    $passport->nationality = null;
+    $this->user->passport()->save($passport);
+
+    $enabled = Livewire::test('document-upload', [
+        'category' => DocumentCategory::PassportCopy->rawValue(),
+    ])
+                       ->assertStatus(200)
+                       ->assertSee(__('document.state_form_incomplete'))
+                       ->get('enabled');
+    expect($enabled)->toBeFalse();
+});
+
+it('is disabled for no related info', function () {
+    $enabled = Livewire::test('document-upload', [
+        'category' => DocumentCategory::PassportCopy->rawValue(),
+    ])
+                       ->assertStatus(200)
+                       ->assertSee(__('document.state_form_incomplete'))
+                       ->get('enabled');
+    expect($enabled)->toBeFalse();
 });

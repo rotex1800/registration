@@ -15,4 +15,12 @@ enum DocumentCategory
 
         return DocumentCategory::Unknown;
     }
+
+    public function rawValue(): string
+    {
+        if ($this == DocumentCategory::PassportCopy) {
+            return 'passport';
+        }
+        return 'unknown';
+    }
 }

@@ -40,4 +40,22 @@ class DocumentFactory extends Factory
             ];
         });
     }
+
+    public function approved()
+    {
+        return $this->state(function () {
+            return [
+                'state' => Document::APPROVED
+            ];
+        });
+    }
+
+    public function submitted()
+    {
+        return $this->state(function () {
+            return [
+                'state' => Document::SUBMITTED
+            ];
+        });
+    }
 }
