@@ -18,10 +18,10 @@
         @else
             <button class="bg-blue-800 p-3 rounded" wire:click="register">Anmelden</button>
         @endif
+        @if ($this->canEdit())
+            <button class="bg-yellow-500 p-3 rounded" wire:click="edit">Bearbeiten</button>
+        @endif
     </div>
-    @if ($this->canEdit())
-        <button class="bg-yellow-500 p-3 rounded" wire:click="edit">Bearbeiten</button>
-    @endif
 
     @if($this->hasUserRegistered())
 
@@ -231,7 +231,10 @@
 
         {{-- Part Two --}}
         @if($this->isPartTwoActive())
-            <h1 class="text-red-500 text-xl">PLATZHALTER UPLOAD {{ __('registration.passport-upload') }}</h1>
+            @livewire('document-upload', [
+                            'displayName' => __('registration.passport-upload'),
+                            'type' => 'passport'
+                            ])
         @endif
     @endif
 </div>

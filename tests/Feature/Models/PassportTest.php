@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Document;
 use App\Models\Passport;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -68,4 +70,13 @@ it('requires passport number, nationality, issue and expiration date', function 
     $passport->expiration_date = fake()->date;
 
     expect($passport->isComplete())->toBeTrue();
+});
+
+it('has polymorphic relation to document', function () {
+    $passport = Passport::factory()
+                        ->has(Document::factory())
+                        ->create();
+
+    expect($passport->document())
+        ->toBeInstanceOf(MorphOne::class);
 });

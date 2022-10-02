@@ -19,9 +19,10 @@ class DocumentFactory extends Factory
     public function definition()
     {
         return [
-            'type' => fake()->numberBetween(0, count(Document::TYPES) - 1),
+            'type' => fake()->numberBetween(0, 1),
             'is_required' => fake()->boolean(),
             'name' => fake()->word(),
+            'path' => fake()->filePath(),
             'owner_id' => User::factory(),
         ];
     }
@@ -29,13 +30,13 @@ class DocumentFactory extends Factory
     /**
      * Indicate the document is representing a digital file.
      *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     * @return Factory
      */
     public function digital()
     {
         return $this->state(function (array $attributes) {
             return [
-                'type' => Document::TYPES['digital'],
+                'type' => Document::TYPE_DIGITAL,
             ];
         });
     }

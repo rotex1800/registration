@@ -362,3 +362,9 @@ it('is NOT complete if one expected attribute is null', function () {
         expect($complete)->toBeFalse();
     }
 });
+
+it('has auto assigned uuid', function () {
+    $user = User::factory()->create();
+    expect($user->uuid)
+        ->toBeString();
+});

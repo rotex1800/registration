@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Document extends Model
 {
@@ -12,17 +13,18 @@ class Document extends Model
 
     /**
      * Possible Document types
-     *
-     * @var array
      */
-    public const TYPES = [
-        'digital' => 0,
-        'physical' => 1,
-    ];
+    public const TYPE_DIGITAL = 0;
+    public const TYPE_ANALOG = 1;
 
     public const APPROVED = 'approved';
 
     public const SUBMITTED = 'submitted';
+
+    public function documentable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 
     /**
      * Indicates whether the document is approved.
