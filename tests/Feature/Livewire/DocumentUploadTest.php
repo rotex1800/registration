@@ -37,12 +37,12 @@ it('shows name passed to component', function () {
 });
 
 it('has save method wired to form', function () {
-    $comp = Livewire::test('document-upload', ['type' => 'file']);
+    $comp = Livewire::test('document-upload', ['category' => 'file']);
     $comp->assertMethodWiredToForm('save');
 });
 
 it('has file wired', function () {
-    $comp = Livewire::test('document-upload', ['type' => 'some-file']);
+    $comp = Livewire::test('document-upload', ['category' => 'some-file']);
     $comp->assertPropertyWired('file');
 });
 
@@ -51,7 +51,7 @@ it('stores uploaded file', function () {
     Storage::fake();
     $file = UploadedFile::fake()->image('avatar.png');
 
-    Livewire::test('document-upload', ['type' => 'file'])
+    Livewire::test('document-upload', ['category' => 'file'])
             ->set('file', $file)
             ->call('save');
     Storage::disk()->assertExists('documents/'.$user->uuid.'/file.png');
@@ -61,7 +61,7 @@ it('uploading file creates entry in document table', function () {
     Storage::fake('documents');
     $file = UploadedFile::fake()->image('avatar.png');
 
-    Livewire::test('document-upload', ['type' => 'file'])
+    Livewire::test('document-upload', ['category' => 'file'])
             ->set('file', $file)
             ->call('save');
 

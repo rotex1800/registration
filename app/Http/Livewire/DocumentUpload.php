@@ -15,7 +15,7 @@ class DocumentUpload extends Component
     use WithFileUploads;
 
     public $displayName;
-    public $type;
+    public $category;
     public $file;
     public User $user;
 
@@ -41,11 +41,11 @@ class DocumentUpload extends Component
         $clientOriginalName = $this->file->getClientOriginalName();
         $extension = $this->file->getClientOriginalExtension();
         $path = 'documents/'.$this->user->uuid;
-        Storage::disk()->putFileAs($path, $this->file, $this->type.'.'.$extension);
+        Storage::disk()->putFileAs($path, $this->file, $this->category.'.'.$extension);
 
         $document = Document::factory()->state([
             'name' => $clientOriginalName,
-            'path' => $path.'/'.$this->type.'.'.$extension,
+            'path' => $path.'/'.$this->category.'.'.$extension,
         ])->digital()->make();
 
         $this->user->documents()->save($document);
