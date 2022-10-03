@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Document;
 use App\Models\DocumentCategory;
+use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +19,7 @@ class DocumentUpload extends Component
     public $displayName;
     public $category;
     public $file;
-    public $enabled = true;
+    public $disabled = false;
     public User $user;
 
     public function mount()
@@ -40,26 +41,26 @@ class DocumentUpload extends Component
      */
     private function getStringForDocumentState(): string
     {
-        if ($this->category == DocumentCategory::PassportCopy->rawValue()) {
-            $passport = $this->user->passport;
-            if ($passport == null || !$passport->isComplete()) {
-                $this->enabled = false;
-                return __('document.state_form_incomplete');
-            }
+        $infoRelation = $this->user->relationFor(DocumentCategory::tryFrom($this->category));
 
-            $document = $passport->document;
-            if ($document == null) {
-                return __('document.state_not_uploaded');
-            }
-            $state = $document->state;
-            if ($state == Document::SUBMITTED) {
-                return __('document.state_submitted');
-            }
-            if ($state == Document::APPROVED) {
-                return __('document.state_approved');
-            }
+        if ($infoRelation == null
+            || $infoRelation->first() == null
+            || !$infoRelation->first()->isComplete()
+        ) {
+            $this->disabled = true;
+            return __('document.state_form_incomplete');
         }
-        return __('document.state_not_uploaded');
+
+        $document = $infoRelation->first()->document;
+        if ($document == null) {
+            return __('document.state_not_uploaded');
+        }
+        $state = $document->state;
+        return match (DocumentState::tryFrom($state)) {
+            DocumentState::Submitted => __('document.state_submitted'),
+            DocumentState::Approved => __('document.state_approved'),
+            default => __('document.state_not_uploaded')
+        };
     }
 
     public function save()

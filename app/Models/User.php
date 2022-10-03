@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -101,6 +102,27 @@ class User extends Authenticatable
     }
 
     /**
+     * Convenience method for getting the relation associated with the given
+     * DocumentType.
+     */
+    public function relationFor(DocumentCategory $category): ?Relation
+    {
+        if ($category == DocumentCategory::PassportCopy) {
+            return $this->passport();
+        }
+        return null;
+    }
+
+    /**
+     * @return HasOne
+     * @phpstan-return HasOne<Passport>
+     */
+    public function passport(): HasOne
+    {
+        return $this->hasOne(Passport::class, 'user_id');
+    }
+
+    /**
      * Checks whether the user has registered for the given event.
      *
      * @param  Event  $event
@@ -141,15 +163,6 @@ class User extends Authenticatable
     public function documents(): HasMany
     {
         return $this->hasMany(Document::class, 'owner_id');
-    }
-
-    /**
-     * @return HasOne
-     * @phpstan-return HasOne<Passport>
-     */
-    public function passport(): HasOne
-    {
-        return $this->hasOne(Passport::class, 'user_id');
     }
 
     /**

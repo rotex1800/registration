@@ -6,10 +6,12 @@
 >
     <testsuites>
         <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory>./tests/Feature</directory>
+            <directory>./tests/Livewire</directory>
+            <directory>./tests/Models</directory>
         </testsuite>
         <testsuite name="Browser">
-            <directory suffix="Test.php">./tests/Browser</directory>
+            <directory>./tests/Browser</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">

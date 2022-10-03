@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Document extends Model
 {
+
     use HasFactory;
 
     /**
@@ -16,10 +17,6 @@ class Document extends Model
      */
     public const TYPE_DIGITAL = 0;
     public const TYPE_ANALOG = 1;
-
-    public const APPROVED = 'approved';
-
-    public const SUBMITTED = 'submitted';
 
     public function documentable(): MorphTo
     {
@@ -33,7 +30,7 @@ class Document extends Model
      */
     public function isApproved(): bool
     {
-        return self::APPROVED == $this->state;
+        return DocumentState::Approved->value == $this->state;
     }
 
     /**
@@ -43,7 +40,7 @@ class Document extends Model
      */
     public function isSubmitted(): bool
     {
-        return self::SUBMITTED == $this->state;
+        return DocumentState::Submitted->value == $this->state;
     }
 
     /**

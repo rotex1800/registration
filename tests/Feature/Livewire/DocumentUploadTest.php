@@ -28,6 +28,7 @@ it('uses file upload trait', function () {
 
 it('shows name passed to component', function () {
     $comp = Livewire::test('document-upload', [
+        'category' => 'passport',
         'displayName' => 'Test File'
     ]);
 
@@ -39,13 +40,17 @@ it('shows name passed to component', function () {
 });
 
 it('has save method wired to form', function () {
-    $comp = Livewire::test('document-upload', ['category' => 'file']);
+    $comp = Livewire::test('document-upload', ['category' => 'passport']);
     $comp->assertMethodWiredToForm('save');
 });
 
 it('has file wired', function () {
-    $comp = Livewire::test('document-upload', ['category' => 'some-file']);
-    $comp->assertPropertyWired('file');
+    $passport = Passport::factory()->make();
+    $this->user->passport()->save($passport);
+    Livewire::test('document-upload', [
+        'category' => 'passport',
+        'disabled' => false
+    ])->assertPropertyWired('file');
 });
 
 it('stores uploaded file', function () {
@@ -53,17 +58,17 @@ it('stores uploaded file', function () {
     Storage::fake();
     $file = UploadedFile::fake()->image('avatar.png');
 
-    Livewire::test('document-upload', ['category' => 'file'])
+    Livewire::test('document-upload', ['category' => 'passport'])
             ->set('file', $file)
             ->call('save');
-    Storage::disk()->assertExists('documents/'.$user->uuid.'/file.png');
+    Storage::disk()->assertExists('documents/'.$user->uuid.'/passport.png');
 });
 
 it('uploading file creates entry in document table', function () {
     Storage::fake('documents');
     $file = UploadedFile::fake()->image('avatar.png');
 
-    Livewire::test('document-upload', ['category' => 'file'])
+    Livewire::test('document-upload', ['category' => 'passport'])
             ->set('file', $file)
             ->call('save');
 
@@ -71,7 +76,7 @@ it('uploading file creates entry in document table', function () {
                              ->and(Document::first())
         ->name->toBe('avatar.png')
         ->type->toBe(Document::TYPE_DIGITAL)
-        ->path->toBe('documents/'.$this->user->uuid.'/file.png');
+        ->path->toBe('documents/'.$this->user->uuid.'/passport.png');
 });
 
 it('has consts for document types', function () {
@@ -86,7 +91,7 @@ it('it shows approved status', function () {
     $this->user->passport->document()->save($document);
 
     Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->rawValue(),
+        'category' => DocumentCategory::PassportCopy->value,
     ])
             ->assertStatus(200)
             ->assertSee(__('document.state_approved'));
@@ -99,7 +104,7 @@ it('it shows submitted status', function () {
     $this->user->passport->document()->save($document);
 
     Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->rawValue(),
+        'category' => DocumentCategory::PassportCopy->value,
     ])
             ->assertStatus(200)
             ->assertSee(__('document.state_submitted'));
@@ -110,7 +115,7 @@ it('it shows not uploaded status', function () {
     $this->user->passport()->save($passport);
 
     Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->rawValue(),
+        'category' => DocumentCategory::PassportCopy->value,
     ])
             ->assertStatus(200)
             ->assertSee(__('document.state_not_uploaded'));
@@ -122,20 +127,39 @@ it('is disabled if the related info is not complete', function () {
     $this->user->passport()->save($passport);
 
     $enabled = Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->rawValue(),
+        'category' => DocumentCategory::PassportCopy->value,
     ])
                        ->assertStatus(200)
                        ->assertSee(__('document.state_form_incomplete'))
-                       ->get('enabled');
-    expect($enabled)->toBeFalse();
+                       ->get('disabled');
+    expect($enabled)->toBeTrue();
 });
 
 it('is disabled for no related info', function () {
     $enabled = Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->rawValue(),
+        'category' => DocumentCategory::PassportCopy->value,
     ])
                        ->assertStatus(200)
                        ->assertSee(__('document.state_form_incomplete'))
-                       ->get('enabled');
-    expect($enabled)->toBeFalse();
+                       ->get('disabled');
+    expect($enabled)->toBeTrue();
+});
+
+it('hides file input for incomplete form', function () {
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::PassportCopy->value
+    ])
+            ->assertStatus(200)
+            ->assertDontSeeHtml('<input');
+});
+
+it('shows file input for complete form', function () {
+    $passport = Passport::factory()->make();
+    $this->user->passport()->save($passport);
+
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::PassportCopy->value
+    ])->assertStatus(200)
+            ->assertSee(__('document.state_not_uploaded'))
+            ->assertSeeHtml('<input');
 });

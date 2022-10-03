@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Document;
+use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,10 +14,8 @@ class DocumentFactory extends Factory
 {
     /**
      * Define the model's default state.
-     *
-     * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'type' => fake()->numberBetween(0, 1),
@@ -34,7 +33,7 @@ class DocumentFactory extends Factory
      */
     public function digital()
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'type' => Document::TYPE_DIGITAL,
             ];
@@ -45,7 +44,7 @@ class DocumentFactory extends Factory
     {
         return $this->state(function () {
             return [
-                'state' => Document::APPROVED
+                'state' => DocumentState::Approved->value
             ];
         });
     }
@@ -54,7 +53,7 @@ class DocumentFactory extends Factory
     {
         return $this->state(function () {
             return [
-                'state' => Document::SUBMITTED
+                'state' => DocumentState::Submitted->value
             ];
         });
     }

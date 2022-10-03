@@ -3,6 +3,7 @@
 use App\Models\Comment;
 use App\Models\CounselorInfo;
 use App\Models\Document;
+use App\Models\DocumentCategory;
 use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\Role;
@@ -367,4 +368,14 @@ it('has auto assigned uuid', function () {
     $user = User::factory()->create();
     expect($user->uuid)
         ->toBeString();
+});
+
+it('returns info relation for given DocumentCategory', function () {
+    $user = User::factory()->create();
+    $passportRelation = $user->relationFor(DocumentCategory::PassportCopy);
+    expect($passportRelation)
+        ->toBeInstanceOf(HasOne::class)
+        ->getModel()->toBeInstanceOf(Passport::class)
+        ->and($user->relationFor(DocumentCategory::Unknown))
+        ->toBeNull();
 });

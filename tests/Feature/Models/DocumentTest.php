@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Document;
+use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -24,19 +25,18 @@ it('can be required', function () {
 });
 
 it('can be approved', function () {
-    expect(Document::factory()->create([
-        'state' => Document::APPROVED,
-    ])->isApproved())
+    expect(Document::factory()->approved()->create()->isApproved())
         ->toBeBool()
         ->toBeTrue();
 });
 
 it('can be submitted', function () {
-    expect(Document::factory()->create([
-        'state' => Document::SUBMITTED,
-    ])->isSubmitted())
-        ->toBeBool()
-        ->toBeTrue();
+    expect(Document::factory()
+                   ->submitted()
+                   ->create()
+                   ->isSubmitted()
+    )->toBeBool()
+     ->toBeTrue();
 });
 
 it('has path', function () {
@@ -45,8 +45,11 @@ it('has path', function () {
 });
 
 it('returns false for isSubmitted if it is already approved', function () {
-    expect(Document::factory()->create(['state' => Document::APPROVED])->isSubmitted())
-        ->toBeFalse();
+    expect(Document::factory()
+                   ->approved()
+                   ->create()
+                   ->isSubmitted()
+    )->toBeFalse();
 });
 
 it('is owned by a user', function () {
@@ -70,10 +73,10 @@ test('factory can create digital document', function () {
 
 test('factory can create approved document', function () {
     $doc = Document::factory()->approved()->make();
-    expect($doc->state)->toBe(Document::APPROVED);
+    expect($doc->state)->toBackEnumCase(DocumentState::Approved);
 });
 
 test('factory can create submitted document', function () {
     $doc = Document::factory()->submitted()->make();
-    expect($doc->state)->toBe(Document::SUBMITTED);
+    expect($doc->state)->toBackEnumCase(DocumentState::Submitted);
 });

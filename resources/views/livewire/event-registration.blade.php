@@ -233,7 +233,7 @@
         @if($this->isPartTwoActive())
             @livewire('document-upload', [
                             'displayName' => __('registration.passport-upload'),
-                            'type' => 'passport'
+                            'category' => 'passport'
                             ])
         @endif
     @endif
