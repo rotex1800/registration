@@ -1,4 +1,4 @@
-name: Deploy
+name: Release
 
 on:
   push:
@@ -14,3 +14,4 @@ jobs:
           release-type: php
           prerelease: true
           package-name: release-please-action
+          token: ${{ secrets.PAT }}
