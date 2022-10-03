@@ -97,6 +97,10 @@ it('owns documents', function () {
         ->toHaveCount(2);
 });
 
+it('can find document of given category', function () {
+
+})->skip("This still needs to be implemented");
+
 it('can check it owns a document', function () {
     $user = User::factory()
                 ->has(Document::factory())

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Document;
+use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -79,4 +80,11 @@ test('factory can create approved document', function () {
 test('factory can create submitted document', function () {
     $doc = Document::factory()->submitted()->make();
     expect($doc->state)->toBackEnumCase(DocumentState::Submitted);
+});
+
+test('factory can create document with the given DocumentCategory', function () {
+    $doc = Document::factory()->withCategory(DocumentCategory::PassportCopy)->create();
+    expect($doc)
+        ->toBeInstanceOf(Document::class)
+        ->category->toBeString()->toBe(DocumentCategory::PassportCopy->value);
 });

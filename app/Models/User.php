@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -58,7 +57,7 @@ use Illuminate\Support\Carbon;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasCompletenessCheck;
+    use HasFactory, Notifiable, HasCompletenessCheck, HasDocuments;
 
     /**
      * The attributes that are mass assignable.
@@ -102,19 +101,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Convenience method for getting the relation associated with the given
-     * DocumentType.
-     */
-    public function relationFor(DocumentCategory $category): ?Relation
-    {
-        if ($category == DocumentCategory::PassportCopy) {
-            return $this->passport();
-        }
-
-        return null;
-    }
-
-    /**
      * @return HasOne
      * @phpstan-return HasOne<Passport>
      */
@@ -155,15 +141,6 @@ class User extends Authenticatable
     public function registrationComment(): HasOne
     {
         return $this->hasOne(RegistrationComment::class);
-    }
-
-    /**
-     * @return HasMany
-     * @phpstan-return HasMany<Document>
-     */
-    public function documents(): HasMany
-    {
-        return $this->hasMany(Document::class, 'owner_id');
     }
 
     /**
@@ -238,15 +215,6 @@ class User extends Authenticatable
     public function thirdHostFamily(): ?HostFamily
     {
         return $this->hostFamily(3);
-    }
-
-    /**
-     * @param  Document  $document
-     * @return bool
-     */
-    public function owns(Document $document): bool
-    {
-        return $document->owner->id == $this->id;
     }
 
     /**

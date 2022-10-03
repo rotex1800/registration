@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::table('documents', function (Blueprint $table) {
             $table->string('path')->nullable();
-            $table->nullableMorphs('documentable');
         });
     }
 
@@ -26,5 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('documents', function (Blueprint $table) {
+            $table->dropColumn('path');
+        });
     }
 };
