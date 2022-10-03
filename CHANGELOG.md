@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/rotex1800/registration/compare/v0.1.3...v0.2.0) (2022-10-03)
+
+
+### Features
+
+* Disassociate Documents and Info Models ([#19](https://github.com/rotex1800/registration/issues/19)) ([3cefbe9](https://github.com/rotex1800/registration/commit/3cefbe98cf6b6ee095357abedcf6b3bfdc310cf3))
+
+
+### Miscellaneous Chores
+
+* **check:** remove explicit name ([1417403](https://github.com/rotex1800/registration/commit/1417403d861ff542717f43d9f61116acf30ba4bd))
+
 ## [0.1.3](https://github.com/rotex1800/registration/compare/v0.1.2...v0.1.3) (2022-10-03)
 
 
