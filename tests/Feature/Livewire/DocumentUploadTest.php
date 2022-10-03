@@ -85,10 +85,8 @@ it('has consts for document types', function () {
 });
 
 it('it shows approved status', function () {
-    $document = Document::factory()->approved()->make();
-    $passport = Passport::factory()->make();
-    $this->user->passport()->save($passport);
-    $this->user->passport->document()->save($document);
+    $document = Document::factory()->approved()->withCategory(DocumentCategory::PassportCopy)->make();
+    $this->user->documents()->save($document);
 
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
@@ -98,10 +96,8 @@ it('it shows approved status', function () {
 });
 
 it('it shows submitted status', function () {
-    $document = Document::factory()->submitted()->make();
-    $passport = Passport::factory()->make();
-    $this->user->passport()->save($passport);
-    $this->user->passport->document()->save($document);
+    $document = Document::factory()->submitted()->withCategory(DocumentCategory::PassportCopy)->make();
+    $this->user->documents()->save($document);
 
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
@@ -119,38 +115,6 @@ it('it shows not uploaded status', function () {
     ])
             ->assertStatus(200)
             ->assertSee(__('document.state_not_uploaded'));
-});
-
-it('is disabled if the related info is not complete', function () {
-    $passport = Passport::factory()->make();
-    $passport->nationality = null;
-    $this->user->passport()->save($passport);
-
-    $enabled = Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->value,
-    ])
-                       ->assertStatus(200)
-                       ->assertSee(__('document.state_form_incomplete'))
-                       ->get('disabled');
-    expect($enabled)->toBeTrue();
-});
-
-it('is disabled for no related info', function () {
-    $enabled = Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->value,
-    ])
-                       ->assertStatus(200)
-                       ->assertSee(__('document.state_form_incomplete'))
-                       ->get('disabled');
-    expect($enabled)->toBeTrue();
-});
-
-it('hides file input for incomplete form', function () {
-    Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->value,
-    ])
-            ->assertStatus(200)
-            ->assertDontSeeHtml('<input');
 });
 
 it('shows file input for complete form', function () {

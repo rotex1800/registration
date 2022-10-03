@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\Document;
+use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -80,3 +82,25 @@ test('factory can create submitted document', function () {
     $doc = Document::factory()->submitted()->make();
     expect($doc->state)->toBackEnumCase(DocumentState::Submitted);
 });
+
+test('factory can create document with the given DocumentCategory', function () {
+    $doc = Document::factory()->withCategory(DocumentCategory::PassportCopy)->create();
+    expect($doc)
+        ->toBeInstanceOf(Document::class)
+        ->category->toBeString()->toBe(DocumentCategory::PassportCopy->value);
+});
+
+test('category is unique', function () {
+    $first = Document::factory()->withCategory(DocumentCategory::PassportCopy)->make();
+    $second = Document::factory()->withCategory(DocumentCategory::PassportCopy)->make();
+
+    $first->save();
+    $second->save();
+})->throws(QueryException::class);
+
+test('category can be null multiple times', function () {
+    $first = Document::factory()->state(['category' => null])->make();
+    $second = Document::factory()->state(['category' => null])->make();
+    $first->save();
+    $second->save();
+})->expectNotToPerformAssertions();

@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('documents', function (Blueprint $table) {
+            $table->string('path')->nullable();
+        });
     }
 
     /**
@@ -24,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->dropColumn('documentable_type');
+            $table->dropColumn('path');
         });
     }
 };

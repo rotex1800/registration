@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->string('path')->nullable();
-            $table->nullableMorphs('documentable');
+            $table->string('category')->nullable()->unique();
         });
     }
 
@@ -26,5 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('documents', function (Blueprint $table) {
+            $table->dropColumn('category');
+        });
     }
 };

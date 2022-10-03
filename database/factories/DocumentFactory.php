@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Document;
+use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -54,6 +55,15 @@ class DocumentFactory extends Factory
         return $this->state(function () {
             return [
                 'state' => DocumentState::Submitted->value,
+            ];
+        });
+    }
+
+    public function withCategory(DocumentCategory $category)
+    {
+        return $this->state(function () use ($category) {
+            return [
+                'category' => $category->value,
             ];
         });
     }
