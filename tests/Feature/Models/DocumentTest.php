@@ -104,4 +104,4 @@ test('category can be null multiple times', function () {
     $second = Document::factory()->state(['category' => null])->make();
     $first->save();
     $second->save();
-});
+})->expectNotToPerformAssertions();
