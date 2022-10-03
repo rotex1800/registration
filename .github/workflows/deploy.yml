@@ -11,22 +11,28 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       environment: ${{ steps.environment.outputs.environment }}
+      url: ${{ steps.environment.outputs.url }}
     steps:
       - shell: bash
         id: environment
         run: |
           environment="Sandbox"
+          url="https://tour-sandbox.rotex1800.de"
           if [[ "${{ github.event.action }}" == "released" ]]; then
              environment="Production"
+            url="https://tour.rotex1800.de"
           fi
           echo "::set-output name=environment::${environment}"
+          echo "::set-output name=url::${url}"
 
 
   deploy:
     needs:
       - select-environment
     runs-on: ubuntu-latest
-    environment: ${{ needs.select-environment.outputs.environment }}
+    environment:
+      name: ${{ needs.select-environment.outputs.environment }}
+      url: ${{ needs.select-environment.outputs.url }}
     steps:
       - uses: actions/checkout@v3
       - name: Deploy
