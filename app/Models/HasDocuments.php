@@ -32,10 +32,10 @@ trait HasDocuments
     /**
      * Returns the first document matching the category or null if no such
      * Document can be found.
-     * @param  DocumentCategory  $category
+     * @param  ?DocumentCategory  $category
      * @return Document|null
      */
-    public function documentBy(DocumentCategory $category): ?Document
+    public function documentBy(?DocumentCategory $category): ?Document
     {
         return $this->documents()->whereCategory($category)->first();
     }

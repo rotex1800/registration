@@ -45,18 +45,7 @@ class DocumentUpload extends Component
      */
     private function getStringForDocumentState(): string
     {
-        $infoRelation = $this->user->relationFor(DocumentCategory::tryFrom($this->category));
-
-        if ($infoRelation == null
-            || $infoRelation->first() == null
-            || ! $infoRelation->first()->isComplete()
-        ) {
-            $this->disabled = true;
-
-            return __('document.state_form_incomplete');
-        }
-
-        $document = $infoRelation->first()->document;
+        $document = $this->user->documentBy(DocumentCategory::tryFrom($this->category));
         if ($document == null) {
             return __('document.state_not_uploaded');
         }
@@ -83,7 +72,9 @@ class DocumentUpload extends Component
         $document = Document::factory()->state([
             'name' => $clientOriginalName,
             'path' => $path.'/'.$this->category.'.'.$extension,
-        ])->digital()->make();
+        ])->digital()
+                            ->withCategory(DocumentCategory::tryFrom($this->category))
+                            ->make();
 
         $this->user->documents()->save($document);
 

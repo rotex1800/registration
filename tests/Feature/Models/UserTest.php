@@ -113,6 +113,10 @@ it('returns null if no matching Document can be found', function () {
         ->toBeNull();
 });
 
+it('returns null if the given category is null', function () {
+    expect(User::factory()->create()->documentBy(null))->toBeNull();
+});
+
 it('can check it owns a document', function () {
     $user = User::factory()
                 ->has(Document::factory())
