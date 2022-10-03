@@ -7,11 +7,14 @@ version: 2
 updates:
   - package-ecosystem: "composer" # See documentation for possible values
     directory: "/" # Location of package manifests
+    commit-message:
+      prefix: 'chore(deps):'
     schedule:
       interval: "daily"
-      
+
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
+    commit-message:
+      prefix: 'chore(deps):'
     schedule:
       interval: "daily"
-      
