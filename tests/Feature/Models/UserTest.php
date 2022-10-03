@@ -3,6 +3,7 @@
 use App\Models\Comment;
 use App\Models\CounselorInfo;
 use App\Models\Document;
+use App\Models\DocumentCategory;
 use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\Role;
@@ -118,6 +119,18 @@ it('can check it does not own a document', function () {
 it('has first name', function () {
     $user = User::factory()->create();
     expect($user->first_name)->toBeString();
+});
+
+it('has family name', function () {
+    $user = User::factory()->create();
+    expect($user->family_name)->toBeString();
+});
+
+it('has full name accessor', function () {
+    $user = User::factory()->create();
+    expect($user->fullName)
+        ->toBeString()
+        ->toBe($user->first_name.' '.$user->family_name);
 });
 
 it('has birthday', function () {
@@ -349,4 +362,20 @@ it('is NOT complete if one expected attribute is null', function () {
         $complete = $user->isComplete();
         expect($complete)->toBeFalse();
     }
+});
+
+it('has auto assigned uuid', function () {
+    $user = User::factory()->create();
+    expect($user->uuid)
+        ->toBeString();
+});
+
+it('returns info relation for given DocumentCategory', function () {
+    $user = User::factory()->create();
+    $passportRelation = $user->relationFor(DocumentCategory::PassportCopy);
+    expect($passportRelation)
+        ->toBeInstanceOf(HasOne::class)
+        ->getModel()->toBeInstanceOf(Passport::class)
+        ->and($user->relationFor(DocumentCategory::Unknown))
+        ->toBeNull();
 });

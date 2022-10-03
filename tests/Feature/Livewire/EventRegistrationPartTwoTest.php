@@ -69,19 +69,23 @@ it('hides part one when calling method to show part two', function () {
     // Act
     $this->component->call('showPartTwo');
 
-    // Assert
-
+    // Assert it shows
     $this->component->assertStatus(200)
-        // See headlines from part two
+        // headlines from part two
                     ->assertSeeTextInOrder($this->headlinesPartTwo);
+    // sets active part to two
+    expect($this->component->activePart)
+        ->toBe('two');
 });
 
 it('hides part two when calling method to show part one', function () {
-    // Act
-    $this->component->call('showPartOne');
-
-    // Assert
-    $this->component->assertStatus(200)
-        // See headlines from part one
-                    ->assertSeeTextInOrder($this->headlinesPartOne);
+    // Act & Assert it shows
+    $this->component
+        ->call('showPartOne')
+        ->assertStatus(200)
+        // headlines from part one
+        ->assertSeeInOrder($this->headlinesPartOne);
+    // sets active part to one
+    expect($this->component->activePart)
+        ->toBe('one');
 });

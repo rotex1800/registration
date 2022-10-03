@@ -3,7 +3,6 @@
 use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
-use Laravel\Dusk\Browser;
 use function Pest\Laravel\actingAs;
 
 it('shows main navigation', function () {
@@ -53,18 +52,62 @@ it('shows event details component', function () {
         ->assertStatus(200);
 });
 
-it('shows file upload for passport in part two', function () {
-    $this->browse(function (Browser $browser) {
-        $role = Role::factory()
-                    ->has(User::factory())
-                    ->has(Event::factory())
-                    ->create();
-        $user = $role->users[0];
-        $event = $role->events[0];
+it('can link to first part directly', function () {
+    $role = Role::factory()
+                ->has(User::factory())
+                ->has(Event::factory())
+                ->create();
+    $user = $role->users[0];
+    $event = $role->events[0];
+    $user->events()->attach($event);
 
-        $browser->
-        loginAs($user)
-                ->get(route('event.show', $event))
-                ->assertStatus(200);
-    });
+    actingAs($user)
+        ->get(route('event.show', $event).'?part=one')
+        ->assertStatus(200)
+        ->assertSee(__('registration.about-yeo'));
+});
+
+it('can link to second part directly', function () {
+    $role = Role::factory()
+                ->has(User::factory())
+                ->has(Event::factory())
+                ->create();
+    $event = $role->events[0];
+    $user = $role->users[0];
+    $user->events()->attach($event);
+
+    actingAs($user)
+        ->get(route('event.show', $event).'?part=two')
+        ->assertStatus(200)
+        ->assertSee(__('registration.passport-upload'));
+});
+
+it('defaults to part one if no part defined', function () {
+    $role = Role::factory()
+                ->has(User::factory())
+                ->has(Event::factory())
+                ->create();
+    $user = $role->users[0];
+    $event = $role->events[0];
+    $user->events()->attach($event);
+
+    actingAs($user)
+        ->get(route('event.show', $event))
+        ->assertStatus(200)
+        ->assertSee(__('registration.about-yeo'));
+});
+
+it('defaults to part one if unknown part defined', function () {
+    $role = Role::factory()
+                ->has(User::factory())
+                ->has(Event::factory())
+                ->create();
+    $user = $role->users[0];
+    $event = $role->events[0];
+    $user->events()->attach($event);
+
+    actingAs($user)
+        ->get(route('event.show', $event).'?part=nonexistent')
+        ->assertStatus(200)
+        ->assertSee(__('registration.about-yeo'));
 });

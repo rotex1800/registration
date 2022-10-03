@@ -9,5 +9,10 @@ class CounselorInfo extends Model
 {
     use HasFactory;
     use PersonInfo;
-    use HasCompletnessCheck;
+    use HasCompletenessCheck;
+
+    public function isComplete(): bool
+    {
+        return $this->isCompleteCheck(CounselorInfo::factory()->definition());
+    }
 }

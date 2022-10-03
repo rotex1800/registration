@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Document;
+use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,15 +14,14 @@ class DocumentFactory extends Factory
 {
     /**
      * Define the model's default state.
-     *
-     * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'type' => fake()->numberBetween(0, count(Document::TYPES) - 1),
+            'type' => fake()->numberBetween(0, 1),
             'is_required' => fake()->boolean(),
             'name' => fake()->word(),
+            'path' => fake()->filePath(),
             'owner_id' => User::factory(),
         ];
     }
@@ -29,13 +29,31 @@ class DocumentFactory extends Factory
     /**
      * Indicate the document is representing a digital file.
      *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     * @return Factory
      */
     public function digital()
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
-                'type' => Document::TYPES['digital'],
+                'type' => Document::TYPE_DIGITAL,
+            ];
+        });
+    }
+
+    public function approved()
+    {
+        return $this->state(function () {
+            return [
+                'state' => DocumentState::Approved->value,
+            ];
+        });
+    }
+
+    public function submitted()
+    {
+        return $this->state(function () {
+            return [
+                'state' => DocumentState::Submitted->value,
             ];
         });
     }

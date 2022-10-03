@@ -3,10 +3,15 @@
 namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\EventRegistration;
+use App\Models\BioFamily;
+use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\HostFamily;
+use App\Models\Passport;
 use App\Models\RegistrationComment;
+use App\Models\RotaryInfo;
 use App\Models\User;
+use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
@@ -528,7 +533,7 @@ it('has host families wired to component', function () {
 
 it('displays check for complete passport section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-
+    $inbound->passport()->save(Passport::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -545,12 +550,14 @@ it('displays check for complete user section', function () {
         'event' => $this->event,
     ]);
 
-    assertSeesCompletenessIndication($component, 'registration.about-you', 'user.birthday');
+    assertSeesCompletenessIndication($component, 'registration.about-you', 'user.gender');
 });
 
 it('displays check for complete rotary section', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
+    $rotary = RotaryInfo::factory()->create();
+    $inbound->rotaryInfo()->save($rotary);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
@@ -560,6 +567,7 @@ it('displays check for complete rotary section', function () {
 
 it('displays check for complete counselor section', function () {
     $inbound = createInboundRegisteredFor($this->event);
+    $inbound->counselor()->save(CounselorInfo::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -570,7 +578,7 @@ it('displays check for complete counselor section', function () {
 
 it('displays check for complete yeo section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-
+    $inbound->yeo()->save(YeoInfo::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -581,7 +589,7 @@ it('displays check for complete yeo section', function () {
 
 it('displays check for complete bio family section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-
+    $inbound->bioFamily()->save(BioFamily::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -632,7 +640,7 @@ it('displays check for complete host family three section', function () {
 
 it('displays check for complete comment section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-
+    $inbound->registrationComment()->save(RegistrationComment::factory()->make());
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
@@ -641,6 +649,86 @@ it('displays check for complete comment section', function () {
     assertSeesCompletenessIndication($component, 'registration.comment', 'comment.body');
 });
 
+it('displays no checkmark for empty passport on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.passport').' ✅');
+});
+
+it('displays no checkmark for empty rotary info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-rotary').' ✅');
+});
+
+it('displays no checkmark for empty counselor info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-counselor').' ✅');
+});
+
+it('displays no checkmark for empty yeo info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-yeo').' ✅');
+});
+
+it('displays no checkmark for empty bio family info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-bio-family').' ✅');
+});
+
+it('displays no checkmark for empty host family one info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-host-family-one').' ✅');
+});
+
+it('displays no checkmark for empty host family two info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-host-family-two').' ✅');
+});
+
+it('displays no checkmark for empty host family three info on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.about-host-family-three').' ✅');
+});
+
+it('displays no checkmark for empty comment on load', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+    $component->assertDontSeeText(__('registration.comment').' ✅');
+});
 /**
  * @param  TestableLivewire  $component
  * @param $headlineKey

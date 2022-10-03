@@ -25,9 +25,14 @@ class EventRegistration extends Component
 
     private const NULLABLE = 'nullable';
 
-    private const PART_ONE = 'one';
+    public const PART_ONE = 'one';
 
-    private const PART_TWO = 'two';
+    public const PART_TWO = 'two';
+
+    public const KNOWN_PARTS = [
+        self::PART_ONE,
+        self::PART_TWO,
+    ];
 
     public Event $event;
 
@@ -53,7 +58,11 @@ class EventRegistration extends Component
 
     public RegistrationComment $comment;
 
-    public string $activePart;
+    public string $activePart = self::PART_ONE;
+
+    protected $queryString = [
+        'activePart' => ['as' => 'part'],
+    ];
 
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
@@ -117,7 +126,6 @@ class EventRegistration extends Component
         $this->hostFamilyTwo = $this->user->secondHostFamily();
         $this->hostFamilyThree = $this->user->thirdHostFamily();
         $this->comment = $this->user->registrationComment()->firstOrNew();
-        $this->activePart = self::PART_ONE;
     }
 
     public function showPartOne()

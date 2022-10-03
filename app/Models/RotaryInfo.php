@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RotaryInfo extends Model
 {
-    use HasFactory, HasCompletnessCheck;
+    use HasFactory, HasCompletenessCheck;
 
     /**
      * Inverse of the one-to-one relation between a user and RotaryInfo
@@ -15,5 +15,10 @@ class RotaryInfo extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function isComplete(): bool
+    {
+        return $this->isCompleteCheck(RotaryInfo::factory()->definition());
     }
 }

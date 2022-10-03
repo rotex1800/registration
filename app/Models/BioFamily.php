@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class BioFamily extends Model
 {
-    use HasFactory, HasCompletnessCheck;
+    use HasFactory, HasCompletenessCheck;
+
+    public function isComplete(): bool
+    {
+        return $this->isCompleteCheck(BioFamily::factory()->definition());
+    }
 }
