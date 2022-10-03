@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Document extends Model
 {
-
     use HasFactory;
 
     /**
      * Possible Document types
      */
     public const TYPE_DIGITAL = 0;
+
     public const TYPE_ANALOG = 1;
 
     public function documentable(): MorphTo

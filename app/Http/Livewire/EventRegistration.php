@@ -33,22 +33,37 @@ class EventRegistration extends Component
         self::PART_ONE,
         self::PART_TWO,
     ];
+
     public Event $event;
+
     public RotaryInfo $rotary;
+
     public array $districts;
+
     public User $user;
+
     public Passport $passport;
+
     public CounselorInfo $counselor;
+
     public YeoInfo $yeo;
+
     public BioFamily $bioFamily;
+
     public ?HostFamily $hostFamilyOne;
+
     public ?HostFamily $hostFamilyTwo;
+
     public ?HostFamily $hostFamilyThree;
+
     public RegistrationComment $comment;
+
     public string $activePart = self::PART_ONE;
+
     protected $queryString = [
-        'activePart' => ['as' => 'part']
+        'activePart' => ['as' => 'part'],
     ];
+
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,

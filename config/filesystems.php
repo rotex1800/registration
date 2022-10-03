@@ -38,7 +38,7 @@ return [
         'documents' => [
             'driver' => 'scoped',
             'disk' => 'local',
-            'prefix' => 'documents'
+            'prefix' => 'documents',
         ],
 
         'public' => [

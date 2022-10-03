@@ -58,5 +58,5 @@ return [
     'save' => 'Speichern',
     'part_one' => 'Teil 1',
     'part_two' => 'Teil 2',
-    'passport-upload' => "Reisepass Kopie",
+    'passport-upload' => 'Reisepass Kopie',
 ];

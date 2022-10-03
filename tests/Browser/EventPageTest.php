@@ -80,7 +80,6 @@ it('can link to second part directly', function () {
         ->get(route('event.show', $event).'?part=two')
         ->assertStatus(200)
         ->assertSee(__('registration.passport-upload'));
-
 });
 
 it('defaults to part one if no part defined', function () {
@@ -91,7 +90,6 @@ it('defaults to part one if no part defined', function () {
     $user = $role->users[0];
     $event = $role->events[0];
     $user->events()->attach($event);
-
 
     actingAs($user)
         ->get(route('event.show', $event))
@@ -108,10 +106,8 @@ it('defaults to part one if unknown part defined', function () {
     $event = $role->events[0];
     $user->events()->attach($event);
 
-
     actingAs($user)
         ->get(route('event.show', $event).'?part=nonexistent')
         ->assertStatus(200)
         ->assertSee(__('registration.about-yeo'));
-
 });

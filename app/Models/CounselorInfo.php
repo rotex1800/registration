@@ -15,6 +15,4 @@ class CounselorInfo extends Model
     {
         return $this->isCompleteCheck(CounselorInfo::factory()->definition());
     }
-
-
 }

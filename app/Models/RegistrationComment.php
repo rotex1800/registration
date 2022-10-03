@@ -19,6 +19,4 @@ class RegistrationComment extends Model
     {
         return $this->body != null && trim($this->body) != '';
     }
-
-
 }

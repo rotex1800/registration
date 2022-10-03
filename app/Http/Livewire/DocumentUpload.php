@@ -13,13 +13,16 @@ use Livewire\WithFileUploads;
 
 class DocumentUpload extends Component
 {
-
     use WithFileUploads;
 
     public $displayName;
+
     public $category;
+
     public $file;
+
     public $disabled = false;
+
     public User $user;
 
     public function mount()
@@ -30,9 +33,10 @@ class DocumentUpload extends Component
     public function render()
     {
         $state = $this->getStringForDocumentState();
+
         return view('livewire.document-upload', [
             'displayName' => $this->displayName,
-            'state' => $state
+            'state' => $state,
         ]);
     }
 
@@ -45,9 +49,10 @@ class DocumentUpload extends Component
 
         if ($infoRelation == null
             || $infoRelation->first() == null
-            || !$infoRelation->first()->isComplete()
+            || ! $infoRelation->first()->isComplete()
         ) {
             $this->disabled = true;
+
             return __('document.state_form_incomplete');
         }
 
@@ -56,6 +61,7 @@ class DocumentUpload extends Component
             return __('document.state_not_uploaded');
         }
         $state = $document->state;
+
         return match (DocumentState::tryFrom($state)) {
             DocumentState::Submitted => __('document.state_submitted'),
             DocumentState::Approved => __('document.state_approved'),
@@ -65,9 +71,8 @@ class DocumentUpload extends Component
 
     public function save()
     {
-
         $this->validate([
-            'file' => 'max:5120'
+            'file' => 'max:5120',
         ]);
 
         $clientOriginalName = $this->file->getClientOriginalName();

@@ -25,5 +25,4 @@ class HostFamily extends Model
     {
         return $this->isCompleteCheck(HostFamily::factory()->definition());
     }
-
 }

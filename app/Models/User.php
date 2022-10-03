@@ -97,7 +97,7 @@ class User extends Authenticatable
     public function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
+            get: fn ($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
         );
     }
 
@@ -110,6 +110,7 @@ class User extends Authenticatable
         if ($category == DocumentCategory::PassportCopy) {
             return $this->passport();
         }
+
         return null;
     }
 

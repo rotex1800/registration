@@ -13,6 +13,4 @@ class BioFamily extends Model
     {
         return $this->isCompleteCheck(BioFamily::factory()->definition());
     }
-
-
 }

@@ -38,6 +38,4 @@ class Passport extends Model
     {
         return $this->morphOne(Document::class, 'documentable');
     }
-
-
 }

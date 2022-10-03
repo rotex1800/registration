@@ -72,7 +72,7 @@ class Event extends Model
         return $this->isCompleteCheck([
             'name',
             'start',
-            'end'
+            'end',
         ]);
     }
 }

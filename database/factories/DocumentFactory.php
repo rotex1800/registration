@@ -44,7 +44,7 @@ class DocumentFactory extends Factory
     {
         return $this->state(function () {
             return [
-                'state' => DocumentState::Approved->value
+                'state' => DocumentState::Approved->value,
             ];
         });
     }
@@ -53,7 +53,7 @@ class DocumentFactory extends Factory
     {
         return $this->state(function () {
             return [
-                'state' => DocumentState::Submitted->value
+                'state' => DocumentState::Submitted->value,
             ];
         });
     }

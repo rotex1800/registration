@@ -4,7 +4,7 @@ namespace App\Models;
 
 trait HasCompletenessCheck
 {
-    abstract function isComplete(): bool;
+    abstract public function isComplete(): bool;
 
     protected function isCompleteCheck(array $requiredAttrs): bool
     {
@@ -15,6 +15,7 @@ trait HasCompletenessCheck
                 return false;
             }
         }
+
         return $complete;
     }
 }

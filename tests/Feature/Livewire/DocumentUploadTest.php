@@ -11,8 +11,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Livewire;
 use Livewire\WithFileUploads;
-use Storage;
 use function Pest\Laravel\actingAs;
+use Storage;
 
 uses(RefreshDatabase::class);
 
@@ -29,7 +29,7 @@ it('uses file upload trait', function () {
 it('shows name passed to component', function () {
     $comp = Livewire::test('document-upload', [
         'category' => 'passport',
-        'displayName' => 'Test File'
+        'displayName' => 'Test File',
     ]);
 
     $comp->assertStatus(200)
@@ -49,7 +49,7 @@ it('has file wired', function () {
     $this->user->passport()->save($passport);
     Livewire::test('document-upload', [
         'category' => 'passport',
-        'disabled' => false
+        'disabled' => false,
     ])->assertPropertyWired('file');
 });
 
@@ -147,7 +147,7 @@ it('is disabled for no related info', function () {
 
 it('hides file input for incomplete form', function () {
     Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->value
+        'category' => DocumentCategory::PassportCopy->value,
     ])
             ->assertStatus(200)
             ->assertDontSeeHtml('<input');
@@ -158,7 +158,7 @@ it('shows file input for complete form', function () {
     $this->user->passport()->save($passport);
 
     Livewire::test('document-upload', [
-        'category' => DocumentCategory::PassportCopy->value
+        'category' => DocumentCategory::PassportCopy->value,
     ])->assertStatus(200)
             ->assertSee(__('document.state_not_uploaded'))
             ->assertSeeHtml('<input');
