@@ -6,7 +6,7 @@ echo "Deployment started"
 # Enter maintenance mode
 (php artisan down) || true
 
-#git pull origin main
+git pull origin main
 
 # Install composer dependencies
 composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
@@ -21,7 +21,7 @@ php artisan optimize
 npm run build
 
 # Run database migrations
-#php artisan migrate --force
+php artisan migrate --force
 
 
 # Update caches
