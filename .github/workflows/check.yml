@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    types: [ opened, edited, reopened, synchronize ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -63,3 +64,11 @@ jobs:
   scan:
     uses: ./.github/workflows/gitleaks.yml
     secrets: inherit
+
+  pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Title conforms to Conventional Commits
+        uses: amannn/action-semantic-pull-request@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

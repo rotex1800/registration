@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  release:
+    types:
+      - released
+      - prereleased
+
+jobs:
+  select-environment:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.environment.outputs.environment }}
+    steps:
+      - shell: bash
+        id: environment
+        run: |
+          environment="Sandbox"
+          if [[ "${{ github.event.action }}" == "released" ]]; then
+             environment="Production"
+          fi
+          echo "::set-output name=environment::${environment}"
+
+
+  deploy:
+    needs:
+      - select-environment
+    runs-on: ubuntu-latest
+    environment: ${{ needs.select-environment.outputs.environment }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          script: "cd ${{ secrets.PROJECT_LOCATION }} && ./.scripts/deploy.sh"
