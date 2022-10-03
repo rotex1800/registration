@@ -8,15 +8,6 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 trait HasDocuments
 {
     /**
-     * @return HasMany
-     * @phpstan-return HasMany<Document>
-     */
-    public function documents(): HasMany
-    {
-        return $this->hasMany(Document::class, 'owner_id');
-    }
-
-    /**
      * @param  Document  $document
      * @return bool
      */
@@ -36,5 +27,25 @@ trait HasDocuments
         }
 
         return null;
+    }
+
+    /**
+     * Returns the first document matching the category or null if no such
+     * Document can be found.
+     * @param  DocumentCategory  $category
+     * @return Document|null
+     */
+    public function documentBy(DocumentCategory $category): ?Document
+    {
+        return $this->documents()->whereCategory($category)->first();
+    }
+
+    /**
+     * @return HasMany
+     * @phpstan-return HasMany<Document>
+     */
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Document::class, 'owner_id');
     }
 }

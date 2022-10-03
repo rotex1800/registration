@@ -98,8 +98,20 @@ it('owns documents', function () {
 });
 
 it('can find document of given category', function () {
+    $user = User::factory()
+                ->has(Document::factory()->withCategory(DocumentCategory::PassportCopy))
+                ->has(Document::factory()->withCategory(DocumentCategory::Unknown))
+                ->create();
+    expect($user->documentBy(DocumentCategory::PassportCopy))
+        ->toBeInstanceOf(Document::class)
+        ->category->toBe(DocumentCategory::PassportCopy->value);
 
-})->skip("This still needs to be implemented");
+});
+
+it('returns null if no matching Document can be found', function () {
+    expect(User::factory()->create()->documentBy(DocumentCategory::PassportCopy))
+        ->toBeNull();
+});
 
 it('can check it owns a document', function () {
     $user = User::factory()
