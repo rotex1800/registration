@@ -13,5 +13,4 @@ jobs:
         with:
           release-type: php
           prerelease: true
-          package-name: release-please-action
           token: ${{ secrets.PAT }}
