@@ -1,10 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "rotex1800/registration",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "The source code for our event registration.",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "rotex1800",
+        "youth-exchange",
+        "registration"
     ],
     "license": "MIT",
     "require": {

@@ -1,24 +1,32 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - released
+      - prereleased
 
 jobs:
-  release-please:
+  select-environment:
     runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.environment.outputs.environment }}
     steps:
-      - uses: google-github-actions/release-please-action@v3
-        with:
-          release-type: php
-          package-name: release-please-action
+      - shell: bash
+        id: environment
+        run: |
+          environment="Sandbox"
+          if [[ "${{ github.event.action }}" == "released" ]]; then
+             environment="Production"
+          fi
+          echo "::set-output name=environment::${environment}"
+
 
   deploy:
     needs:
-      - release-please
-    if: ${{ needs.release-please.outputs.release_created }}
+      - select-environment
     runs-on: ubuntu-latest
+    environment: ${{ needs.select-environment.outputs.environment }}
     steps:
       - uses: actions/checkout@v3
       - name: Deploy
