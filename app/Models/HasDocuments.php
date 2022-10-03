@@ -32,6 +32,7 @@ trait HasDocuments
     /**
      * Returns the first document matching the category or null if no such
      * Document can be found.
+     *
      * @param  ?DocumentCategory  $category
      * @return Document|null
      */

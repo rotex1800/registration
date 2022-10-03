@@ -96,7 +96,6 @@ test('category is unique', function () {
 
     $first->save();
     $second->save();
-
 })->throws(QueryException::class);
 
 test('category can be null multiple times', function () {

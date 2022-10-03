@@ -63,7 +63,7 @@ class DocumentFactory extends Factory
     {
         return $this->state(function () use ($category) {
             return [
-                'category' => $category->value
+                'category' => $category->value,
             ];
         });
     }

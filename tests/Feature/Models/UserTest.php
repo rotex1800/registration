@@ -105,7 +105,6 @@ it('can find document of given category', function () {
     expect($user->documentBy(DocumentCategory::PassportCopy))
         ->toBeInstanceOf(Document::class)
         ->category->toBe(DocumentCategory::PassportCopy->value);
-
 });
 
 it('returns null if no matching Document can be found', function () {
