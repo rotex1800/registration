@@ -11,8 +11,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Livewire;
 use Livewire\WithFileUploads;
-use function Pest\Laravel\actingAs;
 use Storage;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
@@ -107,9 +107,6 @@ it('it shows submitted status', function () {
 });
 
 it('it shows not uploaded status', function () {
-    $passport = Passport::factory()->make();
-    $this->user->passport()->save($passport);
-
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])
@@ -118,9 +115,6 @@ it('it shows not uploaded status', function () {
 });
 
 it('shows file input for complete form', function () {
-    $passport = Passport::factory()->make();
-    $this->user->passport()->save($passport);
-
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])->assertStatus(200)
