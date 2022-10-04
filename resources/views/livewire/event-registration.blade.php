@@ -232,34 +232,45 @@
 
         {{-- Part Two --}}
         @if($this->isPartTwoActive())
-            @livewire('document-upload', [
-                            'displayName' => __('registration.passport-copy'),
-                            'category' => DocumentCategory::PassportCopy->value
-                            ])
-            @livewire('document-upload', [
-                            'displayName' => __('registration.appf-copy'),
-                            'category' => DocumentCategory::AppfCopy->value
-                            ])
-            @livewire('document-upload', [
-                            'displayName' => __('registration.motivation'),
-                            'category' => DocumentCategory::Motivation->value
-                            ])
-            @livewire('document-upload', [
-                            'displayName' => __('registration.picture'),
-                            'category' => DocumentCategory::Picture->value
-                            ])
-            @livewire('document-upload', [
-                            'displayName' => __('registration.insurance-policy'),
-                            'category' => DocumentCategory::InsurancePolice->value
-                            ])
-            @livewire('document-upload', [
-                            'displayName' => __('registration.residence-permit'),
-                            'category' => DocumentCategory::ResidencePermit->value
-                            ])
-            @livewire('document-upload', [
-                            'displayName' => __('registration.school-certificate'),
-                            'category' => DocumentCategory::SchoolCertificate->value
-                            ])
+            <livewire:document-upload :display-name="__('registration.rules')"
+                                      :category="App\Models\DocumentCategory::Rules->value"
+                                      wire:key="{{ App\Models\DocumentCategory::Rules->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.appf-copy')"
+                                      :category="App\Models\DocumentCategory::AppfCopy->value"
+                                      wire:key="{{ App\Models\DocumentCategory::AppfCopy->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.insurance-policy')"
+                                      :category="App\Models\DocumentCategory::InsurancePolice->value"
+                                      wire:key="{{ App\Models\DocumentCategory::InsurancePolice->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.passport-copy')"
+                                      :category="App\Models\DocumentCategory::PassportCopy->value"
+                                      wire:key="{{ App\Models\DocumentCategory::PassportCopy->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.residence-permit')"
+                                      :category="App\Models\DocumentCategory::ResidencePermit->value"
+                                      wire:key="{{ App\Models\DocumentCategory::ResidencePermit->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.school-certificate')"
+                                      :category="App\Models\DocumentCategory::SchoolCertificate->value"
+                                      wire:key="{{ App\Models\DocumentCategory::SchoolCertificate->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.picture')"
+                                      :category="App\Models\DocumentCategory::Picture->value"
+                                      wire:key="{{ App\Models\DocumentCategory::Picture->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.motivation')"
+                                      :category="App\Models\DocumentCategory::Motivation->value"
+                                      wire:key="{{ App\Models\DocumentCategory::Motivation->value }}"
+            />
         @endif
     @endif
 </div>
