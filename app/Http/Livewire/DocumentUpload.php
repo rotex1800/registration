@@ -69,15 +69,18 @@ class DocumentUpload extends Component
         $path = 'documents/'.$this->user->uuid;
         Storage::disk()->putFileAs($path, $this->file, $this->category.'.'.$extension);
 
-        $document = Document::factory()->state([
-            'name' => $clientOriginalName,
-            'path' => $path.'/'.$this->category.'.'.$extension,
-        ])->digital()
-                            ->withCategory(DocumentCategory::tryFrom($this->category))
-                            ->make();
+        $dbDoc = $this->user->documentBy(DocumentCategory::tryFrom($this->category));
+        if ($dbDoc == null) {
+            $document = Document::factory()->state([
+                'name' => $clientOriginalName,
+                'path' => $path.'/'.$this->category.'.'.$extension,
+            ])->digital()
+                                ->withCategory(DocumentCategory::tryFrom($this->category))
+                                ->make();
 
-        $this->user->documents()->save($document);
+            $this->user->documents()->save($document);
 
-        $document->save();
+            $document->save();
+        }
     }
 }
