@@ -35,10 +35,9 @@ return [
             'root' => storage_path('app'),
             'throw' => false,
         ],
-        'documents' => [
-            'driver' => 'scoped',
-            'disk' => 'local',
-            'prefix' => 'documents',
+        'tmp-for-tests' => [
+            'driver' => 'local',
+            'root' => storage_path('app/livewire-tmp'),
         ],
 
         'public' => [

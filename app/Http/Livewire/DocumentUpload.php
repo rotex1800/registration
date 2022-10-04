@@ -23,21 +23,25 @@ class DocumentUpload extends Component
 
     public $disabled = false;
 
+    public $message = '';
+
     public User $user;
+
+    protected $rules = [
+        'file' => 'required|file|max:5120',
+    ];
+
+    public function messages()
+    {
+        return [
+            'file.required' => __('registration.upload-no-file-selected'),
+        ];
+    }
 
     public function mount()
     {
         $this->user = Auth::user();
-    }
-
-    public function render()
-    {
-        $state = $this->getStringForDocumentState();
-
-        return view('livewire.document-upload', [
-            'displayName' => $this->displayName,
-            'state' => $state,
-        ]);
+        $this->message = $this->getStringForDocumentState();
     }
 
     /**
@@ -51,18 +55,23 @@ class DocumentUpload extends Component
         }
         $state = $document->state;
 
-        return match (DocumentState::tryFrom($state)) {
+        return match ($state) {
             DocumentState::Submitted => __('document.state_submitted'),
             DocumentState::Approved => __('document.state_approved'),
             default => __('document.state_not_uploaded')
         };
     }
 
+    public function render()
+    {
+        return view('livewire.document-upload', [
+            'displayName' => $this->displayName,
+        ]);
+    }
+
     public function save()
     {
-        $this->validate([
-            'file' => 'max:5120',
-        ]);
+        $this->validate();
 
         $clientOriginalName = $this->file->getClientOriginalName();
         $extension = $this->file->getClientOriginalExtension();
@@ -74,6 +83,7 @@ class DocumentUpload extends Component
             $document = Document::factory()->state([
                 'name' => $clientOriginalName,
                 'path' => $path.'/'.$this->category.'.'.$extension,
+                'state' => DocumentState::Submitted,
             ])->digital()
                                 ->withCategory(DocumentCategory::tryFrom($this->category))
                                 ->make();
@@ -81,7 +91,9 @@ class DocumentUpload extends Component
             $this->user->documents()->save($document);
         } else {
             $dbDoc->name = $clientOriginalName;
+            $dbDoc->state = DocumentState::Submitted;
             $dbDoc->save();
         }
+        $this->message = __('registration.upload-success');
     }
 }

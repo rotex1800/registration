@@ -18,6 +18,11 @@ class Document extends Model
 
     public const TYPE_ANALOG = 1;
 
+    protected $casts = [
+        'state' => DocumentState::class,
+        'category' => DocumentCategory::class,
+    ];
+
     public function documentable(): MorphTo
     {
         return $this->morphTo();
@@ -30,7 +35,7 @@ class Document extends Model
      */
     public function isApproved(): bool
     {
-        return DocumentState::Approved->value == $this->state;
+        return DocumentState::Approved == $this->state;
     }
 
     /**
@@ -40,7 +45,7 @@ class Document extends Model
      */
     public function isSubmitted(): bool
     {
-        return DocumentState::Submitted->value == $this->state;
+        return DocumentState::Submitted == $this->state;
     }
 
     /**

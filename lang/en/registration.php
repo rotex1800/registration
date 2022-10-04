@@ -59,10 +59,13 @@ return [
     'part_one' => 'Teil 1',
     'part_two' => 'Teil 2',
     'passport-copy' => 'Reisepass',
+    'rules' => 'Regeln',
     'appf-copy' => 'APPF Kopie',
     'insurance-policy' => 'Versicherungsnachweis',
     'residence-permit' => 'Aufenthaltstitel',
     'school-certificate' => 'Schulbescheinigung',
     'picture' => 'Foto',
     'motivation' => 'Motivationsschreiben',
+    'upload-success' => 'Erfolgreich hochgeladen!',
+    'upload-no-file-selected' => 'Keine Datei ausgewählt',
 ];

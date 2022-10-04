@@ -10,6 +10,7 @@ enum DocumentCategory: string
     case PassportCopy = 'passport';
     case Picture = 'picture';
     case ResidencePermit = 'residence-permit';
+    case Rules = 'rules';
     case SchoolCertificate = 'school-certificate';
 
     case Unknown = 'unknown';
