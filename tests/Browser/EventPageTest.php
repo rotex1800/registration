@@ -80,7 +80,15 @@ it('can link to second part directly', function () {
     actingAs($user)
         ->get(route('event.show', $event).'?part=two')
         ->assertStatus(200)
-        ->assertSee(__('registration.passport-upload'));
+        ->assertSeeText([
+            __('registration.picture'),
+            __('registration.motivation'),
+            __('registration.passport-copy'),
+            __('registration.appf-copy'),
+            __('registration.insurance-policy'),
+            __('registration.residence-permit'),
+            __('registration.school-certificate'),
+        ]);
 });
 
 it('defaults to part one if no part defined', function () {

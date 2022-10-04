@@ -58,5 +58,11 @@ return [
     'save' => 'Speichern',
     'part_one' => 'Teil 1',
     'part_two' => 'Teil 2',
-    'passport-upload' => 'Reisepass Kopie',
+    'passport-copy' => 'Reisepass',
+    'appf-copy' => 'APPF Kopie',
+    'insurance-policy' => 'Versicherungsnachweis',
+    'residence-permit' => 'Aufenthaltstitel',
+    'school-certificate' => 'Schulbescheinigung',
+    'picture' => 'Foto',
+    'motivation' => 'Motivationsschreiben',
 ];

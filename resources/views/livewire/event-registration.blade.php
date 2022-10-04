@@ -1,3 +1,4 @@
+@php use App\Models\DocumentCategory; @endphp
 <div>
     <div class="text-4xl"> {{ $this->event->name }}</div>
     <div class="flex flex-row">
@@ -232,8 +233,32 @@
         {{-- Part Two --}}
         @if($this->isPartTwoActive())
             @livewire('document-upload', [
-                            'displayName' => __('registration.passport-upload'),
-                            'category' => 'passport'
+                            'displayName' => __('registration.passport-copy'),
+                            'category' => DocumentCategory::PassportCopy->value
+                            ])
+            @livewire('document-upload', [
+                            'displayName' => __('registration.appf-copy'),
+                            'category' => DocumentCategory::AppfCopy->value
+                            ])
+            @livewire('document-upload', [
+                            'displayName' => __('registration.motivation'),
+                            'category' => DocumentCategory::Motivation->value
+                            ])
+            @livewire('document-upload', [
+                            'displayName' => __('registration.picture'),
+                            'category' => DocumentCategory::Picture->value
+                            ])
+            @livewire('document-upload', [
+                            'displayName' => __('registration.insurance-policy'),
+                            'category' => DocumentCategory::InsurancePolice->value
+                            ])
+            @livewire('document-upload', [
+                            'displayName' => __('registration.residence-permit'),
+                            'category' => DocumentCategory::ResidencePermit->value
+                            ])
+            @livewire('document-upload', [
+                            'displayName' => __('registration.school-certificate'),
+                            'category' => DocumentCategory::SchoolCertificate->value
                             ])
         @endif
     @endif
