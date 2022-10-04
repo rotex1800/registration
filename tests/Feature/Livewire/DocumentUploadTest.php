@@ -11,8 +11,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Livewire;
 use Livewire\WithFileUploads;
-use function Pest\Laravel\actingAs;
 use Storage;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
@@ -124,6 +124,7 @@ it('shows file input for complete form', function () {
 
 it('it does not cause error for a second upload of the same document', function () {
     $fileOne = UploadedFile::fake()->create('one.pdf', mimeType: 'application/pdf');
+    $fileTwo = UploadedFile::fake()->create('two.pdf', mimeType: 'application/pdf');
 
     Livewire::test('document-upload', [
         'category' => DocumentCategory::InsurancePolice->value,
@@ -131,5 +132,9 @@ it('it does not cause error for a second upload of the same document', function 
             ->assertStatus(200)
             ->set('file', $fileOne)
             ->call('save')
+            ->set('file', $fileTwo)
             ->call('save');
+
+    $doc = $this->user->documentBy(DocumentCategory::InsurancePolice);
+    expect($doc->name)->toBe('two.pdf');
 });

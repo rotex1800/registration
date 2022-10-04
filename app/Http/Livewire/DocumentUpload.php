@@ -79,8 +79,9 @@ class DocumentUpload extends Component
                                 ->make();
 
             $this->user->documents()->save($document);
-
-            $document->save();
+        } else {
+            $dbDoc->name = $clientOriginalName;
+            $dbDoc->save();
         }
     }
 }
