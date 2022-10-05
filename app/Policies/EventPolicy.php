@@ -74,6 +74,7 @@ class EventPolicy
         if ($user->hasRole('rotex')) {
             return Response::allow();
         }
+
         return Response::deny();
     }
 }

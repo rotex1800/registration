@@ -52,7 +52,6 @@ it('denies guest to see event', function () {
     expect($this->cut->show(null, $event))->toBeDenied();
 });
 
-
 it('allows rotex to see event registrations', function () {
     $user = User::factory()
                 ->has(Role::factory()->state(['name' => 'rotex']))

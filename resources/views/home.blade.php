@@ -14,4 +14,15 @@
             <livewire:event-summary :event="$event" wire:key="other-event-summary-{{ $event->id }}"/>
         @endforeach
     @endif
+
+    @if($canSeeRegistrations)
+        <div class="flex text-4xl mt-6 mb-3">Anmeldungen</div>
+        @if(count($allEvents) > 0)
+            @foreach($allEvents as $event)
+                <p class="text-xl">{{ $event->name }}</p>
+            @endforeach
+        @else
+            <p>Derzeit gibt es keine offenen Anmeldungen</p>
+        @endif
+    @endif
 @endsection
