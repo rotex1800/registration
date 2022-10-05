@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/rotex1800/registration/compare/v0.2.0...v0.3.0) (2022-10-05)
+
+
+### Features
+
+* Add remaining upload ([#22](https://github.com/rotex1800/registration/issues/22)) ([0558e57](https://github.com/rotex1800/registration/commit/0558e57957fc2cd2cf70c061e34e5989371029b6))
+
 ## [0.2.0](https://github.com/rotex1800/registration/compare/v0.1.3...v0.2.0) (2022-10-03)
 
 
