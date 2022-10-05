@@ -42,12 +42,32 @@ it('allows user with matching role to see event', function () {
 it('denies user without matching role to see event', function () {
     $user = createUserWithRole('some');
     $event = Event::factory()
-    ->has(Role::factory()->state(['name' => 'other']))
-    ->create();
+                  ->has(Role::factory()->state(['name' => 'other']))
+                  ->create();
     expect($this->cut->show($user, $event))->toBeDenied();
 });
 
 it('denies guest to see event', function () {
     $event = Event::factory()->create();
     expect($this->cut->show(null, $event))->toBeDenied();
+});
+
+
+it('allows rotex to see event registrations', function () {
+    $user = User::factory()
+                ->has(Role::factory()->state(['name' => 'rotex']))
+                ->create();
+    expect($this->cut->seeRegistrations($user))->toBeAllowed();
+});
+
+it('denies other user to see event registration', function () {
+    $user = User::factory()
+                ->has(Role::factory()->state(['name' => 'other']))
+                ->create();
+
+    expect($this->cut->seeRegistrations($user))->toBeDenied();
+});
+
+it('denies null user to see event registration', function () {
+    expect($this->cut->seeRegistrations(null))->toBeDenied();
 });
