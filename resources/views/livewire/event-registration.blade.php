@@ -1,3 +1,4 @@
+@php use App\Models\DocumentCategory; @endphp
 <div>
     <div class="text-4xl"> {{ $this->event->name }}</div>
     <div class="flex flex-row">
@@ -231,10 +232,45 @@
 
         {{-- Part Two --}}
         @if($this->isPartTwoActive())
-            @livewire('document-upload', [
-                            'displayName' => __('registration.passport-upload'),
-                            'category' => 'passport'
-                            ])
+            <livewire:document-upload :display-name="__('registration.rules')"
+                                      :category="App\Models\DocumentCategory::Rules->value"
+                                      wire:key="{{ App\Models\DocumentCategory::Rules->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.appf-copy')"
+                                      :category="App\Models\DocumentCategory::AppfCopy->value"
+                                      wire:key="{{ App\Models\DocumentCategory::AppfCopy->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.insurance-policy')"
+                                      :category="App\Models\DocumentCategory::InsurancePolice->value"
+                                      wire:key="{{ App\Models\DocumentCategory::InsurancePolice->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.passport-copy')"
+                                      :category="App\Models\DocumentCategory::PassportCopy->value"
+                                      wire:key="{{ App\Models\DocumentCategory::PassportCopy->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.residence-permit')"
+                                      :category="App\Models\DocumentCategory::ResidencePermit->value"
+                                      wire:key="{{ App\Models\DocumentCategory::ResidencePermit->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.school-certificate')"
+                                      :category="App\Models\DocumentCategory::SchoolCertificate->value"
+                                      wire:key="{{ App\Models\DocumentCategory::SchoolCertificate->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.picture')"
+                                      :category="App\Models\DocumentCategory::Picture->value"
+                                      wire:key="{{ App\Models\DocumentCategory::Picture->value }}"
+            />
+
+            <livewire:document-upload :display-name="__('registration.motivation')"
+                                      :category="App\Models\DocumentCategory::Motivation->value"
+                                      wire:key="{{ App\Models\DocumentCategory::Motivation->value }}"
+            />
         @endif
     @endif
 </div>

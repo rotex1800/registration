@@ -22,7 +22,7 @@ beforeEach(function () {
     ];
 
     $this->headlinesPartTwo = [
-        __('registration.passport-upload'),
+        __('registration.passport-copy'),
     ];
 
     $this->event = \App\Models\Event::factory()->create();

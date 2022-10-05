@@ -5,6 +5,7 @@ namespace Tests\Feature\Livewire;
 use App\Http\Livewire\DocumentUpload;
 use App\Models\Document;
 use App\Models\DocumentCategory;
+use App\Models\DocumentState;
 use App\Models\Passport;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -76,6 +77,7 @@ it('uploading file creates entry in document table', function () {
                              ->and(Document::first())
         ->name->toBe('avatar.png')
         ->type->toBe(Document::TYPE_DIGITAL)
+        ->state->toBe(DocumentState::Submitted)
         ->path->toBe('documents/'.$this->user->uuid.'/passport.png');
 });
 
@@ -85,7 +87,11 @@ it('has consts for document types', function () {
 });
 
 it('it shows approved status', function () {
-    $document = Document::factory()->approved()->withCategory(DocumentCategory::PassportCopy)->make();
+    $document = Document::factory()
+                        ->approved()
+                        ->withCategory(DocumentCategory::PassportCopy)
+                        ->make();
+
     $this->user->documents()->save($document);
 
     Livewire::test('document-upload', [
@@ -106,10 +112,7 @@ it('it shows submitted status', function () {
             ->assertSee(__('document.state_submitted'));
 });
 
-it('it shows not uploaded status', function () {
-    $passport = Passport::factory()->make();
-    $this->user->passport()->save($passport);
-
+it('shows not uploaded status', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])
@@ -118,12 +121,50 @@ it('it shows not uploaded status', function () {
 });
 
 it('shows file input for complete form', function () {
-    $passport = Passport::factory()->make();
-    $this->user->passport()->save($passport);
-
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])->assertStatus(200)
+            ->assertSet('message', __('document.state_not_uploaded'))
             ->assertSee(__('document.state_not_uploaded'))
             ->assertSeeHtml('<input');
+});
+
+it('it does not cause error for a second upload of the same document', function () {
+    $fileOne = UploadedFile::fake()->create('one.pdf', mimeType: 'application/pdf');
+    $fileTwo = UploadedFile::fake()->create('two.pdf', mimeType: 'application/pdf');
+
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::InsurancePolice->value,
+    ])
+            ->assertStatus(200)
+            ->set('file', $fileOne)
+            ->call('save')
+            ->set('file', $fileTwo)
+            ->call('save');
+
+    $doc = $this->user->documentBy(DocumentCategory::InsurancePolice);
+    expect($doc->name)->toBe('two.pdf');
+});
+
+it('shows success message after upload', function () {
+    $file = UploadedFile::fake()->create('one.pdf', mimeType: 'application/pdf');
+
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::InsurancePolice->value,
+    ])
+            ->assertStatus(200)
+            ->set('file', $file)
+            ->call('save')
+            ->assertSee(__('registration.upload-success'));
+});
+
+it('shows error message if upload is attempted before file selection', function () {
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::Motivation->value,
+    ])
+            ->assertStatus(200)
+            ->call('save')
+            ->assertHasErrors([
+                'file' => 'required',
+            ]);
 });
