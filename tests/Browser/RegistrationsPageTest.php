@@ -55,7 +55,7 @@ it('shows all registered attendees', function () {
         ->assertSeeTextInOrder(Arr::flatten([
             'Anmeldungen',
             $event->attendees->map(function ($elem): array {
-                return [$elem->full_name, $elem->email];
+                return [$elem->full_name, $elem->email, $elem->passport?->isComplete() ? '✅' : '⛔️'];
             }),
         ]));
 });

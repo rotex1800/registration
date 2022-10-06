@@ -27,6 +27,9 @@ class EventRegistrationsController extends Controller
                 new SortableTableColumn('E-Mail', function ($user) {
                     return $user->email;
                 }),
+                new SortableTableColumn('Reisepassdaten', function ($user) {
+                    return $user->passport?->isComplete() ? '✅' : '⛔️';
+                }),
             ],
             'rows' => $event->attendees->all(),
         ]);
