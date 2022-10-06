@@ -52,10 +52,10 @@ it('shows all registered attendees', function () {
             __('event.registration-overview.full-name'),
             __('event.registration-overview.email'),
         ])
-        ->assertSeeText(Arr::flatten([
+        ->assertSeeTextInOrder(Arr::flatten([
             'Anmeldungen',
-            $event->attendees->map(function ($elem): string {
-                return $elem->full_name;
+            $event->attendees->map(function ($elem): array {
+                return array($elem->full_name, $elem->email);
             }),
         ]));
 });
