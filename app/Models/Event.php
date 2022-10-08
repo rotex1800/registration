@@ -39,7 +39,7 @@ use Illuminate\Support\Carbon;
  */
 class Event extends Model
 {
-    use HasFactory, HasCompletenessCheck;
+    use HasFactory, HasCompletenessCheck, HasRoles;
 
     /**
      * The attributes that should be cast.
@@ -56,15 +56,6 @@ class Event extends Model
     public function attendees(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
-    }
-
-    /**
-     * @return BelongsToMany
-     * @phpstan-return BelongsToMany<Role>
-     */
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
     }
 
     public function isComplete(): bool
