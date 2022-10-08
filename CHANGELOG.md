@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.5.0](https://github.com/rotex1800/registration/compare/v0.4.0...v0.5.0) (2022-10-08)
+
+
+### Features
+
+* Add Registration Form ([c739f61](https://github.com/rotex1800/registration/commit/c739f61d42df65765da0e730fc62e6c6bb64be58))
+* Require email to be verified to access application ([6700fe3](https://github.com/rotex1800/registration/commit/6700fe3af24b7077a444edc5f9246f3ac5a4a34c))
+
+
+### Bug Fixes
+
+* don't change package-lock.json as part of deploy ([b3fe3c2](https://github.com/rotex1800/registration/commit/b3fe3c25a40711e70ad9fe9469e1f6dc6cdc855f))
+* Hide registration overview for non-rotex user ([964714f](https://github.com/rotex1800/registration/commit/964714f8018b54f1744ddee300f954e1cae98b93))
+
+
+### Miscellaneous Chores
+
+* Add script to prepare the dev environment ([#39](https://github.com/rotex1800/registration/issues/39)) ([2fb9f99](https://github.com/rotex1800/registration/commit/2fb9f99e715145fec00c3492af43bbb0474b2ff7))
+* Run pint ([baefb24](https://github.com/rotex1800/registration/commit/baefb242918948b0c161b31bd55bd45bf37cdeae))
+
 ## [0.4.0](https://github.com/rotex1800/registration/compare/v0.3.1...v0.4.0) (2022-10-08)
 
 
