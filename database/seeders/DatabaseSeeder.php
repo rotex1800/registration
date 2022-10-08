@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Event;
 use App\Models\Role;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,22 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::factory()->state([
-            'first_name' => 'Test',
-            'family_name' => 'User',
-            'email' => 'paul@rotex1800.de',
-        ])->create();
+        if (Role::where('name', 'rotex')->count() == 0) {
+            Role::factory()->rotex()->create();
+        }
 
-        $event = Event::factory()->state([
-            'name' => 'Tour',
-        ])->make();
+        if (Role::where('name', 'participant')->count() == 0) {
+            Role::factory()->participant()->create();
+        }
 
-        $role = Role::factory()->state([
-            'name' => 'inbound',
-        ])->make();
-
-        $user->roles()->save($role);
-        $user->events()->save($event);
-        $event->roles()->save($role);
+        if (Event::where('name', 'Deutschland Tour')->count() == 0) {
+            Event::factory()->state([
+                'name' => 'Deutschland Tour',
+                'start' => '2023-03-22',
+                'end' => '2023-04-08',
+            ])->create();
+        }
     }
 }
