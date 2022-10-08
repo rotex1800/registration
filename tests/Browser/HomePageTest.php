@@ -108,7 +108,6 @@ it('shows overview of registrations for non-rotex role', function () {
          ]);
 });
 
-
 it('shows explanation if no events exist at the moment', function () {
     $user = createUserWithRole('rotex');
 

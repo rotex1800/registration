@@ -415,7 +415,6 @@ it('can attach itself of a role', function () {
 });
 
 it('creates the role it attaches itself to if it does not exist', function () {
-
     $user = User::factory()->create();
     expect($user->hasRole('role'))->toBeFalse();
     $user->giveRole('role');

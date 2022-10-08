@@ -5,7 +5,6 @@ namespace Tests\Actions\Fortify;
 use App\Actions\Fortify\CreateNewUser;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use function PHPUnit\Framework\at;
 
 uses(RefreshDatabase::class);
 
@@ -18,5 +17,4 @@ it('creates the new user with the participant rule', function () {
     expect($action->create($attributes))
         ->toBeInstanceOf(User::class)
         ->hasRole('participant')->toBeTrue();
-
 });
