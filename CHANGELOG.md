@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.2](https://github.com/rotex1800/registration/compare/v0.5.1...v0.5.2) (2022-10-08)
+
+
+### Bug Fixes
+
+* composer.lock contains all dependencies ([#45](https://github.com/rotex1800/registration/issues/45)) ([336c6ff](https://github.com/rotex1800/registration/commit/336c6ff5863987bfecb63e66ebb1cb0d0b0bfe58))
+* Move faker to release deps in composer.lock too ([#43](https://github.com/rotex1800/registration/issues/43)) ([031aa31](https://github.com/rotex1800/registration/commit/031aa315d05164f2d8513ba7a0d0dd14bdba0aeb))
+
+
+### Miscellaneous Chores
+
+* Show version in Main Navigation ([#46](https://github.com/rotex1800/registration/issues/46)) ([1a70375](https://github.com/rotex1800/registration/commit/1a70375b31b593028e7eb607767180f4761abb96))
+
 ## [0.5.1](https://github.com/rotex1800/registration/compare/v0.5.0...v0.5.1) (2022-10-08)
 
 
