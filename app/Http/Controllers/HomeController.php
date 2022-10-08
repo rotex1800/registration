@@ -27,7 +27,7 @@ class HomeController extends Controller
         return view('home', [
             'participating' => $participatingEvents,
             'registrationPossible' => $registrationPossible,
-//            'canSeeRegistrations' => $canSeeRegistrations,
+            //            'canSeeRegistrations' => $canSeeRegistrations,
             'allEvents' => $allEvents,
         ]);
     }
