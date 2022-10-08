@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Database\Factories\UserFactory;
 use Eloquent;
-use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
@@ -56,9 +56,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasCompletenessCheck, HasDocuments, MustVerifyEmail;
+    use HasFactory, Notifiable, HasCompletenessCheck, HasDocuments, \Illuminate\Auth\MustVerifyEmail;
 
     /**
      * The attributes that are mass assignable.

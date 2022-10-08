@@ -103,3 +103,17 @@ it('shows explanation if no events exist at the moment', function () {
              'Derzeit gibt es keine offenen Anmeldungen',
          ]);
 });
+
+it('requires email to be verfied', function () {
+    $user = User::factory()->state(['email_verified_at' => null])->create();
+    $this->actingAs($user)
+         ->get('/home')
+         ->assertRedirect(route('verification.notice'));
+});
+
+it('can access verification notice without verified email', function () {
+    $user = User::factory()->state(['email_verified_at' => null])->create();
+    $this->actingAs($user)
+         ->get(route('verification.notice'))
+         ->assertStatus(200);
+});
