@@ -21,13 +21,13 @@ class HomeController extends Controller
         $user = Auth::user();
         $participatingEvents = $user->participatesIn();
         $registrationPossible = $user->canRegisterFor();
-        $canSeeRegistrations = $this->eventPolicy->seeRegistrations($user);
+//        $canSeeRegistrations = $this->eventPolicy->seeRegistrations($user);
         $allEvents = Event::all();
 
         return view('home', [
             'participating' => $participatingEvents,
             'registrationPossible' => $registrationPossible,
-            'canSeeRegistrations' => $canSeeRegistrations,
+//            'canSeeRegistrations' => $canSeeRegistrations,
             'allEvents' => $allEvents,
         ]);
     }

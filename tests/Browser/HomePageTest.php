@@ -92,6 +92,23 @@ it('shows overview of registrations', function () {
          ]);
 });
 
+it('shows overview of registrations for non-rotex role', function () {
+    $user = createUserWithRole('participant');
+
+    $eventOne = Event::factory()->create();
+    $eventTwo = Event::factory()->create();
+
+    $this->actingAs($user)
+         ->get('/home')
+         ->assertStatus(200)
+         ->assertDontSeeText([
+             'Anmeldungen',
+             $eventOne->name,
+             $eventTwo->name,
+         ]);
+});
+
+
 it('shows explanation if no events exist at the moment', function () {
     $user = createUserWithRole('rotex');
 

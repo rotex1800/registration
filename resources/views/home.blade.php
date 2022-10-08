@@ -15,7 +15,7 @@
         @endforeach
     @endif
 
-    @if($canSeeRegistrations)
+    @can('seeRegistrations', App\Models\Event::class)
         <div class="flex text-4xl mt-6 mb-3">Anmeldungen</div>
         @if(count($allEvents) > 0)
             @foreach($allEvents as $event)
@@ -25,5 +25,5 @@
         @else
             <p>Derzeit gibt es keine offenen Anmeldungen</p>
         @endif
-    @endif
+    @endcan
 @endsection
