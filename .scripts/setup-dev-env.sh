@@ -7,7 +7,7 @@ php artisan dusk:update
 php artisan dusk:chrome-driver --detect
 
 # Start Chrome Driver
-.vendor/laravel/dusk/bin/chromedriver-mac-arm &
+vendor/laravel/dusk/bin/chromedriver-mac-arm &
 
 # Install Node dependencies and run in dev mode
 npm install
