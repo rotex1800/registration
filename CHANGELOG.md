@@ -1,5 +1,11 @@
 # Changelog
 
+## What's Changed
+* chore: use github changelog by @paulschuberth in https://github.com/rotex1800/registration/pull/52
+
+
+**Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.0...v0.7.1
+
 ## [0.7.0](https://github.com/rotex1800/registration/compare/v0.6.0...v0.7.0) (2022-10-08)
 
 
