@@ -8,11 +8,19 @@ on:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    outputs:
+      release-created: ${{ steps.rp.outputs.release_created }}
     steps:
       - uses: google-github-actions/release-please-action@v3
+        id: rp
         with:
           release-type: php
-          draft: true
+          changelog-type: github
           token: ${{ secrets.PAT }}
           extra-files: |
             config/app.php
+
+  deploy:
+    needs: [ release-please ]
+    if: ${{ needs.release-please.outputs.release-created }}
+    uses: ./.github/workflows/deploy.yml
