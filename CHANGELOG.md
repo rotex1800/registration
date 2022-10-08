@@ -6,6 +6,12 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.0...v0.7.1
 
+## What's Changed
+* fix: inherit secrets to release worflow by @paulschuberth in https://github.com/rotex1800/registration/pull/54
+
+
+**Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.1...v0.7.2
+
 ## [0.7.0](https://github.com/rotex1800/registration/compare/v0.6.0...v0.7.0) (2022-10-08)
 
 
