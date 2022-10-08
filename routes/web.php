@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventRegistrationsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,13 +25,16 @@ Route::post('login', [AuthenticationController::class, 'authenticate']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'home'])
-        ->name('home')
-        ->middleware('auth');
+         ->name('home')
+         ->middleware('auth');
 
     Route::get('/event/{event}', [EventController::class, 'show'])
-        ->name('event.show')
-        ->middleware('can:show,event');
+         ->name('event.show')
+         ->middleware('can:show,event');
 
     Route::get('/event/{event}/edit', [EventController::class, 'edit'])
-    ->name('event.edit');
+         ->name('event.edit');
+
+    Route::get('/registrations/{event}', EventRegistrationsController::class)
+         ->name('registrations.show');
 });

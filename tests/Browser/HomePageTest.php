@@ -75,3 +75,31 @@ it('does not show events the user can not attend', function () {
         ->get('/home')
         ->assertDontSee('Weitere Events');
 });
+
+it('shows overview of registrations', function () {
+    $user = createUserWithRole('rotex');
+
+    $eventOne = Event::factory()->create();
+    $eventTwo = Event::factory()->create();
+
+    $this->actingAs($user)
+         ->get('/home')
+         ->assertStatus(200)
+         ->assertSeeTextInOrder([
+             'Anmeldungen',
+             $eventOne->name,
+             $eventTwo->name,
+         ]);
+});
+
+it('shows explanation if no events exist at the moment', function () {
+    $user = createUserWithRole('rotex');
+
+    $this->actingAs($user)
+         ->get('/home')
+         ->assertStatus(200)
+         ->assertSeeTextInOrder([
+             'Anmeldungen',
+             'Derzeit gibt es keine offenen Anmeldungen',
+         ]);
+});

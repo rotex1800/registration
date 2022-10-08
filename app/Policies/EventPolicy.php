@@ -61,4 +61,20 @@ class EventPolicy
 
         return Response::allow();
     }
+
+    /**
+     * Determine whether the given user can see the registrations for the given event.
+     */
+    public function seeRegistrations(?User $user): Response
+    {
+        if ($user == null) {
+            return Response::deny();
+        }
+
+        if ($user->hasRole('rotex')) {
+            return Response::allow();
+        }
+
+        return Response::deny();
+    }
 }
