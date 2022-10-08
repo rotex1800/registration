@@ -58,7 +58,7 @@ use Illuminate\Support\Carbon;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasCompletenessCheck, HasDocuments, \Illuminate\Auth\MustVerifyEmail;
+    use HasFactory, Notifiable, HasCompletenessCheck, HasRoles, HasDocuments, \Illuminate\Auth\MustVerifyEmail;
 
     /**
      * The attributes that are mass assignable.
@@ -217,35 +217,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function thirdHostFamily(): ?HostFamily
     {
         return $this->hostFamily(3);
-    }
-
-    /**
-     * Indicates whether the user has a role of the given name
-     *
-     * @param  string  $roleName
-     * @return bool
-     */
-    public function hasRole(string $roleName): bool
-    {
-        return $this->roles()->where('name', $roleName)->get()->count() > 0;
-    }
-
-    /**
-     * @return BelongsToMany
-     * @phpstan-return BelongsToMany<Role>
-     */
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
-    }
-
-    public function giveRole(string $roleName)
-    {
-        $role = Role::where('name', $roleName)->first();
-        if ($role == null) {
-            $role = Role::create(['name' => $roleName]);
-        }
-        $this->roles()->save($role);
     }
 
     /**
