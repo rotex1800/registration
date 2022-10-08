@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.3](https://github.com/rotex1800/registration/compare/v0.5.2...v0.5.3) (2022-10-08)
+
+
+### Miscellaneous Chores
+
+* Use draft releases for sandbox deployment ([4a46f2c](https://github.com/rotex1800/registration/commit/4a46f2cb3a19c7cffa2b841c7d43cf84816cd848))
+* Use draft releases for sandbox deployment ([#47](https://github.com/rotex1800/registration/issues/47)) ([7cfb0ab](https://github.com/rotex1800/registration/commit/7cfb0abcaa0af72e3e0b80720c511d51df87ff38))
+
 ## [0.5.2](https://github.com/rotex1800/registration/compare/v0.5.1...v0.5.2) (2022-10-08)
 
 
