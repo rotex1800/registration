@@ -24,11 +24,12 @@ class DatabaseSeeder extends Seeder
         }
 
         if (Event::where('name', 'Deutschland Tour')->count() == 0) {
-            Event::factory()->state([
+            $tour = Event::factory()->state([
                 'name' => 'Deutschland Tour',
                 'start' => '2023-03-22',
                 'end' => '2023-04-08',
             ])->create();
+            $tour->giveRole('participant');
         }
     }
 }

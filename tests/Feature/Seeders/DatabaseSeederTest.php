@@ -54,8 +54,10 @@ it('creates tour', function () {
     $queryResult = Event::where('name', 'Deutschland Tour');
     expect($queryResult)
         ->count()->toBe(1)
-        ->first()->start->toDateString()->toBe('2023-03-22')
-                        ->first()->end->toDateString()->toBe('2023-04-08');
+        ->and($queryResult->first())
+        ->start->toDateString()->toBe('2023-03-22')
+        ->end->toDateString()->toBe('2023-04-08')
+             ->hasRole('participant')->toBeTrue();
 });
 
 it('creates no tour if it does already exist', function () {
