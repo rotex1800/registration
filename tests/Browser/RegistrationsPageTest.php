@@ -81,12 +81,19 @@ it('shows all registered attendees', function () {
 
 it('shows explanation text if no attendees have registered', function () {
     $user = createUserWithRole('rotex');
-    $event = Event::factory()
-                  ->create();
+    Event::factory()->create();
     actingAs($user)
         ->get('/registrations/1')
         ->assertOk()
         ->assertSeeText([
             __('event.registration-overview.no-registrations'),
         ]);
+});
+
+it('requires email to be verfied', function () {
+    $user = User::factory()->state(['email_verified_at' => null])->create();
+    Event::factory()->create();
+    $this->actingAs($user)
+         ->get('/registrations/1')
+         ->assertRedirect(route('verification.notice'));
 });

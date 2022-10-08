@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::post('login', [AuthenticationController::class, 'authenticate']);
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'home'])
          ->name('home')
          ->middleware('auth');

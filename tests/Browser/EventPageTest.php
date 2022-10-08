@@ -119,3 +119,18 @@ it('defaults to part one if unknown part defined', function () {
         ->assertStatus(200)
         ->assertSee(__('registration.about-yeo'));
 });
+
+it('requires email to be verfied', function () {
+    $role = Role::factory()
+                ->has(User::factory())
+                ->has(Event::factory())
+                ->create();
+    $user = $role->users[0];
+    $event = $role->events[0];
+    $user->email_verified_at = null;
+    $user->events()->attach($event);
+
+    $this->actingAs($user)
+         ->get(route('event.show', $event))
+         ->assertRedirect(route('verification.notice'));
+});
