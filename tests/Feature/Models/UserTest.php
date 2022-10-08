@@ -403,3 +403,22 @@ test('factory can create unverfied user', function () {
     expect(User::factory()->unverified()->make()->hasVerifiedEmail())
         ->toBeFalse();
 });
+
+it('can attach itself of a role', function () {
+    Role::factory()->state(['name' => 'role'])->create();
+    $user = User::factory()->create();
+    expect($user->hasRole('role'))->toBeFalse();
+
+    $user->giveRole('role');
+
+    expect($user->hasRole('role'))->toBeTrue();
+});
+
+it('creates the role it attaches itself to if it does not exist', function () {
+
+    $user = User::factory()->create();
+    expect($user->hasRole('role'))->toBeFalse();
+    $user->giveRole('role');
+
+    expect($user->hasRole('role'))->toBeTrue();
+});

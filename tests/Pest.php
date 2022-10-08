@@ -19,6 +19,7 @@ use Tests\DuskTestCase;
 
 uses(Tests\TestCase::class)->in('Livewire');
 uses(Tests\TestCase::class)->in('Feature');
+uses(Tests\TestCase::class)->in('Fortify');
 uses(Tests\TestCase::class)->in('Models');
 uses(DuskTestCase::class)->in('Browser');
 uses()->group('browser')->in('Browser');

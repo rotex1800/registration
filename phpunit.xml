@@ -8,6 +8,7 @@
         <testsuite name="Feature">
             <directory>./tests/Feature</directory>
             <directory>./tests/Models</directory>
+            <directory>./tests/Fortify</directory>
         </testsuite>
         <testsuite name="Browser">
             <directory>./tests/Browser</directory>
