@@ -48,14 +48,33 @@ it('shows all registered attendees', function () {
     actingAs($user)
         ->get('/registrations/1')
         ->assertOk()
-        ->assertSeeText([
+        ->assertSeeTextInOrder([
             __('event.registration-overview.full-name'),
             __('event.registration-overview.email'),
+            __('event.registration-overview.passport'),
+            __('event.registration-overview.rotary'),
+            __('event.registration-overview.yeo'),
+            __('event.registration-overview.counselor'),
+            __('event.registration-overview.bioFamily'),
+            __('event.registration-overview.hostFamily').' 1',
+            __('event.registration-overview.hostFamily').' 2',
+            __('event.registration-overview.hostFamily').' 3',
         ])
         ->assertSeeTextInOrder(Arr::flatten([
             'Anmeldungen',
             $event->attendees->map(function ($elem): array {
-                return [$elem->full_name, $elem->email, $elem->passport?->isComplete() ? '✅' : '⛔️'];
+                return [
+                    $elem->full_name,
+                    $elem->email,
+                    $elem->passport?->isComplete() ? '✅' : '⛔️',
+                    $elem->rotaryInfo?->isComplete() ? '✅' : '⛔️',
+                    $elem->yeo?->isComplete() ? '✅' : '⛔️',
+                    $elem->counselor?->isComplete() ? '✅' : '⛔️',
+                    $elem->bioFamily?->isComplete() ? '✅' : '⛔️',
+                    $elem->firstHostFamily()?->isComplete() ? '✅' : '⛔️',
+                    $elem->secondHostFamily()?->isComplete() ? '✅' : '⛔️',
+                    $elem->thirdHostFamily()?->isComplete() ? '✅' : '⛔️',
+                ];
             }),
         ]));
 });
