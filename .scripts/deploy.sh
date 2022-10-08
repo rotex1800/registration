@@ -24,6 +24,9 @@ npm run build
 # Run database migrations
 php artisan migrate --force
 
+# Run database seeders
+php artisan db:seed
+
 # Update caches
 php artisan view:clear
 php artisan config:clear
