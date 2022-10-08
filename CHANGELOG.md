@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/rotex1800/registration/compare/v0.5.0...v0.5.1) (2022-10-08)
+
+
+### Bug Fixes
+
+* Make faker available in release build ([#41](https://github.com/rotex1800/registration/issues/41)) ([91b63e3](https://github.com/rotex1800/registration/commit/91b63e3737f3af6c81d074bcfc55992ce04e9c9e))
+
 ## [0.5.0](https://github.com/rotex1800/registration/compare/v0.4.0...v0.5.0) (2022-10-08)
 
 
