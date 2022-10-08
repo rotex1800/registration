@@ -98,7 +98,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
+            get: fn($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
         );
     }
 
@@ -237,6 +237,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function giveRole(string $roleName)
+    {
+        $role = Role::where('name', $roleName)->first();
+        if ($role == null) {
+            $role = Role::create(['name' => $roleName]);
+        }
+        $this->roles()->save($role);
     }
 
     /**
