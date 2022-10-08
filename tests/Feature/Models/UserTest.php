@@ -398,3 +398,8 @@ it('returns info relation for given DocumentCategory', function () {
         ->and($user->relationFor(DocumentCategory::Unknown))
         ->toBeNull();
 });
+
+test('factory can create unverfied user', function () {
+    expect(User::factory()->unverified()->make()->hasVerifiedEmail())
+        ->toBeFalse();
+});
