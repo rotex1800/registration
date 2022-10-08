@@ -26,7 +26,7 @@ class RoleFactory extends Factory
      */
     public function participant()
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'name' => 'participant',
             ];
@@ -38,7 +38,7 @@ class RoleFactory extends Factory
      */
     public function rotex()
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'name' => 'rotex',
             ];
