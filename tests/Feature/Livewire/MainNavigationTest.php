@@ -25,6 +25,12 @@ it('shows the users name', function () {
 it('handles logged out state', function () {
     Livewire::test(MainNavigation::class)
             ->assertDontSee('Logout')
+            ->assertDontSee('Home')
+            ->assertMethodNotWired('toHome')
+            ->assertSee(__('signup.register'))
+            ->assertSee(__('signup.login'))
+            ->assertMethodWired('toLogin')
+            ->assertMethodWired('toRegister')
             ->assertStatus(200);
 });
 
@@ -53,4 +59,16 @@ it('can navigate back to home', function () {
             ->assertMethodWired('toHome')
             ->call('toHome')
             ->assertRedirect('/home');
+});
+
+it('can navigate to login form', function () {
+    Livewire::test('main-navigation')
+            ->call('toLogin')
+            ->assertRedirect('/login');
+});
+
+it('can navigate to registration form', function () {
+    Livewire::test('main-navigation')
+            ->call('toRegister')
+            ->assertRedirect('/register');
 });

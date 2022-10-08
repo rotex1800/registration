@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Database\Factories\UserFactory;
 use Eloquent;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
@@ -57,7 +58,7 @@ use Illuminate\Support\Carbon;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasCompletenessCheck, HasDocuments;
+    use HasFactory, Notifiable, HasCompletenessCheck, HasDocuments, MustVerifyEmail;
 
     /**
      * The attributes that are mass assignable.
@@ -65,7 +66,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'family_name',
         'email',
         'password',
     ];

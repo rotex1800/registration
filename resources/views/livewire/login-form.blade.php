@@ -9,7 +9,7 @@
                        autocomplete="off"
                        id="email"
                        placeholder="E-Mail"
-                       class="rounded-full w-full focus:shadow">
+                       class="rounded w-full focus:shadow">
             </label>
             <label>Passwort
                 <input wire:model="password"
@@ -17,16 +17,17 @@
                        name="password"
                        id="password"
                        placeholder="Passwort"
-                       class="input-form rounded-full w-full focus:shadow">
+                       class="input-form rounded w-full focus:shadow">
             </label>
             <label>
                 Login merken
                 <input type="checkbox"
                        name="remember"
+                       class="rounded"
                        wire:model="remember">
             </label>
             <button type="submit"
-                    class="bg-blue-500 rounded-full h-11 text-white">Login
+                    class="bg-blue-500 rounded h-11 text-white">Login
             </button>
         </form>
     </div>

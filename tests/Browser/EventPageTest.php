@@ -3,7 +3,6 @@
 use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
-use Laravel\Dusk\Browser;
 use function Pest\Laravel\actingAs;
 
 it('shows main navigation', function () {
@@ -119,11 +118,4 @@ it('defaults to part one if unknown part defined', function () {
         ->get(route('event.show', $event).'?part=nonexistent')
         ->assertStatus(200)
         ->assertSee(__('registration.about-yeo'));
-});
-
-it('can access browser', function () {
-    $this->browse(function (Browser $browser) {
-        $browser->visit('/')
-                ->assertSee('Laravel');
-    });
 });
