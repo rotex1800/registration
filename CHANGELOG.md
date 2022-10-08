@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/rotex1800/registration/compare/v0.3.1...v0.4.0) (2022-10-08)
+
+
+### Features
+
+* Registration overview ([#29](https://github.com/rotex1800/registration/issues/29)) ([5deae0f](https://github.com/rotex1800/registration/commit/5deae0f06b396cc5a4bbcb7ada6b3908bf19be81))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.1.0 to 1.1.2 ([c422f17](https://github.com/rotex1800/registration/commit/c422f171461a56472a54768c2e923a0739eab03e))
+* **deps:** bump axios from 1.1.0 to 1.1.2 ([#35](https://github.com/rotex1800/registration/issues/35)) ([742b733](https://github.com/rotex1800/registration/commit/742b733357db1ef7d6130c8be213a7fc16223cee))
+
 ## [0.3.1](https://github.com/rotex1800/registration/compare/v0.3.0...v0.3.1) (2022-10-07)
 
 
