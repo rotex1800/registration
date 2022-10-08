@@ -3,8 +3,8 @@ name: Deploy
 on:
   release:
     types:
-      - released
-      - prereleased
+      - published
+
 
 jobs:
   select-environment:
@@ -18,7 +18,7 @@ jobs:
         run: |
           environment="Sandbox"
           url="https://tour-sandbox.rotex1800.de"
-          if [[ "${{ github.event.action }}" == "released" ]]; then
+          if [[ "${{ github.event.release.draft }}" == false ]]; then
              environment="Production"
             url="https://tour.rotex1800.de"
           fi
