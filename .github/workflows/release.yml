@@ -15,7 +15,7 @@ jobs:
         id: rp
         with:
           release-type: php
-          changelog-type: github
+          changelog-notes-type: github
           token: ${{ secrets.PAT }}
           extra-files: |
             config/app.php
