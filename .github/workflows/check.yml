@@ -55,7 +55,14 @@ jobs:
         run: php artisan serve &
 
       - name: Execute tests
-        run: vendor/bin/pest --log-junit junit-report.xml
+        env:
+          XDEBUG_MODE: coverage
+        run: vendor/bin/pest --ci --log-junit junit-report.xml --coverage --coverage-clover coverage-report.xml
+
+      - name: Report Coverage in comment
+        uses: lucassabreu/comment-coverage-clover@v0.3.0
+        with:
+          file: coverage-report.xml
 
       - name: Upload Screenshots
         if: failure()

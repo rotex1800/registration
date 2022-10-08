@@ -16,5 +16,6 @@ yarn-error.log
 /.vscode
 .DS_Store
 junit-report.xml
+coverage-report.txt
 tests/Browser/screenshots
 tests/Browser/console
