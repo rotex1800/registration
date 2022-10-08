@@ -14,3 +14,5 @@ jobs:
           release-type: php
           prerelease: true
           token: ${{ secrets.PAT }}
+          extra-files: |
+            config/app.php
