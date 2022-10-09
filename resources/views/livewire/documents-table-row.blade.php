@@ -1,5 +1,5 @@
-<div class="flex flex-row">
-    <div class="flex-col">
+<div class="flex flex-row justify-around">
+    <div>
         <livewire:documents-rater
             :user="$user"
             :category="\App\Models\DocumentCategory::Rules"
@@ -10,7 +10,7 @@
         />
     </div>
 
-    <div class="flex-col">
+    <div>
         <livewire:documents-rater
             :user="$user"
             :category="\App\Models\DocumentCategory::InsurancePolice"
@@ -21,7 +21,7 @@
         />
     </div>
 
-    <div class="flex-col">
+    <div>
         <livewire:documents-rater
             :user="$user"
             :category="\App\Models\DocumentCategory::ResidencePermit"
@@ -32,7 +32,7 @@
         />
     </div>
 
-    <div class="flex-col">
+    <div>
         <livewire:documents-rater
             :user="$user"
             :category="\App\Models\DocumentCategory::Picture"
