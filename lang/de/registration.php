@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'explanation' => 'Bitte fülle dieses Formular soweit du kannst aus. Bitte prüfe genau, ob deine Angaben
+     stimmen. Deine Angaben werden automatisch gespeichert.',
     'gender' => [
         'na' => 'Keine Angabe',
         'diverse' => 'Divers',
@@ -15,6 +17,8 @@ return [
     'first_name' => 'Vorname',
     'about-you' => 'Zu Dir',
     'passport' => 'Reisepass',
+    'passport-explanation' => 'Wenn du keinen Reisepass hast, sondern dich stattdessen mit einem anderen
+     Ausweisdokument in Deutschland ausweist, kannst du natürlich auch dieses hier eintragen.',
     'nationality' => 'Nationalität',
     'passport-number' => 'Passnummer',
     'passport-issue-date' => 'Ausstellungsdatum',
@@ -26,6 +30,8 @@ return [
         'sponsor-club' => 'Sponsor Club',
         'sponsor-district' => 'Sponsor Distrikt',
     ],
+    'rotary-explanation' => 'Der Host Club und Host Distrikt sind der Club und der Distrikt aus Deutschland.
+     Der Sponsor Club und der Sponsor Distrikt sind dein Club und Distrikt aus deinem Heimatland.',
     'about-counselor' => 'Counselor:in',
     'counselor' => [
         'name' => 'Name',
@@ -45,6 +51,9 @@ return [
         'email' => 'E-Mail',
         'telephone' => 'Telefonnummer',
     ],
+    'bio-family-explanation' => 'Wenn du nicht bei deinen leiblichen Eltern wohnst, gib bitte deine
+     Erziehungsberchtigten an. Wennd du nur ein Elternteil oder eine:n Erziehungsberechtigte:n hast,
+      trag in das zweite Feld bitte N/A ein.',
     'about-host-family-one' => 'Erste Gastfamilie',
     'about-host-family-two' => 'Zweite Gastfamilie',
     'about-host-family-three' => 'Dritte Gastfamilie',
@@ -54,7 +63,10 @@ return [
         'address' => 'Adresse',
         'phone' => 'Telefonnummer',
     ],
+    'nth-host-family-explanation' => 'Diese Angaben sind *jetzt noch nicht* notwendig. Bitte trage
+     diese Information ein, sobald du sie weißt.',
     'comment' => 'Kommentar',
+    'comment-explanation' => 'Möchtest du uns etwas sagen, dass an anderer Stelle nicht passt? Hier kannst du es tun!',
     'save' => 'Speichern',
     'part_one' => 'Teil 1',
     'part_two' => 'Teil 2',

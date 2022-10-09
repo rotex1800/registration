@@ -98,7 +98,7 @@ it('it shows approved status', function () {
         'category' => DocumentCategory::PassportCopy->value,
     ])
             ->assertStatus(200)
-            ->assertSee(__('document.state_approved'));
+            ->assertSee(__('✅'));
 });
 
 it('it shows submitted status', function () {
@@ -109,7 +109,18 @@ it('it shows submitted status', function () {
         'category' => DocumentCategory::PassportCopy->value,
     ])
             ->assertStatus(200)
-            ->assertSee(__('document.state_submitted'));
+            ->assertSee(__('⬆️'));
+});
+
+it('it shows declined status', function () {
+    $document = Document::factory()->declined()->withCategory(DocumentCategory::PassportCopy)->make();
+    $this->user->documents()->save($document);
+
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::PassportCopy->value,
+    ])
+            ->assertStatus(200)
+            ->assertSee(__('⛔️'));
 });
 
 it('shows not uploaded status', function () {
@@ -117,7 +128,7 @@ it('shows not uploaded status', function () {
         'category' => DocumentCategory::PassportCopy->value,
     ])
             ->assertStatus(200)
-            ->assertSee(__('document.state_not_uploaded'));
+            ->assertSee(__('❓'));
 });
 
 it('shows file input for complete form', function () {

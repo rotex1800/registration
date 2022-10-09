@@ -46,7 +46,7 @@ it('contains button to register if not yet registered', function () {
     ]);
     $component
         ->assertMethodWired('register')
-        ->assertSee('Anmelden')
+        ->assertSee('Bewerben')
         ->assertDontSee('Abmelden');
 
     assertFalse(
@@ -78,19 +78,6 @@ it('contains button to de-register if already registered', function () {
     assertFalse($user->hasRegisteredFor($this->event));
 });
 
-it('shows edit button for user with correct role', function () {
-    $user = createUserWithRole('rotex');
-    $user->events()->attach($this->event);
-    actingAs($user);
-    $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event,
-    ]);
-    actingAs($user);
-    $component
-        ->assertSee('Bearbeiten')
-        ->assertMethodWired('edit');
-});
-
 test('edit method redirects to edit page', function () {
     $user = createUserWithRole('rotex');
     $user->events()->attach($this->event);
@@ -100,17 +87,6 @@ test('edit method redirects to edit page', function () {
     ])
             ->call('edit')
             ->assertRedirect(route('event.edit', $this->event));
-});
-
-it('does not show edit button for user with some role', function () {
-    $user = createUserWithRole('role');
-    actingAs($user);
-    $component = Livewire::test(EventRegistration::class, [
-        'event' => $this->event,
-    ]);
-    $component
-        ->assertDontSee('Bearbeiten')
-        ->assertMethodNotWired('edit');
 });
 
 it('has section for information about the person', function () {
