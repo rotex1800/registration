@@ -58,6 +58,7 @@ class DocumentUpload extends Component
         return match ($state) {
             DocumentState::Submitted => __('document.state_submitted'),
             DocumentState::Approved => __('document.state_approved'),
+            DocumentState::Declined => __('document.state_declined'),
             default => __('document.state_not_uploaded')
         };
     }
