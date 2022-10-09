@@ -18,3 +18,15 @@ it('returns `unknown` for `Unknown` case', function () {
 it('creates `PassportCopy` from `passport`', function () {
     expect(DocumentCategory::from('passport'))->toBe(DocumentCategory::PassportCopy);
 });
+
+it('returns translation for each case', function () {
+    expect(DocumentCategory::Rules->displayName())
+        ->toBe(__('registration.rules'))
+        ->and(DocumentCategory::InsurancePolice->displayName())->toBe(__('registration.insurance-policy'))
+        ->and(DocumentCategory::Motivation->displayName())->toBe(__('registration.motivation'))
+        ->and(DocumentCategory::PassportCopy->displayName())->toBe(__('registration.passport-copy'))
+        ->and(DocumentCategory::Picture->displayName())->toBe(__('registration.picture'))
+        ->and(DocumentCategory::ResidencePermit->displayName())->toBe(__('registration.residence-permit'))
+        ->and(DocumentCategory::SchoolCertificate->displayName())->toBe(__('registration.school-certificate'))
+        ->and(DocumentCategory::Unknown->displayName())->toBe('unknown');
+});

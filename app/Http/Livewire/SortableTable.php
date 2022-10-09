@@ -16,12 +16,14 @@ class SortableTable extends Component
      */
     public array $rows = [];
 
+    public $extraRowLivewire = '';
+
     public function render()
     {
-        return view('livewire.sortable-table')->with(
-            [
-                'columns' => $this->columns,
-                'rows' => $this->rows,
-            ]);
+        return view('livewire.sortable-table')->with([
+            'rows' => $this->rows,
+            'columns' => $this->columns,
+            'extraRowLivewire' => $this->extraRowLivewire,
+        ]);
     }
 }

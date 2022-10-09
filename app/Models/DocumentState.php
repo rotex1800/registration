@@ -6,4 +6,5 @@ enum DocumentState: string
 {
     case Submitted = 'submitted';
     case Approved = 'approved';
+    case Declined = 'declined';
 }

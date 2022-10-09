@@ -14,4 +14,19 @@ enum DocumentCategory: string
     case SchoolCertificate = 'school-certificate';
 
     case Unknown = 'unknown';
+
+    public function displayName(): string
+    {
+        return match ($this) {
+            self::Rules => __('registration.rules'),
+            self::InsurancePolice => __('registration.insurance-policy'),
+            self::Motivation => __('registration.motivation'),
+            self::PassportCopy => __('registration.passport-copy'),
+            self::Picture => __('registration.picture'),
+            self::ResidencePermit => __('registration.residence-permit'),
+            self::SchoolCertificate => __('registration.school-certificate'),
+            self::AppfCopy => __('registration.appf-copy'),
+            default => 'unknown',
+        };
+    }
 }

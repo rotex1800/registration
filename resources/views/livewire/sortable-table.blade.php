@@ -14,6 +14,14 @@
                     <td class="p-4">  {{ $column->valueFor($row) }} </td>
                 @endforeach
             </tr>
+
+            @if( $extraRowLivewire != '')
+                <tr class="h-8 even:bg-slate-100 odd:bg-slate-200">
+                    <td class="p-4" colspan="100%">
+                        @livewire($extraRowLivewire, ['user' => $row], key($loop->index))
+                    </td>
+                </tr>
+            @endif
         @endforeach
         </tbody>
     </table>

@@ -22,6 +22,7 @@ class EventRegistrationsController extends Controller
             'event' => $event,
             'columns' => $this->tableColumns(),
             'rows' => $event->attendees->all(),
+            'extraRowLivewire' => 'documents-table-row',
         ]);
     }
 
