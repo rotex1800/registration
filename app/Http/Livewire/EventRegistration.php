@@ -25,6 +25,12 @@ class EventRegistration extends Component
 
     private const NULLABLE = 'nullable';
 
+    private const NULLABLE_EMAIL = 'nullable|email';
+
+    private const NULLABLE_PAST_DATE = 'nullable|date|before:today';
+
+    private const NULLABLE_FUTURE_DATE = 'nullable|date|after:today';
+
     public const PART_ONE = 'one';
 
     public const PART_TWO = 'two';
@@ -64,18 +70,23 @@ class EventRegistration extends Component
         'activePart' => ['as' => 'part'],
     ];
 
+    protected $validationAttributes = [
+        'email' => 'E-Mail',
+        'today' => 'Heute',
+    ];
+
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
         'user.gender' => 'nullable|in:female,male,diverse,na',
-        'user.birthday' => self::NULLABLE_DATE,
+        'user.birthday' => self::NULLABLE_PAST_DATE,
         'user.mobile_phone' => self::NULLABLE,
         'user.health_issues' => self::NULLABLE,
 
         'passport.nationality' => self::NULLABLE,
         'passport.passport_number' => self::NULLABLE,
-        'passport.issue_date' => self::NULLABLE_DATE,
-        'passport.expiration_date' => self::NULLABLE_DATE,
+        'passport.issue_date' => self::NULLABLE_PAST_DATE,
+        'passport.expiration_date' => self::NULLABLE_FUTURE_DATE,
 
         'rotary.host_district' => self::NULLABLE,
         'rotary.host_club' => self::NULLABLE,
@@ -84,29 +95,29 @@ class EventRegistration extends Component
 
         'counselor.name' => self::NULLABLE,
         'counselor.phone' => self::NULLABLE,
-        'counselor.email' => self::NULLABLE,
+        'counselor.email' => self::NULLABLE_EMAIL,
 
         'yeo.name' => self::NULLABLE,
         'yeo.phone' => self::NULLABLE,
-        'yeo.email' => self::NULLABLE,
+        'yeo.email' => self::NULLABLE_EMAIL,
 
         'bioFamily.parent_one' => self::NULLABLE,
         'bioFamily.parent_two' => self::NULLABLE,
-        'bioFamily.email' => self::NULLABLE,
+        'bioFamily.email' => self::NULLABLE_EMAIL,
         'bioFamily.phone' => self::NULLABLE,
 
         'hostFamilyOne.name' => self::NULLABLE,
-        'hostFamilyOne.email' => self::NULLABLE,
+        'hostFamilyOne.email' => self::NULLABLE_EMAIL,
         'hostFamilyOne.address' => self::NULLABLE,
         'hostFamilyOne.phone' => self::NULLABLE,
 
         'hostFamilyTwo.name' => self::NULLABLE,
-        'hostFamilyTwo.email' => self::NULLABLE,
+        'hostFamilyTwo.email' => self::NULLABLE_EMAIL,
         'hostFamilyTwo.address' => self::NULLABLE,
         'hostFamilyTwo.phone' => self::NULLABLE,
 
         'hostFamilyThree.name' => self::NULLABLE,
-        'hostFamilyThree.email' => self::NULLABLE,
+        'hostFamilyThree.email' => self::NULLABLE_EMAIL,
         'hostFamilyThree.address' => self::NULLABLE,
         'hostFamilyThree.phone' => self::NULLABLE,
 
@@ -182,6 +193,11 @@ class EventRegistration extends Component
         return redirect()->route('event.edit', [
             'event' => $this->event->id,
         ]);
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
 
     public function updatedUser()

@@ -12,6 +12,7 @@ use App\Models\RegistrationComment;
 use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
@@ -320,8 +321,8 @@ it('has passport inputs bound to component', function () {
     $properties_and_values = [
         'passport.nationality' => fake()->country,
         'passport.passport_number' => fake()->words(asText: true),
-        'passport.issue_date' => fake()->date,
-        'passport.expiration_date' => fake()->date,
+        'passport.issue_date' => fake()->dateTimeBetween(startDate: '-10 years', endDate: '-1 year')->format('Y-m-d'),
+        'passport.expiration_date' => fake()->dateTimeBetween('+1 day', '+20 years')->format('Y-m-d'),
     ];
 
     foreach ($properties_and_values as $property => $value) {
@@ -385,7 +386,7 @@ it('has rotary counselor bound to component', function () {
     ]);
 
     $properties_and_values = [
-        'counselor.email' => fake()->words(asText: true),
+        'counselor.email' => fake()->email,
         'counselor.name' => fake()->words(asText: true),
         'counselor.phone' => fake()->words(asText: true),
     ];
@@ -410,7 +411,7 @@ it('has rotary yeo bound to component', function () {
     ]);
 
     $properties_and_values = [
-        'yeo.email' => fake()->words(asText: true),
+        'yeo.email' => fake()->email,
         'yeo.name' => fake()->words(asText: true),
         'yeo.phone' => fake()->words(asText: true),
     ];
@@ -437,7 +438,7 @@ it('has bio family bound to component', function () {
     $properties_and_values = [
         'bioFamily.parent_one' => fake()->words(asText: true),
         'bioFamily.parent_two' => fake()->words(asText: true),
-        'bioFamily.email' => fake()->words(asText: true),
+        'bioFamily.email' => fake()->email,
         'bioFamily.phone' => fake()->words(asText: true),
     ];
 
@@ -463,17 +464,17 @@ it('has host families wired to component', function () {
 
     $properties_and_values = [
         'hostFamilyOne.name' => fake()->words(asText: true),
-        'hostFamilyOne.email' => fake()->words(asText: true),
+        'hostFamilyOne.email' => fake()->email,
         'hostFamilyOne.phone' => fake()->phoneNumber,
         'hostFamilyOne.address' => fake()->words(asText: true),
 
         'hostFamilyTwo.name' => fake()->words(asText: true),
-        'hostFamilyTwo.email' => fake()->words(asText: true),
+        'hostFamilyTwo.email' => fake()->email,
         'hostFamilyTwo.phone' => fake()->phoneNumber,
         'hostFamilyTwo.address' => fake()->words(asText: true),
 
         'hostFamilyThree.name' => fake()->words(asText: true),
-        'hostFamilyThree.email' => fake()->words(asText: true),
+        'hostFamilyThree.email' => fake()->email,
         'hostFamilyThree.phone' => fake()->phoneNumber,
         'hostFamilyThree.address' => fake()->words(asText: true),
     ];
@@ -705,6 +706,132 @@ it('displays no checkmark for empty comment on load', function () {
     ]);
     $component->assertDontSeeText(__('registration.comment').' ✅');
 });
+
+it('rejects non email for yeo email', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('yeo.email', 'bla')
+            ->assertHasErrors('yeo.email')
+            ->assertSee(__('validation.email'))
+            ->set('yeo.email', null)
+            ->assertDontSee(__('validation.email'))
+            ->assertHasNoErrors('yeo.email');
+});
+
+it('rejects non email for counselor email', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('counselor.email', 'bla')
+            ->assertHasErrors('counselor.email')
+            ->assertSee(__('validation.email'))
+            ->set('counselor.email', null)
+            ->assertDontSee(__('validation.email'))
+            ->assertHasNoErrors('counselor.email');
+});
+
+it('rejects non email for bio-family email', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('bioFamily.email', 'bla')
+            ->assertHasErrors('bioFamily.email')
+            ->assertSee(__('validation.email'))
+            ->set('bioFamily.email', null)
+            ->assertDontSee(__('validation.email'))
+            ->assertHasNoErrors('bioFamily.email');
+});
+
+it('rejects non email for host family one email', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('hostFamilyOne.email', 'bla')
+            ->assertHasErrors('hostFamilyOne.email')
+            ->set('hostFamilyOne.email', null)
+            ->assertDontSee(__('validation.email'))
+            ->assertHasNoErrors('hostFamilyOne.email');
+});
+
+it('rejects non email for host family two email', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('hostFamilyTwo.email', 'bla')
+            ->assertHasErrors('hostFamilyTwo.email')
+            ->assertSee(__('validation.email'))
+            ->set('hostFamilyTwo.email', null)
+            ->assertDontSee(__('validation.email'))
+            ->assertHasNoErrors('hostFamilyTwo.email');
+});
+
+it('rejects non email for host family three email', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('hostFamilyThree.email', 'bla')
+            ->assertHasErrors('hostFamilyThree.email')
+            ->assertSee(__('validation.email'))
+            ->set('hostFamilyThree.email', null)
+            ->assertDontSee(__('validation.email'))
+            ->assertHasNoErrors('hostFamilyThree.email');
+});
+
+test('birthday must be in the past', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('user.birthday', Carbon::now()->addDay())
+            ->assertHasErrors('user.birthday')
+            ->set('user.birthday', null)
+            ->assertHasNoErrors('user.birthday')
+            ->set('user.birthday', Carbon::now()->subYears(15))
+            ->assertHasNoErrors('user.birthday');
+});
+
+test('passport issue date must be in the past', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('passport.issue_date', Carbon::now()->addDay())
+            ->assertHasErrors('passport.issue_date')
+            ->set('passport.issue_date', null)
+            ->assertHasNoErrors('passport.issue_date')
+            ->set('passport.issue_date', Carbon::now()->subYears(15))
+            ->assertHasNoErrors('passport.issue_date');
+});
+
+test('passport expiration date must be in the future', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('passport.expiration_date', Carbon::now()->subDay())
+            ->assertHasErrors('passport.expiration_date')
+            ->set('passport.expiration_date', null)
+            ->assertHasNoErrors('passport.expiration_date')
+            ->set('passport.expiration_date', Carbon::now()->addYears(15))
+            ->assertHasNoErrors('passport.expiration_date');
+});
+
 /**
  * @param  TestableLivewire  $component
  * @param $headlineKey

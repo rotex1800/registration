@@ -8,5 +8,6 @@
     "This password reset link will expire in :count minutes.": "Dieser Reset Link wird in :count Minuten ablaufen.",
     "If you did not request a password reset, no further action is required.": "Wenn du keinen Reset angefordert hast, musst du nichts weiter tun.",
     "Regards": "Viele Grüße",
-    "Hello!": "Hallo!"
+    "Hello!": "Hallo!",
+    "today": "heute"
 }
