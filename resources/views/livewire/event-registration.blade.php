@@ -17,13 +17,9 @@
         @if($this->hasUserRegistered())
             <button class="bg-yellow-500 p-3 rounded" wire:click="unregister">Abmelden</button>
         @else
-            <button class="bg-blue-800 p-3 rounded" wire:click="register">Anmelden</button>
-        @endif
-        @if ($this->canEdit())
-            <button class="bg-yellow-500 p-3 rounded" wire:click="edit">Bearbeiten</button>
+            <button class="bg-blue-800 p-3 rounded" wire:click="register">Bewerben</button>
         @endif
     </div>
-
     @if($this->hasUserRegistered())
 
         <button
@@ -42,6 +38,7 @@
         {{-- Part One --}}
         @if($this->isPartOneActive())
 
+            <p class="mt-8">{{__('registration.explanation')}}</p>
             <h2 class="text-2xl mt-8">{{  __('registration.about-you') }} {{ $user->isComplete() ? '✅' : '' }}</h2>
             <div class="mt-4 grid grid-cols-input gap-4 items-center">
                 <label for="firstname">{{ __('registration.first_name') }}</label>
@@ -70,6 +67,7 @@
             </div>
 
             <h2 class="text-2xl mt-8">{{  __('registration.passport') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
+            <p>{{ __('registration.passport-explanation') }}</p>
             <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
                 <label for="nationality">{{ __('registration.nationality') }}</label>
                 <input id="nationality" type="text" class="rounded" wire:model.lazy="passport.nationality">
@@ -89,6 +87,7 @@
             </div>
 
             <h2 class="text-2xl mt-8">{{  __('registration.about-rotary') }} {{ $rotary->isComplete() ? '✅' : '' }}</h2>
+            <p>{{__('registration.rotary-explanation')}}</p>
             <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
                 <label for="host-club">{{ __('registration.rotary.host-club') }}</label>
@@ -139,6 +138,7 @@
             <h2 class="text-2xl mt-8">
                 {{  __('registration.about-bio-family') }} {{ $bioFamily->isComplete() ? '✅' : '' }}
             </h2>
+            <p>{{__('registration.bio-family-explanation')}}</p>
             <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
                 <label for="bio-mother">{{ __('registration.bio-family.parent-one') }}</label>
@@ -178,6 +178,7 @@
             <h2 class="text-2xl mt-8">
                 {{  __('registration.about-host-family-two') }} {{ $hostFamilyTwo->isComplete() ? '✅' : '' }}
             </h2>
+            <p>{{__('registration.nth-host-family-explanation')}}</p>
             <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
                 <label for="host-name-two">{{ __('registration.host-family.name') }}</label>
@@ -198,6 +199,7 @@
             <h2 class="text-2xl mt-8">
                 {{  __('registration.about-host-family-three') }} {{ $hostFamilyThree->isComplete() ? '✅' : '' }}
             </h2>
+            <p>{{__('registration.nth-host-family-explanation')}}</p>
             <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
 
                 <label for="host-name-three">{{ __('registration.host-family.name') }}</label>
@@ -221,6 +223,7 @@
             <h2 class="text-2xl mt-8">
                 {{  __('registration.comment') }} {{ $comment->isComplete() ? '✅' : '' }}
             </h2>
+            <p>{{__('registration.comment-explanation')}}</p>
             <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
                 <label for="comment">{{ __('registration.comment') }}</label>
                 <textarea class="rounded min-h-40" id="comment"
