@@ -152,6 +152,14 @@ it('has full name accessor', function () {
         ->toBe($user->first_name.' '.$user->family_name);
 });
 
+test('full_name works for single quotes in name', function () {
+    $user = User::factory()->state([
+        'first_name' => "Paul O'Test",
+        'family_name' => "Kip O'Reilly",
+    ])->make();
+    expect($user->full_name)->toBe("Paul O'Test Kip O'Reilly");
+});
+
 it('has birthday', function () {
     $user = User::factory()->create();
     expect($user->birthday)

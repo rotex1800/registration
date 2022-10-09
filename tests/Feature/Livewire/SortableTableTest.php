@@ -58,7 +58,7 @@ test('table headlines are configurable', function () {
     $rows = [
         User::factory()->make(),
         User::factory()->make(),
-        User::factory()->make(),
+        User::factory()->state(['family_name' => "Kip O'Reilly"])->make(),
     ];
     Livewire::test('sortable-table', [
         'columns' => $columns,
@@ -82,7 +82,7 @@ test('table headlines are configurable', function () {
                     Arr::map($columns, function ($column) use ($row) {
                         return [
                             '<td',
-                            $column->valueFor($row),
+                            e($column->valueFor($row)),
                             '</td>',
                         ];
                     }),
