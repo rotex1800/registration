@@ -18,10 +18,6 @@ class SortableTable extends Component
 
     public function render()
     {
-        return view('livewire.sortable-table')->with(
-            [
-                'columns' => $this->columns,
-                'rows' => $this->rows,
-            ]);
+        return view('livewire.sortable-table');
     }
 }
