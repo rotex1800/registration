@@ -29,7 +29,7 @@ jobs:
         id: environment
         run: |
           url="https://tour-sandbox.rotex1800.de"
-          if [[ "${{ environment }}" == "Production" ]]; then
+          if [[ "${{ inputs.environment }}" == "Production" ]]; then
             url="https://tour.rotex1800.de"
           fi
           echo "::set-output name=url::${url}"
