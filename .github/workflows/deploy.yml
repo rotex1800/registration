@@ -29,22 +29,19 @@ jobs:
       - shell: bash
         id: environment
         run: |
-          environment="Sandbox"
           url="https://tour-sandbox.rotex1800.de"
-          if [[ "${{ github.event.release.draft }}" == false ]]; then
-             environment="Production"
+          if [[ "${{ github.event.inputs.environment }}" == "Production" ]]; then
             url="https://tour.rotex1800.de"
           fi
           echo "::set-output name=environment::${environment}"
           echo "::set-output name=url::${url}"
-
 
   deploy:
     needs:
       - select-environment
     runs-on: ubuntu-latest
     environment:
-      name: ${{ needs.select-environment.outputs.environment }}
+      name: ${{ github.event.inputs.environment }}
       url: ${{ needs.select-environment.outputs.url }}
     steps:
       - uses: actions/checkout@v3
