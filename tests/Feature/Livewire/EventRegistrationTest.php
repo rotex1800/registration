@@ -12,6 +12,7 @@ use App\Models\RegistrationComment;
 use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
@@ -320,8 +321,8 @@ it('has passport inputs bound to component', function () {
     $properties_and_values = [
         'passport.nationality' => fake()->country,
         'passport.passport_number' => fake()->words(asText: true),
-        'passport.issue_date' => fake()->date,
-        'passport.expiration_date' => fake()->date,
+        'passport.issue_date' => fake()->dateTimeBetween(startDate: '-10 years', endDate: '-1 year')->format('Y-m-d'),
+        'passport.expiration_date' => fake()->dateTimeBetween('+1 day', '+20 years')->format('Y-m-d'),
     ];
 
     foreach ($properties_and_values as $property => $value) {
@@ -787,6 +788,48 @@ it('rejects non email for host family three email', function () {
             ->set('hostFamilyThree.email', null)
             ->assertDontSee(__('validation.email'))
             ->assertHasNoErrors('hostFamilyThree.email');
+});
+
+test('birthday must be in the past', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('user.birthday', Carbon::now()->addDay())
+            ->assertHasErrors('user.birthday')
+            ->set('user.birthday', null)
+            ->assertHasNoErrors('user.birthday')
+            ->set('user.birthday', Carbon::now()->subYears(15))
+            ->assertHasNoErrors('user.birthday');
+});
+
+test('passport issue date must be in the past', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('passport.issue_date', Carbon::now()->addDay())
+            ->assertHasErrors('passport.issue_date')
+            ->set('passport.issue_date', null)
+            ->assertHasNoErrors('passport.issue_date')
+            ->set('passport.issue_date', Carbon::now()->subYears(15))
+            ->assertHasNoErrors('passport.issue_date');
+});
+
+test('passport expiration date must be in the future', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('passport.expiration_date', Carbon::now()->subDay())
+            ->assertHasErrors('passport.expiration_date')
+            ->set('passport.expiration_date', null)
+            ->assertHasNoErrors('passport.expiration_date')
+            ->set('passport.expiration_date', Carbon::now()->addYears(15))
+            ->assertHasNoErrors('passport.expiration_date');
 });
 
 /**

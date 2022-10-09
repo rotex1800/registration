@@ -47,7 +47,12 @@
                 <div><label for="family-name">{{ __('registration.family_name') }}</label></div>
                 <input class="rounded" type="text" id="family-name" wire:model.debounce.500ms="user.family_name">
 
-                <div><label for="birthday">{{ __('registration.birthday') }}</label></div>
+                <div>
+                    <label for="birthday">{{ __('registration.birthday') }}</label>
+                    @error('user.birthday')
+                    <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
                 <input class="rounded" type="date" id="birthday" wire:model.debounce.500ms="user.birthday">
 
                 <label for="gender">{{ __('registration.gender.gender') }}</label>
@@ -76,12 +81,20 @@
                 <input type="text" id="passport-number" class="rounded"
                        wire:model.debounce.500ms="passport.passport_number">
 
-                <div><label for="passport-issue-date">{{ __('registration.passport-issue-date') }}</label></div>
+                <div><label for="passport-issue-date">{{ __('registration.passport-issue-date') }}</label>
+                    @error('passport.issue_date')
+                    <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <input type="date" id="passport-issue-date" class="rounded"
                        wire:model.debounce.500ms="passport.issue_date">
 
                 <div>
                     <label for="passport-expiration-date">{{ __('registration.passport-expiration-date') }}</label>
+                    @error('passport.expiration_date')
+                    <div class="text-red-500">{{ $message }}</div>
+                    @enderror
                 </div>
                 <input id="passport-expiration-date" type="date" class="rounded"
                        wire:model.debounce.500ms="passport.expiration_date">

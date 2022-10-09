@@ -27,6 +27,10 @@ class EventRegistration extends Component
 
     private const NULLABLE_EMAIL = 'nullable|email';
 
+    private const NULLABLE_PAST_DATE = 'nullable|date|before:today';
+
+    private const NULLABLE_FUTURE_DATE = 'nullable|date|after:today';
+
     public const PART_ONE = 'one';
 
     public const PART_TWO = 'two';
@@ -68,20 +72,21 @@ class EventRegistration extends Component
 
     protected $validationAttributes = [
         'email' => 'E-Mail',
+        'today' => 'Heute',
     ];
 
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
         'user.gender' => 'nullable|in:female,male,diverse,na',
-        'user.birthday' => self::NULLABLE_DATE,
+        'user.birthday' => self::NULLABLE_PAST_DATE,
         'user.mobile_phone' => self::NULLABLE,
         'user.health_issues' => self::NULLABLE,
 
         'passport.nationality' => self::NULLABLE,
         'passport.passport_number' => self::NULLABLE,
-        'passport.issue_date' => self::NULLABLE_DATE,
-        'passport.expiration_date' => self::NULLABLE_DATE,
+        'passport.issue_date' => self::NULLABLE_PAST_DATE,
+        'passport.expiration_date' => self::NULLABLE_FUTURE_DATE,
 
         'rotary.host_district' => self::NULLABLE,
         'rotary.host_club' => self::NULLABLE,
