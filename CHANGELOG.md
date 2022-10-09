@@ -12,6 +12,13 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.1...v0.7.2
 
+## What's Changed
+* feat: Add views for fortify's password reset by @paulschuberth in https://github.com/rotex1800/registration/pull/63
+* feat: allow rotex to review documents #57 by @paulschuberth in https://github.com/rotex1800/registration/pull/66
+
+
+**Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.2...v0.8.0
+
 ## [0.7.0](https://github.com/rotex1800/registration/compare/v0.6.0...v0.7.0) (2022-10-08)
 
 
