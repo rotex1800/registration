@@ -29,3 +29,8 @@ it('logs in the user', function () {
               ->call('login')
               ->assertRedirect('/home');
 });
+
+it('shows link to password reset', function () {
+    Livewire::test('login-form')
+            ->assertSeeText(__('signup.forgot-password'));
+});
