@@ -19,6 +19,12 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.2...v0.8.0
 
+## What's Changed
+* fix: Actually use workflow input to determine deployment target by @paulschuberth in https://github.com/rotex1800/registration/pull/67
+
+
+**Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
+
 ## [0.7.0](https://github.com/rotex1800/registration/compare/v0.6.0...v0.7.0) (2022-10-08)
 
 
