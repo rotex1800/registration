@@ -2,19 +2,28 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\DocumentsRater;
+use App\Http\Livewire\DocumentsTableRow;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\View\ViewException;
 use Livewire\Livewire;
-use Tests\TestCase;
 
-class DocumentsTableRowTest extends TestCase
-{
-    /** @test */
-    public function the_component_can_render()
-    {
-        $component = Livewire::test(DocumentsRater::class);
+uses(RefreshDatabase::class);
 
-        $component->assertStatus(200);
-    }
-}
+it('can render', function () {
+    $component = Livewire::test(DocumentsTableRow::class, [
+        'user' => User::factory()->make(),
+    ]);
+    $component->assertStatus(200);
+});
+
+it('requires a user parameter', function () {
+    Livewire::test(DocumentsTableRow::class);
+})->throws(ViewException::class);
+
+it('contains rules', function () {
+    Livewire::test(DocumentsTableRow::class, [
+        'user' => User::factory()->make(),
+    ])
+            ->assertSeeText(__('registration.rules'));
+});

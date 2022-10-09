@@ -50,6 +50,15 @@ class DocumentFactory extends Factory
         });
     }
 
+    public function declined()
+    {
+        return $this->state(function () {
+            return [
+                'state' => DocumentState::Declined,
+            ];
+        });
+    }
+
     public function submitted()
     {
         return $this->state(function () {
