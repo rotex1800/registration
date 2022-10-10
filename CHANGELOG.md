@@ -25,6 +25,19 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [0.9.0](https://github.com/rotex1800/registration/compare/v0.8.2...v0.9.0) (2022-10-10)
+
+
+### Features
+
+* improve input validation [#74](https://github.com/rotex1800/registration/issues/74) ([#75](https://github.com/rotex1800/registration/issues/75)) ([6c51cc9](https://github.com/rotex1800/registration/commit/6c51cc97701518e94d7509279d8dcb98b2b90a2b))
+
+
+### Miscellaneous Chores
+
+* Fix typos ([f75a933](https://github.com/rotex1800/registration/commit/f75a9332d2d125b8cd1889a8294dfaccc11fc326))
+* Improve Explanations ([#78](https://github.com/rotex1800/registration/issues/78)) ([3b82f7b](https://github.com/rotex1800/registration/commit/3b82f7bcae5db6529ff28e02ff3d8a081fb5d7ee))
+
 ## [0.8.2](https://github.com/rotex1800/registration/compare/v0.8.1...v0.8.2) (2022-10-09)
 
 
