@@ -90,12 +90,26 @@ test('factory can create document with the given DocumentCategory', function () 
         ->category->toBe(DocumentCategory::PassportCopy);
 });
 
-test('category is unique', function () {
+test('category itself is not unique', function () {
     $first = Document::factory()->withCategory(DocumentCategory::PassportCopy)->make();
     $second = Document::factory()->withCategory(DocumentCategory::PassportCopy)->make();
+    $userOne = User::factory()->create();
+    $userTwo = User::factory()->create();
 
-    $first->save();
-    $second->save();
+    $userOne->documents()->save($first);
+    $userTwo->documents()->save($second);
+    expect(true)->toBeTrue();
+});
+
+test('category unique within user', function () {
+    // Arrange
+    $first = Document::factory()->withCategory(DocumentCategory::PassportCopy)->make();
+    $second = Document::factory()->withCategory(DocumentCategory::PassportCopy)->make();
+    $user = User::factory()->create();
+
+    // Act & Assert
+    $user->documents()->save($first);
+    $user->documents()->save($second);
 })->throws(QueryException::class);
 
 test('category can be null multiple times', function () {

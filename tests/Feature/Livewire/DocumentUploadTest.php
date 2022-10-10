@@ -57,17 +57,39 @@ it('has file wired', function () {
 it('stores uploaded file', function () {
     $user = $this->user;
     Storage::fake();
+    $file = UploadedFile::fake()->create('foo.pdf', 1024, 'application/pdf');
+
+    Livewire::test('document-upload', ['category' => 'passport'])
+            ->set('file', $file)
+            ->call('save');
+    Storage::disk()->assertExists('documents/'.$user->uuid.'/passport.pdf');
+});
+
+it('requires pdf files', function () {
+    $user = $this->user;
+    Storage::fake();
     $file = UploadedFile::fake()->image('avatar.png');
 
     Livewire::test('document-upload', ['category' => 'passport'])
             ->set('file', $file)
             ->call('save');
-    Storage::disk()->assertExists('documents/'.$user->uuid.'/passport.png');
+    Storage::disk()->assertMissing('documents/'.$user->uuid.'/passport.png');
+});
+
+it('allows image upload for the picture', function () {
+    $user = $this->user;
+    Storage::fake();
+    $file = UploadedFile::fake()->image('avatar.png');
+
+    Livewire::test('document-upload', ['category' => 'picture'])
+            ->set('file', $file)
+            ->call('save');
+    Storage::disk()->assertExists('documents/'.$user->uuid.'/picture.png');
 });
 
 it('uploading file creates entry in document table', function () {
     Storage::fake('documents');
-    $file = UploadedFile::fake()->image('avatar.png');
+    $file = UploadedFile::fake()->create('foo.pdf', 1024, 'application/pdf');
 
     Livewire::test('document-upload', ['category' => 'passport'])
             ->set('file', $file)
@@ -75,10 +97,10 @@ it('uploading file creates entry in document table', function () {
 
     expect(Document::count())->toBe(1)
                              ->and(Document::first())
-        ->name->toBe('avatar.png')
+        ->name->toBe('foo.pdf')
         ->type->toBe(Document::TYPE_DIGITAL)
         ->state->toBe(DocumentState::Submitted)
-        ->path->toBe('documents/'.$this->user->uuid.'/passport.png');
+        ->path->toBe('documents/'.$this->user->uuid.'/passport.pdf');
 });
 
 it('has consts for document types', function () {
