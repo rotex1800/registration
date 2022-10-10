@@ -110,7 +110,6 @@ test('category unique within user', function () {
     // Act & Assert
     $user->documents()->save($first);
     $user->documents()->save($second);
-
 })->throws(QueryException::class);
 
 test('category can be null multiple times', function () {

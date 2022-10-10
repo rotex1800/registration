@@ -27,8 +27,12 @@ class DocumentUpload extends Component
 
     public User $user;
 
-    protected $rules = [
-        'file' => 'required|file|max:5120',
+    private $defaultRules = [
+        'file' => 'required|mimes:pdf|file|max:5120',
+    ];
+
+    private $pictureRules = [
+        'file' => 'required|image|file|max:5120',
     ];
 
     public function messages()
@@ -96,5 +100,14 @@ class DocumentUpload extends Component
             $dbDoc->save();
         }
         $this->message = __('registration.upload-success');
+    }
+
+    protected function getRules()
+    {
+        if ($this->category == DocumentCategory::Picture->value) {
+            return $this->pictureRules;
+        } else {
+            return $this->defaultRules;
+        }
     }
 }
