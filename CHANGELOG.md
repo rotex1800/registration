@@ -25,6 +25,24 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.0.0](https://github.com/rotex1800/registration/compare/v0.9.0...v1.0.0) (2022-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Create LICENSE (#79)
+
+### Bug Fixes
+
+* document type must not be unique across all documents but only across one user ([#82](https://github.com/rotex1800/registration/issues/82)) ([01fdee3](https://github.com/rotex1800/registration/commit/01fdee32d7766b55ba7e1ac98c3d0a680dc664df))
+* force database seed ([#84](https://github.com/rotex1800/registration/issues/84)) ([c36c0d8](https://github.com/rotex1800/registration/commit/c36c0d86707c9a736562a126c69edb1f57f680ae))
+* Use `translatedFormat` to format date ([#83](https://github.com/rotex1800/registration/issues/83)) ([124a709](https://github.com/rotex1800/registration/commit/124a70953113e2572574bdd3da061120df7730cf))
+
+
+### Miscellaneous Chores
+
+* Create LICENSE ([#79](https://github.com/rotex1800/registration/issues/79)) ([e8ea4ea](https://github.com/rotex1800/registration/commit/e8ea4eaa5c7d84175caa99c0c48f5dd6236d9caf))
+
 ## [0.9.0](https://github.com/rotex1800/registration/compare/v0.8.2...v0.9.0) (2022-10-10)
 
 
