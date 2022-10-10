@@ -25,7 +25,7 @@ npm run build
 php artisan migrate --force
 
 # Run database seeders
-php artisan db:seed
+php artisan db:seed --force
 
 # Update caches
 php artisan view:clear
