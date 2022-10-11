@@ -15,9 +15,9 @@
     </div>
     <div class="my-1 text-white my-4">
         @if($this->hasUserRegistered())
-            <button class="bg-yellow-500 p-3 rounded" wire:click="unregister">Abmelden</button>
+            <button class="bg-red-500 p-3 rounded" wire:click="unregister">{{ __('registration.dont-participate') }}</button>
         @else
-            <button class="bg-blue-800 p-3 rounded" wire:click="register">Bewerben</button>
+            <button class="bg-blue-800 p-3 rounded" wire:click="register">{{ __('registration.apply') }}</button>
         @endif
     </div>
     @if($this->hasUserRegistered())
