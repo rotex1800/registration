@@ -25,6 +25,21 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.0.1](https://github.com/rotex1800/registration/compare/v1.0.0...v1.0.1) (2022-10-11)
+
+
+### Bug Fixes
+
+* date of germany tour in 2023 ([9b255f8](https://github.com/rotex1800/registration/commit/9b255f82b314cdd7cde6bd82ec38092a4ff47698))
+* display of dates in registration and db seeder ([#87](https://github.com/rotex1800/registration/issues/87)) ([561a54e](https://github.com/rotex1800/registration/commit/561a54ebda20167b8846c6a06867b143e9067034))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump vite from 3.1.6 to 3.1.7 ([0a4a8fe](https://github.com/rotex1800/registration/commit/0a4a8fe5bfbeeaaa79debf168823c47443dfd073))
+* **deps:** bump vite from 3.1.6 to 3.1.7 ([#85](https://github.com/rotex1800/registration/issues/85)) ([5f98cb8](https://github.com/rotex1800/registration/commit/5f98cb8b17540eebef09bb7fb900aefa614a61fb))
+* improve clarity of messaging ([ccf399d](https://github.com/rotex1800/registration/commit/ccf399d34ddffa585b261ff683b7baab89c9f2b8))
+
 ## [1.0.0](https://github.com/rotex1800/registration/compare/v0.9.0...v1.0.0) (2022-10-10)
 
 
