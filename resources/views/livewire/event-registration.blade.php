@@ -5,11 +5,11 @@
         <div>
             <div class="my-1 flex flex-row text-2xl">
                 <div class="mr-2">Von:</div>
-                <div>{{ $this->event->start->isoFormat('d. MMMM Y') }}</div>
+                <div>{{ $this->event->start->translatedFormat('d. F Y') }}</div>
             </div>
             <div class="my-1 flex flex-row text-2xl">
                 <div class="mr-2">Bis:</div>
-                <div>{{ $this->event->end->isoFormat('d. MMMM Y') }}</div>
+                <div>{{ $this->event->end->translatedFormat('d. F Y') }}</div>
             </div>
         </div>
     </div>

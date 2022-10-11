@@ -35,8 +35,8 @@ it('shows event information', function () {
 
     $component
         ->assertSee($this->event->name)
-        ->assertSee($this->event->start->isoFormat('d. MMMM Y'))
-        ->assertSee($this->event->end->isoFormat('d. MMMM Y'));
+        ->assertSee($this->event->start->translatedFormat('d. F Y'))
+        ->assertSee($this->event->end->translatedFormat('d. F Y'));
 });
 
 it('contains button to register if not yet registered', function () {
