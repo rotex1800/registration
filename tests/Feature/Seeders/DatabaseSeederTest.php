@@ -56,7 +56,7 @@ it('creates tour', function () {
         ->count()->toBe(1)
         ->and($queryResult->first())
         ->start->toDateString()->toBe('2023-03-22')
-        ->end->toDateString()->toBe('2023-04-08')
+        ->end->toDateString()->toBe('2023-04-05')
              ->hasRole('participant')->toBeTrue();
 });
 

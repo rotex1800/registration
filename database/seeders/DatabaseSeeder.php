@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             $tour = Event::factory()->state([
                 'name' => 'Deutschland Tour',
                 'start' => '2023-03-22',
-                'end' => '2023-04-08',
+                'end' => '2023-04-05',
             ])->create();
             $tour->giveRole('participant');
         }
