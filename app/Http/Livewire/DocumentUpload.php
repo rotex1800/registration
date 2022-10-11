@@ -28,11 +28,11 @@ class DocumentUpload extends Component
     public User $user;
 
     private $defaultRules = [
-        'file' => 'required|mimes:pdf|file|max:5120',
+        'file' => 'required|mimes:pdf|file|max:10240',
     ];
 
     private $pictureRules = [
-        'file' => 'required|image|file|max:5120',
+        'file' => 'required|image|file|max:10240',
     ];
 
     public function messages()
