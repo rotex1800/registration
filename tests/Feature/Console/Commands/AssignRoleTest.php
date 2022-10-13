@@ -10,7 +10,7 @@ test('command works', function () {
     $role = fake()->word;
     $this->artisan('registration:assign', [
         'role' => $role,
-        'email' => $user->email
+        'email' => $user->email,
     ])->assertExitCode(0);
     expect($user->hasRole($role))->toBeTrue();
 });
@@ -20,7 +20,7 @@ it('fails if user can not be found', function () {
     $email = fake()->email;
     $this->artisan('registration:assign', [
         'role' => $role,
-        'email' => $email
+        'email' => $email,
     ])->assertFailed();
 });
 
@@ -38,7 +38,7 @@ it('shows error message if the user can not be found', function () {
     $email = fake()->email;
     $this->artisan('registration:assign', [
         'email' => $email,
-        'role' => fake()->word
+        'role' => fake()->word,
     ])->expectsOutput("There is no user with email '$email'")
          ->assertFailed();
 });
