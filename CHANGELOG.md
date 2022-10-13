@@ -25,6 +25,21 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.1.0](https://github.com/rotex1800/registration/compare/v1.0.1...v1.1.0) (2022-10-13)
+
+
+### Features
+
+* Artisan command to assign a role to a user ([#91](https://github.com/rotex1800/registration/issues/91)) ([1025964](https://github.com/rotex1800/registration/commit/1025964a1431b7b019b262ca14edef61b4276f33))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/framework from 9.34.0 to 9.35.1 ([bdcfca2](https://github.com/rotex1800/registration/commit/bdcfca24b53f4d8337dfb84b2da666aeb59533b7))
+* **deps:** bump laravel/framework from 9.34.0 to 9.35.1 ([#89](https://github.com/rotex1800/registration/issues/89)) ([c2a37be](https://github.com/rotex1800/registration/commit/c2a37be4cab7326b14eab4af9cdd8ad1d2ee7d93))
+* **deps:** bump postcss from 8.4.17 to 8.4.18 ([da27fdb](https://github.com/rotex1800/registration/commit/da27fdb744b999b049106fb308f8dd0ccc4e24de))
+* **deps:** bump postcss from 8.4.17 to 8.4.18 ([#92](https://github.com/rotex1800/registration/issues/92)) ([1f62c7d](https://github.com/rotex1800/registration/commit/1f62c7d517dfb3f1db9df87e4791a29538bc8554))
+
 ## [1.0.1](https://github.com/rotex1800/registration/compare/v1.0.0...v1.0.1) (2022-10-11)
 
 
