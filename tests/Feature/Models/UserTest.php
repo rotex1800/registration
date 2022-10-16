@@ -15,10 +15,12 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
+use Ramsey\Uuid\Uuid;
 
 uses(RefreshDatabase::class);
 
@@ -429,3 +431,19 @@ it('creates the role it attaches itself to if it does not exist', function () {
 
     expect($user->hasRole('role'))->toBeTrue();
 });
+
+it('has a unique constraint on the uuid column', function () {
+    $uuid = Uuid::uuid4();
+    $userOne = User::factory()->state([
+        'uuid' => $uuid,
+    ])->make();
+    $userTwo = User::factory()->state([
+        'uuid' => $uuid,
+    ])->make();
+    $userOne->save();
+    $userTwo->save();
+})->throws(QueryException::class);
+
+it('requires value for uuid', function () {
+    User::factory()->state(['uuid' => null])->create();
+})->throws(QueryException::class);

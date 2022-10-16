@@ -18,3 +18,13 @@ it('creates the new user with the participant rule', function () {
         ->toBeInstanceOf(User::class)
         ->hasRole('participant')->toBeTrue();
 });
+
+it('assigns a uuid to each new user', function () {
+    $action = new CreateNewUser();
+    $attributes = User::factory()->definition();
+    $attributes['password'] = 'password';
+    $attributes['password_confirmation'] = 'password';
+
+    expect($action->create($attributes))
+        ->uuid->not->toBeNull();
+});
