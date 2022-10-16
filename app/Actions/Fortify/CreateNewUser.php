@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Ramsey\Uuid\Uuid;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -40,6 +41,7 @@ class CreateNewUser implements CreatesNewUsers
             'first_name' => $input['first_name'],
             'family_name' => $input['family_name'],
             'password' => Hash::make($input['password']),
+            'uuid' => Uuid::uuid4(),
         ]);
 
         $user->giveRole('participant');
