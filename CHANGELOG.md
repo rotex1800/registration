@@ -25,6 +25,23 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.1.1](https://github.com/rotex1800/registration/compare/v1.1.0...v1.1.1) (2022-10-16)
+
+
+### Bug Fixes
+
+* Assign a uuid to each user upon creation ([#96](https://github.com/rotex1800/registration/issues/96)) ([c321050](https://github.com/rotex1800/registration/commit/c3210509a9155040d228b8ba622d10b1e2cd632f))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump nunomaduro/larastan from 2.2.1 to 2.2.3 ([a418dd6](https://github.com/rotex1800/registration/commit/a418dd670c23d676fc5c7fb0de0d6e004ab96e8b))
+* **deps:** bump nunomaduro/larastan from 2.2.1 to 2.2.3 ([#95](https://github.com/rotex1800/registration/issues/95)) ([ee0d0b1](https://github.com/rotex1800/registration/commit/ee0d0b1b53a2cc062bcb5fdf6b6eb64a805ddd99))
+* **deps:** bump spatie/laravel-ignition from 1.5.1 to 1.5.2 ([1373fbf](https://github.com/rotex1800/registration/commit/1373fbf1b2c9948b1d7e9bd6e7071a213b706547))
+* **deps:** bump spatie/laravel-ignition from 1.5.1 to 1.5.2 ([#94](https://github.com/rotex1800/registration/issues/94)) ([6b5331d](https://github.com/rotex1800/registration/commit/6b5331d0a92eea731d2494ae040ed6a1f932a38f))
+* **deps:** bump vite from 3.1.7 to 3.1.8 ([d1560d8](https://github.com/rotex1800/registration/commit/d1560d81dbd02aad179332fc4a4d450eaf6f4474))
+* **deps:** bump vite from 3.1.7 to 3.1.8 ([#93](https://github.com/rotex1800/registration/issues/93)) ([8c183cf](https://github.com/rotex1800/registration/commit/8c183cfe63f31b58cb7fed4443bc14bf7e943228))
+
 ## [1.1.0](https://github.com/rotex1800/registration/compare/v1.0.1...v1.1.0) (2022-10-13)
 
 
