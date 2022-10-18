@@ -141,7 +141,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Php
-        uses: GeneaLabs/action-reviewdog-phpstan@1.0.0
+        uses: GeneaLabs/action-reviewdog-phpstan@1.1.2
         with:
           github_token: '${{ github.token }}'
           level: 'error'
