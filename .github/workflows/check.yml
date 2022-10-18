@@ -150,5 +150,5 @@ jobs:
           github_token: '${{ github.token }}'
           level: 'error'
           fail_on_error: 'false'
-          reporter: 'github-pr-review'
+          reporter: 'github-pr-check'
           target_directory: 'app'
