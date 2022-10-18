@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Database\Factories\RotaryInfoFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo newQuery()
@@ -38,6 +39,7 @@ class RotaryInfo extends Model
 
     /**
      * Inverse of the one-to-one relation between a user and RotaryInfo
+     *
      * @return BelongsTo<User, RotaryInfo>
      */
     public function user(): BelongsTo

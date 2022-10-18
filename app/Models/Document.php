@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property \App\Models\DocumentCategory|null $category
  * @property-read Model|\Eloquent $documentable
  * @property-read \App\Models\User|null $owner
+ *
  * @method static \Database\Factories\DocumentFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Document newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Document newQuery()

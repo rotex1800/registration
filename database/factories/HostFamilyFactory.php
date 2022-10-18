@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\HostFamily;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /** @extends Factory<HostFamily> */
 class HostFamilyFactory extends Factory

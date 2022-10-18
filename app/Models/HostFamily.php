@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User|null $inbound
+ *
  * @method static \Database\Factories\HostFamilyFactory factory(...$parameters)
  * @method static Builder|HostFamily newModelQuery()
  * @method static Builder|HostFamily newQuery()

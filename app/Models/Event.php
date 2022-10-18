@@ -24,6 +24,7 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $attendees_count
  * @property-read Collection|Role[] $roles
  * @property-read int|null $roles_count
+ *
  * @method static EventFactory factory(...$parameters)
  * @method static Builder|Event newModelQuery()
  * @method static Builder|Event newQuery()
