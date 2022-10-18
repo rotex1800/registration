@@ -12,6 +12,7 @@ class YeoInfoFactory extends Factory
     /**
      * Define the model's default state.
      *
+     *
      * @return array<string, string>
      */
     public function definition(): array

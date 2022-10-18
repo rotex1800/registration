@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\HostFamily;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /** @extends Factory<HostFamily> */
 class HostFamilyFactory extends Factory
