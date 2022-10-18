@@ -155,3 +155,4 @@ jobs:
           level: 'error'
           fail_on_error: 'false'
           reporter: 'github-pr-review'
+          target_directory: 'app'
