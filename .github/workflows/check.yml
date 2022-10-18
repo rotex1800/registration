@@ -140,12 +140,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run Php
+      - name: Run phpstan
         uses: GeneaLabs/action-reviewdog-phpstan@1.1.2
         with:
           github_token: '${{ github.token }}'
           level: 'error'
           fail_on_error: 'false'
-          phpstan_level: 8
           reporter: 'github-pr-review'
-          target_directory: 'app'
