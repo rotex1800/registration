@@ -7,6 +7,37 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
+/**
+ * App\Models\Document
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $type
+ * @property int $is_required
+ * @property \App\Models\DocumentState|null $state
+ * @property string $name
+ * @property int $owner_id
+ * @property string|null $path
+ * @property \App\Models\DocumentCategory|null $category
+ * @property-read Model|\Eloquent $documentable
+ * @property-read \App\Models\User|null $owner
+ * @method static \Database\Factories\DocumentFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereCategory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereIsRequired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereOwnerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document wherePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Document whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Document extends Model
 {
     use HasFactory;
@@ -49,8 +80,7 @@ class Document extends Model
     }
 
     /**
-     * @return BelongsTo
-     * @phpstan-return BelongsTo<User>
+     * @return BelongsTo<User, Document>
      */
     public function owner(): BelongsTo
     {

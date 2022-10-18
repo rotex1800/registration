@@ -13,16 +13,12 @@ use App\Models\User;
 use App\Models\YeoInfo;
 use App\Policies\EventPolicy;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
-use Livewire\Redirector;
 
 class EventRegistration extends Component
 {
-    private const NULLABLE_DATE = 'nullable|date';
-
     private const NULLABLE = 'nullable';
 
     private const NULLABLE_EMAIL = 'nullable|email';
@@ -44,6 +40,9 @@ class EventRegistration extends Component
 
     public RotaryInfo $rotary;
 
+    /**
+     * @var array<mixed>
+     */
     public array $districts;
 
     public User $user;
@@ -66,15 +65,24 @@ class EventRegistration extends Component
 
     public string $activePart = self::PART_ONE;
 
+    /**
+     * @var array<string, array<string, string>>
+     */
     protected $queryString = [
         'activePart' => ['as' => 'part'],
     ];
 
+    /**
+     * @var array<string, string>
+     */
     protected $validationAttributes = [
         'email' => 'E-Mail',
         'today' => 'Heute',
     ];
 
+    /**
+     * @var array<string, string>
+     */
     protected array $rules = [
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
@@ -124,7 +132,7 @@ class EventRegistration extends Component
         'comment.body' => self::NULLABLE,
     ];
 
-    public function mount()
+    public function mount(): void
     {
         $this->districts = json_decode(Storage::disk('local')->get('districts.json'));
         $this->user = Auth::user();
@@ -139,12 +147,12 @@ class EventRegistration extends Component
         $this->comment = $this->user->registrationComment()->firstOrNew();
     }
 
-    public function showPartOne()
+    public function showPartOne(): void
     {
         $this->activePart = self::PART_ONE;
     }
 
-    public function showPartTwo()
+    public function showPartTwo(): void
     {
         $this->activePart = self::PART_TWO;
     }
@@ -188,67 +196,64 @@ class EventRegistration extends Component
         return $policy->canEditEvent($this->user)->allowed();
     }
 
-    public function edit(): Redirector|RedirectResponse
-    {
-        return redirect()->route('event.edit', [
-            'event' => $this->event->id,
-        ]);
-    }
-
-    public function updated($propertyName)
+    /**
+     * @param  string  $propertyName
+     * @return void
+     */
+    public function updated(string $propertyName): void
     {
         $this->validateOnly($propertyName);
     }
 
-    public function updatedUser()
+    public function updatedUser(): void
     {
         $this->user->save();
     }
 
-    public function updatedPassport()
+    public function updatedPassport(): void
     {
         $this->user->passport()->save($this->passport);
     }
 
-    public function updatedRotary()
+    public function updatedRotary(): void
     {
         $this->user->rotaryInfo()->save($this->rotary);
     }
 
-    public function updatedCounselor()
+    public function updatedCounselor(): void
     {
         $this->user->counselor()->save($this->counselor);
     }
 
-    public function updatedYeo()
+    public function updatedYeo(): void
     {
         $this->user->yeo()->save($this->yeo);
     }
 
-    public function updatedBioFamily()
+    public function updatedBioFamily(): void
     {
         $this->user->bioFamily()->save($this->bioFamily);
     }
 
-    public function updatedHostFamilyOne()
+    public function updatedHostFamilyOne(): void
     {
         $this->hostFamilyOne->order = 1;
         $this->user->hostFamilies()->save($this->hostFamilyOne);
     }
 
-    public function updatedHostFamilyTwo()
+    public function updatedHostFamilyTwo(): void
     {
         $this->hostFamilyTwo->order = 2;
         $this->user->hostFamilies()->save($this->hostFamilyTwo);
     }
 
-    public function updatedHostFamilyThree()
+    public function updatedHostFamilyThree(): void
     {
         $this->hostFamilyThree->order = 3;
         $this->user->hostFamilies()->save($this->hostFamilyThree);
     }
 
-    public function updatedComment()
+    public function updatedComment(): void
     {
         $this->user->registrationComment()->save($this->comment);
     }

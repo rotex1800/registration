@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class SortableTable extends Component
@@ -16,9 +19,9 @@ class SortableTable extends Component
      */
     public array $rows = [];
 
-    public $extraRowLivewire = '';
+    public string $extraRowLivewire = '';
 
-    public function render()
+    public function render(): Factory|View|Application
     {
         return view('livewire.sortable-table')->with([
             'rows' => $this->rows,

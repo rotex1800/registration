@@ -32,9 +32,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
          ->name('event.show')
          ->middleware('can:show,event');
 
-    Route::get('/event/{event}/edit', [EventController::class, 'edit'])
-         ->name('event.edit');
-
     Route::get('/registrations/{event}', EventRegistrationsController::class)
          ->name('registrations.show');
 });

@@ -7,6 +7,35 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * App\Models\HostFamily
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $address
+ * @property int|null $user_id
+ * @property int|null $order
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $inbound
+ * @method static \Database\Factories\HostFamilyFactory factory(...$parameters)
+ * @method static Builder|HostFamily newModelQuery()
+ * @method static Builder|HostFamily newQuery()
+ * @method static Builder|HostFamily order(int $order)
+ * @method static Builder|HostFamily query()
+ * @method static Builder|HostFamily whereAddress($value)
+ * @method static Builder|HostFamily whereCreatedAt($value)
+ * @method static Builder|HostFamily whereEmail($value)
+ * @method static Builder|HostFamily whereId($value)
+ * @method static Builder|HostFamily whereName($value)
+ * @method static Builder|HostFamily whereOrder($value)
+ * @method static Builder|HostFamily wherePhone($value)
+ * @method static Builder|HostFamily whereUpdatedAt($value)
+ * @method static Builder|HostFamily whereUserId($value)
+ * @mixin \Eloquent
+ */
 class HostFamily extends Model
 {
     use HasFactory, HasCompletenessCheck;
@@ -16,7 +45,7 @@ class HostFamily extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function scopeOrder(Builder $builder, $order): Builder
+    public function scopeOrder(Builder $builder, int $order): Builder
     {
         return $builder->where('order', $order);
     }

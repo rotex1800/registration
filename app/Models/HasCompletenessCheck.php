@@ -6,9 +6,12 @@ trait HasCompletenessCheck
 {
     abstract public function isComplete(): bool;
 
+    /**
+     * @param  array<string>  $requiredAttrs
+     * @return bool
+     */
     protected function isCompleteCheck(array $requiredAttrs): bool
     {
-        $complete = true;
         foreach (array_keys($requiredAttrs) as $required) {
             $actualAttr = $this->getAttribute($required);
             if ($actualAttr == null || trim($actualAttr) == '') {
@@ -16,6 +19,6 @@ trait HasCompletenessCheck
             }
         }
 
-        return $complete;
+        return true;
     }
 }

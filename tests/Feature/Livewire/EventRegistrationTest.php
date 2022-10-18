@@ -79,17 +79,6 @@ it('contains button to de-register if already registered', function () {
     assertFalse($user->hasRegisteredFor($this->event));
 });
 
-test('edit method redirects to edit page', function () {
-    $user = createUserWithRole('rotex');
-    $user->events()->attach($this->event);
-    actingAs($user);
-    Livewire::test(EventRegistration::class, [
-        'event' => $this->event,
-    ])
-            ->call('edit')
-            ->assertRedirect(route('event.edit', $this->event));
-});
-
 it('has section for information about the person', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);

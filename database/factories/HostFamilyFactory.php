@@ -3,13 +3,15 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\HostFamily;
 
+/** @extends Factory<HostFamily> */
 class HostFamilyFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function definition(): array
     {
@@ -31,7 +33,7 @@ class HostFamilyFactory extends Factory
         });
     }
 
-    public function nth($n): HostFamilyFactory
+    public function nth(int $n): HostFamilyFactory
     {
         return $this->state(function () use ($n) {
             return [

@@ -10,7 +10,7 @@ class SortableTableColumn
 
     private Closure $supplier;
 
-    public function __construct($header, Closure $supplier)
+    public function __construct(string $header, Closure $supplier)
     {
         $this->header = $header;
         $this->supplier = $supplier;
@@ -21,7 +21,7 @@ class SortableTableColumn
         return $this->header;
     }
 
-    public function valueFor($params)
+    public function valueFor(mixed $params): mixed
     {
         return call_user_func($this->supplier, $params);
     }

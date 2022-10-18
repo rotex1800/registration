@@ -56,6 +56,68 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
  */
+
+/**
+ * App\Models\User
+ *
+ * @uses \Illuminate\Auth\MustVerifyEmail
+ * @property int $id
+ * @property string $first_name
+ * @property string $family_name
+ * @property Carbon|null $birthday
+ * @property string|null $gender
+ * @property string|null $mobile_phone
+ * @property string|null $health_issues
+ * @property string $email
+ * @property Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $two_factor_secret
+ * @property string|null $two_factor_recovery_codes
+ * @property string|null $remember_token
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string $uuid
+ * @property-read Collection|Comment[] $authoredComments
+ * @property-read int|null $authored_comments_count
+ * @property-read BioFamily|null $bioFamily
+ * @property-read CounselorInfo|null $counselor
+ * @property-read Collection|Document[] $documents
+ * @property-read int|null $documents_count
+ * @property-read Collection|Event[] $events
+ * @property-read int|null $events_count
+ * @property-read Collection|HostFamily[] $hostFamilies
+ * @property-read int|null $host_families_count
+ * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read Passport|null $passport
+ * @property-read RegistrationComment|null $registrationComment
+ * @property-read Collection|Role[] $roles
+ * @property-read int|null $roles_count
+ * @property-read RotaryInfo|null $rotaryInfo
+ * @property-read YeoInfo|null $yeo
+ * @property-read string $full_name
+ * @method static UserFactory factory(...$parameters)
+ * @method static Builder|User newModelQuery()
+ * @method static Builder|User newQuery()
+ * @method static Builder|User query()
+ * @method static Builder|User whereBirthday($value)
+ * @method static Builder|User whereCreatedAt($value)
+ * @method static Builder|User whereEmail($value)
+ * @method static Builder|User whereEmailVerifiedAt($value)
+ * @method static Builder|User whereFamilyName($value)
+ * @method static Builder|User whereFirstName($value)
+ * @method static Builder|User whereGender($value)
+ * @method static Builder|User whereHealthIssues($value)
+ * @method static Builder|User whereId($value)
+ * @method static Builder|User whereMobilePhone($value)
+ * @method static Builder|User wherePassword($value)
+ * @method static Builder|User whereRememberToken($value)
+ * @method static Builder|User whereTwoFactorRecoveryCodes($value)
+ * @method static Builder|User whereTwoFactorSecret($value)
+ * @method static Builder|User whereUpdatedAt($value)
+ * @method static Builder|User whereUuid($value)
+ * @mixin Eloquent
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasCompletenessCheck, HasRoles, HasDocuments, \Illuminate\Auth\MustVerifyEmail;
@@ -63,7 +125,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<string>
      */
     protected $fillable = [
         'first_name',
@@ -76,7 +138,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -86,7 +148,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -99,7 +161,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
+            get: fn($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
         );
     }
 
@@ -120,7 +182,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function hasRegisteredFor(Event $event): bool
     {
-        return $this->events()->get()->contains($event);
+        return $this->events()->where('id', $event->id)->exists();
     }
 
     /**
@@ -187,18 +249,22 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hostFamily(1);
     }
 
+    /**
+     * @param  int  $order
+     * @return HostFamily
+     */
     public function hostFamily(int $order): HostFamily
     {
         $familyOrNull = $this
             ->hostFamilies()
             ->order($order)
-            ->get()
             ->first();
-        if ($familyOrNull == null) {
-            $familyOrNull = HostFamily::factory()->empty()->nth($order)->make();
+
+        if ($familyOrNull != null) {
+            return $familyOrNull;
         }
 
-        return $familyOrNull;
+        return HostFamily::factory()->empty()->nth($order)->make();
     }
 
     /**
