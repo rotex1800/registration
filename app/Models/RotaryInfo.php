@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User|null $user
  *
- *
  * @method static \Database\Factories\RotaryInfoFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo newQuery()

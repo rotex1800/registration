@@ -62,7 +62,6 @@ use Illuminate\Support\Carbon;
  *
  * @uses \Illuminate\Auth\MustVerifyEmail
  *
- *
  * @property int $id
  * @property string $first_name
  * @property string $family_name
@@ -98,7 +97,6 @@ use Illuminate\Support\Carbon;
  * @property-read RotaryInfo|null $rotaryInfo
  * @property-read YeoInfo|null $yeo
  * @property-read string $full_name
- *
  *
  * @method static UserFactory factory(...$parameters)
  * @method static Builder|User newModelQuery()
