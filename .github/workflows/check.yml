@@ -146,6 +146,6 @@ jobs:
           github_token: '${{ github.token }}'
           level: 'error'
           fail_on_error: 'false'
-          phpstan_level: 7
+          phpstan_level: 8
           reporter: 'github-pr-review'
           target_directory: 'app'
