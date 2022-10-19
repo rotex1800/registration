@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @extends Factory<HostFamily>
+ *
  * @method HostFamily make($attributes = [], ?Model $parent = null)
  */
 class HostFamilyFactory extends Factory

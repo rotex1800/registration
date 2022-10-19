@@ -20,6 +20,7 @@ enum DocumentCategory: string
         if ($value == null) {
             return DocumentCategory::Unknown;
         }
+
         return DocumentCategory::from($value);
     }
 

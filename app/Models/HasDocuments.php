@@ -17,6 +17,7 @@ trait HasDocuments
         if ($owner == null) {
             return false;
         }
+
         return $owner->id == $this->id;
     }
 
