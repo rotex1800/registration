@@ -4,7 +4,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/** @extends Factory<HostFamily> */
+/**
+ * @extends Factory<HostFamily>
+ */
 class HostFamilyFactory extends Factory
 {
     /**
@@ -23,7 +25,7 @@ class HostFamilyFactory extends Factory
         ];
     }
 
-    public function first(): Factory
+    public function first(): HostFamilyFactory
     {
         return $this->state(function () {
             return [
