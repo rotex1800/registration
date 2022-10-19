@@ -13,7 +13,11 @@ trait HasDocuments
      */
     public function owns(Document $document): bool
     {
-        return $document->owner->id == $this->id;
+        $owner = $document->owner;
+        if ($owner == null) {
+            return false;
+        }
+        return $owner->id == $this->id;
     }
 
     /**

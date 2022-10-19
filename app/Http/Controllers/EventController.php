@@ -15,6 +15,9 @@ class EventController extends Controller
     {
         $user = Auth::user();
 
+        if ($user == null) {
+            abort(401);
+        }
         $hasRegistered = $user->hasRegisteredFor($event);
 
         $part = EventRegistration::PART_ONE;

@@ -55,11 +55,11 @@ class EventRegistration extends Component
 
     public BioFamily $bioFamily;
 
-    public ?HostFamily $hostFamilyOne;
+    public HostFamily $hostFamilyOne;
 
-    public ?HostFamily $hostFamilyTwo;
+    public HostFamily $hostFamilyTwo;
 
-    public ?HostFamily $hostFamilyThree;
+    public HostFamily $hostFamilyThree;
 
     public RegistrationComment $comment;
 
@@ -134,8 +134,15 @@ class EventRegistration extends Component
 
     public function mount(): void
     {
-        $this->districts = json_decode(Storage::disk('local')->get('districts.json'));
-        $this->user = Auth::user();
+        $user = Auth::user();
+        if ($user == null) {
+            abort(401);
+        }
+
+        $content = Storage::disk('local')->get('districts.json') ?? '[]';
+        $this->districts = json_decode($content);
+
+        $this->user = $user;
         $this->passport = $this->user->passport()->firstOrNew();
         $this->rotary = $this->user->rotaryInfo()->firstOrNew();
         $this->counselor = $this->user->counselor()->firstOrNew();

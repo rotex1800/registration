@@ -163,7 +163,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
+            get: fn($value, $attrs) => $attrs['first_name'].' '.$attrs['family_name']
         );
     }
 
@@ -246,7 +246,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(BioFamily::class, 'user_id');
     }
 
-    public function firstHostFamily(): ?HostFamily
+    public function firstHostFamily(): HostFamily
     {
         return $this->hostFamily(1);
     }
@@ -278,12 +278,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(HostFamily::class, 'user_id');
     }
 
-    public function secondHostFamily(): ?HostFamily
+    public function secondHostFamily(): HostFamily
     {
         return $this->hostFamily(2);
     }
 
-    public function thirdHostFamily(): ?HostFamily
+    public function thirdHostFamily(): HostFamily
     {
         return $this->hostFamily(3);
     }
