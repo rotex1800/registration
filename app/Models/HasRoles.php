@@ -14,7 +14,7 @@ trait HasRoles
      */
     public function hasRole(string $roleName): bool
     {
-        return $this->roles()->where('name', $roleName)->get()->count() > 0;
+        return $this->roles()->where('name', $roleName)->count() > 0;
     }
 
     /**
@@ -26,7 +26,7 @@ trait HasRoles
         return $this->belongsToMany(Role::class);
     }
 
-    public function giveRole(string $roleName)
+    public function giveRole(string $roleName): void
     {
         $role = Role::where('name', $roleName)->first();
         if ($role == null) {

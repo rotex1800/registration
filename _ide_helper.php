@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.34.0.
+ * Generated for Laravel 9.35.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1294,9 +1294,9 @@
          *
          * @return mixed 
          * @param string $id Identifier of the entry to look for.
-         * @return mixed Entry.
-         * @throws ContainerExceptionInterface Error while retrieving the entry.
          * @throws NotFoundExceptionInterface  No entry was found for **this** identifier.
+         * @throws ContainerExceptionInterface Error while retrieving the entry.
+         * @return mixed Entry.
          * @static 
          */ 
         public static function get($id)

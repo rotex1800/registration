@@ -6,6 +6,10 @@ use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -15,34 +19,55 @@ class DocumentUpload extends Component
 {
     use WithFileUploads;
 
+    /**
+     * @var string
+     */
     public $displayName;
 
+    /**
+     * @var string
+     */
     public $category;
 
+    /**
+     * @var UploadedFile
+     */
     public $file;
 
-    public $disabled = false;
+    public bool $disabled = false;
 
-    public $message = '';
+    public string $message = '';
 
+    /**
+     * @var User
+     */
     public User $user;
 
+    /**
+     * @var string[]
+     */
     private $defaultRules = [
         'file' => 'required|mimes:pdf|file|max:10240',
     ];
 
+    /**
+     * @var string[]
+     */
     private $pictureRules = [
         'file' => 'required|image|file|max:10240',
     ];
 
-    public function messages()
+    /**
+     * @return array<string>
+     */
+    public function messages(): array
     {
         return [
             'file.required' => __('registration.upload-no-file-selected'),
         ];
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->user = Auth::user();
         $this->message = $this->getStringForDocumentState();
@@ -67,14 +92,14 @@ class DocumentUpload extends Component
         };
     }
 
-    public function render()
+    public function render(): Factory|View|Application
     {
         return view('livewire.document-upload', [
             'displayName' => $this->displayName,
         ]);
     }
 
-    public function save()
+    public function save(): void
     {
         $this->validate();
 
@@ -102,7 +127,10 @@ class DocumentUpload extends Component
         $this->message = __('registration.upload-success');
     }
 
-    protected function getRules()
+    /**
+     * @return string[]
+     */
+    protected function getRules(): array
     {
         if ($this->category == DocumentCategory::Picture->value) {
             return $this->pictureRules;

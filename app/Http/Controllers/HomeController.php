@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Policies\EventPolicy;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -16,18 +18,18 @@ class HomeController extends Controller
         $this->eventPolicy = $eventPolicy;
     }
 
-    public function home(): View
+    public function home(): Application|Factory|View
     {
         $user = Auth::user();
         $participatingEvents = $user->participatesIn();
         $registrationPossible = $user->canRegisterFor();
-//        $canSeeRegistrations = $this->eventPolicy->seeRegistrations($user);
+        $canSeeRegistrations = $this->eventPolicy->seeRegistrations($user);
         $allEvents = Event::all();
 
         return view('home', [
             'participating' => $participatingEvents,
             'registrationPossible' => $registrationPossible,
-            //            'canSeeRegistrations' => $canSeeRegistrations,
+            'canSeeRegistrations' => $canSeeRegistrations,
             'allEvents' => $allEvents,
         ]);
     }

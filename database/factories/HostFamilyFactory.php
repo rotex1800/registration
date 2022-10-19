@@ -4,12 +4,15 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<HostFamily>
+ */
 class HostFamilyFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function definition(): array
     {
@@ -22,7 +25,7 @@ class HostFamilyFactory extends Factory
         ];
     }
 
-    public function first(): Factory
+    public function first(): HostFamilyFactory
     {
         return $this->state(function () {
             return [
@@ -31,7 +34,7 @@ class HostFamilyFactory extends Factory
         });
     }
 
-    public function nth($n): HostFamilyFactory
+    public function nth(int $n): HostFamilyFactory
     {
         return $this->state(function () use ($n) {
             return [

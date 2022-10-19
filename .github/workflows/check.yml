@@ -135,3 +135,21 @@ jobs:
         uses: amannn/action-semantic-pull-request@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  phpstan-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Run phpstan
+        uses: paulschuberth/action-reviewdog-phpstan@parametrize-base-image
+        with:
+          github_token: '${{ github.token }}'
+          level: 'error'
+          fail_on_error: 'true'
+          reporter: 'github-pr-check'
+          target_directory: 'app'
+          base_image: 'php:8.1-alpine'

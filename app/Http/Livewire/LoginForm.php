@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\Redirector;
 
@@ -16,12 +18,15 @@ class LoginForm extends Component
 
     public bool $remember = false;
 
+    /**
+     * @var array|string[]
+     */
     protected array $rules = [
         'email' => 'required|email',
         'password' => 'required|min:6',
     ];
 
-    public function render(): View
+    public function render(): Application|Factory|View
     {
         return view('livewire.login-form');
     }
