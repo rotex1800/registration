@@ -69,7 +69,12 @@ class DocumentUpload extends Component
 
     public function mount(): void
     {
-        $this->user = Auth::user();
+        $user = Auth::user();
+        if ($user == null) {
+            abort(401);
+        }
+
+        $this->user = $user;
         $this->message = $this->getStringForDocumentState();
     }
 
@@ -78,7 +83,7 @@ class DocumentUpload extends Component
      */
     private function getStringForDocumentState(): string
     {
-        $document = $this->user->documentBy(DocumentCategory::tryFrom($this->category));
+        $document = $this->user->documentBy(DocumentCategory::read($this->category));
         if ($document == null) {
             return __('document.state_not_uploaded');
         }
@@ -108,14 +113,14 @@ class DocumentUpload extends Component
         $path = 'documents/'.$this->user->uuid;
         Storage::disk()->putFileAs($path, $this->file, $this->category.'.'.$extension);
 
-        $dbDoc = $this->user->documentBy(DocumentCategory::tryFrom($this->category));
+        $dbDoc = $this->user->documentBy(DocumentCategory::read($this->category));
         if ($dbDoc == null) {
             $document = Document::factory()->state([
                 'name' => $clientOriginalName,
                 'path' => $path.'/'.$this->category.'.'.$extension,
                 'state' => DocumentState::Submitted,
             ])->digital()
-                                ->withCategory(DocumentCategory::tryFrom($this->category))
+                                ->withCategory(DocumentCategory::read($this->category))
                                 ->make();
 
             $this->user->documents()->save($document);

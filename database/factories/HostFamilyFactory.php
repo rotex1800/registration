@@ -2,10 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\HostFamily;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @extends Factory<HostFamily>
+ *
+ * @method HostFamily make($attributes = [], ?Model $parent = null)
  */
 class HostFamilyFactory extends Factory
 {

@@ -15,6 +15,15 @@ enum DocumentCategory: string
 
     case Unknown = 'unknown';
 
+    public static function read(?string $value): DocumentCategory
+    {
+        if ($value == null) {
+            return DocumentCategory::Unknown;
+        }
+
+        return DocumentCategory::from($value);
+    }
+
     public function displayName(): string
     {
         return match ($this) {

@@ -21,6 +21,10 @@ class HomeController extends Controller
     public function home(): Application|Factory|View
     {
         $user = Auth::user();
+        if ($user == null) {
+            abort(401);
+        }
+
         $participatingEvents = $user->participatesIn();
         $registrationPossible = $user->canRegisterFor();
         $canSeeRegistrations = $this->eventPolicy->seeRegistrations($user);

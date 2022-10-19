@@ -3,7 +3,7 @@
 use App\Models\DocumentCategory;
 
 it('returns PassportCopy for passport', function () {
-    $actual = DocumentCategory::from('passport');
+    $actual = DocumentCategory::read('passport');
     expect($actual)->toBe(DocumentCategory::PassportCopy);
 });
 
@@ -16,7 +16,11 @@ it('returns `unknown` for `Unknown` case', function () {
 });
 
 it('creates `PassportCopy` from `passport`', function () {
-    expect(DocumentCategory::from('passport'))->toBe(DocumentCategory::PassportCopy);
+    expect(DocumentCategory::read('passport'))->toBe(DocumentCategory::PassportCopy);
+});
+
+it('creates `Unkown` from `null`', function () {
+    expect(DocumentCategory::read(null))->toBe(DocumentCategory::Unknown);
 });
 
 it('returns translation for each case', function () {
