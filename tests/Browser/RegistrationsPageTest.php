@@ -4,6 +4,7 @@ use App\Models\Event;
 use App\Models\Passport;
 use App\Models\RotaryInfo;
 use App\Models\User;
+use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\actingAs;
 
@@ -41,12 +42,28 @@ test('contains event name', function () {
         ->assertSeeText($event->name);
 });
 
+
+it('handles users with missing data', function () {
+    $user = createUserWithRole('rotex');
+    $event = Event::factory()->create();
+    $attendees = User::factory()
+                     ->count(1)
+                     ->create();
+    $event->attendees()->saveMany($attendees);
+
+    actingAs($user)
+        ->get('/registrations/1')
+        ->assertOk();
+});
+
+
 it('shows all registered attendees and their inputs', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
     $attendees = User::factory()->count(1)
                      ->has(Passport::factory())
                      ->has(RotaryInfo::factory())
+                     ->has(YeoInfo::factory(), 'yeo')
                      ->create();
     $event->attendees()->saveMany($attendees);
 
@@ -69,6 +86,7 @@ it('shows all registered attendees and their inputs', function () {
             'Anmeldungen',
             $event->attendees->map(function (User $attendee): array {
                 $rotaryInfo = $attendee->rotaryInfo;
+                $yeo = $attendee->yeo;
                 return [
                     $attendee->full_name,
                     $attendee->email,
@@ -85,7 +103,12 @@ it('shows all registered attendees and their inputs', function () {
                     "$rotaryInfo->sponsor_club $rotaryInfo?->sponsor_district",
                     $rotaryInfo->isComplete() ? '✅' : '⛔️',
 
-                    $attendee->yeo?->isComplete() ? '✅' : '⛔️',
+
+                    $yeo?->name,
+                    "Tel: $yeo?->phone",
+                    "@: $yeo?->email",
+                    $yeo?->isComplete() ? '✅' : '⛔️',
+
                     $attendee->counselor?->isComplete() ? '✅' : '⛔️',
                     $attendee->bioFamily?->isComplete() ? '✅' : '⛔️',
                     $attendee->firstHostFamily()?->isComplete() ? '✅' : '⛔️',
@@ -107,7 +130,7 @@ it('shows explanation text if no attendees have registered', function () {
         ]);
 });
 
-it('requires email to be verfied', function () {
+it('requires email to be verified', function () {
     $user = User::factory()->state(['email_verified_at' => null])->create();
     Event::factory()->create();
     $this->actingAs($user)

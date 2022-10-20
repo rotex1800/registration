@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Livewire\SortableTableColumn;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -42,9 +43,7 @@ class EventRegistrationsController extends Controller
             }),
             $this->getPassportColumn(),
             $this->getRotaryColumn(),
-            new SortableTableColumn(__('event.registration-overview.yeo'), function ($user) {
-                return $user->yeo?->isComplete() ? '✅' : '⛔️';
-            }),
+            $this->getYeoColumn(),
             new SortableTableColumn(__('event.registration-overview.counselor'), function ($user) {
                 return $user->counselor?->isComplete() ? '✅' : '⛔️';
             }),
@@ -70,6 +69,10 @@ class EventRegistrationsController extends Controller
     {
         return new SortableTableColumn(__('event.registration-overview.passport'), function ($user) {
             $passport = $user->passport;
+            if ($passport == null) {
+                return '';
+            }
+
             $nationality = $passport->nationality;
             $passportNumber = $passport->passport_number;
             $issueDate = __('registration.passport-issue-date').': '
@@ -98,6 +101,26 @@ class EventRegistrationsController extends Controller
             $completeness = $user->passport?->isComplete() ? '✅' : '⛔️';
 
             return "$hostClub $hostDistrict<br>$sponsorClub $sponsorDistrict<br>$completeness";
+        });
+    }
+
+    /**
+     * @return SortableTableColumn
+     */
+    private function getYeoColumn(): SortableTableColumn
+    {
+        return new SortableTableColumn(__('event.registration-overview.yeo'), function (User $user) {
+            $yeo = $user->yeo;
+            if ($yeo == null) {
+                return '';
+            }
+
+            $name = $yeo->name;
+            $phone = "Tel: $yeo->phone";
+            $email = "@: $yeo->email";
+            $completeness = $user->yeo?->isComplete() ? '✅' : '⛔️';
+
+            return "$name<br>$phone<br>$email<br>$completeness";
         });
     }
 }
