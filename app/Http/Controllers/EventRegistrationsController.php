@@ -44,9 +44,7 @@ class EventRegistrationsController extends Controller
             $this->getPassportColumn(),
             $this->getRotaryColumn(),
             $this->getYeoColumn(),
-            new SortableTableColumn(__('event.registration-overview.counselor'), function ($user) {
-                return $user->counselor?->isComplete() ? '✅' : '⛔️';
-            }),
+            $this->getCounselorColumn(),
             new SortableTableColumn(__('event.registration-overview.bioFamily'), function ($user) {
                 return $user->bioFamily?->isComplete() ? '✅' : '⛔️';
             }),
@@ -119,6 +117,26 @@ class EventRegistrationsController extends Controller
             $phone = "Tel: $yeo->phone";
             $email = "@: $yeo->email";
             $completeness = $user->yeo?->isComplete() ? '✅' : '⛔️';
+
+            return "$name<br>$phone<br>$email<br>$completeness";
+        });
+    }
+
+    /**
+     * @return SortableTableColumn
+     */
+    private function getCounselorColumn(): SortableTableColumn
+    {
+        return new SortableTableColumn(__('event.registration-overview.counselor'), function (User $user) {
+            $counselor = $user->counselor;
+            if ($counselor == null) {
+                return '';
+            }
+
+            $name = $counselor->name;
+            $phone = "Tel: $counselor->phone";
+            $email = "@: $counselor->email";
+            $completeness = $counselor->isComplete() ? '✅' : '⛔️';
 
             return "$name<br>$phone<br>$email<br>$completeness";
         });

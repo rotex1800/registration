@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\Passport;
 use App\Models\RotaryInfo;
@@ -64,6 +65,7 @@ it('shows all registered attendees and their inputs', function () {
                      ->has(Passport::factory())
                      ->has(RotaryInfo::factory())
                      ->has(YeoInfo::factory(), 'yeo')
+                     ->has(CounselorInfo::factory(), 'counselor')
                      ->create();
     $event->attendees()->saveMany($attendees);
 
@@ -87,6 +89,7 @@ it('shows all registered attendees and their inputs', function () {
             $event->attendees->map(function (User $attendee): array {
                 $rotaryInfo = $attendee->rotaryInfo;
                 $yeo = $attendee->yeo;
+                $counselor = $attendee->counselor;
                 return [
                     $attendee->full_name,
                     $attendee->email,
@@ -103,13 +106,16 @@ it('shows all registered attendees and their inputs', function () {
                     "$rotaryInfo->sponsor_club $rotaryInfo?->sponsor_district",
                     $rotaryInfo->isComplete() ? '✅' : '⛔️',
 
-
                     $yeo?->name,
                     "Tel: $yeo?->phone",
                     "@: $yeo?->email",
                     $yeo?->isComplete() ? '✅' : '⛔️',
 
-                    $attendee->counselor?->isComplete() ? '✅' : '⛔️',
+                    $counselor?->name,
+                    "Tel: $counselor?->phone",
+                    "@: $counselor?->email",
+                    $counselor?->isComplete() ? '✅' : '⛔️',
+
                     $attendee->bioFamily?->isComplete() ? '✅' : '⛔️',
                     $attendee->firstHostFamily()?->isComplete() ? '✅' : '⛔️',
                     $attendee->secondHostFamily()?->isComplete() ? '✅' : '⛔️',

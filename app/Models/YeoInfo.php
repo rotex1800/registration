@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Database\Factories\YeoInfoFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\YeoInfo
@@ -13,22 +17,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $phone
  * @property string|null $email
  * @property int|null $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User|null $user
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read User|null $user
  *
- * @method static \Database\Factories\YeoInfoFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo query()
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|YeoInfo whereUserId($value)
- * @mixin \Eloquent
+ * @method static YeoInfoFactory factory(...$parameters)
+ * @method static Builder|YeoInfo newModelQuery()
+ * @method static Builder|YeoInfo newQuery()
+ * @method static Builder|YeoInfo query()
+ * @method static Builder|YeoInfo whereCreatedAt($value)
+ * @method static Builder|YeoInfo whereEmail($value)
+ * @method static Builder|YeoInfo whereId($value)
+ * @method static Builder|YeoInfo whereName($value)
+ * @method static Builder|YeoInfo wherePhone($value)
+ * @method static Builder|YeoInfo whereUpdatedAt($value)
+ * @method static Builder|YeoInfo whereUserId($value)
+ * @mixin Eloquent
  */
 class YeoInfo extends Model
 {
