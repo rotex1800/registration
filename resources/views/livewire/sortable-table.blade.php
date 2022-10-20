@@ -11,7 +11,7 @@
         @foreach($rows as $row)
             <tr class="h-8 even:bg-slate-100 odd:bg-slate-200">
                 @foreach($columns as $column)
-                    <td class="p-4">  {{ $column->valueFor($row) }} </td>
+                    <td class="p-4">  {!! html_entity_decode( $column->valueFor($row) ) !!}</td>
                 @endforeach
             </tr>
 

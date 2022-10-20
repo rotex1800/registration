@@ -82,7 +82,7 @@ test('table headlines are configurable', function () {
                     Arr::map($columns, function ($column) use ($row) {
                         return [
                             '<td',
-                            e($column->valueFor($row)),
+                            $column->valueFor($row),
                             '</td>',
                         ];
                     }),
