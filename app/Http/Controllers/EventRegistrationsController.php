@@ -40,12 +40,8 @@ class EventRegistrationsController extends Controller
             new SortableTableColumn(__('event.registration-overview.email'), function ($user) {
                 return $user->email;
             }),
-            new SortableTableColumn(__('event.registration-overview.passport'), function ($user) {
-                return $user->passport?->isComplete() ? '✅' : '⛔️';
-            }),
-            new SortableTableColumn(__('event.registration-overview.rotary'), function ($user) {
-                return $user->passport?->isComplete() ? '✅' : '⛔️';
-            }),
+            $this->getPassportColumn(),
+            $this->getRotaryColumn(),
             new SortableTableColumn(__('event.registration-overview.yeo'), function ($user) {
                 return $user->yeo?->isComplete() ? '✅' : '⛔️';
             }),
@@ -65,5 +61,43 @@ class EventRegistrationsController extends Controller
                 return $user->thirdHostFamily()?->isComplete() ? '✅' : '⛔️';
             }),
         ];
+    }
+
+    /**
+     * @return SortableTableColumn
+     */
+    private function getPassportColumn(): SortableTableColumn
+    {
+        return new SortableTableColumn(__('event.registration-overview.passport'), function ($user) {
+            $passport = $user->passport;
+            $nationality = $passport->nationality;
+            $passportNumber = $passport->passport_number;
+            $issueDate = __('registration.passport-issue-date').': '
+                .$passport->issue_date->translatedFormat('d. F Y');
+            $expirationDate = __('registration.passport-expiration-date').': '
+                .$passport->expiration_date->translatedFormat('d. F Y');
+            $completeness = $passport->isComplete() ? '✅' : '⛔️';
+            return $nationality.'<br>'.$passportNumber.'<br>'.$issueDate.'<br>'.$expirationDate.'<br>'.$completeness;
+        });
+    }
+
+    /**
+     * @return SortableTableColumn
+     */
+    private function getRotaryColumn(): SortableTableColumn
+    {
+        return new SortableTableColumn(__('event.registration-overview.rotary'), function ($user) {
+            $rotaryInfo = $user->rotaryInfo;
+
+            $hostClub = $rotaryInfo?->host_club ?? '';
+            $hostDistrict = $rotaryInfo?->host_district ?? '';
+
+            $sponsorClub = $rotaryInfo?->sponsor_club ?? '';
+            $sponsorDistrict = $rotaryInfo?->sponsor_district ?? '';
+
+            $completeness = $user->passport?->isComplete() ? '✅' : '⛔️';
+
+            return "$hostClub $hostDistrict<br>$sponsorClub $sponsorDistrict<br>$completeness";
+        });
     }
 }

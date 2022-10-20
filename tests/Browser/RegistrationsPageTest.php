@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Event;
+use App\Models\Passport;
+use App\Models\RotaryInfo;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\actingAs;
@@ -39,10 +41,13 @@ test('contains event name', function () {
         ->assertSeeText($event->name);
 });
 
-it('shows all registered attendees', function () {
+it('shows all registered attendees and their inputs', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
-    $attendees = User::factory()->count(10)->make();
+    $attendees = User::factory()->count(1)
+                     ->has(Passport::factory())
+                     ->has(RotaryInfo::factory())
+                     ->create();
     $event->attendees()->saveMany($attendees);
 
     actingAs($user)
@@ -62,18 +67,30 @@ it('shows all registered attendees', function () {
         ])
         ->assertSeeTextInOrder(Arr::flatten([
             'Anmeldungen',
-            $event->attendees->map(function ($elem): array {
+            $event->attendees->map(function (User $attendee): array {
+                $rotaryInfo = $attendee->rotaryInfo;
                 return [
-                    $elem->full_name,
-                    $elem->email,
-                    $elem->passport?->isComplete() ? '✅' : '⛔️',
-                    $elem->rotaryInfo?->isComplete() ? '✅' : '⛔️',
-                    $elem->yeo?->isComplete() ? '✅' : '⛔️',
-                    $elem->counselor?->isComplete() ? '✅' : '⛔️',
-                    $elem->bioFamily?->isComplete() ? '✅' : '⛔️',
-                    $elem->firstHostFamily()?->isComplete() ? '✅' : '⛔️',
-                    $elem->secondHostFamily()?->isComplete() ? '✅' : '⛔️',
-                    $elem->thirdHostFamily()?->isComplete() ? '✅' : '⛔️',
+                    $attendee->full_name,
+                    $attendee->email,
+
+                    $attendee->passport->nationality,
+                    $attendee->passport->passport_number,
+                    __('registration.passport-issue-date').': '
+                    .$attendee->passport->issue_date->translatedFormat('d. F Y'),
+                    __('registration.passport-expiration-date').': '
+                    .$attendee->passport->expiration_date->translatedFormat('d. F Y'),
+                    $attendee->passport?->isComplete() ? '✅' : '⛔️',
+
+                    "$rotaryInfo->host_club $rotaryInfo?->host_district",
+                    "$rotaryInfo->sponsor_club $rotaryInfo?->sponsor_district",
+                    $rotaryInfo->isComplete() ? '✅' : '⛔️',
+
+                    $attendee->yeo?->isComplete() ? '✅' : '⛔️',
+                    $attendee->counselor?->isComplete() ? '✅' : '⛔️',
+                    $attendee->bioFamily?->isComplete() ? '✅' : '⛔️',
+                    $attendee->firstHostFamily()?->isComplete() ? '✅' : '⛔️',
+                    $attendee->secondHostFamily()?->isComplete() ? '✅' : '⛔️',
+                    $attendee->thirdHostFamily()?->isComplete() ? '✅' : '⛔️',
                 ];
             }),
         ]));
