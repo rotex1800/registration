@@ -43,7 +43,6 @@ test('contains event name', function () {
         ->assertSeeText($event->name);
 });
 
-
 it('handles users with missing data', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
@@ -56,7 +55,6 @@ it('handles users with missing data', function () {
         ->get('/registrations/1')
         ->assertOk();
 });
-
 
 it('shows all registered attendees and their inputs', function () {
     $user = createUserWithRole('rotex');
@@ -90,6 +88,7 @@ it('shows all registered attendees and their inputs', function () {
                 $rotaryInfo = $attendee->rotaryInfo;
                 $yeo = $attendee->yeo;
                 $counselor = $attendee->counselor;
+
                 return [
                     $attendee->full_name,
                     $attendee->email,

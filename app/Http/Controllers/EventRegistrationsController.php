@@ -78,6 +78,7 @@ class EventRegistrationsController extends Controller
             $expirationDate = __('registration.passport-expiration-date').': '
                 .$passport->expiration_date->translatedFormat('d. F Y');
             $completeness = $passport->isComplete() ? '✅' : '⛔️';
+
             return $nationality.'<br>'.$passportNumber.'<br>'.$issueDate.'<br>'.$expirationDate.'<br>'.$completeness;
         });
     }
