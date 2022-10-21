@@ -25,6 +25,37 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.2.0](https://github.com/rotex1800/registration/compare/v1.1.1...v1.2.0) (2022-10-21)
+
+
+### Features
+
+* provide access to answers of part 1 ([#113](https://github.com/rotex1800/registration/issues/113)) ([0b05856](https://github.com/rotex1800/registration/commit/0b0585623822cfb7f0f11d063754eecd0af81c4d))
+
+
+### Miscellaneous Chores
+
+* add phpstan to PR checks ([bd4a495](https://github.com/rotex1800/registration/commit/bd4a495be01da3e6f76bedb9e3a1d62e3f6a936d))
+* **deps:** bump actions/upload-artifact from 2 to 3 ([b2026cf](https://github.com/rotex1800/registration/commit/b2026cf3b5156ade52f6191afdc799b166a8892b))
+* **deps:** bump actions/upload-artifact from 2 to 3 ([#107](https://github.com/rotex1800/registration/issues/107)) ([a213bd2](https://github.com/rotex1800/registration/commit/a213bd2698ec1f219e0d46c9ee3ca74dfcf124a9))
+* **deps:** bump amannn/action-semantic-pull-request from 4 to 5 ([41cd19f](https://github.com/rotex1800/registration/commit/41cd19f12ea4e6e63bb749ce12608d1e9f47413a))
+* **deps:** bump amannn/action-semantic-pull-request from 4 to 5 ([#106](https://github.com/rotex1800/registration/issues/106)) ([a8fa91d](https://github.com/rotex1800/registration/commit/a8fa91d8607b4ed444006d6e2467688a7a276f1e))
+* **deps:** bump axios from 1.1.2 to 1.1.3 ([44b19da](https://github.com/rotex1800/registration/commit/44b19daad3b4f66db930100d5b2a53a176dbb499))
+* **deps:** bump axios from 1.1.2 to 1.1.3 ([#99](https://github.com/rotex1800/registration/issues/99)) ([ad2455e](https://github.com/rotex1800/registration/commit/ad2455e8404a4a0150c82a0dd432c36a50047b08))
+* **deps:** bump laravel/framework from 9.35.1 to 9.36.3 ([c3b2660](https://github.com/rotex1800/registration/commit/c3b2660441660d9af253bb5f14a37d526c5c2b42))
+* **deps:** bump laravel/framework from 9.35.1 to 9.36.3 ([#110](https://github.com/rotex1800/registration/issues/110)) ([a6f23ec](https://github.com/rotex1800/registration/commit/a6f23ec729cbb11696d5bc1f93f74e476c457cd3))
+* **deps:** bump laravel/framework from 9.36.3 to 9.36.4 ([530e88a](https://github.com/rotex1800/registration/commit/530e88a0341b9c8077f68b5d85a2cc7aa3e9c0f5))
+* **deps:** bump laravel/framework from 9.36.3 to 9.36.4 ([#114](https://github.com/rotex1800/registration/issues/114)) ([f169d58](https://github.com/rotex1800/registration/commit/f169d58f5f7c6277af623b65031c9bbfe1e6cdf7))
+* **deps:** bump lucassabreu/comment-coverage-clover ([f5211de](https://github.com/rotex1800/registration/commit/f5211dee0700fdcb730e616b903abfe89fc40291))
+* **deps:** bump lucassabreu/comment-coverage-clover from 0.3.0 to 0.6.0 ([#109](https://github.com/rotex1800/registration/issues/109)) ([fd2ce83](https://github.com/rotex1800/registration/commit/fd2ce83a2f44318cb771494de14ace77fe775f7d))
+* **deps:** bump nunomaduro/larastan from 2.2.3 to 2.2.4 ([895a833](https://github.com/rotex1800/registration/commit/895a833973565154fea2051615da9bcb1a0e8797))
+* **deps:** bump nunomaduro/larastan from 2.2.3 to 2.2.4 ([#100](https://github.com/rotex1800/registration/issues/100)) ([4dd3832](https://github.com/rotex1800/registration/commit/4dd3832391e7ec1bba1617fc9b9112b081024180))
+* **deps:** bump tailwindcss from 3.1.8 to 3.2.0 ([862719c](https://github.com/rotex1800/registration/commit/862719c954b7a386a6fea6ef9cb0fcf1c2c22b17))
+* **deps:** bump tailwindcss from 3.1.8 to 3.2.0 ([#108](https://github.com/rotex1800/registration/issues/108)) ([28c557c](https://github.com/rotex1800/registration/commit/28c557ce9104f34f0606e0bec446fd259c7ce64b))
+* raise to phpstan level 7 ([8e42537](https://github.com/rotex1800/registration/commit/8e4253797c5ad3a33be4dc909ab6244abcd85705))
+* Raise to phpstan level 8 ([#111](https://github.com/rotex1800/registration/issues/111)) ([350d85e](https://github.com/rotex1800/registration/commit/350d85e764573b65ccbabc5c4b13c9c814c7f260))
+* Registration 101 add phpstan to pr checks ([#102](https://github.com/rotex1800/registration/issues/102)) ([420416c](https://github.com/rotex1800/registration/commit/420416cc1def22af3013b7b5e9f3686fcd7966a3))
+
 ## [1.1.1](https://github.com/rotex1800/registration/compare/v1.1.0...v1.1.1) (2022-10-16)
 
 
