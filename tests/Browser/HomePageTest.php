@@ -63,13 +63,13 @@ it('does not show events the user is attending in further events', function () {
 });
 
 it('does not show events the user can not attend', function () {
-    $user = User::factory()
-                ->has(Role::factory())
-                ->create();
+    $oneRole = Role::factory(['name' => 'role'])->make();
+    $user = User::factory()->create();
+    $user->roles()->save($oneRole);
 
-    Event::factory()
-         ->has(Role::factory())
-         ->create();
+    $otherRole = Role::factory(['name' => 'other'])->make();
+    $event = Event::factory()->create();
+    $event->roles()->save($otherRole);
 
     actingAs($user)
         ->get('/home')
