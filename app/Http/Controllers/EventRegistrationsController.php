@@ -58,7 +58,7 @@ class EventRegistrationsController extends Controller
      */
     private function getPassportColumn(): SortableTableColumn
     {
-        return new SortableTableColumn(__('event.registration-overview.passport'), function ($user) {
+        return new SortableTableColumn(__('event.registration-overview.passport'), function (User $user) {
             $passport = $user->passport;
             if ($passport == null) {
                 return '';
@@ -67,9 +67,9 @@ class EventRegistrationsController extends Controller
             $nationality = $passport->nationality;
             $passportNumber = $passport->passport_number;
             $issueDate = __('registration.passport-issue-date').': '
-                .$passport->issue_date->translatedFormat('d. F Y');
+                .$passport->issue_date?->translatedFormat('d. F Y');
             $expirationDate = __('registration.passport-expiration-date').': '
-                .$passport->expiration_date->translatedFormat('d. F Y');
+                .$passport->expiration_date?->translatedFormat('d. F Y');
             $completeness = $passport->isComplete() ? '✅' : '⛔️';
 
             return $nationality.'<br>'.$passportNumber.'<br>'.$issueDate.'<br>'.$expirationDate.'<br>'.$completeness;

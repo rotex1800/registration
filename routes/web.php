@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventRegistrationsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegistrationsDownloadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/event/{event}', [EventController::class, 'show'])
          ->name('event.show')
          ->middleware('can:show,event');
+
+    Route::get('/registrations/{event}/download', RegistrationsDownloadController::class)
+         ->name('registrations.download');
 
     Route::get('/registrations/{event}', EventRegistrationsController::class)
          ->name('registrations.show');

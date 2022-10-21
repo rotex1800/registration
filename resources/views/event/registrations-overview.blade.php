@@ -4,6 +4,7 @@
 
     @if(count($event->attendees) > 0)
         <h2 class="text-2xl my-2" id="registrations">Anmeldungen</h2>
+        <a class="text-blue-500 underline mb-2 block" href="{{ route('registrations.download', $event) }}">Download</a>
         <livewire:sortable-table :columns="$columns" :rows="$rows" :extra-row-livewire="$extraRowLivewire"/>
     @else
         <p>{{ __('event.registration-overview.no-registrations') }}</p>
