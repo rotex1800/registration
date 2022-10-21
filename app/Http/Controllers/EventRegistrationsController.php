@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Livewire\SortableTableColumn;
 use App\Models\Event;
+use App\Models\HostFamily;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
@@ -46,15 +47,9 @@ class EventRegistrationsController extends Controller
             $this->getYeoColumn(),
             $this->getCounselorColumn(),
             $this->getBioFamilyColumn(),
-            new SortableTableColumn(__('event.registration-overview.hostFamily').' 1', function ($user) {
-                return $user->firstHostFamily()?->isComplete() ? '✅' : '⛔️';
-            }),
-            new SortableTableColumn(__('event.registration-overview.hostFamily').' 2', function ($user) {
-                return $user->secondHostFamily()?->isComplete() ? '✅' : '⛔️';
-            }),
-            new SortableTableColumn(__('event.registration-overview.hostFamily').' 3', function ($user) {
-                return $user->thirdHostFamily()?->isComplete() ? '✅' : '⛔️';
-            }),
+            $this->getFirstHostFamilyColumn(),
+            $this->getSecondHostFamilyColumn(),
+            $this->getThirdHostFamilyColumn(),
         ];
     }
 
@@ -157,6 +152,53 @@ class EventRegistrationsController extends Controller
             $phone = $family->phone;
             $completeness = $user->bioFamily?->isComplete() ? '✅' : '⛔️';
             return "$parentOne<br>$parentTwo<br>$email<br>$phone<br>$completeness";
+        });
+    }
+
+    /**
+     * @return SortableTableColumn
+     */
+    private function getFirstHostFamilyColumn(): SortableTableColumn
+    {
+        return new SortableTableColumn(__('event.registration-overview.hostFamily').' 1', function (User $user) {
+            $hostFamily = $user->firstHostFamily();
+            return $this->getHostFamilyContent($hostFamily);
+        });
+    }
+
+    /**
+     * @param $hostFamily
+     * @return string
+     */
+    private function getHostFamilyContent(HostFamily $hostFamily): string
+    {
+        $name = $hostFamily->name;
+        $email = $hostFamily->email;
+        $phone = $hostFamily->phone;
+        $address = $hostFamily->address;
+        $completeness = $hostFamily->isComplete() ? '✅' : '⛔️';
+        return "$name<br>$email<br>$phone<br>$address<br>$completeness";
+    }
+
+    /**
+     * @return SortableTableColumn
+     */
+    private function getSecondHostFamilyColumn(): SortableTableColumn
+    {
+        return new SortableTableColumn(__('event.registration-overview.hostFamily').' 2', function ($user) {
+            $hostFamily = $user->secondHostFamily();
+            return $this->getHostFamilyContent($hostFamily);
+        });
+    }
+
+    /**
+     * @return SortableTableColumn
+     */
+    private function getThirdHostFamilyColumn(): SortableTableColumn
+    {
+        return new SortableTableColumn(__('event.registration-overview.hostFamily').' 3', function ($user) {
+            $hostFamily = $user->thirdHostFamily();
+            return $this->getHostFamilyContent($hostFamily);
         });
     }
 }

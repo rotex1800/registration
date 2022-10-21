@@ -3,6 +3,7 @@
 use App\Models\BioFamily;
 use App\Models\CounselorInfo;
 use App\Models\Event;
+use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\RotaryInfo;
 use App\Models\User;
@@ -66,6 +67,9 @@ it('shows all registered attendees and their inputs', function () {
                      ->has(YeoInfo::factory(), 'yeo')
                      ->has(CounselorInfo::factory(), 'counselor')
                      ->has(BioFamily::factory())
+                     ->has(HostFamily::factory()->nth(1))
+                     ->has(HostFamily::factory()->nth(2))
+                     ->has(HostFamily::factory()->nth(3))
                      ->create();
     $event->attendees()->saveMany($attendees);
 
@@ -92,6 +96,10 @@ it('shows all registered attendees and their inputs', function () {
                 $counselor = $attendee->counselor;
 
                 $bioFamily = $attendee->bioFamily;
+                $firstHostFamily = $attendee->firstHostFamily();
+                $secondHostFamily = $attendee->secondHostFamily();
+                $thirdHostFamily = $attendee->thirdHostFamily();
+
                 return [
                     $attendee->full_name,
                     $attendee->email,
@@ -118,15 +126,29 @@ it('shows all registered attendees and their inputs', function () {
                     "@: $counselor?->email",
                     $counselor?->isComplete() ? '✅' : '⛔️',
 
-                    $bioFamily->parent_one,
-                    $bioFamily->parent_two,
-                    $bioFamily->email,
-                    $bioFamily->phone,
+                    $bioFamily?->parent_one,
+                    $bioFamily?->parent_two,
+                    $bioFamily?->email,
+                    $bioFamily?->phone,
                     $bioFamily?->isComplete() ? '✅' : '⛔️',
 
-                    $attendee->firstHostFamily()?->isComplete() ? '✅' : '⛔️',
-                    $attendee->secondHostFamily()?->isComplete() ? '✅' : '⛔️',
-                    $attendee->thirdHostFamily()?->isComplete() ? '✅' : '⛔️',
+                    $firstHostFamily->name,
+                    $firstHostFamily->email,
+                    $firstHostFamily->phone,
+                    $firstHostFamily->address,
+                    $firstHostFamily->isComplete() ? '✅' : '⛔️',
+
+                    $secondHostFamily->name,
+                    $secondHostFamily->email,
+                    $secondHostFamily->phone,
+                    $secondHostFamily->address,
+                    $secondHostFamily->isComplete() ? '✅' : '⛔️',
+
+                    $thirdHostFamily->name,
+                    $thirdHostFamily->email,
+                    $thirdHostFamily->phone,
+                    $thirdHostFamily->address,
+                    $thirdHostFamily->isComplete() ? '✅' : '⛔️',
                 ];
             }),
         ]));
