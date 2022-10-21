@@ -151,6 +151,7 @@ class EventRegistrationsController extends Controller
             $email = $family->email;
             $phone = $family->phone;
             $completeness = $user->bioFamily?->isComplete() ? '✅' : '⛔️';
+
             return "$parentOne<br>$parentTwo<br>$email<br>$phone<br>$completeness";
         });
     }
@@ -162,6 +163,7 @@ class EventRegistrationsController extends Controller
     {
         return new SortableTableColumn(__('event.registration-overview.hostFamily').' 1', function (User $user) {
             $hostFamily = $user->firstHostFamily();
+
             return $this->getHostFamilyContent($hostFamily);
         });
     }
@@ -177,6 +179,7 @@ class EventRegistrationsController extends Controller
         $phone = $hostFamily->phone;
         $address = $hostFamily->address;
         $completeness = $hostFamily->isComplete() ? '✅' : '⛔️';
+
         return "$name<br>$email<br>$phone<br>$address<br>$completeness";
     }
 
@@ -187,6 +190,7 @@ class EventRegistrationsController extends Controller
     {
         return new SortableTableColumn(__('event.registration-overview.hostFamily').' 2', function ($user) {
             $hostFamily = $user->secondHostFamily();
+
             return $this->getHostFamilyContent($hostFamily);
         });
     }
@@ -198,6 +202,7 @@ class EventRegistrationsController extends Controller
     {
         return new SortableTableColumn(__('event.registration-overview.hostFamily').' 3', function ($user) {
             $hostFamily = $user->thirdHostFamily();
+
             return $this->getHostFamilyContent($hostFamily);
         });
     }
