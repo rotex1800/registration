@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\BioFamily;
 use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\Passport;
@@ -64,6 +65,7 @@ it('shows all registered attendees and their inputs', function () {
                      ->has(RotaryInfo::factory())
                      ->has(YeoInfo::factory(), 'yeo')
                      ->has(CounselorInfo::factory(), 'counselor')
+                     ->has(BioFamily::factory())
                      ->create();
     $event->attendees()->saveMany($attendees);
 
@@ -89,6 +91,7 @@ it('shows all registered attendees and their inputs', function () {
                 $yeo = $attendee->yeo;
                 $counselor = $attendee->counselor;
 
+                $bioFamily = $attendee->bioFamily;
                 return [
                     $attendee->full_name,
                     $attendee->email,
@@ -115,7 +118,12 @@ it('shows all registered attendees and their inputs', function () {
                     "@: $counselor?->email",
                     $counselor?->isComplete() ? '✅' : '⛔️',
 
-                    $attendee->bioFamily?->isComplete() ? '✅' : '⛔️',
+                    $bioFamily->parent_one,
+                    $bioFamily->parent_two,
+                    $bioFamily->email,
+                    $bioFamily->phone,
+                    $bioFamily?->isComplete() ? '✅' : '⛔️',
+
                     $attendee->firstHostFamily()?->isComplete() ? '✅' : '⛔️',
                     $attendee->secondHostFamily()?->isComplete() ? '✅' : '⛔️',
                     $attendee->thirdHostFamily()?->isComplete() ? '✅' : '⛔️',
