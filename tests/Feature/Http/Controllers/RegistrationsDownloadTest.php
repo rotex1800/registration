@@ -33,3 +33,15 @@ it('can not download as participant', function () {
         ->get('/registrations/1/download')
         ->assertStatus(403);
 });
+
+
+it('does not fail exporting null values', function () {
+    $user = createUserWithRole('rotex');
+    $event = Event::factory()->create();
+    $attendee = User::factory()->create();
+    $event->attendees()->save($attendee);
+
+    actingAs($user)->get(route('registrations.download', $event))
+                   ->assertStatus(200);
+
+});
