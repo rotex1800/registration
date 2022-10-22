@@ -142,6 +142,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
         if ($date == null) {
             return '';
         }
+
         return Date::dateTimeToExcel($date);
     }
 }

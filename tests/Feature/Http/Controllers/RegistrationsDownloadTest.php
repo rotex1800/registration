@@ -43,5 +43,4 @@ it('does not fail exporting null values', function () {
 
     actingAs($user)->get(route('registrations.download', $event))
                    ->assertStatus(200);
-
 });
