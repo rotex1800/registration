@@ -25,6 +25,13 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.3.3](https://github.com/rotex1800/registration/compare/v1.3.2...v1.3.3) (2022-10-22)
+
+
+### Miscellaneous Chores
+
+* create release ([9a4c3a3](https://github.com/rotex1800/registration/commit/9a4c3a3013d729cd5fa279188ba16026964b788a))
+
 ## [1.3.2](https://github.com/rotex1800/registration/compare/v1.3.1...v1.3.2) (2022-10-22)
 
 
