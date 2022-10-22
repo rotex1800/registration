@@ -25,6 +25,13 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.3.2](https://github.com/rotex1800/registration/compare/v1.3.1...v1.3.2) (2022-10-22)
+
+
+### Bug Fixes
+
+* use registration body only in export ([#123](https://github.com/rotex1800/registration/issues/123)) ([f97b664](https://github.com/rotex1800/registration/commit/f97b664d93944a5d00b16bd65fca8f81128f714f))
+
 ## [1.3.1](https://github.com/rotex1800/registration/compare/v1.3.0...v1.3.1) (2022-10-22)
 
 
