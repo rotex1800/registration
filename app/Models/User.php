@@ -164,9 +164,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return Attribute::make(
             get: function ($value, $attrs) {
-                if (!(is_array($attrs))) {
+                if (! (is_array($attrs))) {
                     return '';
                 }
+
                 return $attrs['first_name'].' '.$attrs['family_name'];
             }
         );

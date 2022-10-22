@@ -10,7 +10,7 @@ class AuthenticationController extends Controller
 {
     public function authenticate(LoginRequest $request): RedirectResponse
     {
-        $validatedRequest = array($request->validated());
+        $validatedRequest = [$request->validated()];
         $remember = boolval($request->input('remember'));
         if (Auth::attempt($validatedRequest, $remember)) {
             return redirect()->route('home');

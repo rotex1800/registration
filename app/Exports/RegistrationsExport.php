@@ -82,8 +82,8 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
      */
     public function map(mixed $user): array
     {
-        if (!($user instanceof User)) {
-            return array();
+        if (! ($user instanceof User)) {
+            return [];
         }
 
         return [

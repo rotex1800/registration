@@ -18,8 +18,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input): void
     {
-
-        if (!($user instanceof User)) {
+        if (! ($user instanceof User)) {
             abort(400);
         }
 
