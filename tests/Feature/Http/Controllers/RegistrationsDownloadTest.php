@@ -34,7 +34,6 @@ it('can not download as participant', function () {
         ->assertStatus(403);
 });
 
-
 it('does not fail exporting null values', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
