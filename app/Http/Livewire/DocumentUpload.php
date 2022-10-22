@@ -63,7 +63,7 @@ class DocumentUpload extends Component
     public function messages(): array
     {
         return [
-            'file.required' => __('registration.upload-no-file-selected'),
+            'file.required' => strval(__('registration.upload-no-file-selected')),
         ];
     }
 
@@ -85,16 +85,18 @@ class DocumentUpload extends Component
     {
         $document = $this->user->documentBy(DocumentCategory::read($this->category));
         if ($document == null) {
-            return __('document.state_not_uploaded');
+            return strval(__('document.state_not_uploaded'));
         }
         $state = $document->state;
 
-        return match ($state) {
+        $string = match ($state) {
             DocumentState::Submitted => __('document.state_submitted'),
             DocumentState::Approved => __('document.state_approved'),
             DocumentState::Declined => __('document.state_declined'),
             default => __('document.state_not_uploaded')
         };
+
+        return strval($string);
     }
 
     public function render(): Factory|View|Application
@@ -129,7 +131,7 @@ class DocumentUpload extends Component
             $dbDoc->state = DocumentState::Submitted;
             $dbDoc->save();
         }
-        $this->message = __('registration.upload-success');
+        $this->message = strval(__('registration.upload-success'));
     }
 
     /**

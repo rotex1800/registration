@@ -25,7 +25,7 @@ class MainNavigation extends Component
 
     public function render(): Application|Factory|View
     {
-        $this->applicationName = config('app.name');
+        $this->applicationName = strval(config('app.name'));
         $this->name = Auth::user()?->full_name ?: '';
 
         return view('livewire.main-navigation');

@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Event;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Maatwebsite\Excel\Concerns\FromQuery;
@@ -81,6 +82,10 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
      */
     public function map(mixed $user): array
     {
+        if (!($user instanceof User)) {
+            return array();
+        }
+
         return [
             [
                 $user->first_name,

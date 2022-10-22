@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Carbon::setLocale(config('app.locale'));
+        $locale = $this->app->getLocale();
+        Carbon::setLocale($locale);
     }
 }
