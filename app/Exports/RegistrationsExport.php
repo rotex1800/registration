@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Event;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -84,7 +85,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
             [
                 $user->first_name,
                 $user->family_name,
-                Date::dateTimeToExcel($user->birthday),
+                $this->getExcelDate($user->birthday),
                 $user->gender,
                 $user->email,
                 $user->mobile_phone,
@@ -92,8 +93,8 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
 
                 $user->passport?->nationality ?? '',
                 $user->passport?->passport_number ?? '',
-                Date::dateTimeToExcel($user->passport?->issue_date),
-                Date::dateTimeToExcel($user->passport?->expiration_date),
+                $this->getExcelDate($user->passport?->issue_date),
+                $this->getExcelDate($user->passport?->expiration_date),
 
                 $user->rotaryInfo?->host_club ?? '',
                 $user->rotaryInfo?->host_district ?? '',
@@ -130,5 +131,18 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
                 $user->registrationComment,
             ],
         ];
+    }
+
+    /**
+     * @param  Carbon|null  $date
+     * @return float|string
+     */
+    private function getExcelDate(?Carbon $date): float|string
+    {
+        if ($date == null) {
+            return '';
+        }
+
+        return Date::dateTimeToExcel($date);
     }
 }
