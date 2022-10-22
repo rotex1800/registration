@@ -18,6 +18,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input): void
     {
+
+        if (!($user instanceof User)) {
+            abort(400);
+        }
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
 

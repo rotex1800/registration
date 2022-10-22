@@ -28,12 +28,12 @@ class AssignRole extends Command
      */
     public function handle()
     {
-        $role = $this->argument('role');
+        $role = strval($this->argument('role'));
         if ($role == null) {
             $role = $this->ask("What's the name of the role?");
         }
 
-        $email = $this->argument('email');
+        $email = strval($this->argument('email'));
         if ($email == null) {
             $email = $this->ask("What's the email of the user?");
         }

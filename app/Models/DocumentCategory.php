@@ -26,7 +26,7 @@ enum DocumentCategory: string
 
     public function displayName(): string
     {
-        return match ($this) {
+        return strval(match ($this) {
             self::Rules => __('registration.rules'),
             self::InsurancePolice => __('registration.insurance-policy'),
             self::Motivation => __('registration.motivation'),
@@ -36,6 +36,6 @@ enum DocumentCategory: string
             self::SchoolCertificate => __('registration.school-certificate'),
             self::AppfCopy => __('registration.appf-copy'),
             default => 'unknown',
-        };
+        });
     }
 }

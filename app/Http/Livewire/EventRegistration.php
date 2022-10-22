@@ -41,9 +41,9 @@ class EventRegistration extends Component
     public RotaryInfo $rotary;
 
     /**
-     * @var array<mixed>
+     * @var mixed
      */
-    public array $districts;
+    public $districts;
 
     public User $user;
 

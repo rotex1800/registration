@@ -7,13 +7,13 @@ trait HasCompletenessCheck
     abstract public function isComplete(): bool;
 
     /**
-     * @param  array<string>  $requiredAttrs
+     * @param  array<mixed>  $requiredAttrs
      * @return bool
      */
     protected function isCompleteCheck(array $requiredAttrs): bool
     {
         foreach (array_keys($requiredAttrs) as $required) {
-            $actualAttr = $this->getAttribute($required);
+            $actualAttr = strval($this->getAttribute($required));
             if ($actualAttr == null || trim($actualAttr) == '') {
                 return false;
             }
