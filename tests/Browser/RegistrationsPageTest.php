@@ -45,6 +45,21 @@ test('contains event name', function () {
         ->assertSeeText($event->name);
 });
 
+test('contains download link', function () {
+    // Arrange
+    $event = Event::factory()
+                  ->has(User::factory()->count(3), 'attendees')
+                  ->create();
+
+    $user = createUserWithRole('rotex');
+
+    // Act & Assert
+    actingAs($user)
+        ->get('/registrations/1')
+        ->assertOk()
+        ->assertSeeText('Download');
+});
+
 it('handles users with missing data', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
@@ -61,7 +76,7 @@ it('handles users with missing data', function () {
 it('shows all registered attendees and their inputs', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
-    $attendees = User::factory()->count(1)
+    $attendees = User::factory()->count(10)
                      ->has(Passport::factory())
                      ->has(RotaryInfo::factory())
                      ->has(YeoInfo::factory(), 'yeo')
@@ -104,17 +119,17 @@ it('shows all registered attendees and their inputs', function () {
                     $attendee->full_name,
                     $attendee->email,
 
-                    $attendee->passport->nationality,
-                    $attendee->passport->passport_number,
+                    $attendee->passport?->nationality,
+                    $attendee->passport?->passport_number,
                     __('registration.passport-issue-date').': '
-                    .$attendee->passport->issue_date->translatedFormat('d. F Y'),
+                    .$attendee->passport?->issue_date?->translatedFormat('d. F Y'),
                     __('registration.passport-expiration-date').': '
-                    .$attendee->passport->expiration_date->translatedFormat('d. F Y'),
+                    .$attendee->passport?->expiration_date?->translatedFormat('d. F Y'),
                     $attendee->passport?->isComplete() ? '✅' : '⛔️',
 
-                    "$rotaryInfo->host_club $rotaryInfo?->host_district",
-                    "$rotaryInfo->sponsor_club $rotaryInfo?->sponsor_district",
-                    $rotaryInfo->isComplete() ? '✅' : '⛔️',
+                    "$rotaryInfo?->host_club $rotaryInfo?->host_district",
+                    "$rotaryInfo?->sponsor_club $rotaryInfo?->sponsor_district",
+                    $rotaryInfo?->isComplete() ? '✅' : '⛔️',
 
                     $yeo?->name,
                     "Tel: $yeo?->phone",
@@ -151,7 +166,7 @@ it('shows all registered attendees and their inputs', function () {
                     $thirdHostFamily->isComplete() ? '✅' : '⛔️',
                 ];
             }),
-        ]));
+        ]), escape: false);
 });
 
 it('shows explanation text if no attendees have registered', function () {

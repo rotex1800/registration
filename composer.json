@@ -17,7 +17,9 @@
         "laravel/fortify": "^1.13",
         "laravel/framework": "^9.19",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.10"
+        "livewire/livewire": "^2.10",
+        "maatwebsite/excel": "^3.1",
+        "psr/simple-cache": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
