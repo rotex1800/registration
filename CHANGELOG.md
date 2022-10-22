@@ -25,6 +25,13 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.3.1](https://github.com/rotex1800/registration/compare/v1.3.0...v1.3.1) (2022-10-22)
+
+
+### Bug Fixes
+
+* add null-checks in excel export ([#121](https://github.com/rotex1800/registration/issues/121)) ([0da2e25](https://github.com/rotex1800/registration/commit/0da2e254b15d3a8ae60aad08f71660476891cf97))
+
 ## [1.3.0](https://github.com/rotex1800/registration/compare/v1.2.0...v1.3.0) (2022-10-22)
 
 
