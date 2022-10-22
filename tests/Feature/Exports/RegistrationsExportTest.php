@@ -6,6 +6,7 @@ use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\HostFamily;
 use App\Models\Passport;
+use App\Models\RegistrationComment;
 use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,6 +25,8 @@ it('contains expected columns', function () {
     $user->passport()->save(Passport::factory()->create());
 
     $user->bioFamily()->save(BioFamily::factory()->make());
+
+    $user->registrationComment()->save(RegistrationComment::factory()->make());
 
     $user->hostFamilies()->save(HostFamily::factory()->nth(1)->make());
     $user->hostFamilies()->save(HostFamily::factory()->nth(2)->make());
@@ -71,7 +74,7 @@ it('contains expected columns', function () {
         ->toContain($user->thirdHostFamily()->name ?? '')
         ->toContain($user->thirdHostFamily()->phone ?? '')
         ->toContain($user->thirdHostFamily()->email ?? '')
-        ->toContain($user->registrationComment);
+        ->toContain($user->registrationComment?->body ?? '');
 });
 
 it('contains expected headings', function () {

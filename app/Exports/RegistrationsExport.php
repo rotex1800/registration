@@ -128,7 +128,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
                 $user->thirdHostFamily()->phone,
                 $user->thirdHostFamily()->email,
 
-                $user->registrationComment,
+                $user->registrationComment?->body ?? '',
             ],
         ];
     }
