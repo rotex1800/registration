@@ -25,6 +25,26 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.3.0](https://github.com/rotex1800/registration/compare/v1.2.0...v1.3.0) (2022-10-22)
+
+
+### Features
+
+* Add Excel Export for event attendees ([#118](https://github.com/rotex1800/registration/issues/118)) ([4f41d42](https://github.com/rotex1800/registration/commit/4f41d4278020e87d3ab1886c6e5392f0f889c170))
+
+
+### Bug Fixes
+
+* Use explicit role names to avoid accidental unique constraint violations ([#115](https://github.com/rotex1800/registration/issues/115)) ([a7270d4](https://github.com/rotex1800/registration/commit/a7270d48320dce7c2ef3267445717916b2950b7d))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump lucassabreu/comment-coverage-clover ([7fda0bb](https://github.com/rotex1800/registration/commit/7fda0bb95963d595113ffc0fd2cf85cab254e8c0))
+* **deps:** bump lucassabreu/comment-coverage-clover from 0.6.0 to 0.7.0 ([#120](https://github.com/rotex1800/registration/issues/120)) ([44513d1](https://github.com/rotex1800/registration/commit/44513d1639dcc467ec46649433c2e376bce4694d))
+* **deps:** bump tailwindcss from 3.2.0 to 3.2.1 ([ed45165](https://github.com/rotex1800/registration/commit/ed4516555fc4e9edeefe89d0fd0d811fab8c2b19))
+* **deps:** bump tailwindcss from 3.2.0 to 3.2.1 ([#119](https://github.com/rotex1800/registration/issues/119)) ([ef18be6](https://github.com/rotex1800/registration/commit/ef18be6ef80c7ce615b7211d770d08782f1717ca))
+
 ## [1.2.0](https://github.com/rotex1800/registration/compare/v1.1.1...v1.2.0) (2022-10-21)
 
 
