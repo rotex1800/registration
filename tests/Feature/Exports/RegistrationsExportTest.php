@@ -12,6 +12,7 @@ use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 uses(RefreshDatabase::class);
 
@@ -137,4 +138,13 @@ it('formats dates columns correctly', function () {
         ->toHaveKey('C', NumberFormat::FORMAT_DATE_DDMMYYYY)
         ->toHaveKey('J', NumberFormat::FORMAT_DATE_DDMMYYYY)
         ->toHaveKey('K', NumberFormat::FORMAT_DATE_DDMMYYYY);
+});
+
+it('applies bold style to first row', function () {
+    $event = Event::factory()->create();
+    $export = new RegistrationsExport($event);
+
+    expect($export->styles(new Worksheet()))
+        ->toBeArray()
+        ->toHaveKey(1, ['font' => ['bold' => true]]);
 });

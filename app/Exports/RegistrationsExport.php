@@ -11,10 +11,12 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize, WithColumnFormatting
+class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize, WithColumnFormatting, WithStyles
 {
     private Event $event;
 
@@ -37,6 +39,17 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
             'C' => NumberFormat::FORMAT_DATE_DDMMYYYY,
             'J' => NumberFormat::FORMAT_DATE_DDMMYYYY,
             'K' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+        ];
+    }
+
+    /**
+     * @param  Worksheet  $sheet
+     * @return array<mixed>
+     */
+    public function styles(Worksheet $sheet): array
+    {
+        return [
+            1 => ['font' => ['bold' => true]]
         ];
     }
 
