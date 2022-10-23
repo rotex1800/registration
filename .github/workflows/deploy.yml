@@ -32,7 +32,7 @@ jobs:
           if [[ "${{ inputs.environment }}" == "Production" ]]; then
             url="https://tour.rotex1800.de"
           fi
-          echo "url=${url}" >> $GITHUB_OUTPUT
+          echo "url=${url}" >> "$GITHUB_OUTPUT"
 
   deploy:
     needs:

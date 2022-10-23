@@ -19,8 +19,18 @@ jobs:
           extra-files: |
             config/app.php
 
-  deploy:
+  deploy-into-production:
     needs: [ release-please ]
     if: ${{ needs.release-please.outputs.release-created }}
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
+    with:
+      environment: Production
+
+  deploy-into-sandbox:
+    needs: [ release-please ]
+    if: ${{ !needs.release-please.outputs.release-created }}
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
+    with:
+      environment: Sandbox
