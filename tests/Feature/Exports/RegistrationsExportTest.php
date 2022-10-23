@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 uses(RefreshDatabase::class);
 
@@ -125,4 +126,15 @@ it('contains expected headings', function () {
 //            "Gastfamilie 3 Adresse",
             'Kommentar'
         );
+});
+
+it('formats dates columns correctly', function () {
+    $event = Event::factory()->create();
+    $export = new RegistrationsExport($event);
+    $columnFormats = $export->columnFormats();
+
+    expect($columnFormats)
+        ->toHaveKey('C', NumberFormat::FORMAT_DATE_DDMMYYYY)
+        ->toHaveKey('J', NumberFormat::FORMAT_DATE_DDMMYYYY)
+        ->toHaveKey('K', NumberFormat::FORMAT_DATE_DDMMYYYY);
 });
