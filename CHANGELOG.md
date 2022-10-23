@@ -25,6 +25,15 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.3.4](https://github.com/rotex1800/registration/compare/v1.3.3...v1.3.4) (2022-10-23)
+
+
+### Miscellaneous Chores
+
+* Deploy new releases into production ([#131](https://github.com/rotex1800/registration/issues/131)) ([bf90458](https://github.com/rotex1800/registration/commit/bf90458148aeb74de40032f3656c7395999c379e))
+* Improve excel export ([#130](https://github.com/rotex1800/registration/issues/130)) ([e1f9315](https://github.com/rotex1800/registration/commit/e1f931507fd6e4eb1a374db3a71ba94842351b94))
+* Replace deprecated set-output command ([#128](https://github.com/rotex1800/registration/issues/128)) ([da6ba54](https://github.com/rotex1800/registration/commit/da6ba549bc06d486f0401f989a5b4566efe65e70))
+
 ## [1.3.3](https://github.com/rotex1800/registration/compare/v1.3.2...v1.3.3) (2022-10-22)
 
 
