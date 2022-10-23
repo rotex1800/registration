@@ -7,11 +7,12 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
+class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
     private Event $event;
 
@@ -82,7 +83,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
      */
     public function map(mixed $user): array
     {
-        if (! ($user instanceof User)) {
+        if (!($user instanceof User)) {
             return [];
         }
 
