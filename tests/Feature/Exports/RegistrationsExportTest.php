@@ -132,9 +132,7 @@ it('contains expected headings', function () {
 it('formats dates columns correctly', function () {
     $event = Event::factory()->create();
     $export = new RegistrationsExport($event);
-    $columnFormats = $export->columnFormats();
-
-    expect($columnFormats)
+    expect($export->columnFormats())
         ->toHaveKey('C', NumberFormat::FORMAT_DATE_DDMMYYYY)
         ->toHaveKey('J', NumberFormat::FORMAT_DATE_DDMMYYYY)
         ->toHaveKey('K', NumberFormat::FORMAT_DATE_DDMMYYYY);

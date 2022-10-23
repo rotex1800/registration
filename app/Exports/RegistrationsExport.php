@@ -49,10 +49,9 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
     public function styles(Worksheet $sheet): array
     {
         return [
-            1 => ['font' => ['bold' => true]]
+            1 => ['font' => ['bold' => true]],
         ];
     }
-
 
     /**
      * @return string[]
@@ -111,7 +110,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
      */
     public function map(mixed $user): array
     {
-        if (!($user instanceof User)) {
+        if (! ($user instanceof User)) {
             return [];
         }
 
