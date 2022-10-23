@@ -7,11 +7,16 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
+class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize, WithColumnFormatting, WithStyles
 {
     private Event $event;
 
@@ -23,6 +28,29 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings
     public function query(): Relation
     {
         return $this->event->attendees();
+    }
+
+    /**
+     * @return string[]
+     */
+    public function columnFormats(): array
+    {
+        return [
+            'C' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'J' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'K' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+        ];
+    }
+
+    /**
+     * @param  Worksheet  $sheet
+     * @return array<mixed>
+     */
+    public function styles(Worksheet $sheet): array
+    {
+        return [
+            1 => ['font' => ['bold' => true]],
+        ];
     }
 
     /**

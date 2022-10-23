@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 uses(RefreshDatabase::class);
 
@@ -38,43 +40,45 @@ it('contains expected columns', function () {
     expect($export->map($user))
         ->toHaveLength(1)
         ->and($export->map($user)[0])
-        ->toContain($user->first_name)
-        ->toContain($user->family_name)
-        ->toContain(Date::dateTimeToExcel($user->birthday))
-        ->toContain($user->gender)
-        ->toContain($user->email)
-        ->toContain($user->mobile_phone)
-        ->toContain($user->health_issues)
-        ->toContain($user->passport?->nationality ?? '')
-        ->toContain($user->passport?->passport_number ?? '')
-        ->toContain(Date::dateTimeToExcel($user->passport?->issue_date))
-        ->toContain(Date::dateTimeToExcel($user->passport?->expiration_date))
-        ->toContain($user->rotaryInfo?->host_club ?? '')
-        ->toContain($user->rotaryInfo?->host_district ?? '')
-        ->toContain($user->rotaryInfo?->sponsor_club ?? '')
-        ->toContain($user->rotaryInfo?->sponsor_district ?? '')
-        ->toContain($user->counselor?->name ?? '')
-        ->toContain($user->counselor?->phone ?? '')
-        ->toContain($user->counselor?->email ?? '')
-        ->toContain($user->yeo?->name ?? '')
-        ->toContain($user->yeo?->phone ?? '')
-        ->toContain($user->yeo?->email ?? '')
-        ->toContain($user->bioFamily?->parent_one ?? '')
-        ->toContain($user->bioFamily?->parent_two ?? '')
-        ->toContain($user->bioFamily?->email ?? '')
-        ->toContain($user->bioFamily?->phone ?? '')
-        // TODO: Add address for bio family
+        ->toContain(
+            $user->first_name,
+            $user->family_name,
+            Date::dateTimeToExcel($user->birthday),
+            $user->gender,
+            $user->email,
+            $user->mobile_phone,
+            $user->health_issues,
+            $user->passport?->nationality ?? '',
+            $user->passport?->passport_number ?? '',
+            Date::dateTimeToExcel($user->passport?->issue_date),
+            Date::dateTimeToExcel($user->passport?->expiration_date),
+            $user->rotaryInfo?->host_club ?? '',
+            $user->rotaryInfo?->host_district ?? '',
+            $user->rotaryInfo?->sponsor_club ?? '',
+            $user->rotaryInfo?->sponsor_district ?? '',
+            $user->counselor?->name ?? '',
+            $user->counselor?->phone ?? '',
+            $user->counselor?->email ?? '',
+            $user->yeo?->name ?? '',
+            $user->yeo?->phone ?? '',
+            $user->yeo?->email ?? '',
+            $user->bioFamily?->parent_one ?? '',
+            $user->bioFamily?->parent_two ?? '',
+            $user->bioFamily?->email ?? '',
+            $user->bioFamily?->phone ?? '',
+            // TODO: Add address for bio family
 //        ->toContain($user->bioFamily->address)
-        ->toContain($user->firstHostFamily()->name ?? '')
-        ->toContain($user->firstHostFamily()->phone ?? '')
-        ->toContain($user->firstHostFamily()->email ?? '')
-        ->toContain($user->secondHostFamily()->name ?? '')
-        ->toContain($user->secondHostFamily()->phone ?? '')
-        ->toContain($user->secondHostFamily()->email ?? '')
-        ->toContain($user->thirdHostFamily()->name ?? '')
-        ->toContain($user->thirdHostFamily()->phone ?? '')
-        ->toContain($user->thirdHostFamily()->email ?? '')
-        ->toContain($user->registrationComment?->body ?? '');
+            $user->firstHostFamily()->name ?? '',
+            $user->firstHostFamily()->phone ?? '',
+            $user->firstHostFamily()->email ?? '',
+            $user->secondHostFamily()->name ?? '',
+            $user->secondHostFamily()->phone ?? '',
+            $user->secondHostFamily()->email ?? '',
+            $user->thirdHostFamily()->name ?? '',
+            $user->thirdHostFamily()->phone ?? '',
+            $user->thirdHostFamily()->email ?? '',
+            $user->registrationComment?->body ?? ''
+        );
 });
 
 it('contains expected headings', function () {
@@ -123,4 +127,22 @@ it('contains expected headings', function () {
 //            "Gastfamilie 3 Adresse",
             'Kommentar'
         );
+});
+
+it('formats dates columns correctly', function () {
+    $event = Event::factory()->create();
+    $export = new RegistrationsExport($event);
+    expect($export->columnFormats())
+        ->toHaveKey('C', NumberFormat::FORMAT_DATE_DDMMYYYY)
+        ->toHaveKey('J', NumberFormat::FORMAT_DATE_DDMMYYYY)
+        ->toHaveKey('K', NumberFormat::FORMAT_DATE_DDMMYYYY);
+});
+
+it('applies bold style to first row', function () {
+    $event = Event::factory()->create();
+    $export = new RegistrationsExport($event);
+
+    expect($export->styles(new Worksheet()))
+        ->toBeArray()
+        ->toHaveKey(1, ['font' => ['bold' => true]]);
 });
