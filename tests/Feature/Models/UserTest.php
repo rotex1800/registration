@@ -447,3 +447,9 @@ it('has a unique constraint on the uuid column', function () {
 it('requires value for uuid', function () {
     User::factory()->state(['uuid' => null])->create();
 })->throws(QueryException::class);
+
+test('user factory can set password', function () {
+    $user = User::factory()->withPassword('super-secret')->make();
+    expect(Hash::check('super-secret', $user->password))
+        ->toBeTrue();
+});
