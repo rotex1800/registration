@@ -16,7 +16,7 @@ beforeEach(function () {
 });
 
 it('requires a password to be present', function () {
-    $input = array();
+    $input = [];
     $this->action->reset($this->user, $input);
 })->throws(ValidationException::class);
 
@@ -48,7 +48,7 @@ it('requires the password to be at least 8 characters long', function () {
 it('succeeds with a password of length 8', function () {
     $input = [
         'password' => '12345678',
-        'password_confirmation' => '12345678'
+        'password_confirmation' => '12345678',
     ];
     $this->action->reset($this->user, $input);
     expect(true)->toBeTrue();
