@@ -17,10 +17,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Ramsey\Uuid\Uuid;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use Ramsey\Uuid\Uuid;
 
 uses(RefreshDatabase::class);
 
@@ -447,3 +447,9 @@ it('has a unique constraint on the uuid column', function () {
 it('requires value for uuid', function () {
     User::factory()->state(['uuid' => null])->create();
 })->throws(QueryException::class);
+
+test('user factory can set password', function () {
+    $user = User::factory()->withPassword('super-secret')->make();
+    expect(Hash::check('super-secret', $user->password))
+        ->toBeTrue();
+});

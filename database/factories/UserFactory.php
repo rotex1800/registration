@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -40,6 +41,20 @@ class UserFactory extends Factory
         return $this->state(function () {
             return [
                 'email_verified_at' => null,
+            ];
+        });
+    }
+
+    /**
+     * Set the hash of the given plain text into as password
+     *
+     * @return static
+     */
+    public function withPassword(string $plain): static
+    {
+        return $this->state(function () use ($plain) {
+            return [
+                'password' => Hash::make($plain),
             ];
         });
     }
