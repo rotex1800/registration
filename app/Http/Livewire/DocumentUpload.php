@@ -84,17 +84,23 @@ class DocumentUpload extends Component
     private function getStringForDocumentState(): string
     {
         $document = $this->user->documentBy(DocumentCategory::read($this->category));
+
         if ($document == null) {
             return strval(__('document.state_not_uploaded'));
         }
         $state = $document->state;
-
-        $string = match ($state) {
-            DocumentState::Submitted => __('document.state_submitted'),
-            DocumentState::Approved => __('document.state_approved'),
-            DocumentState::Declined => __('document.state_declined'),
-            default => __('document.state_not_uploaded')
-        };
+        $string = '';
+        switch ($state) {
+            case DocumentState::Submitted:
+                $string = __('document.state_submitted');
+                break;
+            case DocumentState::Approved:
+                $string = __('document.state_approved');
+                break;
+            case DocumentState::Declined:
+                $string = __('document.state_declined');
+                break;
+        }
 
         return strval($string);
     }

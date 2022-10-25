@@ -26,12 +26,18 @@ it('is not accessible when logged out', function () {
 });
 
 test('event details are not available for mismatching roles', function () {
-    $role = Role::factory()->count(2)
-                ->has(User::factory())
-                ->has(Event::factory())
-                ->create();
-    $user = $role[0]->users[0];
-    $event = $role[1]->events[0];
+    $someRole = Role::factory(['name' => 'some'])
+                    ->has(User::factory())
+                    ->has(Event::factory())
+                    ->create();
+
+    $otherRole = Role::factory(['name' => 'other'])
+                     ->has(User::factory())
+                     ->has(Event::factory())
+                     ->create();
+
+    $user = $someRole->users[0];
+    $event = $otherRole->events[0];
 
     actingAs($user)
         ->get("/event/$event->id")

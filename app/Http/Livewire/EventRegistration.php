@@ -11,7 +11,6 @@ use App\Models\RegistrationComment;
 use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
-use App\Policies\EventPolicy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -194,13 +193,6 @@ class EventRegistration extends Component
     {
         $this->user->events()->detach($this->event);
         $this->user->save();
-    }
-
-    public function canEdit(): bool
-    {
-        $policy = new EventPolicy();
-
-        return $policy->canEditEvent($this->user)->allowed();
     }
 
     /**

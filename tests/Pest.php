@@ -15,12 +15,15 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Tests\DuskTestCase;
 
 uses(Tests\TestCase::class)->in('Livewire');
 uses(Tests\TestCase::class)->in('Feature');
 uses(Tests\TestCase::class)->in('Fortify');
 uses(Tests\TestCase::class)->in('Models');
+uses(Tests\TestCase::class)->in('Http');
 uses(DuskTestCase::class)->in('Browser');
 uses()->group('browser')->in('Browser');
 
@@ -88,4 +91,14 @@ function createInboundRegisteredFor(App\Models\Event $event): User
     $inbound->events()->attach($event);
 
     return $inbound;
+}
+
+function createRequest(string $method, string $uri): Request
+{
+    $symfonyRequest = SymfonyRequest::create(
+        $uri,
+        $method
+    );
+
+    return Request::createFromBase($symfonyRequest);
 }
