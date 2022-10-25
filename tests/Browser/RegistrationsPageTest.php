@@ -65,7 +65,8 @@ it('handles users with missing data', function () {
     actingAs($user)
         ->get('/registrations/1')
         ->assertOk()
-        ->assertSeeLivewire('registration-info-view');
+        ->assertSeeLivewire('registration-info-view')
+        ->assertSee($attendees->first()->full_name);
 });
 
 it('shows explanation text if no attendees have registered', function () {
