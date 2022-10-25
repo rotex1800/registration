@@ -25,6 +25,22 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.4.0](https://github.com/rotex1800/registration/compare/v1.3.4...v1.4.0) (2022-10-25)
+
+
+### Features
+
+* Improve registrations view ([#137](https://github.com/rotex1800/registration/issues/137)) ([8085aed](https://github.com/rotex1800/registration/commit/8085aedf2ab9fdd4f0c0cdf52fc3fe79ec2ad1d6))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump nunomaduro/larastan from 2.2.5 to 2.2.6 ([9d69271](https://github.com/rotex1800/registration/commit/9d69271f308f8a861818f9084630825f35c61c0c))
+* **deps:** bump nunomaduro/larastan from 2.2.5 to 2.2.6 ([#136](https://github.com/rotex1800/registration/issues/136)) ([bd57ca7](https://github.com/rotex1800/registration/commit/bd57ca77cfdc586e0d8aa4b7e7051e73151d2a7f))
+* Improve Code Coverage ([#133](https://github.com/rotex1800/registration/issues/133)) ([e2499e5](https://github.com/rotex1800/registration/commit/e2499e580318cca08dd2c3cb8de6b50cf6c8a5b1))
+* Require at least 93 percent coverage on tests ([#135](https://github.com/rotex1800/registration/issues/135)) ([962b758](https://github.com/rotex1800/registration/commit/962b7588c8f0689a5f868c343d3b94d3e0119544))
+* stabilize test ([b7410e3](https://github.com/rotex1800/registration/commit/b7410e315fc488c2d450457a7e410f6cd48fe7a5))
+
 ## [1.3.4](https://github.com/rotex1800/registration/compare/v1.3.3...v1.3.4) (2022-10-23)
 
 
