@@ -28,6 +28,15 @@ it('denies participant user to comment other document', function () {
     ->toBeDenied();
 });
 
+it('denies other user to comment', function () {
+    $policy = new CommentPolicy();
+    $document = Document::factory()->create();
+    $user = createUserWithRole('other');
+
+    expect($policy->userCanCommentDocument($user, $document))
+    ->toBeDenied();
+});
+
 it('allows rotex user to comment on own document', function () {
     $policy = new CommentPolicy();
     $document = Document::factory()->create();
