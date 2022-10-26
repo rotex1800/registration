@@ -25,6 +25,19 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.4.1](https://github.com/rotex1800/registration/compare/v1.4.0...v1.4.1) (2022-10-26)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel-vite-plugin from 0.6.1 to 0.7.0 ([83773a4](https://github.com/rotex1800/registration/commit/83773a406cb41156f44afa2540ff0d13376b7e2e))
+* **deps:** bump laravel-vite-plugin from 0.6.1 to 0.7.0 ([#138](https://github.com/rotex1800/registration/issues/138)) ([90d9702](https://github.com/rotex1800/registration/commit/90d9702d0133382458f2e6b78ee932beaa642d18))
+* **deps:** bump laravel/fortify from 1.13.4 to 1.13.5 ([eb9f673](https://github.com/rotex1800/registration/commit/eb9f6737763445f5bf2672606d3396d7698d9943))
+* **deps:** bump laravel/fortify from 1.13.4 to 1.13.5 ([#140](https://github.com/rotex1800/registration/issues/140)) ([f320f0e](https://github.com/rotex1800/registration/commit/f320f0e98606857c5b9c45c38f507f605e33a6c1))
+* **deps:** bump spatie/laravel-ignition from 1.5.2 to 1.6.1 ([6cf4d10](https://github.com/rotex1800/registration/commit/6cf4d1002f39fbffda982b2a721ee0268ac2b41b))
+* **deps:** bump spatie/laravel-ignition from 1.5.2 to 1.6.1 ([#143](https://github.com/rotex1800/registration/issues/143)) ([0344ecb](https://github.com/rotex1800/registration/commit/0344ecb330cce339725661f144c3a8e0e2720c61))
+* sort attendees in overview by first name ([#142](https://github.com/rotex1800/registration/issues/142)) ([c55b0f3](https://github.com/rotex1800/registration/commit/c55b0f361c79b9fc37e04d4095a850d55f7a627f))
+
 ## [1.4.0](https://github.com/rotex1800/registration/compare/v1.3.4...v1.4.0) (2022-10-25)
 
 
