@@ -23,6 +23,21 @@ test('event can retrieve attendees', function () {
         ->each->toBeInstanceOf(User::class);
 });
 
+it('returns attendees sorted by first name', function () {
+    // Arrange
+    $first = User::factory()->state(['first_name' => 'C'])->make();
+    $second = User::factory()->state(['first_name' => 'B'])->make();
+    $third = User::factory()->state(['first_name' => 'A'])->make();
+    $event = Event::factory()->create();
+    $event->attendees()->saveMany([$first, $second, $third]);
+
+    // Act & Assert
+    $sortedAttendees = $event->attendeesSortedByFirstName();
+    $firstNames = $sortedAttendees->map(fn ($e) => $e->first_name);
+    expect($firstNames)
+        ->toArray()->toEqual(['A', 'B', 'C']);
+})->only();
+
 test('event has name', function () {
     $event = Event::factory()->state([
         'name' => 'Deutschland Tour',

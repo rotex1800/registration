@@ -50,6 +50,17 @@ class Event extends Model
     ];
 
     /**
+     * @return Collection<User>
+     */
+    public function attendeesSortedByFirstName(): Collection
+    {
+        return $this
+            ->attendees()
+            ->orderBy('first_name')
+            ->get();
+    }
+
+    /**
      * @return BelongsToMany
      * @phpstan-return BelongsToMany<User>
      */
