@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.4.2](https://github.com/rotex1800/registration/compare/v1.4.1...v1.4.2) (2022-10-28)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump autoprefixer from 10.4.12 to 10.4.13 ([44d2890](https://github.com/rotex1800/registration/commit/44d28902c49dd3934178de9aff01597c55424385))
+* **deps:** bump autoprefixer from 10.4.12 to 10.4.13 ([#145](https://github.com/rotex1800/registration/issues/145)) ([c86e82e](https://github.com/rotex1800/registration/commit/c86e82e4dc11582314a6b56b7bca079fd3b1c1c9))
+* **deps:** bump vite from 3.1.8 to 3.2.0 ([442e310](https://github.com/rotex1800/registration/commit/442e310b4598b7eb2e9044d12eb883ad30041410))
+* **deps:** bump vite from 3.1.8 to 3.2.0 ([#144](https://github.com/rotex1800/registration/issues/144)) ([ca26d4a](https://github.com/rotex1800/registration/commit/ca26d4a2b9f956d0a47517cfb58d3fa66bf1b8df))
+
 ## [1.4.1](https://github.com/rotex1800/registration/compare/v1.4.0...v1.4.1) (2022-10-26)
 
 
