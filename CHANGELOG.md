@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.4.3](https://github.com/rotex1800/registration/compare/v1.4.2...v1.4.3) (2022-10-30)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump brianium/paratest from 6.6.4 to 6.6.5 ([2f99219](https://github.com/rotex1800/registration/commit/2f99219253add9d72b5260c3975283c356c48dfd))
+* **deps:** bump brianium/paratest from 6.6.4 to 6.6.5 ([#149](https://github.com/rotex1800/registration/issues/149)) ([ab48424](https://github.com/rotex1800/registration/commit/ab4842415eaa2266189a5b20eb5929df78c4142e))
+* **deps:** bump vite from 3.2.0 to 3.2.1 ([fbb7e9b](https://github.com/rotex1800/registration/commit/fbb7e9b3ae6f65a6a2c557bdad54cb45c5738bb3))
+* **deps:** bump vite from 3.2.0 to 3.2.1 ([#148](https://github.com/rotex1800/registration/issues/148)) ([4f62477](https://github.com/rotex1800/registration/commit/4f6247741ac62b6036925b354a6ac4f0abd1066f))
+
 ## [1.4.2](https://github.com/rotex1800/registration/compare/v1.4.1...v1.4.2) (2022-10-28)
 
 
