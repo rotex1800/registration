@@ -25,6 +25,19 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.4.4](https://github.com/rotex1800/registration/compare/v1.4.3...v1.4.4) (2022-10-30)
+
+
+### Bug Fixes
+
+* disallow example domains for email ([ca23dfb](https://github.com/rotex1800/registration/commit/ca23dfb25074b5efead2a858f9d79c5d0bdf79db))
+* disallow registrations of example domains ([#153](https://github.com/rotex1800/registration/issues/153)) ([2bf6c12](https://github.com/rotex1800/registration/commit/2bf6c120fce6c2ef68c9c0659c9286c1c1ddf592))
+
+
+### Miscellaneous Chores
+
+* remove obsolete `-&gt;only()` on pest test ([0749e84](https://github.com/rotex1800/registration/commit/0749e847eaf463e766676b083edf0cfccb0cb352))
+
 ## [1.4.3](https://github.com/rotex1800/registration/compare/v1.4.2...v1.4.3) (2022-10-30)
 
 
