@@ -36,7 +36,7 @@ it('returns attendees sorted by first name', function () {
     $firstNames = $sortedAttendees->map(fn ($e) => $e->first_name);
     expect($firstNames)
         ->toArray()->toEqual(['A', 'B', 'C']);
-})->only();
+});
 
 test('event has name', function () {
     $event = Event::factory()->state([
