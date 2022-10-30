@@ -40,7 +40,6 @@ it('does not allow example.net emails', function () {
     $attributes['password_confirmation'] = 'password';
 
     $action->create($attributes);
-
 })->throws(ValidationException::class);
 
 it('does not allow example.org emails', function () {
@@ -51,5 +50,4 @@ it('does not allow example.org emails', function () {
     $attributes['password_confirmation'] = 'password';
 
     $action->create($attributes);
-
 })->throws(ValidationException::class);
