@@ -6,7 +6,6 @@ use Database\Factories\UserFactory;
 use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -160,17 +159,9 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Accessor combining first name and family name
      */
-    public function fullName(): Attribute
+    public function getFullNameAttribute(): string
     {
-        return Attribute::make(
-            get: function ($value, $attrs) {
-                if (! (is_array($attrs))) {
-                    return '';
-                }
-
-                return $attrs['first_name'].' '.$attrs['family_name'];
-            }
-        );
+        return $this->first_name." ".$this->family_name;
     }
 
     /**
