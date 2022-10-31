@@ -2,12 +2,14 @@
 
 namespace Tests\Feature\Livewire;
 
+use App\Models\Comment;
 use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
@@ -145,4 +147,88 @@ it('does not crash declining for missing document', function () {
     ])
             ->call('decline')
             ->assertStatus(200);
+});
+
+it('has save comment method wired', function () {
+    $this->component
+        ->assertStatus(200)
+        ->assertMethodWired('saveComment');
+});
+
+it('saves a comment', function () {
+    $author = User::factory()->create();
+    $this->component
+        ->assertStatus(200)
+        ->set('comment', 'I am a comment!')
+        ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(1);
+
+    expect($this->document->comments[0])
+        ->author_id->toBe($this->user->id)
+        ->content->toBe('I am a comment!');
+});
+
+it('does not save blank comments', function () {
+    $author = User::factory()->create();
+    actingAs($author);
+    $this->component
+        ->assertStatus(200)
+        ->set('comment', '    ')
+        ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(0);
+});
+
+it('does not save empty comment', function () {
+    $author = User::factory()->create();
+    actingAs($author);
+    $this->component
+        ->assertStatus(200)
+        ->set('comment', '')
+        ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(0);
+});
+
+it('trims comments', function () {
+    $author = User::factory()->create();
+    $this->component
+        ->assertStatus(200)
+        ->set('comment', 'I am a comment!            ')
+        ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(1);
+
+    expect($this->document->comments[0])
+        ->author_id->toBe($this->user->id)
+        ->content->toBe('I am a comment!');
+});
+
+it('shows comments', function () {
+    // Arrange
+    $comments = Comment::factory()->count(3)->make();
+    $this->document->comments()->saveMany($comments);
+
+    // Act
+    $component = Livewire::test('documents-rater', [
+        'category' => $this->category,
+        'user' => $this->user,
+    ]);
+
+    // Assert
+    $component->assertStatus(200);
+    foreach ($comments as $comment) {
+        $component->assertSeeText($comment->content)
+                        ->assertSeeText($comment->author->full_name)
+                        ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:m'));
+    }
 });
