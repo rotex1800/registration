@@ -17,10 +17,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Ramsey\Uuid\Uuid;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use Ramsey\Uuid\Uuid;
 
 uses(RefreshDatabase::class);
 
@@ -97,6 +97,14 @@ it('owns documents', function () {
         ->and($user->documents)
         ->toBeInstanceOf(Collection::class)
         ->toHaveCount(2);
+});
+
+it('does not own document if owner is null', function () {
+    $doc = Document::factory()->make();
+    $doc->owner_id = null;
+
+    $user = User::factory()->create();
+    expect($user->owns($doc))->toBeFalse();
 });
 
 it('can find document of given category', function () {
