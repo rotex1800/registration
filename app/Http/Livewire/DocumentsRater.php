@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Comment;
 use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
@@ -27,15 +26,6 @@ class DocumentsRater extends Component
      */
     public $category;
 
-    public ?Document $document = null;
-
-    public string $comment = '';
-
-    /**
-     * @var Collection<Comment>|null
-     */
-    public ?Collection $comments = null;
-
     public function mount(): void
     {
         $this->document = $this->user->documentBy($this->category);
@@ -49,6 +39,7 @@ class DocumentsRater extends Component
     {
         return view('livewire.documents-rater', [
             'category' => $this->category,
+            'comments' => $this->comments,
         ]);
     }
 
@@ -91,5 +82,10 @@ class DocumentsRater extends Component
             $this->document->state = DocumentState::Declined;
             $this->document->save();
         }
+    }
+
+    protected function getDocument(): ?Document
+    {
+        return $this->document;
     }
 }

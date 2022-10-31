@@ -15,6 +15,6 @@
     </div>
     <div class="h-2"></div>
     @if($document != null)
-        <x-comment-section :comments="$comments"/>
+        <x-comment-section :comments="$this->document->comments"/>
     @endif
 </div>

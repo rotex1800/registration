@@ -3,6 +3,7 @@
 namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\DocumentUpload;
+use App\Models\Comment;
 use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
@@ -12,14 +13,27 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Livewire;
 use Livewire\WithFileUploads;
-use function Pest\Laravel\actingAs;
 use Storage;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
 beforeEach(function () {
+    $this->category = DocumentCategory::SchoolCertificate;
     $this->user = User::factory()->create();
+
+    $this->document = Document::factory([
+        'category' => $this->category->value,
+        'state' => DocumentState::Submitted->value,
+    ])->make();
+
+    $this->user->documents()->save($this->document);
+
     actingAs($this->user);
+    $this->component = Livewire\Livewire::test('documents-rater', [
+        'user' => $this->user,
+        'category' => $this->category,
+    ]);
 });
 
 it('uses file upload trait', function () {
@@ -95,8 +109,9 @@ it('uploading file creates entry in document table', function () {
             ->set('file', $file)
             ->call('save');
 
-    expect(Document::count())->toBe(1)
-                             ->and(Document::first())
+    $userPassport = $this->user->documentBy(DocumentCategory::PassportCopy);
+    expect($userPassport)
+        ->not->toBeNull()
         ->name->toBe('foo.pdf')
         ->type->toBe(Document::TYPE_DIGITAL)
         ->state->toBe(DocumentState::Submitted)
@@ -200,4 +215,99 @@ it('shows error message if upload is attempted before file selection', function 
             ->assertHasErrors([
                 'file' => 'required',
             ]);
+});
+
+
+// SECTION START: Comments
+it('has save comment method wired', function () {
+    Livewire::test('document-upload', [
+        'category' => $this->category->value,
+    ])->assertStatus(200)
+            ->assertMethodWired('saveComment');
+});
+
+it('saves a comment', function () {
+    $author = User::factory()->create();
+    Livewire::test('document-upload', [
+        'category' => $this->category->value,
+    ])
+            ->assertStatus(200)
+            ->set('comment', 'I am a comment!')
+            ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(1);
+
+    expect($this->document->comments[0])
+        ->author_id->toBe($this->user->id)
+        ->content->toBe('I am a comment!');
+});
+
+it('does not save blank comments', function () {
+    $author = User::factory()->create();
+    actingAs($author);
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::Motivation->value,
+    ])
+            ->assertStatus(200)
+            ->set('comment', '    ')
+            ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(0);
+});
+
+it('does not save empty comment', function () {
+    $author = User::factory()->create();
+    actingAs($author);
+    Livewire::test('document-upload', [
+        'category' => DocumentCategory::Motivation->value,
+    ])
+            ->assertStatus(200)
+            ->set('comment', '')
+            ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(0);
+});
+
+it('trims comments', function () {
+    $author = User::factory()->create();
+    Livewire::test('document-upload', [
+        'category' => $this->category->value,
+    ])
+            ->assertStatus(200)
+            ->set('comment', 'I am a comment!            ')
+            ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(1);
+
+    expect($this->document->comments[0])
+        ->author_id->toBe($this->user->id)
+        ->content->toBe('I am a comment!');
+});
+
+it('shows comments', function () {
+    // Arrange
+    $comments = Comment::factory()->count(3)->make();
+    $this->document->comments()->saveMany($comments);
+
+    // Act
+    $component = Livewire\Livewire::test('documents-rater', [
+        'category' => $this->category,
+        'user' => $this->user,
+    ]);
+
+    // Assert
+    $component->assertStatus(200);
+    foreach ($comments as $comment) {
+        $component->assertSeeText($comment->content)
+                  ->assertSeeText($comment->author->full_name)
+                  ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:i'));
+    }
 });

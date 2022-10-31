@@ -149,6 +149,8 @@ it('does not crash declining for missing document', function () {
             ->assertStatus(200);
 });
 
+
+// SECTION START: Comments
 it('has save comment method wired', function () {
     $this->component
         ->assertStatus(200)

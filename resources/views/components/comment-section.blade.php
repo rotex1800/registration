@@ -1,7 +1,9 @@
+@php use App\Models\Comment;use Illuminate\Support\Collection; @endphp
 @props([
-    /** @var \null */
+    /** @var Collection<Comment> $comments */
     'comments'
 ])
+
 @foreach($comments as $comment)
     <div {{ $attributes->class(['even:bg-slate-200 odd:bg-slate-300 rounded-lg p-2 mb-1']) }}>
         <div class="flex flex-row justify-between">
@@ -14,8 +16,10 @@
     </div>
 @endforeach
 <div class="flex flex-row w-full mt-2">
-    <input placeholder="{{ __('document-comments.comment-placeholder') }}" class="block w-auto grow" type="text"
+    <input placeholder="{{ __('document-comments.comment-placeholder') }}"
+           class="block w-auto grow rounded-lg"
+           type="text"
            wire:model.debounce.500ms="comment">
-    <button class="ml-2 p-2 bg-blue-500 text-white rounded"
+    <button class="ml-2 p-2 bg-blue-500 text-white rounded-lg"
             wire:click="saveComment">{{ __('document-comments.comment') }}</button>
 </div>
