@@ -29,5 +29,4 @@ trait HasCommentSection
     {
         $this->comment = trim($value);
     }
-
 }

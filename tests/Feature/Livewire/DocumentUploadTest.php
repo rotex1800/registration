@@ -13,8 +13,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Livewire;
 use Livewire\WithFileUploads;
-use Storage;
 use function Pest\Laravel\actingAs;
+use Storage;
 
 uses(RefreshDatabase::class);
 
@@ -216,7 +216,6 @@ it('shows error message if upload is attempted before file selection', function 
                 'file' => 'required',
             ]);
 });
-
 
 // SECTION START: Comments
 it('has save comment method wired', function () {

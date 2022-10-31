@@ -99,6 +99,7 @@ class Document extends Model
             'content' => $withContent,
             'author_id' => $authorId,
         ]);
+
         return $this->comments()->save($comment);
     }
 

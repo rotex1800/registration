@@ -164,7 +164,6 @@ it('can create comment on document', function () {
 
     // Assert
 
-
     expect($doc->comments()->count())
         ->toBeOne();
 
