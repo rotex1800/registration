@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class DocumentsRater extends Component
 {
+    use HasCommentSection;
+
     public User $user;
 
     /**
@@ -89,18 +91,5 @@ class DocumentsRater extends Component
             $this->document->state = DocumentState::Declined;
             $this->document->save();
         }
-    }
-
-    public function saveComment(): void
-    {
-        if (blank($this->comment)) {
-            return;
-        }
-        $this->document?->createComment($this->comment, $this->user->getAuthIdentifier());
-    }
-
-    public function updatedComment(string $value): void
-    {
-        $this->comment = trim($value);
     }
 }
