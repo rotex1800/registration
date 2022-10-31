@@ -152,3 +152,23 @@ it('can access comments', function () {
     }
     expect($eachDocCommentHasAMatch)->toBeTrue();
 });
+
+it('can create comment on document', function () {
+    // Arrange
+    $doc = Document::factory()->create();
+    $content = fake()->words(asText: true);
+    $author = User::factory()->create();
+
+    // Act
+    $doc->createComment(withContent: $content, as: $author);
+
+    // Assert
+    expect($doc->comments()->count())
+        ->toBeOne();
+
+    expect($doc->comments[0])
+        ->author_id->toBe($author->id)
+        ->content->toBe($content)
+        ->document_id->toBe($doc->id);
+
+});

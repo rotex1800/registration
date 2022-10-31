@@ -93,6 +93,15 @@ class Document extends Model
         return $this->belongsTo(User::class, 'owner_id');
     }
 
+    public function createComment(string $withContent, User $as): void
+    {
+        $comment = Comment::make([
+            'content' => $withContent,
+            'author_id' => $as->id,
+        ]);
+        $this->comments()->save($comment);
+    }
+
     /**
      * @retrun HasMany<Comment>
      */
