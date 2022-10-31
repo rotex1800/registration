@@ -30,7 +30,7 @@ class CreateNewUser implements CreatesNewUsers
                 'required',
                 'string',
                 'email',
-                'not_regex:/.+@example\.(net|org)/',
+                'not_regex:/.+@example\.(net|org|com)/',
                 self::MAX_255,
                 Rule::unique(User::class),
             ],
