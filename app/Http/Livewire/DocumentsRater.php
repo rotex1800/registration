@@ -85,7 +85,7 @@ class DocumentsRater extends Component
         if (blank($this->comment)) {
             return;
         }
-        $this->document->createComment($this->comment, $this->user->getAuthIdentifier());
+        $this->document?->createComment($this->comment, $this->user->getAuthIdentifier());
     }
 
     public function updatedComment(string $value): void
