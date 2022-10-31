@@ -52,7 +52,6 @@ it('does not allow example.org emails', function () {
     $action->create($attributes);
 })->throws(ValidationException::class);
 
-
 it('does not allow example.com emails', function () {
     $action = new CreateNewUser();
     $attributes = User::factory()->definition();
