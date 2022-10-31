@@ -228,7 +228,7 @@ it('shows comments', function () {
     $component->assertStatus(200);
     foreach ($comments as $comment) {
         $component->assertSeeText($comment->content)
-                        ->assertSeeText($comment->author->full_name)
-                        ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:m'));
+                  ->assertSeeText($comment->author->full_name)
+                  ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:i'));
     }
 });

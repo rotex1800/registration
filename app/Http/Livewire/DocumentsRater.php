@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Comment;
 use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
@@ -9,6 +10,7 @@ use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -27,9 +29,18 @@ class DocumentsRater extends Component
 
     public string $comment = '';
 
+    /**
+     * @var Collection<Comment>|null
+     */
+    public ?Collection $comments = null;
+
     public function mount(): void
     {
         $this->document = $this->user->documentBy($this->category);
+        $this->comments = $this->document?->comments;
+        if ($this->comments == null) {
+            $this->comments = Collection::empty();
+        }
     }
 
     public function render(): Application|Factory|View

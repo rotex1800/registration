@@ -13,8 +13,8 @@
             👎
         </div>
     </div>
+    <div class="h-2"></div>
     @if($document != null)
-        <div class="h-2"></div>
-        <x-comments-view :document="$document"/>
+        <x-comment-section :comments="$comments"/>
     @endif
 </div>
