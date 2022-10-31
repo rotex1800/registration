@@ -54,6 +54,17 @@ test('contains download link', function () {
         ->assertSeeText('Download');
 });
 
+it('shows the sum of registrations', function () {
+    $user = createUserWithRole('rotex');
+    $event = Event::factory()
+                  ->has(User::factory()->count(5), 'attendees')
+                  ->create();
+    actingAs($user)
+        ->get(route('registrations.show', $event))
+        ->assertStatus(200)
+        ->assertSeeText('Anmeldungen: 5');
+});
+
 it('handles users with missing data', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
