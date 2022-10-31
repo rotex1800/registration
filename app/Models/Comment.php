@@ -38,7 +38,6 @@ class Comment extends Model
     protected $fillable = [
         'author_id',
         'content',
-        'document_id',
     ];
 
     public function author(): BelongsTo

@@ -160,7 +160,7 @@ it('can create comment on document', function () {
     $author = User::factory()->create();
 
     // Act
-    $doc->createComment(withContent: $content, as: $author);
+    $doc->createComment(withContent: $content, authorId: $author->id);
 
     // Assert
     expect($doc->comments()->count())
@@ -168,7 +168,5 @@ it('can create comment on document', function () {
 
     expect($doc->comments[0])
         ->author_id->toBe($author->id)
-        ->content->toBe($content)
-        ->document_id->toBe($doc->id);
-
+        ->content->toBe($content);
 });
