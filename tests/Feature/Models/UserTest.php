@@ -162,6 +162,24 @@ it('has full name accessor', function () {
         ->toBe($user->first_name.' '.$user->family_name);
 });
 
+test('comment display name is full name for any role', function () {
+    $user = User::factory()
+                ->has(Role::factory(['name' => 'participant']))
+                ->create();
+
+    expect($user->comment_display_name)
+        ->toBe($user->full_name);
+});
+
+test('comment display name is "Rotex 1800" for rotex user', function () {
+    $user = User::factory()
+                ->has(Role::factory(['name' => 'rotex']))
+                ->create();
+
+    expect($user->comment_display_name)
+        ->toBe('Rotex 1800');
+});
+
 test('full_name works for single quotes in name', function () {
     $user = User::factory()->state([
         'first_name' => "Paul O'Test",

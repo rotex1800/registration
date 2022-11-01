@@ -165,7 +165,22 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasOne
+     * Accessor for the display name used in comments
+     * Returns the full_name for normal users, and "Rotex 1800" for 'rotex'
+     * users
+     */
+    public function getCommentDisplayNameAttribute(): string
+    {
+        if ($this->hasRole('rotex')) {
+            return 'Rotex 1800';
+        }
+
+        return $this->full_name;
+    }
+
+    /**
+     *; @return HasOne
+     *
      * @phpstan-return HasOne<Passport>
      */
     public function passport(): HasOne
