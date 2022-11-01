@@ -7,5 +7,8 @@
         <input wire:model="file" class="form-input rounded" id="file" type="file">
         <button class="rounded bg-blue-500 p-3 text-white font-bold" type="submit">{{ __('document.upload') }}</button>
     </form>
-    <div class="mt-2">{{ $message }}</div>
+    <div class="my-2">{{ $message }}</div>
+    @if($document != null)
+        <x-comment-section :comments="$comments"/>
+    @endif
 </div>

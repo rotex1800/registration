@@ -57,7 +57,7 @@ jobs:
       - name: Execute tests
         env:
           XDEBUG_MODE: coverage
-        run: vendor/bin/pest --ci --log-junit junit-report.xml --coverage --coverage-clover coverage-report.xml --min=94
+        run: vendor/bin/pest --ci --log-junit junit-report.xml --coverage --coverage-clover coverage-report.xml --min=97
 
       - name: Report Coverage in comment
         uses: lucassabreu/comment-coverage-clover@v0.7.0

@@ -10,6 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -17,7 +18,7 @@ use Livewire\WithFileUploads;
 
 class DocumentUpload extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, HasCommentSection;
 
     /**
      * @var string
@@ -76,6 +77,11 @@ class DocumentUpload extends Component
 
         $this->user = $user;
         $this->message = $this->getStringForDocumentState();
+        $this->document = $user->documentBy(DocumentCategory::read($this->category));
+        $this->comments = $this->document?->comments;
+        if ($this->comments == null) {
+            $this->comments = Collection::empty();
+        }
     }
 
     /**
