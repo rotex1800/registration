@@ -821,6 +821,12 @@ test('passport expiration date must be in the future', function () {
             ->assertHasNoErrors('passport.expiration_date');
 });
 
+it('requires user to be authenticated', function () {
+    Livewire::test('event-registration', [
+        'event' => $this->event,
+    ])->assertStatus(401);
+});
+
 /**
  * @param  TestableLivewire  $component
  * @param $headlineKey

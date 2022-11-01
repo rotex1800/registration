@@ -99,6 +99,14 @@ it('owns documents', function () {
         ->toHaveCount(2);
 });
 
+it('does not own document if owner is null', function () {
+    $doc = Document::factory()->make();
+    $doc->owner_id = null;
+
+    $user = User::factory()->create();
+    expect($user->owns($doc))->toBeFalse();
+});
+
 it('can find document of given category', function () {
     $user = User::factory()
                 ->has(Document::factory()->withCategory(DocumentCategory::PassportCopy))
