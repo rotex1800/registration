@@ -22,7 +22,7 @@ it('can contain additional row', function () {
             return $value->full_name;
         }),
     ];
-    $rows = [User::factory()->make()];
+    $rows = [User::factory()->create()];
     Livewire::test('sortable-table', [
         'columns' => $columns,
         'rows' => $rows,

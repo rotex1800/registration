@@ -2,14 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -29,10 +27,7 @@ class DocumentsRater extends Component
     public function mount(): void
     {
         $this->document = $this->user->documentBy($this->category);
-        $this->comments = $this->document?->comments;
-        if ($this->comments == null) {
-            $this->comments = Collection::empty();
-        }
+        $this->comments = $this->document->comments;
     }
 
     public function render(): Application|Factory|View
@@ -56,11 +51,7 @@ class DocumentsRater extends Component
 
     public function state(): string
     {
-        if ($this->document == null) {
-            return '🤷‍';
-        }
-
-        return match ($this->document->state) {
+        return match ($this->document?->state) {
             DocumentState::Approved => '✅',
             DocumentState::Submitted => '⬆️',
             DocumentState::Declined => '⛔️',
@@ -82,10 +73,5 @@ class DocumentsRater extends Component
             $this->document->state = DocumentState::Declined;
             $this->document->save();
         }
-    }
-
-    protected function getDocument(): ?Document
-    {
-        return $this->document;
     }
 }

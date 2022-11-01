@@ -60,6 +60,12 @@ class Document extends Model
         'category' => DocumentCategory::class,
     ];
 
+    protected $fillable = [
+        'category',
+        'type',
+        'name',
+    ];
+
     public function documentable(): MorphTo
     {
         return $this->morphTo();

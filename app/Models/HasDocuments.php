@@ -38,12 +38,26 @@ trait HasDocuments
      * Returns the first document matching the category or null if no such
      * Document can be found.
      *
-     * @param  ?DocumentCategory  $category
-     * @return Document|null
+     * @param  DocumentCategory  $category
+     * @return Document
      */
-    public function documentBy(?DocumentCategory $category): ?Document
+    public function documentBy(DocumentCategory $category): Document
     {
-        return $this->documents()->whereCategory($category)->first();
+        $preExisting = $this->documents()->whereCategory($category)->first();
+        if ($preExisting != null) {
+            return $preExisting;
+        }
+
+        $newlyCreated = new Document([
+            'category' => $category->value,
+            'type' => Document::TYPE_DIGITAL,
+            'name' => $category->displayName(),
+            'owner_id' => $this->id,
+        ]);
+
+        $this->documents()->save($newlyCreated);
+
+        return $newlyCreated;
     }
 
     /**

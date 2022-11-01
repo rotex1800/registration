@@ -12,7 +12,7 @@ uses(RefreshDatabase::class);
 
 it('can render', function () {
     $component = Livewire::test(DocumentsTableRow::class, [
-        'user' => User::factory()->make(),
+        'user' => User::factory()->create(),
     ]);
     $component->assertStatus(200);
 });
@@ -23,7 +23,7 @@ it('requires a user parameter', function () {
 
 it('contains rules', function () {
     Livewire::test(DocumentsTableRow::class, [
-        'user' => User::factory()->make(),
+        'user' => User::factory()->create(),
     ])
             ->assertSeeText(__('registration.rules'));
 });

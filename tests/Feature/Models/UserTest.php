@@ -117,13 +117,9 @@ it('can find document of given category', function () {
         ->category->toBe(DocumentCategory::PassportCopy);
 });
 
-it('returns null if no matching Document can be found', function () {
+it('returns new document if no matching document pre-exists', function () {
     expect(User::factory()->create()->documentBy(DocumentCategory::PassportCopy))
-        ->toBeNull();
-});
-
-it('returns null if the given category is null', function () {
-    expect(User::factory()->create()->documentBy(null))->toBeNull();
+        ->not->toBeNull();
 });
 
 it('can check it owns a document', function () {

@@ -10,7 +10,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -78,10 +77,7 @@ class DocumentUpload extends Component
         $this->user = $user;
         $this->message = $this->getStringForDocumentState();
         $this->document = $user->documentBy(DocumentCategory::read($this->category));
-        $this->comments = $this->document?->comments;
-        if ($this->comments == null) {
-            $this->comments = Collection::empty();
-        }
+        $this->comments = $this->document->comments;
     }
 
     /**
@@ -91,7 +87,7 @@ class DocumentUpload extends Component
     {
         $document = $this->user->documentBy(DocumentCategory::read($this->category));
 
-        if ($document == null) {
+        if ($document == null || $document->path == null) {
             return strval(__('document.state_not_uploaded'));
         }
         $state = $document->state;
@@ -128,21 +124,14 @@ class DocumentUpload extends Component
         Storage::disk()->putFileAs($path, $this->file, $this->category.'.'.$extension);
 
         $dbDoc = $this->user->documentBy(DocumentCategory::read($this->category));
-        if ($dbDoc == null) {
-            $document = Document::factory()->state([
-                'name' => $clientOriginalName,
-                'path' => $path.'/'.$this->category.'.'.$extension,
-                'state' => DocumentState::Submitted,
-            ])->digital()
-                                ->withCategory(DocumentCategory::read($this->category))
-                                ->make();
+        $filePath = $path.'/'.$this->category.'.'.$extension;
 
-            $this->user->documents()->save($document);
-        } else {
-            $dbDoc->name = $clientOriginalName;
-            $dbDoc->state = DocumentState::Submitted;
-            $dbDoc->save();
-        }
+        $dbDoc->name = $clientOriginalName;
+        $dbDoc->state = DocumentState::Submitted;
+        $dbDoc->path = $filePath;
+        $dbDoc->type = Document::TYPE_DIGITAL;
+        $dbDoc->save();
+
         $this->message = strval(__('registration.upload-success'));
     }
 
