@@ -101,7 +101,7 @@ it('allows image upload for the picture', function () {
     Storage::disk()->assertExists('documents/'.$user->uuid.'/picture.png');
 });
 
-it('uploading file creates entry in document table', function () {
+test('uploading file creates entry in document table', function () {
     Storage::fake('documents');
     $file = UploadedFile::fake()->create('foo.pdf', 1024, 'application/pdf');
 

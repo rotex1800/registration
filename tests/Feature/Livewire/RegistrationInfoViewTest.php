@@ -152,6 +152,7 @@ it('shows attributes of currently selected attendee', function () {
 it('can handle user properties being null', function () {
     $attendee = User::factory()
                     ->state([
+                        'id' => 1,
                         'birthday' => null,
                         'gender' => null,
                         'mobile_phone' => null,
