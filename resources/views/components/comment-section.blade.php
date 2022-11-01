@@ -7,7 +7,7 @@
 @foreach($comments as $comment)
     <div {{ $attributes->class(['even:bg-slate-200 odd:bg-slate-300 rounded-lg p-2 mb-1']) }}>
         <div class="flex flex-row justify-between">
-            <div class="text-sm">{{ $comment->author->full_name }}</div>
+            <div class="text-sm">{{ $comment->author->comment_display_name }}</div>
             <div class="text-sm">{{ $comment->created_at->translatedFormat('d. F Y H:i') }}</div>
         </div>
         <div>
