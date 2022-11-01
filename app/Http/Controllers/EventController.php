@@ -15,19 +15,11 @@ class EventController extends Controller
     {
         $user = Auth::user();
 
-        if ($user == null) {
-            abort(401);
-        }
-        $hasRegistered = $user->hasRegisteredFor($event);
+        $hasRegistered = $user?->hasRegisteredFor($event) ?? false;
 
         $part = EventRegistration::PART_ONE;
         if ($request->filled('part')) {
-            $string = $request->query('part');
-            if (is_array($string)) {
-                $string = $string[0];
-            }
-            $input = strtolower($string);
-
+            $input = strtolower(strval($request->input('part')));
             if (in_array($input, EventRegistration::KNOWN_PARTS)) {
                 $part = $input;
             }

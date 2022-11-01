@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\Comment;
 use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -118,3 +120,55 @@ test('category can be null multiple times', function () {
     $first->save();
     $second->save();
 })->expectNotToPerformAssertions();
+
+it('has comments relation', function () {
+    // Arrange
+    $document = Document::factory()->make();
+
+    // Act & Assert
+    expect($document->comments())
+        ->toBeInstanceOf(HasMany::class);
+});
+
+it('can access comments', function () {
+    // Arrange
+    $comments = Comment::factory()->count(3)->make();
+    $document = Document::factory()->create();
+    $document->comments()->saveMany($comments);
+
+    // Act
+    $documentComments = $document->comments;
+
+    // Assert
+    $eachDocCommentHasAMatch = true;
+    foreach ($comments as $comment) {
+        $currentCommentHasAMatch = false;
+        foreach ($documentComments as $documentComment) {
+            if ($comment->is($documentComment)) {
+                $currentCommentHasAMatch = true;
+            }
+        }
+        $eachDocCommentHasAMatch = $eachDocCommentHasAMatch && $currentCommentHasAMatch;
+    }
+    expect($eachDocCommentHasAMatch)->toBeTrue();
+});
+
+it('can create comment on document', function () {
+    // Arrange
+    $doc = Document::factory()->create();
+    $content = fake()->words(asText: true);
+    $author = User::factory()->create();
+
+    // Act
+    $comment = $doc->createComment(withContent: $content, authorId: $author->id);
+
+    // Assert
+
+    expect($doc->comments()->count())
+        ->toBeOne();
+
+    expect($comment)
+        ->not->toBeFalse()
+        ->author_id->toBe($author->id)
+        ->content->toBe($content);
+});

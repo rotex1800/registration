@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -16,6 +17,8 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class DocumentsRater extends Component
 {
+    use HasCommentSection;
+
     public User $user;
 
     /**
@@ -23,17 +26,20 @@ class DocumentsRater extends Component
      */
     public $category;
 
-    public ?Document $document = null;
-
     public function mount(): void
     {
         $this->document = $this->user->documentBy($this->category);
+        $this->comments = $this->document?->comments;
+        if ($this->comments == null) {
+            $this->comments = Collection::empty();
+        }
     }
 
     public function render(): Application|Factory|View
     {
         return view('livewire.documents-rater', [
             'category' => $this->category,
+            'comments' => $this->comments,
         ]);
     }
 
@@ -76,5 +82,10 @@ class DocumentsRater extends Component
             $this->document->state = DocumentState::Declined;
             $this->document->save();
         }
+    }
+
+    protected function getDocument(): ?Document
+    {
+        return $this->document;
     }
 }

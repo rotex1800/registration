@@ -146,3 +146,11 @@ it('applies bold style to first row', function () {
         ->toBeArray()
         ->toHaveKey(1, ['font' => ['bold' => true]]);
 });
+
+test('map returns empty string when not given a user', function () {
+    $event = Event::factory()->create();
+    $export = new RegistrationsExport($event);
+
+    expect($export->map(''))
+        ->toBe([]);
+});

@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
@@ -61,6 +62,7 @@ it('has attendee preselected', function () {
                      ->create();
     $event->attendees()->saveMany($attendees);
 
+    actingAs($user);
     $component = Livewire::test('registration-info-view', [
         'attendees' => $attendees,
     ]);
