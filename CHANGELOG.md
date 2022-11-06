@@ -25,6 +25,44 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.5.0](https://github.com/rotex1800/registration/compare/v1.4.4...v1.5.0) (2022-11-06)
+
+
+### Features
+
+* allow documents to be commented ([#157](https://github.com/rotex1800/registration/issues/157)) ([22149e8](https://github.com/rotex1800/registration/commit/22149e868c429f92d18a68eac147e217b3bd85d7))
+* show number of registrations for event ([bdd4e38](https://github.com/rotex1800/registration/commit/bdd4e38030b05658c7ea721469a9e7cd707c6bc4))
+* show summary of registrations ([#155](https://github.com/rotex1800/registration/issues/155)) ([476bb80](https://github.com/rotex1800/registration/commit/476bb803cb17070fca32d73b16279cdbc84e85ab))
+* use dedicated display name for comments ([#162](https://github.com/rotex1800/registration/issues/162)) ([0320f74](https://github.com/rotex1800/registration/commit/0320f7497dcac0f71fd40d9eefa9918bb9aaa4b8))
+
+
+### Bug Fixes
+
+* show new comment immediately ([#169](https://github.com/rotex1800/registration/issues/169)) ([edc4c96](https://github.com/rotex1800/registration/commit/edc4c96f26d1473331768384c466562da40ee9b6))
+
+
+### Miscellaneous Chores
+
+* add test for HasDocuments trait ([c0ead2c](https://github.com/rotex1800/registration/commit/c0ead2c6519a90f3e133ae8e2a969ea03d3f5676))
+* add test for LoginForm ([79aaf03](https://github.com/rotex1800/registration/commit/79aaf030693721f0146c491b116aac7be3bc4b69))
+* Add test for requiring authenticated user in EventRegistration ([a037323](https://github.com/rotex1800/registration/commit/a037323258d4e796b50a7b0c21c3f9ccd2d65cd0))
+* **deps:** bump @prettier/plugin-php from 0.19.1 to 0.19.2 ([938b538](https://github.com/rotex1800/registration/commit/938b538c2203626ea1162f897258b91ee3114278))
+* **deps:** bump @prettier/plugin-php from 0.19.1 to 0.19.2 ([#166](https://github.com/rotex1800/registration/issues/166)) ([fd59ce2](https://github.com/rotex1800/registration/commit/fd59ce2c7d65322451384d7a7e0c4e653d5dc200))
+* **deps:** bump laravel/fortify from 1.13.5 to 1.13.6 ([b9ca0d3](https://github.com/rotex1800/registration/commit/b9ca0d3d94116b0b286d373a5b9b6d6e548d5e82))
+* **deps:** bump laravel/fortify from 1.13.5 to 1.13.6 ([#164](https://github.com/rotex1800/registration/issues/164)) ([c128eac](https://github.com/rotex1800/registration/commit/c128eac16de64468fd1230a69f671d24be116306))
+* **deps:** bump lucassabreu/comment-coverage-clover ([20443c5](https://github.com/rotex1800/registration/commit/20443c549f6dd67ab75e7f9f859365e19b24f7de))
+* **deps:** bump lucassabreu/comment-coverage-clover from 0.7.0 to 0.8.0 ([#167](https://github.com/rotex1800/registration/issues/167)) ([b75df6e](https://github.com/rotex1800/registration/commit/b75df6ef377a9860e98cfc74148749514af5c19e))
+* **deps:** bump nunomaduro/larastan from 2.2.6 to 2.2.7 ([3474bd1](https://github.com/rotex1800/registration/commit/3474bd15a889c9f524fd97bf2eaae354daefce93))
+* **deps:** bump nunomaduro/larastan from 2.2.6 to 2.2.7 ([#159](https://github.com/rotex1800/registration/issues/159)) ([637ac51](https://github.com/rotex1800/registration/commit/637ac51e5a819025ae8731288dcd99de41b0dd1b))
+* **deps:** bump vite from 3.2.1 to 3.2.2 ([d42fdb6](https://github.com/rotex1800/registration/commit/d42fdb6e72247c0807c1ce436678447fc820e976))
+* **deps:** bump vite from 3.2.1 to 3.2.2 ([#158](https://github.com/rotex1800/registration/issues/158)) ([55444ec](https://github.com/rotex1800/registration/commit/55444ec1dc01c7b10ed8f0d45bece65a16849d0d))
+* do not cancel in-progress checks ([f7af141](https://github.com/rotex1800/registration/commit/f7af141b2de7e2b3f974fff9e2d3a911cbe221ac))
+* fix flaky test ([a0a5e07](https://github.com/rotex1800/registration/commit/a0a5e07cf424609143aa7b0502cc1240bb87fe08))
+* Given a category always return a document ([#163](https://github.com/rotex1800/registration/issues/163)) ([0439be0](https://github.com/rotex1800/registration/commit/0439be0cf8ada126fe92a2741fe33f0725e6f779))
+* require at least 95 percent coverage ([e98efd8](https://github.com/rotex1800/registration/commit/e98efd8a19f247fa8836c0b3f9d919deca7b6a8c))
+* require at least 96 percent coverage ([10113d5](https://github.com/rotex1800/registration/commit/10113d50d3ba7027d71c0f1d861d715a751beb78))
+* simplify full name accessor ([9cb76da](https://github.com/rotex1800/registration/commit/9cb76da69fa9491e168eaa3dae50856abeaf19cf))
+
 ## [1.4.4](https://github.com/rotex1800/registration/compare/v1.4.3...v1.4.4) (2022-10-30)
 
 
