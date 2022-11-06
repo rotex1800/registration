@@ -13,8 +13,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Livewire;
 use Livewire\WithFileUploads;
-use function Pest\Laravel\actingAs;
 use Storage;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
@@ -227,9 +227,10 @@ it('has save comment method wired', function () {
 
 it('saves a comment', function () {
     $author = User::factory()->create();
-    Livewire::test('document-upload', [
+    $component = Livewire::test('document-upload', [
         'category' => $this->category->value,
-    ])
+    ]);
+    $component
             ->assertStatus(200)
             ->set('comment', 'I am a comment!')
             ->call('saveComment');
@@ -241,6 +242,13 @@ it('saves a comment', function () {
     expect($this->document->comments[0])
         ->author_id->toBe($this->user->id)
         ->content->toBe('I am a comment!');
+
+    $component
+        ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(2);
 });
 
 it('does not save blank comments', function () {

@@ -170,6 +170,13 @@ it('saves a comment', function () {
     expect($this->document->comments[0])
         ->author_id->toBe($this->user->id)
         ->content->toBe('I am a comment!');
+
+    $this->component
+        ->call('saveComment');
+
+    $this->document->refresh();
+    expect($this->document->comments)
+        ->toHaveCount(2);
 });
 
 it('does not save blank comments', function () {
