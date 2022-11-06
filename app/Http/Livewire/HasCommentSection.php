@@ -27,6 +27,7 @@ trait HasCommentSection
             $this->document->refresh();
             $this->comments = $this->document->comments;
         }
+        $this->comment = '';
     }
 
     public function updatedComment(string $value): void
