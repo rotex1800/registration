@@ -25,6 +25,14 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.5.1](https://github.com/rotex1800/registration/compare/v1.5.0...v1.5.1) (2022-11-06)
+
+
+### Bug Fixes
+
+* Don't show document as downloadable if there is no path to it ([#171](https://github.com/rotex1800/registration/issues/171)) ([fca0432](https://github.com/rotex1800/registration/commit/fca04328798f1877553ebfc703e15291cd23ca7f))
+* Use authenticated user as author of a comment ([#173](https://github.com/rotex1800/registration/issues/173)) ([1d30455](https://github.com/rotex1800/registration/commit/1d304559265301e698da202004537e555a581eef))
+
 ## [1.5.0](https://github.com/rotex1800/registration/compare/v1.4.4...v1.5.0) (2022-11-06)
 
 
