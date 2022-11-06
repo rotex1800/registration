@@ -227,12 +227,13 @@ it('has save comment method wired', function () {
 
 it('saves a comment', function () {
     $author = User::factory()->create();
-    Livewire::test('document-upload', [
+    $component = Livewire::test('document-upload', [
         'category' => $this->category->value,
-    ])
-            ->assertStatus(200)
-            ->set('comment', 'I am a comment!')
-            ->call('saveComment');
+    ]);
+    $component
+        ->assertStatus(200)
+        ->set('comment', 'I am a comment!')
+        ->call('saveComment');
 
     $this->document->refresh();
     expect($this->document->comments)
@@ -241,6 +242,20 @@ it('saves a comment', function () {
     expect($this->document->comments[0])
         ->author_id->toBe($this->user->id)
         ->content->toBe('I am a comment!');
+});
+
+it('clears current comment when saving a new comment', function () {
+    $author = User::factory()->create();
+    $component = Livewire::test('document-upload', [
+        'category' => $this->category->value,
+    ]);
+    $component
+        ->assertStatus(200)
+        ->set('comment', 'I am a comment!')
+        ->call('saveComment');
+
+    expect($component->get('comment'))
+        ->toBe('');
 });
 
 it('does not save blank comments', function () {

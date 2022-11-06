@@ -22,7 +22,12 @@ trait HasCommentSection
         if (blank($this->comment)) {
             return;
         }
-        $this->document?->createComment($this->comment, $this->user->getAuthIdentifier());
+        $result = $this->document?->createComment($this->comment, $this->user->getAuthIdentifier());
+        if ($result) {
+            $this->document->refresh();
+            $this->comments = $this->document->comments;
+        }
+        $this->comment = '';
     }
 
     public function updatedComment(string $value): void

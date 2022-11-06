@@ -68,7 +68,7 @@ it('has attendee preselected', function () {
     ]);
     $component
         ->assertOk()
-        ->assertSee($attendees->first()->full_name);
+        ->assertSee($attendees->first()->full_name, escape: false);
 
     $currentAttendee = $component->get('currentAttendeeId');
     expect($currentAttendee)->toBe($attendees->first()->id);

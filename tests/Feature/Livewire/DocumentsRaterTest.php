@@ -172,6 +172,16 @@ it('saves a comment', function () {
         ->content->toBe('I am a comment!');
 });
 
+it('clears current comment when saving a new comment', function () {
+    $this->component
+        ->assertStatus(200)
+        ->set('comment', 'I am a comment!')
+        ->call('saveComment');
+
+    expect($this->component->get('comment'))
+        ->toBe('');
+});
+
 it('does not save blank comments', function () {
     $author = User::factory()->create();
     actingAs($author);
