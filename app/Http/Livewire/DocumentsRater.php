@@ -74,4 +74,9 @@ class DocumentsRater extends Component
             $this->document->save();
         }
     }
+
+    public function isDocumentPresent(): bool
+    {
+        return $this->document != null && $this->document->path != null;
+    }
 }

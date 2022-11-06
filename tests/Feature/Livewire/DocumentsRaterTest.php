@@ -42,6 +42,26 @@ it('has download method wired', function () {
         ->assertMethodWired('download');
 });
 
+it('has download method not wired for document with null path', function () {
+    $category = DocumentCategory::SchoolCertificate;
+    $user = User::factory()->create();
+    $document = Document::factory()
+                        ->state([
+                            'path' => null,
+                        ])
+                        ->withCategory($category)
+                        ->make();
+
+    $user->documents()->save($document);
+    $component = Livewire::test('documents-rater', [
+        'user' => $user,
+        'category' => $category,
+    ]);
+
+    $component->assertStatus(200)
+              ->assertMethodNotWired('download');
+});
+
 it('shows submitted state', function () {
     $category = DocumentCategory::Rules;
     $user = User::factory()->create();

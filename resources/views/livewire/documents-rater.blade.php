@@ -1,8 +1,15 @@
 <div class="mb-4">
-    <div wire:click="download" class="px-2 {{ $document != null ? "underline text-blue-500" : "" }}">
+
+    @if($this->isDocumentPresent())
+
+        <div wire:click="download" class="px-2 {{ $document != null ? "underline text-blue-500" : "" }}">
+            {{ $category?->displayName() }}
+        </div>
+    @endif
+    <div class="px-2">
         {{ $category?->displayName() }}
     </div>
-    <div class="flex flex-row">
+    <div class=" flex flex-row">
         <div class="px-2" wire:click="approve">
             👍
         </div>
@@ -14,7 +21,5 @@
         </div>
     </div>
     <div class="h-2"></div>
-    @if($document != null)
-        <x-comment-section :comments="$this->document->comments"/>
-    @endif
+    <x-comment-section :comments="$this->document->comments"/>
 </div>
