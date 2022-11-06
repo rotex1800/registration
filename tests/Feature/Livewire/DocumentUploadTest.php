@@ -13,8 +13,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Livewire;
 use Livewire\WithFileUploads;
-use Storage;
 use function Pest\Laravel\actingAs;
+use Storage;
 
 uses(RefreshDatabase::class);
 
