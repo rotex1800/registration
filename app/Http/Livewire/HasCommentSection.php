@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Comment;
 use App\Models\Document;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 trait HasCommentSection
 {
@@ -22,7 +23,9 @@ trait HasCommentSection
         if (blank($this->comment)) {
             return;
         }
-        $result = $this->document?->createComment($this->comment, $this->user->getAuthIdentifier());
+
+        $authorId = intval(Auth::user()->getAuthIdentifier());
+        $result = $this->document?->createComment($this->comment, $authorId);
         if ($result) {
             $this->document->refresh();
             $this->comments = $this->document->comments;

@@ -11,7 +11,7 @@ use App\Models\Passport;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
-use Livewire;
+use Livewire\Livewire;
 use Livewire\WithFileUploads;
 use function Pest\Laravel\actingAs;
 use Storage;
@@ -30,7 +30,7 @@ beforeEach(function () {
     $this->user->documents()->save($this->document);
 
     actingAs($this->user);
-    $this->component = Livewire\Livewire::test('documents-rater', [
+    $this->component = Livewire::test('documents-rater', [
         'user' => $this->user,
         'category' => $this->category,
     ]);
@@ -312,7 +312,7 @@ it('shows comments', function () {
     $this->document->comments()->saveMany($comments);
 
     // Act
-    $component = Livewire\Livewire::test('documents-rater', [
+    $component = Livewire::test('documents-rater', [
         'category' => $this->category,
         'user' => $this->user,
     ]);
@@ -324,4 +324,23 @@ it('shows comments', function () {
                   ->assertSeeText($comment->author->full_name)
                   ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:i'));
     }
+});
+
+test('currently authenticated user is author of comment', function () {
+    // Arrange
+    $attendee = $this->user;
+    $component = Livewire::test('document-upload', [
+        'user' => $attendee,
+        'category' => $this->category->value,
+    ]);
+
+    // Act
+    actingAs($attendee);
+    $component->assertStatus(200)
+              ->set('comment', 'Comment by attendee')
+              ->call('saveComment');
+
+    // Assert
+    expect($this->document->comments[0])
+        ->author_id->toBe($attendee->id);
 });
