@@ -22,6 +22,7 @@ beforeEach(function () {
                               ->make();
 
     $this->user->documents()->save($this->document);
+    actingAs($this->user);
     $this->component = Livewire::test('documents-rater', [
         'user' => $this->user,
         'category' => $this->category,
@@ -262,4 +263,24 @@ it('shows comments', function () {
                   ->assertSeeText($comment->author->full_name)
                   ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:i'));
     }
+});
+
+test('currently authenticated user is author of comment', function () {
+    // Arrange
+    $attendee = $this->user;
+    $rotex = createUserWithRole('rotex');
+    $component = Livewire::test('documents-rater', [
+        'user' => $attendee,
+        'category' => $this->category,
+    ]);
+
+    // Act
+    actingAs($rotex);
+    $component->assertStatus(200)
+              ->set('comment', 'Comment by Rotex')
+              ->call('saveComment');
+
+    // Assert
+    expect($this->document->comments[0])
+        ->author_id->toBe($rotex->id);
 });
