@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.5.3](https://github.com/rotex1800/registration/compare/v1.5.2...v1.5.3) (2022-11-09)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/fortify from 1.13.6 to 1.13.7 ([f4040c3](https://github.com/rotex1800/registration/commit/f4040c33e81a2edf1bb57198705de451d81c8b9d))
+* **deps:** bump laravel/fortify from 1.13.6 to 1.13.7 ([#177](https://github.com/rotex1800/registration/issues/177)) ([12a7935](https://github.com/rotex1800/registration/commit/12a7935148ca56cc36f86b1291ca5e0d1f38b401))
+* **deps:** bump nunomaduro/larastan from 2.2.7 to 2.2.9 ([2893e7f](https://github.com/rotex1800/registration/commit/2893e7fc3a24393b9fa3e995335a325c535a4ee9))
+* **deps:** bump nunomaduro/larastan from 2.2.7 to 2.2.9 ([#178](https://github.com/rotex1800/registration/issues/178)) ([975e860](https://github.com/rotex1800/registration/commit/975e86091c9490b8573cba60f06ab3a2e2376132))
+
 ## [1.5.2](https://github.com/rotex1800/registration/compare/v1.5.1...v1.5.2) (2022-11-08)
 
 
