@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.5.4](https://github.com/rotex1800/registration/compare/v1.5.3...v1.5.4) (2022-11-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump pestphp/pest from 1.22.1 to 1.22.2 ([7d0d235](https://github.com/rotex1800/registration/commit/7d0d23502b4620a1e6a96fe4d2d2e43570c4ebb9))
+* **deps:** bump pestphp/pest from 1.22.1 to 1.22.2 ([#182](https://github.com/rotex1800/registration/issues/182)) ([0cd7977](https://github.com/rotex1800/registration/commit/0cd7977a83e5a55c7ebd3bd291a1f4079c8d6970))
+* **deps:** bump tailwindcss from 3.2.2 to 3.2.3 ([834fbce](https://github.com/rotex1800/registration/commit/834fbce85f8fdd4096b59f8ff08dc4c8e1251df9))
+* **deps:** bump tailwindcss from 3.2.2 to 3.2.3 ([#181](https://github.com/rotex1800/registration/issues/181)) ([3c274ae](https://github.com/rotex1800/registration/commit/3c274ae6beccf8a15d70addf59227984e0a1ff33))
+
 ## [1.5.3](https://github.com/rotex1800/registration/compare/v1.5.2...v1.5.3) (2022-11-09)
 
 
