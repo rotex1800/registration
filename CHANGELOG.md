@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.5.5](https://github.com/rotex1800/registration/compare/v1.5.4...v1.5.5) (2022-11-12)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump postcss from 8.4.18 to 8.4.19 ([6ca3f24](https://github.com/rotex1800/registration/commit/6ca3f2478f71f50f4097383240e7816b714fe790))
+* **deps:** bump postcss from 8.4.18 to 8.4.19 ([#184](https://github.com/rotex1800/registration/issues/184)) ([c974701](https://github.com/rotex1800/registration/commit/c974701aa535f7bf9fc6cd0acb14ff45a73cf0cd))
+* **deps:** bump tailwindcss from 3.2.3 to 3.2.4 ([8ad482d](https://github.com/rotex1800/registration/commit/8ad482d102e6cd40fb76a1272d69ae9cb708fb36))
+* **deps:** bump tailwindcss from 3.2.3 to 3.2.4 ([#186](https://github.com/rotex1800/registration/issues/186)) ([001aa52](https://github.com/rotex1800/registration/commit/001aa52502990143f2623eee398d7d5f09007621))
+
 ## [1.5.4](https://github.com/rotex1800/registration/compare/v1.5.3...v1.5.4) (2022-11-10)
 
 
