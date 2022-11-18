@@ -25,6 +25,18 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.5.6](https://github.com/rotex1800/registration/compare/v1.5.5...v1.5.6) (2022-11-18)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/framework from 9.39.0 to 9.40.1 ([b301a72](https://github.com/rotex1800/registration/commit/b301a72a0a0d20ae93160d41e55e5f685af04453))
+* **deps:** bump laravel/framework from 9.39.0 to 9.40.1 ([#190](https://github.com/rotex1800/registration/issues/190)) ([a5a0bd0](https://github.com/rotex1800/registration/commit/a5a0bd0f281d7333e7884006c0d00991dc1b338c))
+* **deps:** bump laravel/tinker from 2.7.2 to 2.7.3 ([bb70b99](https://github.com/rotex1800/registration/commit/bb70b99e2dd674251b92b32fbc79027cf304b46a))
+* **deps:** bump laravel/tinker from 2.7.2 to 2.7.3 ([#188](https://github.com/rotex1800/registration/issues/188)) ([f92264f](https://github.com/rotex1800/registration/commit/f92264f3120ca1c2fc3b26bc24221ebb76473725))
+* **deps:** bump vite from 3.2.3 to 3.2.4 ([0ac8e9b](https://github.com/rotex1800/registration/commit/0ac8e9b418dfe873cb1077bcb26bb9561216a0d6))
+* **deps:** bump vite from 3.2.3 to 3.2.4 ([#189](https://github.com/rotex1800/registration/issues/189)) ([3c3029c](https://github.com/rotex1800/registration/commit/3c3029c4a5d9139a88d61dfb449fe6b98cb6891f))
+
 ## [1.5.5](https://github.com/rotex1800/registration/compare/v1.5.4...v1.5.5) (2022-11-12)
 
 
