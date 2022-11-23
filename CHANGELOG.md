@@ -25,6 +25,20 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.5.7](https://github.com/rotex1800/registration/compare/v1.5.6...v1.5.7) (2022-11-23)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.1.3 to 1.2.0 ([b2ce4fa](https://github.com/rotex1800/registration/commit/b2ce4faec89fa215501d309b5098e20ec73c87fe))
+* **deps:** bump axios from 1.1.3 to 1.2.0 ([#196](https://github.com/rotex1800/registration/issues/196)) ([b03ae5c](https://github.com/rotex1800/registration/commit/b03ae5cea681a0bdfebde4d4261afc2af8c4c297))
+* **deps:** bump laravel-vite-plugin from 0.7.0 to 0.7.1 ([01b7b3f](https://github.com/rotex1800/registration/commit/01b7b3f73d45fde8afbb3835b1aee1cd79f44216))
+* **deps:** bump laravel-vite-plugin from 0.7.0 to 0.7.1 ([#195](https://github.com/rotex1800/registration/issues/195)) ([ef970db](https://github.com/rotex1800/registration/commit/ef970db4542d567787842fcc95e31531cb5a5379))
+* **deps:** bump laravel/sail from 1.16.2 to 1.16.3 ([b206d73](https://github.com/rotex1800/registration/commit/b206d730ab0e7f929e77c4cd0940774d3f680800))
+* **deps:** bump laravel/sail from 1.16.2 to 1.16.3 ([#192](https://github.com/rotex1800/registration/issues/192)) ([481f6bc](https://github.com/rotex1800/registration/commit/481f6bc686f55dd27cb9b60f2dbb31b12d49f516))
+* **deps:** bump prettier from 2.7.1 to 2.8.0 ([f7ec7a6](https://github.com/rotex1800/registration/commit/f7ec7a683d89a447af3210a80cd3dcf024b9da25))
+* **deps:** bump prettier from 2.7.1 to 2.8.0 ([#193](https://github.com/rotex1800/registration/issues/193)) ([5042651](https://github.com/rotex1800/registration/commit/50426512202490d31612b16f0dbf05da021936a6))
+
 ## [1.5.6](https://github.com/rotex1800/registration/compare/v1.5.5...v1.5.6) (2022-11-18)
 
 
