@@ -4,7 +4,7 @@ namespace App\Utils;
 
 class StringUtil
 {
-    public static function firstCharacterOfEachWord(string $string)
+    public static function firstCharacterOfEachWord(string $string): string
     {
         $normalized = strtolower($string);
         $initials = '';

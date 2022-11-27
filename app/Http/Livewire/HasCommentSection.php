@@ -24,11 +24,11 @@ trait HasCommentSection
             return;
         }
 
-        $authorId = intval(Auth::user()->getAuthIdentifier());
+        $authorId = intval(Auth::user()?->getAuthIdentifier());
         $result = $this->document?->createComment($this->comment, $authorId);
         if ($result) {
-            $this->document->refresh();
-            $this->comments = $this->document->comments;
+            $this->document?->refresh();
+            $this->comments = $this->document?->comments;
         }
         $this->comment = '';
     }
