@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Utils\StringUtil;
 use Database\Factories\UserFactory;
 use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -348,8 +349,17 @@ class User extends Authenticatable implements MustVerifyEmail
             && $this->notBlankOrEmpty($this->health_issues);
     }
 
+    /** @noinspection PhpUnused */
     private function notBlankOrEmpty(?string $value): bool
     {
         return $value != null && trim($value) != '';
+    }
+
+    public function getShortNameAttribute(): string
+    {
+        $districtComponent = $this->rotaryInfo?->sponsor_district ?? '';
+        $nameComponent = StringUtil::firstCharacterOfEachWord($this->full_name);
+
+        return $nameComponent.'-'.$districtComponent;
     }
 }

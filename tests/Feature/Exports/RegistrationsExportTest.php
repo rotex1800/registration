@@ -7,9 +7,11 @@ use App\Models\Event;
 use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\RegistrationComment;
+use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Carbon;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
@@ -43,6 +45,7 @@ it('contains expected columns', function () {
         ->toContain(
             $user->first_name,
             $user->family_name,
+            $export->transferReferenceForUser($user),
             Date::dateTimeToExcel($user->birthday),
             $user->gender,
             $user->email,
@@ -89,6 +92,7 @@ it('contains expected headings', function () {
         ->toContain(
             'Vorname',
             'Nachname',
+            'Referenznummer',
             'Geburtstag',
             'Geschlecht',
             'E-Mail',
@@ -153,4 +157,22 @@ test('map returns empty string when not given a user', function () {
 
     expect($export->map(''))
         ->toBe([]);
+});
+
+it('can create transfer reference for a user', function () {
+    $event = Event::factory()->state([
+        'name' => 'Awesome Tour',
+        'start' => Carbon::parse('2023-05-06'),
+    ])->make();
+    $export = new RegistrationsExport($event);
+
+    $user = User::factory()->state([
+        'first_name' => 'Foo Bar',
+        'family_name' => 'Simpson',
+    ])->has(RotaryInfo::factory()->state([
+        'sponsor_district' => '1234',
+    ]))->create();
+
+    expect($export->transferReferenceForUser($user))
+        ->toBe('FBS-1234-AT-2023');
 });

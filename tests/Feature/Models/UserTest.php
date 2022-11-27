@@ -475,3 +475,18 @@ test('user factory can set password', function () {
     expect(Hash::check('super-secret', $user->password))
         ->toBeTrue();
 });
+
+it('has short name', function () {
+    $user = User::factory()->state([
+        'first_name' => 'Foo Bar',
+        'family_name' => 'Simpson',
+    ])
+                ->has(RotaryInfo::factory()->state([
+                    'sponsor_district' => 1234,
+                ]))->create();
+
+    $actual = $user->short_name;
+
+    expect($actual)
+        ->toBe('FBS-1234');
+});
