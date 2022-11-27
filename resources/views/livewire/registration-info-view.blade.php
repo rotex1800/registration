@@ -8,11 +8,12 @@
 
     <div class="flex flex-row my-2">
         @if($this->hasPrevious())
-            <span wire:click="goToPrevious" class="flex-none">{{ __('registrations.previous') }}</span>
+            <span wire:click="goToPrevious" class="flex-none underline text-blue-500">
+                {{ __('registrations.previous') }}</span>
         @endif
-        <span class="grow"/>
+        <span class="grow"></span>
         @if($this->hasNext())
-            <span wire:click="goToNext" class="flex-none">{{ __('registrations.next') }}</span>
+            <span wire:click="goToNext" class="flex-none underline text-blue-500">{{ __('registrations.next') }}</span>
         @endif
     </div>
 
