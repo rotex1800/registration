@@ -94,6 +94,7 @@ it('shows attributes of currently selected attendee', function () {
             ->assertOk()
             ->set('currentAttendeeId', $firstAttendee->id)
             ->assertSeeInOrder([
+                __('event.registration-overview.full-name').': '.$firstAttendee->full_name,
                 __('registration.birthday').': '.$firstAttendee->birthday->translatedFormat('d. F Y'),
                 __('registration.gender.gender').': '.$firstAttendee->gender,
                 __('signup.email').': '.$firstAttendee->email,
