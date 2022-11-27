@@ -154,7 +154,4 @@ jobs:
           github_token: '${{ github.token }}'
           level: 'error'
           fail_on_error: 'true'
-          reporter: 'github-pr-review'
           target_directory: 'app'
-          phpstan_level: 9
-          base_image: 'php:8.1-alpine'
