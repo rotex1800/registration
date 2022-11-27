@@ -61,6 +61,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
         return [
             'Vorname',
             'Nachname',
+            'Referenznummer',
             'Geburtstag',
             'Geschlecht',
             'E-Mail',
@@ -110,7 +111,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
      */
     public function map(mixed $user): array
     {
-        if (! ($user instanceof User)) {
+        if (!($user instanceof User)) {
             return [];
         }
 
@@ -118,6 +119,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
             [
                 $user->first_name,
                 $user->family_name,
+                $this->transferReferenceForUser($user),
                 $this->getExcelDate($user->birthday),
                 $user->gender,
                 $user->email,
@@ -177,5 +179,10 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
         }
 
         return Date::dateTimeToExcel($date);
+    }
+
+    public function transferReferenceForUser(User $user): string
+    {
+        return $user->short_name.'-'.$this->event->short_name;
     }
 }
