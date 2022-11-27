@@ -73,7 +73,7 @@ class Event extends Model
     /** @noinspection PhpUnused */
     public function getShortNameAttribute(): string
     {
-        $yearComponent = $this->start->year;
+        $yearComponent = $this->start?->year ?? 0;
         $nameComponent = StringUtil::firstCharacterOfEachWord($this->name);
 
         return $nameComponent.'-'.$yearComponent;
