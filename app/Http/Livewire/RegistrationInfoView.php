@@ -65,11 +65,12 @@ class RegistrationInfoView extends Component
 
     /**
      * Indicates whether there is a previous attendee to show details for.
+     *
      * @return bool
      */
     public function hasPrevious(): bool
     {
-        return !$this->currentAttendee?->is($this->attendees->first());
+        return ! $this->currentAttendee?->is($this->attendees->first());
     }
 
     public function goToNext(): void
@@ -82,10 +83,11 @@ class RegistrationInfoView extends Component
 
     /**
      * Indicates whether there is a next attendee to show details for.
+     *
      * @return bool
      */
     public function hasNext(): bool
     {
-        return !$this->currentAttendee?->is($this->attendees->last());
+        return ! $this->currentAttendee?->is($this->attendees->last());
     }
 }
