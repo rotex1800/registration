@@ -25,6 +25,21 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.6.0](https://github.com/rotex1800/registration/compare/v1.5.7...v1.6.0) (2022-11-27)
+
+
+### Features
+
+* 203 generate transfer reference for payments ([#204](https://github.com/rotex1800/registration/issues/204)) ([5a6ed54](https://github.com/rotex1800/registration/commit/5a6ed5429fe9307764362b936a6718f49aeee88b))
+* Add back and forth navigation in registrations overview ([#205](https://github.com/rotex1800/registration/issues/205)) ([b1cf8b5](https://github.com/rotex1800/registration/commit/b1cf8b51305eaa817029592c8c7cc28a73dc211d))
+* Show full name in registrations view ([8ea6b59](https://github.com/rotex1800/registration/commit/8ea6b59aac943aec15592feab465c6c6c1502c0f))
+* Show full name in registrations view ([#201](https://github.com/rotex1800/registration/issues/201)) ([f7cec15](https://github.com/rotex1800/registration/commit/f7cec15af6673f5c03299a530d841ad9b792dcd8))
+
+
+### Bug Fixes
+
+* styling of back- and forth buttons ([#206](https://github.com/rotex1800/registration/issues/206)) ([79754ad](https://github.com/rotex1800/registration/commit/79754adfaf1c931ee23b860c041e96cd59113789))
+
 ## [1.5.7](https://github.com/rotex1800/registration/compare/v1.5.6...v1.5.7) (2022-11-23)
 
 
