@@ -350,7 +350,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /** @noinspection PhpUnused */
-
     private function notBlankOrEmpty(?string $value): bool
     {
         return $value != null && trim($value) != '';
@@ -360,6 +359,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $districtComponent = $this->rotaryInfo?->sponsor_district ?? '';
         $nameComponent = StringUtil::firstCharacterOfEachWord($this->full_name);
+
         return $nameComponent.'-'.$districtComponent;
     }
 }

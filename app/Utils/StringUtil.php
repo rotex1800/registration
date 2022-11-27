@@ -11,6 +11,7 @@ class StringUtil
         foreach (explode(' ', $normalized) as $word) {
             $initials .= $word[0];
         }
+
         return strtoupper($initials);
     }
 }

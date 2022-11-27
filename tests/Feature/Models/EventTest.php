@@ -81,7 +81,7 @@ it('has role relation', function () {
 it('has short name', function () {
     $event = Event::factory()->state([
         'name' => 'Awesome Event',
-        'start' => Carbon::parse('2022-11-27')
+        'start' => Carbon::parse('2022-11-27'),
     ])->make();
 
     expect($event->short_name)

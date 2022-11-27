@@ -162,7 +162,7 @@ test('map returns empty string when not given a user', function () {
 it('can create transfer reference for a user', function () {
     $event = Event::factory()->state([
         'name' => 'Awesome Tour',
-        'start' => Carbon::parse('2023-05-06')
+        'start' => Carbon::parse('2023-05-06'),
     ])->make();
     $export = new RegistrationsExport($event);
 
@@ -170,10 +170,9 @@ it('can create transfer reference for a user', function () {
         'first_name' => 'Foo Bar',
         'family_name' => 'Simpson',
     ])->has(RotaryInfo::factory()->state([
-        'sponsor_district' => '1234'
+        'sponsor_district' => '1234',
     ]))->create();
 
     expect($export->transferReferenceForUser($user))
         ->toBe('FBS-1234-AT-2023');
-
 });

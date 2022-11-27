@@ -75,6 +75,7 @@ class Event extends Model
     {
         $yearComponent = $this->start->year;
         $nameComponent = StringUtil::firstCharacterOfEachWord($this->name);
+
         return $nameComponent.'-'.$yearComponent;
     }
 }
