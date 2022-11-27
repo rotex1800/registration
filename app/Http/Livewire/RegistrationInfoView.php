@@ -18,7 +18,7 @@ class RegistrationInfoView extends Component
     /**
      * @var ?int;
      */
-    public $currentAttendeeId;
+    public $currentPosition;
 
     /**
      * @var ?User
@@ -29,7 +29,7 @@ class RegistrationInfoView extends Component
     {
         if ($this->attendees != null && count($this->attendees) > 0) {
             $first = $this->attendees[0];
-            $this->currentAttendeeId = $first?->id;
+            $this->currentPosition = 0;
             $this->currentAttendee = $first;
         } else {
             $this->attendees = Collection::empty();
@@ -44,14 +44,48 @@ class RegistrationInfoView extends Component
     }
 
     /**
-     * @param  int  $id
+     * @param  int  $position
      * @return void
      */
-    public function updatedCurrentAttendeeId(int $id): void
+    public function updatedCurrentPosition(int $position): void
     {
-        $newCurrent = $this->attendees->firstWhere('id', '=', $id);
+        $newCurrent = $this->attendees->slice($position, 1)->first();
         if ($newCurrent != null) {
             $this->currentAttendee = $newCurrent;
         }
+    }
+
+    public function goToPrevious(): void
+    {
+        if ($this->hasPrevious()) {
+            $this->currentPosition = $this->currentPosition - 1;
+            $this->currentAttendee = $this->attendees[$this->currentPosition];
+        }
+    }
+
+    /**
+     * Indicates whether there is a previous attendee to show details for.
+     * @return bool
+     */
+    public function hasPrevious(): bool
+    {
+        return !$this->currentAttendee?->is($this->attendees->first());
+    }
+
+    public function goToNext(): void
+    {
+        if ($this->hasNext()) {
+            $this->currentPosition = $this->currentPosition + 1;
+            $this->currentAttendee = $this->attendees[$this->currentPosition];
+        }
+    }
+
+    /**
+     * Indicates whether there is a next attendee to show details for.
+     * @return bool
+     */
+    public function hasNext(): bool
+    {
+        return !$this->currentAttendee?->is($this->attendees->last());
     }
 }

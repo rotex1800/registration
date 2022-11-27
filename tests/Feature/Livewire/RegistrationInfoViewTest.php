@@ -11,6 +11,7 @@ use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Collection;
 use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 
@@ -70,8 +71,8 @@ it('has attendee preselected', function () {
         ->assertOk()
         ->assertSee($attendees->first()->full_name, escape: false);
 
-    $currentAttendee = $component->get('currentAttendeeId');
-    expect($currentAttendee)->toBe($attendees->first()->id);
+    $currentAttendee = $component->get('currentAttendee');
+    expect($currentAttendee)->toBe($attendees->first());
 });
 
 it('shows attributes of currently selected attendee', function () {
@@ -92,7 +93,7 @@ it('shows attributes of currently selected attendee', function () {
         'attendees' => $attendees,
     ])
             ->assertOk()
-            ->set('currentAttendeeId', $firstAttendee->id)
+            ->set('currentPosition', 0)
             ->assertSeeInOrder([
                 __('event.registration-overview.full-name').': '.$firstAttendee->full_name,
                 __('registration.birthday').': '.$firstAttendee->birthday->translatedFormat('d. F Y'),
@@ -161,7 +162,7 @@ it('can handle user properties being null', function () {
                     ])
                     ->make();
     Livewire::test('registration-info-view', [
-        'attendees' => [$attendee],
+        'attendees' => Collection::make([$attendee]),
     ])->assertOk()->assertSee([
         __('registration.birthday').': --',
         __('registration.gender.gender').': --',
@@ -196,10 +197,10 @@ it('can handle user properties being null', function () {
 it('has current attendee wired', function () {
     $a = User::factory()->create();
     Livewire::test('registration-info-view', [
-        'attendees' => [$a],
+        'attendees' => Collection::make([$a]),
     ])
             ->assertOk()
-            ->assertPropertyWired('currentAttendeeId');
+            ->assertPropertyWired('currentPosition');
 });
 
 it('updates the current attendee when updating the current attendee id', function () {
@@ -212,12 +213,49 @@ it('updates the current attendee when updating the current attendee id', functio
     ]);
     $component
         ->assertOk()
-        ->set('currentAttendeeId', $firstAttendee->id);
+        ->set('currentPosition', 0);
 
     expect($component->get('currentAttendee'))
         ->toBeSameEntityAs($firstAttendee);
 
-    $component->set('currentAttendeeId', $secondAttendee->id);
+    $component->set('currentPosition', 1);
     expect($component->get('currentAttendee'))
         ->toBeSameEntityAs($secondAttendee);
+});
+
+it('shows and hides navigation based on current position', function () {
+    $user = createUserWithRole('rotex');
+    $event = Event::factory()->create();
+    $attendees = User::factory()->count(3)
+                     ->has(Passport::factory())
+                     ->has(RotaryInfo::factory())
+                     ->has(YeoInfo::factory(), 'yeo')
+                     ->has(CounselorInfo::factory(), 'counselor')
+                     ->has(BioFamily::factory())
+                     ->has(HostFamily::factory()->nth(1))
+                     ->has(HostFamily::factory()->nth(2))
+                     ->has(HostFamily::factory()->nth(3))
+                     ->create();
+    $event->attendees()->saveMany($attendees);
+
+    $component = Livewire::test('registration-info-view', [
+        'attendees' => $attendees,
+    ]);
+
+    $component
+        ->assertSee([__('registrations.next')])
+        ->assertDontSee([__('registrations.previous')])
+        ->assertMethodNotWired('goToPrevious')
+        ->assertMethodWired('goToNext')
+        ->call('goToNext')
+        ->assertSee([
+            __('registrations.next'),
+            __('registrations.previous'),
+        ])
+        ->assertMethodWired('goToNext')
+        ->assertMethodWired('goToPrevious')
+        ->call('goToNext')
+        ->assertSee([__('registrations.previous')])
+        ->assertDontSee([__('registrations.next')])
+        ->assertMethodNotWired('goToNext');
 });

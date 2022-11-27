@@ -1,10 +1,20 @@
 @php use App\Models\DocumentCategory; @endphp
 <div>
-    <select wire:model="currentAttendeeId">
-        @foreach($attendees as $attendee)
-            <option value="{{ $attendee->id }}">{!! $attendee->full_name !!}</option>
+    <select wire:model="currentPosition">
+        @foreach($attendees as $index => $attendee)
+            <option value="{{ $index }}">{!! $attendee->full_name !!}</option>
         @endforeach
     </select>
+
+    <div class="flex flex-row my-2">
+        @if($this->hasPrevious())
+            <span wire:click="goToPrevious" class="flex-none">{{ __('registrations.previous') }}</span>
+        @endif
+        <span class="grow"/>
+        @if($this->hasNext())
+            <span wire:click="goToNext" class="flex-none">{{ __('registrations.next') }}</span>
+        @endif
+    </div>
 
     <div class="text-lg mt-4 grid gap-4 grid-cols-1 lg:grid-cols-2">
         <div>
@@ -75,7 +85,7 @@
             @foreach(DocumentCategory::cases() as $category)
                 @if($category != DocumentCategory::Unknown)
                     <livewire:documents-rater :user="$currentAttendee" :category="$category"
-                                              wire:key="{{ $currentAttendeeId.$category->value }}"/>
+                                              wire:key="{{ $currentAttendee->id.$category->value }}"/>
                 @endif
             @endforeach
         @endif
