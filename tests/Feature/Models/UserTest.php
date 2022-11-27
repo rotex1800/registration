@@ -17,10 +17,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Ramsey\Uuid\Uuid;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use Ramsey\Uuid\Uuid;
 
 uses(RefreshDatabase::class);
 
@@ -474,4 +474,20 @@ test('user factory can set password', function () {
     $user = User::factory()->withPassword('super-secret')->make();
     expect(Hash::check('super-secret', $user->password))
         ->toBeTrue();
+});
+
+it('has short name', function () {
+    $user = User::factory()->state([
+        'first_name' => 'Foo Bar',
+        'family_name' => 'Simpson'
+    ])
+                ->has(RotaryInfo::factory()->state([
+                    'sponsor_district' => 1234
+                ]))->create();
+
+    $actual = $user->short_name;
+
+    expect($actual)
+        ->toBe('FBS-1234');
+
 });

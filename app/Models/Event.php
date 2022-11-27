@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Utils\StringUtil;
 use Database\Factories\EventFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -67,5 +68,13 @@ class Event extends Model
     public function attendees(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
+    }
+
+    /** @noinspection PhpUnused */
+    public function getShortNameAttribute(): string
+    {
+        $yearComponent = $this->start->year;
+        $nameComponent = StringUtil::firstCharacterOfEachWord($this->name);
+        return $nameComponent.'-'.$yearComponent;
     }
 }

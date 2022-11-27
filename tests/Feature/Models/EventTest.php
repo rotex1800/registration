@@ -77,3 +77,13 @@ it('has role relation', function () {
     expect($event->roles())
         ->toBeInstanceOf(BelongsToMany::class);
 });
+
+it('has short name', function () {
+    $event = Event::factory()->state([
+        'name' => 'Awesome Event',
+        'start' => Carbon::parse('2022-11-27')
+    ])->make();
+
+    expect($event->short_name)
+        ->toBe('AE-2022');
+});
