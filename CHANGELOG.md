@@ -25,6 +25,18 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.6.3](https://github.com/rotex1800/registration/compare/v1.6.2...v1.6.3) (2022-11-28)
+
+
+### Bug Fixes
+
+* Handle non-alpha characters ([#211](https://github.com/rotex1800/registration/issues/211)) ([4960a7c](https://github.com/rotex1800/registration/commit/4960a7c27cd29a6f989c256d222fc2e65cbc5b0b))
+
+
+### Miscellaneous Chores
+
+* remove effect-less subclasses of default middleware ([#213](https://github.com/rotex1800/registration/issues/213)) ([22b20fe](https://github.com/rotex1800/registration/commit/22b20fe90d44429c67c73ff83a21e4351525bd1e))
+
 ## [1.6.2](https://github.com/rotex1800/registration/compare/v1.6.1...v1.6.2) (2022-11-28)
 
 
