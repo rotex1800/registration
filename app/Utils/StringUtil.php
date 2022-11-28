@@ -9,7 +9,9 @@ class StringUtil
         $normalized = strtolower($string);
         $initials = '';
         foreach (explode(' ', $normalized) as $word) {
-            $initials .= $word[0];
+            if (! empty($word)) {
+                $initials .= $word[0];
+            }
         }
 
         return strtoupper($initials);
