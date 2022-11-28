@@ -25,6 +25,13 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.6.2](https://github.com/rotex1800/registration/compare/v1.6.1...v1.6.2) (2022-11-28)
+
+
+### Bug Fixes
+
+* handle multiple spaces getting initials ([#209](https://github.com/rotex1800/registration/issues/209)) ([a9c09fd](https://github.com/rotex1800/registration/commit/a9c09fd13d72c34000f0e46083f3aea09241e239))
+
 ## [1.6.1](https://github.com/rotex1800/registration/compare/v1.6.0...v1.6.1) (2022-11-28)
 
 
