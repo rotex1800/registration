@@ -20,3 +20,9 @@ it('handles multiple spaces', function () {
         ->and(StringUtil::firstCharacterOfEachWord($three_spaces))
         ->toBe('AB');
 });
+
+it('ignores non-alpha-characters', function () {
+    $string = 'Lorem ipsum (dolor)';
+    expect(StringUtil::firstCharacterOfEachWord($string))
+        ->toBe('LID');
+});
