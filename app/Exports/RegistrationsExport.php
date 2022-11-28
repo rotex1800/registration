@@ -183,6 +183,6 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
 
     public function transferReferenceForUser(User $user): string
     {
-        return $user->short_name.'-'.$this->event->short_name;
+        return $user->short_name;
     }
 }

@@ -174,5 +174,5 @@ it('can create transfer reference for a user', function () {
     ]))->create();
 
     expect($export->transferReferenceForUser($user))
-        ->toBe('FBS-1234-AT-2023');
+        ->toBe('FBS-1234');
 });
