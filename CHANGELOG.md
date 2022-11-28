@@ -25,6 +25,18 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.7.0](https://github.com/rotex1800/registration/compare/v1.6.3...v1.7.0) (2022-11-28)
+
+
+### Features
+
+* Add physical APPF ([#214](https://github.com/rotex1800/registration/issues/214)) ([73763b8](https://github.com/rotex1800/registration/commit/73763b8ba756e3e4ffe3243c48ab607e587332ba))
+
+
+### Miscellaneous Chores
+
+* Fix phpstan issue ([de2655d](https://github.com/rotex1800/registration/commit/de2655dc5fa77809f403c947f7447fade3fbc3b8))
+
 ## [1.6.3](https://github.com/rotex1800/registration/compare/v1.6.2...v1.6.3) (2022-11-28)
 
 
