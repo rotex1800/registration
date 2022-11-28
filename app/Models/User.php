@@ -357,7 +357,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getShortNameAttribute(): string
     {
-        $districtComponent = $this->rotaryInfo?->sponsor_district ?? '';
+        $districtComponent = $this->rotaryInfo?->sponsor_district ?? 'XXXX';
         $nameComponent = StringUtil::firstCharacterOfEachWord($this->full_name);
 
         return $nameComponent.'-'.$districtComponent;
