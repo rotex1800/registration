@@ -25,6 +25,14 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.6.1](https://github.com/rotex1800/registration/compare/v1.6.0...v1.6.1) (2022-11-28)
+
+
+### Bug Fixes
+
+* transfer reference for missing district info ([#207](https://github.com/rotex1800/registration/issues/207)) ([70d4cb9](https://github.com/rotex1800/registration/commit/70d4cb90053a92588d960ae1df7bb4e13ba37bff))
+* use XXXX as fallback for missing district ([2b078c1](https://github.com/rotex1800/registration/commit/2b078c1035153eafe970679a036b88c5db9b7cfc))
+
 ## [1.6.0](https://github.com/rotex1800/registration/compare/v1.5.7...v1.6.0) (2022-11-27)
 
 
