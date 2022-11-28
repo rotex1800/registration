@@ -13,6 +13,7 @@ class StringUtil
     public static function firstCharacterOfEachWord(string $string): string
     {
         $normalized = preg_replace('/[^a-z ]/', '', strtolower($string));
+        $normalized = strval($normalized);
         $initials = '';
         foreach (explode(' ', $normalized) as $word) {
             if (! empty($word)) {
