@@ -17,10 +17,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Ramsey\Uuid\Uuid;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use Ramsey\Uuid\Uuid;
 
 uses(RefreshDatabase::class);
 
@@ -489,4 +489,14 @@ it('has short name', function () {
 
     expect($actual)
         ->toBe('FBS-1234');
+});
+
+test('short name works for "Ab-cbe  Fghijk"', function () {
+    $user = User::factory()->state([
+        'first_name' => 'Ab-cbe',
+        'family_name' => 'Fghijk'
+    ])->make();
+
+    expect($user->short_name)
+        ->toBe('AF-XXXX');
 });
