@@ -4,6 +4,7 @@ namespace App\Models;
 
 enum DocumentCategory: string
 {
+    case AppfOriginal = 'appf-original';
     case AppfCopy = 'appf-copy';
     case InsurancePolice = 'insurance';
     case Motivation = 'motivation';
@@ -35,6 +36,7 @@ enum DocumentCategory: string
             self::ResidencePermit => __('registration.residence-permit'),
             self::SchoolCertificate => __('registration.school-certificate'),
             self::AppfCopy => __('registration.appf-copy'),
+            self::AppfOriginal => __('registration.appf-original'),
             default => 'unknown',
         });
     }

@@ -73,6 +73,7 @@ return [
     'passport-copy' => 'Reisepass',
     'rules' => 'Regeln',
     'appf-copy' => 'APPF Kopie',
+    'appf-original' => 'APPF Original',
     'insurance-policy' => 'Versicherungsnachweis',
     'residence-permit' => 'Aufenthaltstitel',
     'school-certificate' => 'Schulbescheinigung',

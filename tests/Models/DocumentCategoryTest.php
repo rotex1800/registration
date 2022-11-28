@@ -32,5 +32,7 @@ it('returns translation for each case', function () {
         ->and(DocumentCategory::Picture->displayName())->toBe(__('registration.picture'))
         ->and(DocumentCategory::ResidencePermit->displayName())->toBe(__('registration.residence-permit'))
         ->and(DocumentCategory::SchoolCertificate->displayName())->toBe(__('registration.school-certificate'))
+        ->and(DocumentCategory::AppfOriginal->displayName())->toBe(__('registration.appf-original'))
+        ->and(DocumentCategory::AppfCopy->displayName())->toBe(__('registration.appf-copy'))
         ->and(DocumentCategory::Unknown->displayName())->toBe('unknown');
 });
