@@ -25,6 +25,23 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.7.1](https://github.com/rotex1800/registration/compare/v1.7.0...v1.7.1) (2022-12-01)
+
+
+### Bug Fixes
+
+* Use birthday for transfer reference ([#221](https://github.com/rotex1800/registration/issues/221)) ([4c403a2](https://github.com/rotex1800/registration/commit/4c403a2fcb73e0878b265ae28cf22871773827d0))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/fortify from 1.13.7 to 1.14.0 ([182ddbd](https://github.com/rotex1800/registration/commit/182ddbdb84e9843236f4b581aeb3a7427b933ac0))
+* **deps:** bump laravel/fortify from 1.13.7 to 1.14.0 ([#218](https://github.com/rotex1800/registration/issues/218)) ([dca1499](https://github.com/rotex1800/registration/commit/dca1499a21ae774a07c84f462e28d692ec4be2e0))
+* **deps:** bump laravel/framework from 9.41.0 to 9.42.2 ([b129290](https://github.com/rotex1800/registration/commit/b1292908a7b26452219e3afc867bb69ca4a69472))
+* **deps:** bump laravel/framework from 9.41.0 to 9.42.2 ([#219](https://github.com/rotex1800/registration/issues/219)) ([6783851](https://github.com/rotex1800/registration/commit/67838512cd0c47090729f2054d31fb3eebfa0bd0))
+* **deps:** bump laravel/pint from 1.2.0 to 1.2.1 ([4dc3bdb](https://github.com/rotex1800/registration/commit/4dc3bdb87ac0b078f49f8cad3408c474e40bb4ae))
+* **deps:** bump laravel/pint from 1.2.0 to 1.2.1 ([#216](https://github.com/rotex1800/registration/issues/216)) ([658ea0c](https://github.com/rotex1800/registration/commit/658ea0c45a4879793cd974d1832cce93d7ca64b4))
+
 ## [1.7.0](https://github.com/rotex1800/registration/compare/v1.6.3...v1.7.0) (2022-11-28)
 
 
