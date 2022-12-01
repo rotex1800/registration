@@ -7,7 +7,6 @@ use App\Models\Event;
 use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\RegistrationComment;
-use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -169,10 +168,9 @@ it('can create transfer reference for a user', function () {
     $user = User::factory()->state([
         'first_name' => 'Foo Bar',
         'family_name' => 'Simpson',
-    ])->has(RotaryInfo::factory()->state([
-        'sponsor_district' => '1234',
-    ]))->create();
+        'birthday' => '2002-11-28',
+    ])->create();
 
     expect($export->transferReferenceForUser($user))
-        ->toBe('FBS-1234');
+        ->toBe('FBS-2811');
 });

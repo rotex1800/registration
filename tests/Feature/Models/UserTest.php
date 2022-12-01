@@ -480,15 +480,13 @@ it('has short name', function () {
     $user = User::factory()->state([
         'first_name' => 'Foo Bar',
         'family_name' => 'Simpson',
-    ])
-                ->has(RotaryInfo::factory()->state([
-                    'sponsor_district' => 1234,
-                ]))->create();
+        'birthday' => '2005-12-31',
+    ])->create();
 
     $actual = $user->short_name;
 
     expect($actual)
-        ->toBe('FBS-1234');
+        ->toBe('FBS-3112');
 });
 
 test('short name works for "Ab-cbe  Fghijk"', function () {
@@ -498,5 +496,5 @@ test('short name works for "Ab-cbe  Fghijk"', function () {
     ])->make();
 
     expect($user->short_name)
-        ->toBe('AF-XXXX');
+        ->toMatch('/AF-\d{4}/');
 });
