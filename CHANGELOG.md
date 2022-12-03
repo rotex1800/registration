@@ -25,6 +25,13 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.0](https://github.com/rotex1800/registration/compare/v1.7.1...v1.8.0) (2022-12-03)
+
+
+### Features
+
+* Display overall document state on registrations info page ([#222](https://github.com/rotex1800/registration/issues/222)) ([5341c02](https://github.com/rotex1800/registration/commit/5341c02d0287ad7787625457f5ff60930d58417e))
+
 ## [1.7.1](https://github.com/rotex1800/registration/compare/v1.7.0...v1.7.1) (2022-12-01)
 
 
