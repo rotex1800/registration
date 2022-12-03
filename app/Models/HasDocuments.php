@@ -51,6 +51,7 @@ trait HasDocuments
         $newlyCreated = new Document([
             'category' => $category->value,
             'type' => Document::TYPE_DIGITAL,
+            'state' => DocumentState::Missing,
             'name' => $category->displayName(),
             'owner_id' => $this->id,
         ]);

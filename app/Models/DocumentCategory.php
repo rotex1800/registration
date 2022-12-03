@@ -25,6 +25,17 @@ enum DocumentCategory: string
         return DocumentCategory::from($value);
     }
 
+    /**
+     * @return DocumentCategory[]
+     */
+    public static function validCategories(): array
+    {
+        return [
+            self::AppfOriginal, self::AppfCopy, self::InsurancePolice, self::Motivation, self::PassportCopy,
+            self::Picture, self::ResidencePermit, self::Rules, self::SchoolCertificate,
+        ];
+    }
+
     public function displayName(): string
     {
         return strval(match ($this) {

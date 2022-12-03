@@ -362,4 +362,19 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $nameComponent.'-'.$birthdayComponent;
     }
+
+    public function overallDocumentState(): DocumentState
+    {
+        $docStates = [];
+        foreach (DocumentCategory::validCategories() as $category) {
+            $docStates[] = $this->documentBy($category)->state ?? DocumentState::Missing;
+        }
+
+        $docStates = DocumentState::sort($docStates);
+        if (empty($docStates)) {
+            return DocumentState::Missing;
+        } else {
+            return $docStates[0];
+        }
+    }
 }
