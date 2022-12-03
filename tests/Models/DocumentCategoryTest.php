@@ -36,3 +36,10 @@ it('returns translation for each case', function () {
         ->and(DocumentCategory::AppfCopy->displayName())->toBe(__('registration.appf-copy'))
         ->and(DocumentCategory::Unknown->displayName())->toBe('unknown');
 });
+
+test('unknown is not contained in valid categories', function () {
+    $actual = DocumentCategory::validCategories();
+    expect($actual)
+        ->not->toContain(DocumentCategory::Unknown)
+             ->toHaveLength(count(DocumentCategory::cases()) - 1);
+});

@@ -24,6 +24,7 @@ class DocumentFactory extends Factory
             'name' => fake()->word(),
             'path' => fake()->filePath(),
             'owner_id' => User::factory(),
+            'state' => DocumentState::Approved,
         ];
     }
 
@@ -41,7 +42,7 @@ class DocumentFactory extends Factory
         });
     }
 
-    public function approved()
+    public function approved(): Factory
     {
         return $this->state(function () {
             return [
@@ -50,7 +51,7 @@ class DocumentFactory extends Factory
         });
     }
 
-    public function declined()
+    public function declined(): Factory
     {
         return $this->state(function () {
             return [
@@ -59,7 +60,7 @@ class DocumentFactory extends Factory
         });
     }
 
-    public function submitted()
+    public function submitted(): Factory
     {
         return $this->state(function () {
             return [

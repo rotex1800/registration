@@ -4,6 +4,7 @@ use App\Models\Comment;
 use App\Models\CounselorInfo;
 use App\Models\Document;
 use App\Models\DocumentCategory;
+use App\Models\DocumentState;
 use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\Role;
@@ -119,7 +120,8 @@ it('can find document of given category', function () {
 
 it('returns new document if no matching document pre-exists', function () {
     expect(User::factory()->create()->documentBy(DocumentCategory::PassportCopy))
-        ->not->toBeNull();
+        ->not->toBeNull()
+        ->state->toBe(DocumentState::Missing);
 });
 
 it('can check it owns a document', function () {
@@ -498,3 +500,86 @@ test('short name works for "Ab-cbe  Fghijk"', function () {
     expect($user->short_name)
         ->toMatch('/AF-\d{4}/');
 });
+
+test('state for all documents is approved if all are approved', function () {
+    checkOverallStateFor([
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Approved,
+    ], DocumentState::Approved);
+});
+
+test('state for all documents is missing if at least one is missing', function () {
+    checkOverallStateFor([
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Submitted,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Submitted,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Missing,
+    ], DocumentState::Missing);
+});
+
+test('state for all documents is submitted if all are submitted or approved', function () {
+    checkOverallStateFor([
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Submitted,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Submitted,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Approved,
+    ], DocumentState::Submitted);
+});
+
+test('state for all documents is declined if at least one is declined', function () {
+    checkOverallStateFor([
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Submitted,
+        DocumentState::Approved,
+        DocumentState::Approved,
+        DocumentState::Submitted,
+        DocumentState::Declined,
+        DocumentState::Approved,
+        DocumentState::Approved,
+    ], DocumentState::Declined);
+});
+
+/**
+ * @param  DocumentState[]  $states
+ * @param  DocumentState  $expectedOverallState
+ * @return void
+ */
+function checkOverallStateFor(array $states, DocumentState $expectedOverallState): void
+{
+    // Arrange
+    $user = User::factory()->create();
+    $categories = DocumentCategory::validCategories();
+    expect(count($categories))->toBe(count($states));
+    $docs = Document::factory()
+                    ->count(count($categories))
+                    ->sequence(fn ($sequence) => [
+                        'category' => $categories[$sequence->index],
+                        'state' => $states[$sequence->index],
+                    ])
+                    ->make();
+    $user->documents()->saveMany($docs);
+
+    // Act
+    $actual = $user->overallDocumentState();
+
+    // Assert
+    expect($actual->name)->toBe($expectedOverallState->name);
+}

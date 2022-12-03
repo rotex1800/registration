@@ -64,6 +64,7 @@ class Document extends Model
         'category',
         'type',
         'name',
+        'state',
     ];
 
     public function documentable(): MorphTo

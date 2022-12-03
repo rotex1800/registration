@@ -28,7 +28,6 @@ return new class extends Migration
     {
         Schema::table('documents', function (Blueprint $table) {
             $table->dropUnique('documents_owner_id_category_unique');
-            $table->unique('category');
         });
     }
 };
