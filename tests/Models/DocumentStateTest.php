@@ -50,7 +50,7 @@ test('states are ordered correctly', function () {
 });
 
 it('can sort an array of states', function () {
-    $original = [
+    $originalOne = [
         DocumentState::Approved,
         DocumentState::Declined,
         DocumentState::Submitted,
@@ -58,7 +58,7 @@ it('can sort an array of states', function () {
         DocumentState::Missing,
     ];
 
-    $expected = [
+    $expectedOne = [
         DocumentState::Missing,
         DocumentState::Declined,
         DocumentState::Submitted,
@@ -66,6 +66,32 @@ it('can sort an array of states', function () {
         DocumentState::Approved,
     ];
 
-    expect(DocumentState::sort($original))
-        ->toBe($expected);
+    expect(DocumentState::sort($originalOne))
+        ->toBe($expectedOne);
+
+    $originalTwo = [
+        DocumentState::Approved,
+        DocumentState::Declined,
+        DocumentState::Submitted,
+        DocumentState::Submitted,
+        DocumentState::Missing,
+    ];
+
+    $expectedTwo = [
+        DocumentState::Missing,
+        DocumentState::Declined,
+        DocumentState::Submitted,
+        DocumentState::Submitted,
+        DocumentState::Approved,
+    ];
+
+    expect(DocumentState::sort($originalTwo))
+        ->toBe($expectedTwo);
+});
+
+it('has display names', function () {
+    expect(DocumentState::Missing->displayName())->toBe('🤷‍')
+                                                 ->and(DocumentState::Declined->displayName())->toBe('⛔️')
+                                                 ->and(DocumentState::Submitted->displayName())->toBe('⬆️')
+                                                 ->and(DocumentState::Approved->displayName())->toBe('✅');
 });

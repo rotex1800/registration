@@ -371,10 +371,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         $docStates = DocumentState::sort($docStates);
-        if (empty($docStates)) {
-            return DocumentState::Missing;
-        } else {
-            return $docStates[0];
-        }
+
+        return $docStates[0];
     }
 }

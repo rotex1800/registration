@@ -22,7 +22,7 @@ it('can render', function () {
             ->assertOk();
 });
 
-it('shows full names of all registered attendees in select', function () {
+it('shows full names and overall state of all registered attendees in select', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
     $attendees = User::factory()->count(10)
@@ -38,7 +38,7 @@ it('shows full names of all registered attendees in select', function () {
     $event->attendees()->saveMany($attendees);
 
     $fullNames = $attendees->map(function ($e) {
-        return $e->full_name;
+        return $e->overallDocumentState()->displayName().' '.$e->full_name;
     })->toArray();
 
     Livewire::test('registration-info-view', [

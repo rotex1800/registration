@@ -54,7 +54,16 @@ enum DocumentState: string
             self::Approved => 3,
             self::Declined => 1,
             self::Missing => 0,
-            default => -1
+        };
+    }
+
+    public function displayName(): string
+    {
+        return match ($this) {
+            self::Submitted => '⬆️',
+            self::Approved => '✅',
+            self::Declined => '⛔️',
+            self::Missing => '🤷‍',
         };
     }
 }
