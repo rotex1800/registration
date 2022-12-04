@@ -25,6 +25,14 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.1](https://github.com/rotex1800/registration/compare/v1.8.0...v1.8.1) (2022-12-03)
+
+
+### Miscellaneous Chores
+
+* **check:** Add dependency check in pull requests ([2f13752](https://github.com/rotex1800/registration/commit/2f1375261d7feabce222ff27eb82b57a666dc998))
+* **check:** Add dependency check in pull requests ([#224](https://github.com/rotex1800/registration/issues/224)) ([4293f8a](https://github.com/rotex1800/registration/commit/4293f8a7fb8c04ffd95ab63d471af430211117eb))
+
 ## [1.8.0](https://github.com/rotex1800/registration/compare/v1.7.1...v1.8.0) (2022-12-03)
 
 
