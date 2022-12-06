@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.2](https://github.com/rotex1800/registration/compare/v1.8.1...v1.8.2) (2022-12-06)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.2.0 to 1.2.1 ([278ccc6](https://github.com/rotex1800/registration/commit/278ccc6a59b815e341f93c40254f992931de870f))
+* **deps:** bump axios from 1.2.0 to 1.2.1 ([#226](https://github.com/rotex1800/registration/issues/226)) ([36ba205](https://github.com/rotex1800/registration/commit/36ba2056d550b33daf281c0ddedee75cd96f28cf))
+* **deps:** bump vite from 3.2.4 to 3.2.5 ([320c8a4](https://github.com/rotex1800/registration/commit/320c8a4d4c0aeedf38dc34b04e1f794bb7117b76))
+* **deps:** bump vite from 3.2.4 to 3.2.5 ([#227](https://github.com/rotex1800/registration/issues/227)) ([8db14d6](https://github.com/rotex1800/registration/commit/8db14d6ac6139b71cd193d89f1e54e4191dda5bc))
+
 ## [1.8.1](https://github.com/rotex1800/registration/compare/v1.8.0...v1.8.1) (2022-12-03)
 
 
