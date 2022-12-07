@@ -25,6 +25,14 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.3](https://github.com/rotex1800/registration/compare/v1.8.2...v1.8.3) (2022-12-07)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/framework from 9.42.2 to 9.43.0 ([a4a4ed5](https://github.com/rotex1800/registration/commit/a4a4ed54ca5975ea64db9117e8106a3575c4f4f1))
+* **deps:** bump laravel/framework from 9.42.2 to 9.43.0 ([#229](https://github.com/rotex1800/registration/issues/229)) ([8a591ee](https://github.com/rotex1800/registration/commit/8a591ee3bffb1b04a12b3bb30ff932a8d7b8779c))
+
 ## [1.8.2](https://github.com/rotex1800/registration/compare/v1.8.1...v1.8.2) (2022-12-06)
 
 
