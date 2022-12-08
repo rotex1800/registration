@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.4](https://github.com/rotex1800/registration/compare/v1.8.3...v1.8.4) (2022-12-08)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump pestphp/pest from 1.22.2 to 1.22.3 ([4788a9c](https://github.com/rotex1800/registration/commit/4788a9c2c04a4f520c0bf61140da9edf129b4252))
+* **deps:** bump pestphp/pest from 1.22.2 to 1.22.3 ([#232](https://github.com/rotex1800/registration/issues/232)) ([2918360](https://github.com/rotex1800/registration/commit/29183602cd97ed79d9fc33d02e6803045c738be3))
+* **deps:** bump prettier from 2.8.0 to 2.8.1 ([23cf950](https://github.com/rotex1800/registration/commit/23cf9506512fbec24805d70ebc85fcfb1f068cb9))
+* **deps:** bump prettier from 2.8.0 to 2.8.1 ([#231](https://github.com/rotex1800/registration/issues/231)) ([ef26310](https://github.com/rotex1800/registration/commit/ef26310a25810784dbd333180fddc4594c9d2c5b))
+
 ## [1.8.3](https://github.com/rotex1800/registration/compare/v1.8.2...v1.8.3) (2022-12-07)
 
 
