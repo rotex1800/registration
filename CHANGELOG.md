@@ -25,6 +25,14 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.5](https://github.com/rotex1800/registration/compare/v1.8.4...v1.8.5) (2022-12-09)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump spatie/laravel-ignition from 1.6.1 to 1.6.2 ([e6f559e](https://github.com/rotex1800/registration/commit/e6f559edf51cceac56363edcee745084c4013310))
+* **deps:** bump spatie/laravel-ignition from 1.6.1 to 1.6.2 ([#234](https://github.com/rotex1800/registration/issues/234)) ([df3dab5](https://github.com/rotex1800/registration/commit/df3dab5314aca8e95480d7f483ada7e0046ca7d4))
+
 ## [1.8.4](https://github.com/rotex1800/registration/compare/v1.8.3...v1.8.4) (2022-12-08)
 
 
