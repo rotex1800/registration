@@ -25,6 +25,14 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.6](https://github.com/rotex1800/registration/compare/v1.8.5...v1.8.6) (2022-12-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump phpunit/phpunit from 9.5.26 to 9.5.27 ([3cebc01](https://github.com/rotex1800/registration/commit/3cebc01d2eb3b5b2bf3b6cd535c7d30df168b200))
+* **deps:** bump phpunit/phpunit from 9.5.26 to 9.5.27 ([#236](https://github.com/rotex1800/registration/issues/236)) ([abee777](https://github.com/rotex1800/registration/commit/abee777a32268f21c7c655f076a823a19da68478))
+
 ## [1.8.5](https://github.com/rotex1800/registration/compare/v1.8.4...v1.8.5) (2022-12-09)
 
 
