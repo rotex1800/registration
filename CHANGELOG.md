@@ -25,6 +25,28 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.7](https://github.com/rotex1800/registration/compare/v1.8.6...v1.8.7) (2022-12-16)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump brianium/paratest from 6.6.5 to 6.7.0 ([9b5f70f](https://github.com/rotex1800/registration/commit/9b5f70f85b55c1977d733202c750c0ce93f593cc))
+* **deps:** bump brianium/paratest from 6.6.5 to 6.7.0 ([#238](https://github.com/rotex1800/registration/issues/238)) ([dff23fc](https://github.com/rotex1800/registration/commit/dff23fcec1686f66d281250dec4a789c5552bd53))
+* **deps:** bump fakerphp/faker from 1.20.0 to 1.21.0 ([a1252bd](https://github.com/rotex1800/registration/commit/a1252bd80ff33ccce4be7ecd0f9cddcce6e8e34f))
+* **deps:** bump fakerphp/faker from 1.20.0 to 1.21.0 ([#240](https://github.com/rotex1800/registration/issues/240)) ([19e78a1](https://github.com/rotex1800/registration/commit/19e78a157f54bd011d742ce96bc3162de6bc780a))
+* **deps:** bump laravel-vite-plugin from 0.7.1 to 0.7.2 ([9849b8f](https://github.com/rotex1800/registration/commit/9849b8fc3465f5752fb76f8e3417094bd306d3ed))
+* **deps:** bump laravel-vite-plugin from 0.7.1 to 0.7.2 ([#243](https://github.com/rotex1800/registration/issues/243)) ([d6a95e4](https://github.com/rotex1800/registration/commit/d6a95e495ad576783559fe5e1b7fc815a97e7e5b))
+* **deps:** bump laravel/dusk from 7.1.1 to 7.2.1 ([c46139f](https://github.com/rotex1800/registration/commit/c46139fda303eef6273b53ae7cc452e577d301bb))
+* **deps:** bump laravel/dusk from 7.1.1 to 7.2.1 ([#247](https://github.com/rotex1800/registration/issues/247)) ([28f9a90](https://github.com/rotex1800/registration/commit/28f9a907366f6b8842f47006ae84f2d17eccd6ac))
+* **deps:** bump laravel/fortify from 1.14.0 to 1.14.1 ([1b568da](https://github.com/rotex1800/registration/commit/1b568dadd0162b515636815134c9c6f665257ab8))
+* **deps:** bump laravel/fortify from 1.14.0 to 1.14.1 ([#245](https://github.com/rotex1800/registration/issues/245)) ([e086da8](https://github.com/rotex1800/registration/commit/e086da810ef9fdde6f5e1b44054c62cfcbd3b360))
+* **deps:** bump laravel/framework from 9.43.0 to 9.44.0 ([063ad2a](https://github.com/rotex1800/registration/commit/063ad2ab161198d6a7d7cf1262280c8232f421b7))
+* **deps:** bump laravel/framework from 9.43.0 to 9.44.0 ([#246](https://github.com/rotex1800/registration/issues/246)) ([76f74f7](https://github.com/rotex1800/registration/commit/76f74f78e8f935e4e585e86d52da45fd89ccd761))
+* **deps:** bump laravel/sail from 1.16.3 to 1.16.4 ([fce75e1](https://github.com/rotex1800/registration/commit/fce75e1b3e35cf0f4eae6b54f8b9ef1bdbefc7de))
+* **deps:** bump laravel/sail from 1.16.3 to 1.16.4 ([#241](https://github.com/rotex1800/registration/issues/241)) ([1fec1de](https://github.com/rotex1800/registration/commit/1fec1def29e0743fa6a96bbe173c49502dff1cc8))
+* **deps:** bump postcss from 8.4.19 to 8.4.20 ([9201e2c](https://github.com/rotex1800/registration/commit/9201e2cf116bd0927c5052b9365ec95b29cdbd3b))
+* **deps:** bump postcss from 8.4.19 to 8.4.20 ([#239](https://github.com/rotex1800/registration/issues/239)) ([3062993](https://github.com/rotex1800/registration/commit/30629930d0527c9a49264e51265e350d9718ff85))
+
 ## [1.8.6](https://github.com/rotex1800/registration/compare/v1.8.5...v1.8.6) (2022-12-10)
 
 
