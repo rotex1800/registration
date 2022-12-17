@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.8](https://github.com/rotex1800/registration/compare/v1.8.7...v1.8.8) (2022-12-17)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/sail from 1.16.4 to 1.16.5 ([6e6fd81](https://github.com/rotex1800/registration/commit/6e6fd815d462cbae5ecc3407f040ff78de190e5b))
+* **deps:** bump laravel/sail from 1.16.4 to 1.16.5 ([#248](https://github.com/rotex1800/registration/issues/248)) ([aff3bd0](https://github.com/rotex1800/registration/commit/aff3bd00522d5b1fa42a43217eca34a340a2d96e))
+* **deps:** bump vite from 3.2.5 to 4.0.1 ([0d0a1ae](https://github.com/rotex1800/registration/commit/0d0a1ae86a0bd72c56b1b3dfd7dc522301a1f766))
+* **deps:** bump vite from 3.2.5 to 4.0.1 ([#249](https://github.com/rotex1800/registration/issues/249)) ([5a3a334](https://github.com/rotex1800/registration/commit/5a3a334e9ff9da5d69329bcffd18bf405e0b0062))
+
 ## [1.8.7](https://github.com/rotex1800/registration/compare/v1.8.6...v1.8.7) (2022-12-16)
 
 
