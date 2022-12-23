@@ -25,6 +25,14 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.10](https://github.com/rotex1800/registration/compare/v1.8.9...v1.8.10) (2022-12-23)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump livewire/livewire from 2.10.7 to 2.10.8 ([b700073](https://github.com/rotex1800/registration/commit/b7000737f6145f5cfe997c34d3cd4d8076da89e3))
+* **deps:** bump livewire/livewire from 2.10.7 to 2.10.8 ([#259](https://github.com/rotex1800/registration/issues/259)) ([1c76b61](https://github.com/rotex1800/registration/commit/1c76b61667f77234e7ce87070d0f05d126cf67aa))
+
 ## [1.8.9](https://github.com/rotex1800/registration/compare/v1.8.8...v1.8.9) (2022-12-22)
 
 
