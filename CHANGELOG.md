@@ -25,6 +25,16 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.8.11](https://github.com/rotex1800/registration/compare/v1.8.10...v1.8.11) (2022-12-24)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump nunomaduro/collision from 6.3.1 to 6.3.2 ([2754cdf](https://github.com/rotex1800/registration/commit/2754cdf871e27a603f90f81ea3b2d4ee95a13f75))
+* **deps:** bump nunomaduro/collision from 6.3.1 to 6.3.2 ([#262](https://github.com/rotex1800/registration/issues/262)) ([0e74635](https://github.com/rotex1800/registration/commit/0e7463542ade0bd2e3888e17b8a07b2411cce36d))
+* **deps:** bump nunomaduro/larastan from 2.2.9 to 2.3.1 ([9a619fd](https://github.com/rotex1800/registration/commit/9a619fdc6e339d17bfc53dab121e7ab96517a185))
+* **deps:** bump nunomaduro/larastan from 2.2.9 to 2.3.1 ([#261](https://github.com/rotex1800/registration/issues/261)) ([a815caa](https://github.com/rotex1800/registration/commit/a815caa56f3c47e824545718dbb8ccedde23ff49))
+
 ## [1.8.10](https://github.com/rotex1800/registration/compare/v1.8.9...v1.8.10) (2022-12-23)
 
 
