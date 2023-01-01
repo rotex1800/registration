@@ -134,7 +134,7 @@ class EventRegistration extends Component
         'hostFamilyThree.phone' => self::NULLABLE,
 
         'comment.body' => self::NULLABLE,
-        'AdditionalInfo.tshirt_size' => self::NULLABLE_CLOTHES_SIZE,
+        'additionalInfo.tshirt_size' => self::NULLABLE_CLOTHES_SIZE,
     ];
 
     public function mount(): void
@@ -149,7 +149,7 @@ class EventRegistration extends Component
 
         $this->user = $user;
         $this->passport = $this->user->passport()->firstOrNew();
-        $this->AdditionalInfo = $this->user->additionalInfo()->firstOrNew();
+        $this->additionalInfo = $this->user->additionalInfo()->firstOrNew();
         $this->rotary = $this->user->rotaryInfo()->firstOrNew();
         $this->counselor = $this->user->counselor()->firstOrNew();
         $this->yeo = $this->user->yeo()->firstOrNew();
@@ -218,7 +218,7 @@ class EventRegistration extends Component
 
     public function updatedAdditionalInfo(): void
     {
-        $this->user->additionalInfo()->save($this->AdditionalInfo);
+        $this->user->additionalInfo()->save($this->additionalInfo);
     }
 
     public function updatedPassport(): void
