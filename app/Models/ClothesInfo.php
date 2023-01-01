@@ -18,6 +18,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
+ *
  * @method static ClothesInfoFactory factory(...$parameters)
  * @method static Builder|ClothesInfo newModelQuery()
  * @method static Builder|ClothesInfo newQuery()
@@ -27,6 +28,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|ClothesInfo whereTshirtSize($value)
  * @method static Builder|ClothesInfo whereUpdatedAt($value)
  * @method static Builder|ClothesInfo whereUserId($value)
+ *
  * @mixin Eloquent
  */
 class ClothesInfo extends Model
@@ -35,6 +37,6 @@ class ClothesInfo extends Model
     use HasFactory;
 
     protected $casts = [
-        'tshirt_size' => ClothesSize::class
+        'tshirt_size' => ClothesSize::class,
     ];
 }

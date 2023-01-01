@@ -18,10 +18,10 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
-use ValueError;
 use function Pest\Laravel\actingAs;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
+use ValueError;
 
 uses(RefreshDatabase::class);
 
@@ -332,8 +332,8 @@ it('has passport inputs bound to component', function () {
 });
 
 /**
- * @param TestableLivewire $component
- * @param string $property
+ * @param  TestableLivewire  $component
+ * @param  string  $property
  * @param    $update_value
  * @return void
  */
@@ -627,7 +627,7 @@ it('displays no checkmark for empty passport on load', function () {
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.passport') . ' ✅');
+    $component->assertDontSeeText(__('registration.passport').' ✅');
 });
 
 it('displays no checkmark for empty rotary info on load', function () {
@@ -636,7 +636,7 @@ it('displays no checkmark for empty rotary info on load', function () {
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.about-rotary') . ' ✅');
+    $component->assertDontSeeText(__('registration.about-rotary').' ✅');
 });
 
 it('displays no checkmark for empty counselor info on load', function () {
@@ -645,7 +645,7 @@ it('displays no checkmark for empty counselor info on load', function () {
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.about-counselor') . ' ✅');
+    $component->assertDontSeeText(__('registration.about-counselor').' ✅');
 });
 
 it('displays no checkmark for empty yeo info on load', function () {
@@ -654,7 +654,7 @@ it('displays no checkmark for empty yeo info on load', function () {
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.about-yeo') . ' ✅');
+    $component->assertDontSeeText(__('registration.about-yeo').' ✅');
 });
 
 it('displays no checkmark for empty bio family info on load', function () {
@@ -663,7 +663,7 @@ it('displays no checkmark for empty bio family info on load', function () {
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.about-bio-family') . ' ✅');
+    $component->assertDontSeeText(__('registration.about-bio-family').' ✅');
 });
 
 it('displays no checkmark for empty host family one info on load', function () {
@@ -672,7 +672,7 @@ it('displays no checkmark for empty host family one info on load', function () {
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.about-host-family-one') . ' ✅');
+    $component->assertDontSeeText(__('registration.about-host-family-one').' ✅');
 });
 
 it('displays no checkmark for empty host family two info on load', function () {
@@ -681,7 +681,7 @@ it('displays no checkmark for empty host family two info on load', function () {
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.about-host-family-two') . ' ✅');
+    $component->assertDontSeeText(__('registration.about-host-family-two').' ✅');
 });
 
 it('displays no checkmark for empty host family three info on load', function () {
@@ -690,7 +690,7 @@ it('displays no checkmark for empty host family three info on load', function ()
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.about-host-family-three') . ' ✅');
+    $component->assertDontSeeText(__('registration.about-host-family-three').' ✅');
 });
 
 it('displays no checkmark for empty comment on load', function () {
@@ -699,7 +699,7 @@ it('displays no checkmark for empty comment on load', function () {
     $component = Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ]);
-    $component->assertDontSeeText(__('registration.comment') . ' ✅');
+    $component->assertDontSeeText(__('registration.comment').' ✅');
 });
 
 it('rejects non email for yeo email', function () {
@@ -824,7 +824,6 @@ it('saves known sizes', function () {
         ->toBe(ClothesSize::M);
 });
 
-
 test('passport issue date must be in the past', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
@@ -870,15 +869,15 @@ test('TShirt size validation allows all ClothesSize cases', function () {
 });
 
 /**
- * @param TestableLivewire $component
+ * @param  TestableLivewire  $component
  * @param $headlineKey
  * @param $removingProperty
  * @return void
  */
 function assertSeesCompletenessIndication(TestableLivewire $component, $headlineKey, $removingProperty): void
 {
-    $component->assertSeeText(__($headlineKey) . ' ✅')
+    $component->assertSeeText(__($headlineKey).' ✅')
               ->set($removingProperty, '')
-              ->assertDontSeeText(__($headlineKey) . ' ✅')
+              ->assertDontSeeText(__($headlineKey).' ✅')
               ->assertSeeText(__($headlineKey));
 }

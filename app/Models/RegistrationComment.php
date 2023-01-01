@@ -19,6 +19,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
+ *
  * @method static RegistrationCommentFactory factory(...$parameters)
  * @method static Builder|RegistrationComment newModelQuery()
  * @method static Builder|RegistrationComment newQuery()
@@ -28,6 +29,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|RegistrationComment whereId($value)
  * @method static Builder|RegistrationComment whereUpdatedAt($value)
  * @method static Builder|RegistrationComment whereUserId($value)
+ *
  * @mixin Eloquent
  */
 class RegistrationComment extends Model

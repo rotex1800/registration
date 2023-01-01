@@ -54,6 +54,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
+ *
  * @mixin Eloquent
  */
 
@@ -61,6 +62,7 @@ use Illuminate\Support\Carbon;
  * App\Models\User
  *
  * @uses \Illuminate\Auth\MustVerifyEmail
+ *
  * @property int $id
  * @property string $first_name
  * @property string $family_name
@@ -96,6 +98,7 @@ use Illuminate\Support\Carbon;
  * @property-read RotaryInfo|null $rotaryInfo
  * @property-read YeoInfo|null $yeo
  * @property-read string $full_name
+ *
  * @method static UserFactory factory(...$parameters)
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
@@ -116,7 +119,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereUuid($value)
+ *
  * @mixin Eloquent
+ *
  * @property-read ClothesInfo|null $clothesInfo
  * @property-read string $comment_display_name
  * @property-read string $short_name
@@ -163,7 +168,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getFullNameAttribute(): string
     {
-        return $this->first_name . ' ' . $this->family_name;
+        return $this->first_name.' '.$this->family_name;
     }
 
     /**
@@ -193,7 +198,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Checks whether the user has registered for the given event.
      *
-     * @param Event $event
+     * @param  Event  $event
      * @return bool
      */
     public function hasRegisteredFor(Event $event): bool
@@ -203,6 +208,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return BelongsToMany
+     *
      * @phpstan-return BelongsToMany<Event>
      */
     public function events(): BelongsToMany
@@ -212,6 +218,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return HasMany
+     *
      * @phpstan-return HasMany<Comment>
      */
     public function authoredComments(): HasMany
@@ -226,6 +233,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @retrun HasOne
+     *
      * @phpstan-return HasOne<CounselorInfo>
      */
     public function counselor(): HasOne
@@ -235,6 +243,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @retrun HasOne
+     *
      * @phpstan-return HasOne<YeoInfo>
      */
     public function yeo(): HasOne
@@ -244,6 +253,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @retrun HasOne
+     *
      * @phpstan-return HasOne<RotaryInfo>
      */
     public function rotaryInfo(): HasOne
@@ -253,6 +263,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @retrun HasOne
+     *
      * @phpstan-return HasOne<BioFamily>
      */
     public function bioFamily(): HasOne
@@ -274,7 +285,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @param int $order
+     * @param  int  $order
      * @return HostFamily
      */
     public function hostFamily(int $order): HostFamily
@@ -293,6 +304,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return HasMany
+     *
      * @phpstan-return HasMany<HostFamily>
      */
     public function hostFamilies(): HasMany
@@ -312,6 +324,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return Collection
+     *
      * @phpstan-return Collection<Event>
      */
     public function canRegisterFor(): Collection
@@ -324,6 +337,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * All events that the user shares at least one role with.
      *
      * @return Collection
+     *
      * @phpstan-return Collection<Event>
      */
     public function possibleEvents(): Collection
@@ -340,6 +354,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return Collection
+     *
      * @phpstan-return Collection<Event>
      */
     public function participatesIn(): Collection
@@ -370,7 +385,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $birthdayComponent = $this->birthday?->translatedFormat('dm') ?? 'XXXX';
         $nameComponent = StringUtil::firstCharacterOfEachWord($this->full_name);
 
-        return $nameComponent . '-' . $birthdayComponent;
+        return $nameComponent.'-'.$birthdayComponent;
     }
 
     public function overallDocumentState(): DocumentState

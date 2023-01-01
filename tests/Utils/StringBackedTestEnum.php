@@ -8,7 +8,7 @@ enum StringBackedTestEnum: string
 {
     use ValidatableEnum;
 
-    case A = "A";
+    case A = 'A';
     case B = 'B';
     case C = 'C';
 }

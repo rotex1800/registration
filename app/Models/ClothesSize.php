@@ -22,6 +22,7 @@ enum ClothesSize: string
         if ($this == ClothesSize::NA) {
             return '--';
         }
+
         return $this->value;
     }
 }

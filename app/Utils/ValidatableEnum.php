@@ -7,28 +7,27 @@ use Exception;
 
 trait ValidatableEnum
 {
-
     /**
      * @throws Exception
      */
     public static function inEnumCasesValidationString(): string
     {
-
-        if (!enum_exists(self::class)) {
-            throw new Exception("The ValidatableEnum trait can only be applied to enums");
+        if (! enum_exists(self::class)) {
+            throw new Exception('The ValidatableEnum trait can only be applied to enums');
         }
-        $validationString = "in:";
+        $validationString = 'in:';
         for ($i = 0; $i < count(self::cases()); $i++) {
             $validationString .= self::getValue($i);
             if ($i < count(self::cases()) - 1) {
-                $validationString .= ",";
+                $validationString .= ',';
             }
         }
+
         return $validationString;
     }
 
     /**
-     * @param int $index
+     * @param  int  $index
      * @return string
      */
     private static function getValue(int $index): string

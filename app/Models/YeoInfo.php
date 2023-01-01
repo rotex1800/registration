@@ -20,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
+ *
  * @method static YeoInfoFactory factory(...$parameters)
  * @method static Builder|YeoInfo newModelQuery()
  * @method static Builder|YeoInfo newQuery()
@@ -31,6 +32,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|YeoInfo wherePhone($value)
  * @method static Builder|YeoInfo whereUpdatedAt($value)
  * @method static Builder|YeoInfo whereUserId($value)
+ *
  * @mixin Eloquent
  */
 class YeoInfo extends Model

@@ -19,6 +19,7 @@ trait HasRoles
 
     /**
      * @return BelongsToMany
+     *
      * @phpstan-return BelongsToMany<Role>
      */
     public function roles(): BelongsToMany

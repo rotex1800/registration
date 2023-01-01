@@ -35,6 +35,7 @@ class EventRegistration extends Component
         self::PART_ONE,
         self::PART_TWO,
     ];
+
     public const NULLABLE_CLOTHES_SIZE = 'nullable|in:NA,XS,S,M,L,XL,XXL,XXXL';
 
     public Event $event;
@@ -202,7 +203,7 @@ class EventRegistration extends Component
     }
 
     /**
-     * @param string $propertyName
+     * @param  string  $propertyName
      * @return void
      */
     public function updated(string $propertyName): void
