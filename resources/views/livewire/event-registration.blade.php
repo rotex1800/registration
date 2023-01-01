@@ -1,4 +1,5 @@
-@php use App\Models\DocumentCategory; @endphp
+@php use App\Models\ClothesSize; @endphp
+@php  @endphp
 <div>
     <div class="text-4xl"> {{ $this->event->name }}</div>
     <div class="flex flex-row">
@@ -15,7 +16,8 @@
     </div>
     <div class="my-1 text-white my-4">
         @if($this->hasUserRegistered())
-            <button class="bg-red-500 p-3 rounded" wire:click="unregister">{{ __('registration.dont-participate') }}</button>
+            <button class="bg-red-500 p-3 rounded"
+                    wire:click="unregister">{{ __('registration.dont-participate') }}</button>
         @else
             <button class="bg-blue-800 p-3 rounded" wire:click="register">{{ __('registration.apply') }}</button>
         @endif
@@ -65,6 +67,13 @@
 
                 <div><label for="mobile_phone">{{ __('registration.mobile_phone') }}</label></div>
                 <input type="tel" id="mobile_phone" class="rounded" wire:model.debounce.500ms="user.mobile_phone">
+
+                <div><label for="tshirt-size">{{ __('registration.tshirt-size') }}</label></div>
+                <select class="rounded" id="tshirt-size" wire:model="clothesInfo.tshirt_size">
+                    @foreach(ClothesSize::cases() as $size)
+                        <option value="{{ $size->value }}">{{ $size->displayName() }}</option>
+                    @endforeach
+                </select>
 
                 <label for="health-issues">{{ __('registration.health_issues') }}</label>
                 <textarea class="rounded min-h-40" id="health-issues"
