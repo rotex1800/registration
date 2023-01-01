@@ -69,7 +69,7 @@
                 <input type="tel" id="mobile_phone" class="rounded" wire:model.debounce.500ms="user.mobile_phone">
 
                 <div><label for="tshirt-size">{{ __('registration.tshirt-size') }}</label></div>
-                <select class="rounded" id="tshirt-size" wire:model="clothesInfo.tshirt_size">
+                <select class="rounded" id="tshirt-size" wire:model="AdditionalInfo.tshirt_size">
                     @foreach(ClothesSize::cases() as $size)
                         <option value="{{ $size->value }}">{{ $size->displayName() }}</option>
                     @endforeach

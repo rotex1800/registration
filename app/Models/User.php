@@ -122,7 +122,7 @@ use Illuminate\Support\Carbon;
  *
  * @mixin Eloquent
  *
- * @property-read ClothesInfo|null $clothesInfo
+ * @property-read AdditionalInfo|null $AdditionalInfo
  * @property-read string $comment_display_name
  * @property-read string $short_name
  */
@@ -272,11 +272,11 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasOne<ClothesInfo>
+     * @return HasOne<AdditionalInfo>
      */
-    public function clothesInfo(): HasOne
+    public function additionalInfo(): HasOne
     {
-        return $this->hasOne(ClothesInfo::class, 'user_id');
+        return $this->hasOne(AdditionalInfo::class, 'user_id');
     }
 
     public function firstHostFamily(): HostFamily
@@ -371,8 +371,8 @@ class User extends Authenticatable implements MustVerifyEmail
             && $this->notBlankOrEmpty($this->gender)
             && $this->notBlankOrEmpty($this->mobile_phone)
             && (
-                $this->notBlankOrEmpty($this->clothesInfo?->tshirt_size->value ?? '')
-                && ($this->clothesInfo?->tshirt_size ?? ClothesSize::NA) != ClothesSize::NA
+                $this->notBlankOrEmpty($this->AdditionalInfo?->tshirt_size->value ?? '')
+                && ($this->AdditionalInfo?->tshirt_size ?? ClothesSize::NA) != ClothesSize::NA
             )
             && $this->notBlankOrEmpty($this->health_issues);
     }

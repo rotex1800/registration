@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clothes_infos', function (Blueprint $table) {
+        Schema::create('additional_infos', function (Blueprint $table) {
             $table->id();
             $table->enum(
                 'tshirt_size',
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clothes_infos');
+        Schema::dropIfExists('additional_infos');
     }
 };
