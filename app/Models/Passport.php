@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\PassportFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Passport
@@ -12,26 +16,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property string|null $nationality
  * @property string|null $passport_number
- * @property \Illuminate\Support\Carbon|null $issue_date
- * @property \Illuminate\Support\Carbon|null $expiration_date
+ * @property Carbon|null $issue_date
+ * @property Carbon|null $expiration_date
  * @property int|null $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User|null $user
- *
- * @method static \Database\Factories\PassportFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Passport newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Passport newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Passport query()
- * @method static \Illuminate\Database\Eloquent\Builder|Passport whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Passport whereExpirationDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Passport whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Passport whereIssueDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Passport whereNationality($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Passport wherePassportNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Passport whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Passport whereUserId($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read User|null $user
+ * @method static PassportFactory factory(...$parameters)
+ * @method static Builder|Passport newModelQuery()
+ * @method static Builder|Passport newQuery()
+ * @method static Builder|Passport query()
+ * @method static Builder|Passport whereCreatedAt($value)
+ * @method static Builder|Passport whereExpirationDate($value)
+ * @method static Builder|Passport whereId($value)
+ * @method static Builder|Passport whereIssueDate($value)
+ * @method static Builder|Passport whereNationality($value)
+ * @method static Builder|Passport wherePassportNumber($value)
+ * @method static Builder|Passport whereUpdatedAt($value)
+ * @method static Builder|Passport whereUserId($value)
+ * @mixin Eloquent
  */
 class Passport extends Model
 {

@@ -61,7 +61,6 @@ use Illuminate\Support\Carbon;
  * App\Models\User
  *
  * @uses \Illuminate\Auth\MustVerifyEmail
- *
  * @property int $id
  * @property string $first_name
  * @property string $family_name

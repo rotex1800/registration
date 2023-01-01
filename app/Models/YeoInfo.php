@@ -20,7 +20,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
- *
  * @method static YeoInfoFactory factory(...$parameters)
  * @method static Builder|YeoInfo newModelQuery()
  * @method static Builder|YeoInfo newQuery()

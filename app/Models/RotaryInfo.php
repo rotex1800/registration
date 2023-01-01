@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\RotaryInfoFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\RotaryInfo
@@ -15,23 +19,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $sponsor_club
  * @property string|null $sponsor_district
  * @property int|null $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User|null $user
- *
- * @method static \Database\Factories\RotaryInfoFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo query()
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo whereHostClub($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo whereHostDistrict($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo whereSponsorClub($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo whereSponsorDistrict($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RotaryInfo whereUserId($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read User|null $user
+ * @method static RotaryInfoFactory factory(...$parameters)
+ * @method static Builder|RotaryInfo newModelQuery()
+ * @method static Builder|RotaryInfo newQuery()
+ * @method static Builder|RotaryInfo query()
+ * @method static Builder|RotaryInfo whereCreatedAt($value)
+ * @method static Builder|RotaryInfo whereHostClub($value)
+ * @method static Builder|RotaryInfo whereHostDistrict($value)
+ * @method static Builder|RotaryInfo whereId($value)
+ * @method static Builder|RotaryInfo whereSponsorClub($value)
+ * @method static Builder|RotaryInfo whereSponsorDistrict($value)
+ * @method static Builder|RotaryInfo whereUpdatedAt($value)
+ * @method static Builder|RotaryInfo whereUserId($value)
+ * @mixin Eloquent
  */
 class RotaryInfo extends Model
 {

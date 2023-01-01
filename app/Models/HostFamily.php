@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\HostFamilyFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,7 +23,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $inbound
- *
  * @method static Builder|HostFamily newModelQuery()
  * @method static Builder|HostFamily newQuery()
  * @method static Builder|HostFamily order(int $order)
@@ -37,6 +37,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|HostFamily whereUpdatedAt($value)
  * @method static Builder|HostFamily whereUserId($value)
  * @mixin Eloquent
+ * @method static HostFamilyFactory factory(...$parameters)
  */
 class HostFamily extends Model
 {

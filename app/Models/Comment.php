@@ -19,7 +19,6 @@ use Illuminate\Support\Carbon;
  * @property int $author_id
  * @property string $content
  * @property-read User|null $author
- *
  * @method static CommentFactory factory(...$parameters)
  * @method static Builder|Comment newModelQuery()
  * @method static Builder|Comment newQuery()
@@ -30,6 +29,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Comment whereId($value)
  * @method static Builder|Comment whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property int|null $document_id
+ * @method static Builder|Comment whereDocumentId($value)
  */
 class Comment extends Model
 {
