@@ -806,9 +806,9 @@ it('does not save unknown sizes', function () {
     Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ])
-            ->set('AdditionalInfo.tshirt_size')
-            ->assertHasNoErrors('AdditionalInfo.tshirt_size')
-            ->set('AdditionalInfo.tshirt_size', 'Error Size');
+            ->set('additionalInfo.tshirt_size')
+            ->assertHasNoErrors('additionalInfo.tshirt_size')
+            ->set('additionalInfo.tshirt_size', 'Error Size');
 })->throws(ValueError::class);
 
 it('saves known sizes', function () {
@@ -817,8 +817,8 @@ it('saves known sizes', function () {
     Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ])
-            ->set('AdditionalInfo.tshirt_size', 'M')
-            ->assertHasNoErrors('AdditionalInfo.tshirt_size');
+            ->set('additionalInfo.tshirt_size', 'M')
+            ->assertHasNoErrors('additionalInfo.tshirt_size');
 
     $inbound->refresh();
     expect($inbound->AdditionalInfo->tshirt_size)
