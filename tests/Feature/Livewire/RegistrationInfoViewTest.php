@@ -25,7 +25,7 @@ it('can render', function () {
 });
 
 it('shows full names and overall state of all registered attendees in select', function () {
-    $user = createUserWithRole('rotex');
+    createUserWithRole('rotex');
     $event = Event::factory()->create();
     $attendees = User::factory()->count(10)
                      ->has(Passport::factory())
@@ -87,9 +87,11 @@ it('shows attributes of currently selected attendee', function () {
                      ->has(HostFamily::factory()->nth(1))
                      ->has(HostFamily::factory()->nth(2))
                      ->has(HostFamily::factory()->nth(3))
+                     ->has(ClothesInfo::factory()->state(['tshirt_size' => ClothesSize::S]))
                      ->create();
     $firstAttendee = $attendees[0];
-    $secondAttendee = $attendees[1];
+    assert($firstAttendee != null);
+    assert($firstAttendee->birthday != null);
 
     Livewire::test('registration-info-view', [
         'attendees' => $attendees,
@@ -102,7 +104,7 @@ it('shows attributes of currently selected attendee', function () {
                 __('registration.gender.gender').': '.$firstAttendee->gender,
                 __('signup.email').': '.$firstAttendee->email,
                 __('registration.mobile_phone').': '.$firstAttendee->mobile_phone,
-                __('registration.tshirt-size').': '.$firstAttendee->clothesInfo->tshirt_size,
+                __('registration.tshirt-size').': '.$firstAttendee->clothesInfo->tshirt_size->displayName(),
                 __('registration.health_issues').': '.$firstAttendee->health_issues,
 
                 __('registration.passport'),
@@ -227,7 +229,7 @@ it('updates the current attendee when updating the current attendee id', functio
 });
 
 it('shows and hides navigation based on current position', function () {
-    $user = createUserWithRole('rotex');
+    createUserWithRole('rotex');
     $event = Event::factory()->create();
     $attendees = User::factory()->count(3)
                      ->has(Passport::factory())
