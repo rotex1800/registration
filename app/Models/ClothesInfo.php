@@ -13,7 +13,7 @@ use Illuminate\Support\Carbon;
  * App\Models\ClothesInfo
  *
  * @property int $id
- * @property string $tshirt_size
+ * @property ClothesSize $tshirt_size
  * @property int $user_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at

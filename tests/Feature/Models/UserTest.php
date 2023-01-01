@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\ClothesInfo;
+use App\Models\ClothesSize;
 use App\Models\Comment;
 use App\Models\CounselorInfo;
 use App\Models\Document;

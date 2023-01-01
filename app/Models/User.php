@@ -370,7 +370,10 @@ class User extends Authenticatable implements MustVerifyEmail
             && $this->notBlankOrEmpty($this->birthday)
             && $this->notBlankOrEmpty($this->gender)
             && $this->notBlankOrEmpty($this->mobile_phone)
-            && ($this->notBlankOrEmpty($this->clothesInfo?->tshirt_size->value) && $this->clothesInfo->tshirt_size != ClothesSize::NA)
+            && (
+                $this->notBlankOrEmpty($this->clothesInfo?->tshirt_size->value ?? '')
+                && ($this->clothesInfo?->tshirt_size ?? ClothesSize::NA) != ClothesSize::NA
+            )
             && $this->notBlankOrEmpty($this->health_issues);
     }
 
