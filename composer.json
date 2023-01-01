@@ -69,9 +69,6 @@
         ],
         "phpstan": [
             "./vendor/bin/phpstan analyse"
-        ],
-        "post-install-cmd": [
-            "@php artisan dusk:chrome-driver"
         ]
     },
     "scripts-descriptions": {
