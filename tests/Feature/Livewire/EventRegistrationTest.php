@@ -514,8 +514,8 @@ it('displays check for complete passport section', function () {
 
 it('displays check for complete user section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-    $AdditionalInfo = AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::M])->make();
-    $inbound->additionalInfo()->save($AdditionalInfo);
+    $additionalInfo = AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::M])->make();
+    $inbound->additionalInfo()->save($additionalInfo);
 
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [

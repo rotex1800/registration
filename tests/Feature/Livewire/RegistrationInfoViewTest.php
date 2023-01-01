@@ -71,7 +71,7 @@ it('has attendee preselected', function () {
     ]);
     $component
         ->assertOk()
-        ->assertSee($attendees->first()->full_name, escape: false);
+        ->assertSee($attendees->first()?->full_name, escape: false);
 
     $currentAttendee = $component->get('currentAttendee');
     expect($currentAttendee)->toBe($attendees->first());
@@ -92,6 +92,12 @@ it('shows attributes of currently selected attendee', function () {
     $firstAttendee = $attendees[0];
     assert($firstAttendee != null);
     assert($firstAttendee->birthday != null);
+    assert($firstAttendee->additionalInfo != null);
+    assert($firstAttendee->passport != null);
+    assert($firstAttendee->rotaryInfo  != null);
+    assert($firstAttendee->yeo != null);
+    assert($firstAttendee->counselor != null);
+    assert($firstAttendee->bioFamily != null);
 
     Livewire::test('registration-info-view', [
         'attendees' => $attendees,
@@ -104,7 +110,7 @@ it('shows attributes of currently selected attendee', function () {
                 __('registration.gender.gender').': '.$firstAttendee->gender,
                 __('signup.email').': '.$firstAttendee->email,
                 __('registration.mobile_phone').': '.$firstAttendee->mobile_phone,
-                __('registration.tshirt-size').': '.$firstAttendee->AdditionalInfo->tshirt_size->displayName(),
+                __('registration.tshirt-size').': '.$firstAttendee->additionalInfo->tshirt_size->displayName(),
                 __('registration.health_issues').': '.$firstAttendee->health_issues,
 
                 __('registration.passport'),

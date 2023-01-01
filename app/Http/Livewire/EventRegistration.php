@@ -51,7 +51,7 @@ class EventRegistration extends Component
 
     public Passport $passport;
 
-    public AdditionalInfo $AdditionalInfo;
+    public AdditionalInfo $additionalInfo;
 
     public CounselorInfo $counselor;
 
