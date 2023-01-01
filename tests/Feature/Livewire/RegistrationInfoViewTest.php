@@ -94,7 +94,7 @@ it('shows attributes of currently selected attendee', function () {
     assert($firstAttendee->birthday != null);
     assert($firstAttendee->additionalInfo != null);
     assert($firstAttendee->passport != null);
-    assert($firstAttendee->rotaryInfo  != null);
+    assert($firstAttendee->rotaryInfo != null);
     assert($firstAttendee->yeo != null);
     assert($firstAttendee->counselor != null);
     assert($firstAttendee->bioFamily != null);

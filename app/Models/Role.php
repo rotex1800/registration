@@ -22,6 +22,7 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $events_count
  * @property-read Collection|User[] $users
  * @property-read int|null $users_count
+ *
  * @method static RoleFactory factory(...$parameters)
  * @method static Builder|Role newModelQuery()
  * @method static Builder|Role newQuery()
@@ -30,6 +31,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Role whereId($value)
  * @method static Builder|Role whereName($value)
  * @method static Builder|Role whereUpdatedAt($value)
+ *
  * @mixin Eloquent
  */
 class Role extends Model

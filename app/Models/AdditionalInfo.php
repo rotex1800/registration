@@ -18,6 +18,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
+ *
  * @method static AdditionalInfoFactory factory(...$parameters)
  * @method static Builder|AdditionalInfo newModelQuery()
  * @method static Builder|AdditionalInfo newQuery()
@@ -27,8 +28,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|AdditionalInfo whereTshirtSize($value)
  * @method static Builder|AdditionalInfo whereUpdatedAt($value)
  * @method static Builder|AdditionalInfo whereUserId($value)
+ *
  * @mixin Eloquent
+ *
  * @property string|null $allergies
+ *
  * @method static Builder|AdditionalInfo whereAllergies($value)
  */
 class AdditionalInfo extends Model

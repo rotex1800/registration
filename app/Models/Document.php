@@ -28,6 +28,7 @@ use Illuminate\Support\Carbon;
  * @property DocumentCategory|null $category
  * @property-read Model|Eloquent $documentable
  * @property-read User|null $owner
+ *
  * @method static DocumentFactory factory(...$parameters)
  * @method static Builder|Document newModelQuery()
  * @method static Builder|Document newQuery()
@@ -42,7 +43,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Document whereState($value)
  * @method static Builder|Document whereType($value)
  * @method static Builder|Document whereUpdatedAt($value)
+ *
  * @mixin Eloquent
+ *
  * @property-read Collection|Comment[] $comments
  * @property-read int|null $comments_count
  */

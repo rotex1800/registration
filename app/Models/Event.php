@@ -25,6 +25,7 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $attendees_count
  * @property-read Collection|Role[] $roles
  * @property-read int|null $roles_count
+ *
  * @method static EventFactory factory(...$parameters)
  * @method static Builder|Event newModelQuery()
  * @method static Builder|Event newQuery()
@@ -35,7 +36,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Event whereName($value)
  * @method static Builder|Event whereStart($value)
  * @method static Builder|Event whereUpdatedAt($value)
+ *
  * @mixin Eloquent
+ *
  * @property-read string $short_name
  */
 class Event extends Model

@@ -62,6 +62,7 @@ use Illuminate\Support\Carbon;
  * App\Models\User
  *
  * @uses \Illuminate\Auth\MustVerifyEmail
+ *
  * @property int $id
  * @property string $first_name
  * @property string $family_name
@@ -97,6 +98,7 @@ use Illuminate\Support\Carbon;
  * @property-read RotaryInfo|null $rotaryInfo
  * @property-read YeoInfo|null $yeo
  * @property-read string $full_name
+ *
  * @method static UserFactory factory(...$parameters)
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
@@ -117,7 +119,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereUuid($value)
+ *
  * @mixin Eloquent
+ *
  * @property-read AdditionalInfo|null $additionalInfo
  * @property-read string $comment_display_name
  * @property-read string $short_name
@@ -194,7 +198,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Checks whether the user has registered for the given event.
      *
-     * @param Event $event
+     * @param  Event  $event
      * @return bool
      */
     public function hasRegisteredFor(Event $event): bool
@@ -281,7 +285,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @param int $order
+     * @param  int  $order
      * @return HostFamily
      */
     public function hostFamily(int $order): HostFamily

@@ -20,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
+ *
  * @method static CounselorInfoFactory factory(...$parameters)
  * @method static Builder|CounselorInfo newModelQuery()
  * @method static Builder|CounselorInfo newQuery()
@@ -31,6 +32,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|CounselorInfo wherePhone($value)
  * @method static Builder|CounselorInfo whereUpdatedAt($value)
  * @method static Builder|CounselorInfo whereUserId($value)
+ *
  * @mixin Eloquent
  */
 class CounselorInfo extends Model

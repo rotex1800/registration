@@ -23,7 +23,7 @@ it('has t-shirt size', function () {
 });
 
 it('has allergies column', function () {
-   $info = AdditionalInfo::factory()->make();
-   expect($info->allergies)
-       ->toBeString();
+    $info = AdditionalInfo::factory()->make();
+    expect($info->allergies)
+        ->toBeString();
 });
