@@ -243,6 +243,7 @@ it('shows and hides navigation based on current position', function () {
     ]);
 
     $component
+        ->assertSee([__('registrations.selected')])
         ->assertSee([__('registrations.next')])
         ->assertDontSee([__('registrations.previous')])
         ->assertMethodNotWired('goToPrevious')
