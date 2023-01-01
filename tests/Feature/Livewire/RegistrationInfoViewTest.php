@@ -3,6 +3,8 @@
 namespace Tests\Feature\Livewire;
 
 use App\Models\BioFamily;
+use App\Models\ClothesInfo;
+use App\Models\ClothesSize;
 use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\HostFamily;
@@ -100,6 +102,7 @@ it('shows attributes of currently selected attendee', function () {
                 __('registration.gender.gender').': '.$firstAttendee->gender,
                 __('signup.email').': '.$firstAttendee->email,
                 __('registration.mobile_phone').': '.$firstAttendee->mobile_phone,
+                __('registration.tshirt-size').': '.$firstAttendee->clothesInfo->tshirt_size->displayName(),
                 __('registration.health_issues').': '.$firstAttendee->health_issues,
 
                 __('registration.passport'),
