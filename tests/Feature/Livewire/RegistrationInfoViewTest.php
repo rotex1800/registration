@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Livewire;
 
+use App\Models\AdditionalInfo;
 use App\Models\BioFamily;
-use App\Models\ClothesInfo;
 use App\Models\ClothesSize;
 use App\Models\CounselorInfo;
 use App\Models\Event;
@@ -71,7 +71,7 @@ it('has attendee preselected', function () {
     ]);
     $component
         ->assertOk()
-        ->assertSee($attendees->first()->full_name, escape: false);
+        ->assertSee($attendees->first()?->full_name, escape: false);
 
     $currentAttendee = $component->get('currentAttendee');
     expect($currentAttendee)->toBe($attendees->first());
@@ -87,11 +87,17 @@ it('shows attributes of currently selected attendee', function () {
                      ->has(HostFamily::factory()->nth(1))
                      ->has(HostFamily::factory()->nth(2))
                      ->has(HostFamily::factory()->nth(3))
-                     ->has(ClothesInfo::factory()->state(['tshirt_size' => ClothesSize::S]))
+                     ->has(AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::S]))
                      ->create();
     $firstAttendee = $attendees[0];
     assert($firstAttendee != null);
     assert($firstAttendee->birthday != null);
+    assert($firstAttendee->additionalInfo != null);
+    assert($firstAttendee->passport != null);
+    assert($firstAttendee->rotaryInfo != null);
+    assert($firstAttendee->yeo != null);
+    assert($firstAttendee->counselor != null);
+    assert($firstAttendee->bioFamily != null);
 
     Livewire::test('registration-info-view', [
         'attendees' => $attendees,
@@ -104,7 +110,8 @@ it('shows attributes of currently selected attendee', function () {
                 __('registration.gender.gender').': '.$firstAttendee->gender,
                 __('signup.email').': '.$firstAttendee->email,
                 __('registration.mobile_phone').': '.$firstAttendee->mobile_phone,
-                __('registration.tshirt-size').': '.$firstAttendee->clothesInfo->tshirt_size->displayName(),
+                __('registration.tshirt-size').': '.$firstAttendee->additionalInfo->tshirt_size->displayName(),
+                __('registration.allergies').': '.$firstAttendee->additionalInfo->allergies,
                 __('registration.health_issues').': '.$firstAttendee->health_issues,
 
                 __('registration.passport'),
@@ -172,6 +179,8 @@ it('can handle user properties being null', function () {
         __('registration.birthday').': --',
         __('registration.gender.gender').': --',
         __('registration.mobile_phone').': --',
+        __('registration.tshirt-size').': --',
+        __('registration.allergies').': --',
         __('registration.health_issues').': --',
         __('registration.passport-number').': --',
         __('registration.nationality').': --',

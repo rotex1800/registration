@@ -6,9 +6,9 @@ use App\Models\ClothesSize;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ClothesInfo>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AdditionalInfo>
  */
-class ClothesInfoFactory extends Factory
+class AdditionalInfoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,6 +19,7 @@ class ClothesInfoFactory extends Factory
     {
         return [
             'tshirt_size' => fake()->randomElement(ClothesSize::cases()),
+            'allergies' => fake()->text,
             'user_id' => fake()->randomNumber(),
         ];
     }

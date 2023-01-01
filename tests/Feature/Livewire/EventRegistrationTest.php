@@ -3,8 +3,8 @@
 namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\EventRegistration;
+use App\Models\AdditionalInfo;
 use App\Models\BioFamily;
-use App\Models\ClothesInfo;
 use App\Models\ClothesSize;
 use App\Models\CounselorInfo;
 use App\Models\Event;
@@ -96,6 +96,7 @@ it('has section for information about the person', function () {
         __('registration.gender.gender'),
         __('registration.mobile_phone'),
         __('registration.tshirt-size'),
+        __('registration.allergies'),
         __('registration.health_issues'),
     ]);
 });
@@ -514,8 +515,8 @@ it('displays check for complete passport section', function () {
 
 it('displays check for complete user section', function () {
     $inbound = createInboundRegisteredFor($this->event);
-    $clothesInfo = ClothesInfo::factory()->state(['tshirt_size' => ClothesSize::M])->make();
-    $inbound->clothesInfo()->save($clothesInfo);
+    $additionalInfo = AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::M])->make();
+    $inbound->additionalInfo()->save($additionalInfo);
 
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
@@ -805,9 +806,9 @@ it('does not save unknown sizes', function () {
     Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ])
-            ->set('clothesInfo.tshirt_size')
-            ->assertHasNoErrors('clothesInfo.tshirt_size')
-            ->set('clothesInfo.tshirt_size', 'Error Size');
+            ->set('additionalInfo.tshirt_size')
+            ->assertHasNoErrors('additionalInfo.tshirt_size')
+            ->set('additionalInfo.tshirt_size', 'Error Size');
 })->throws(ValueError::class);
 
 it('saves known sizes', function () {
@@ -816,11 +817,11 @@ it('saves known sizes', function () {
     Livewire::test(EventRegistration::class, [
         'event' => $this->event,
     ])
-            ->set('clothesInfo.tshirt_size', 'M')
-            ->assertHasNoErrors('clothesInfo.tshirt_size');
+            ->set('additionalInfo.tshirt_size', 'M')
+            ->assertHasNoErrors('additionalInfo.tshirt_size');
 
     $inbound->refresh();
-    expect($inbound->clothesInfo->tshirt_size)
+    expect($inbound->AdditionalInfo->tshirt_size)
         ->toBe(ClothesSize::M);
 });
 

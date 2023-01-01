@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ClothesInfo;
+use App\Models\AdditionalInfo;
 use App\Models\ClothesSize;
 use App\Models\Comment;
 use App\Models\CounselorInfo;
@@ -391,7 +391,7 @@ it('is complete for expected attributes', function () {
         'mobile_phone' => fake()->phoneNumber,
         'health_issues' => fake()->paragraphs(asText: true),
     ])
-                ->has(ClothesInfo::factory()->state(['tshirt_size' => ClothesSize::XXXL]))
+                ->has(AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::XXXL]))
                 ->create();
 
     expect($user->isComplete())->toBeTrue();
