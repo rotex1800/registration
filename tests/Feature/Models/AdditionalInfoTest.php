@@ -7,8 +7,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 test('database migration is correct', function () {
-    $AdditionalInfo = AdditionalInfo::factory()->create();
-    expect($AdditionalInfo)->not->toBeNull();
+    $additionalInfo = AdditionalInfo::factory()->create();
+    expect($additionalInfo)->not->toBeNull();
 });
 
 it('uses personInfo trait', function () {
@@ -17,7 +17,13 @@ it('uses personInfo trait', function () {
 });
 
 it('has t-shirt size', function () {
-    $AdditionalInfo = AdditionalInfo::factory()->make();
-    expect($AdditionalInfo->tshirt_size)
+    $additionalInfo = AdditionalInfo::factory()->make();
+    expect($additionalInfo->tshirt_size)
         ->not->toBeEmpty();
+});
+
+it('has allergies column', function () {
+   $info = AdditionalInfo::factory()->make();
+   expect($info->allergies)
+       ->toBeString();
 });

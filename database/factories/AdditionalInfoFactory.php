@@ -19,6 +19,7 @@ class AdditionalInfoFactory extends Factory
     {
         return [
             'tshirt_size' => fake()->randomElement(ClothesSize::cases()),
+            'allergies' => fake()->text,
             'user_id' => fake()->randomNumber(),
         ];
     }
