@@ -20,7 +20,6 @@ use Illuminate\Support\Carbon;
  * @property int|null $user_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- *
  * @method static BioFamilyFactory factory(...$parameters)
  * @method static Builder|BioFamily newModelQuery()
  * @method static Builder|BioFamily newQuery()
@@ -33,7 +32,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|BioFamily wherePhone($value)
  * @method static Builder|BioFamily whereUpdatedAt($value)
  * @method static Builder|BioFamily whereUserId($value)
- *
  * @mixin Eloquent
  */
 class BioFamily extends Model

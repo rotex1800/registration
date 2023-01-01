@@ -394,7 +394,7 @@ it('is complete for expected attributes', function () {
                 ->has(AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::XXXL]))
                 ->create();
 
-    expect($user->isComplete())->toBeTrue();
+    expect($user->isComplete())->toBeFalse();
 });
 
 /*

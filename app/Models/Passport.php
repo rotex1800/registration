@@ -22,7 +22,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
- *
  * @method static PassportFactory factory(...$parameters)
  * @method static Builder|Passport newModelQuery()
  * @method static Builder|Passport newQuery()
@@ -35,7 +34,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Passport wherePassportNumber($value)
  * @method static Builder|Passport whereUpdatedAt($value)
  * @method static Builder|Passport whereUserId($value)
- *
  * @mixin Eloquent
  */
 class Passport extends Model

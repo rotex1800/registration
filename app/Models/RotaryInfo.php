@@ -22,7 +22,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
- *
  * @method static RotaryInfoFactory factory(...$parameters)
  * @method static Builder|RotaryInfo newModelQuery()
  * @method static Builder|RotaryInfo newQuery()
@@ -35,7 +34,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|RotaryInfo whereSponsorDistrict($value)
  * @method static Builder|RotaryInfo whereUpdatedAt($value)
  * @method static Builder|RotaryInfo whereUserId($value)
- *
  * @mixin Eloquent
  */
 class RotaryInfo extends Model
