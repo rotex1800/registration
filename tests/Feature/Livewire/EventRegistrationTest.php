@@ -4,6 +4,8 @@ namespace Tests\Feature\Livewire;
 
 use App\Http\Livewire\EventRegistration;
 use App\Models\BioFamily;
+use App\Models\ClothesInfo;
+use App\Models\ClothesSize;
 use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\HostFamily;
@@ -19,6 +21,7 @@ use Livewire\Testing\TestableLivewire;
 use function Pest\Laravel\actingAs;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
+use ValueError;
 
 uses(RefreshDatabase::class);
 
@@ -92,6 +95,7 @@ it('has section for information about the person', function () {
         __('registration.birthday'),
         __('registration.gender.gender'),
         __('registration.mobile_phone'),
+        __('registration.tshirt-size'),
         __('registration.health_issues'),
     ]);
 });
@@ -510,6 +514,8 @@ it('displays check for complete passport section', function () {
 
 it('displays check for complete user section', function () {
     $inbound = createInboundRegisteredFor($this->event);
+    $clothesInfo = ClothesInfo::factory()->state(['tshirt_size' => ClothesSize::M])->make();
+    $inbound->clothesInfo()->save($clothesInfo);
 
     actingAs($inbound);
     $component = Livewire::test(EventRegistration::class, [
@@ -793,6 +799,31 @@ test('birthday must be in the past', function () {
             ->assertHasNoErrors('user.birthday');
 });
 
+it('does not save unknown sizes', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('clothesInfo.tshirt_size')
+            ->assertHasNoErrors('clothesInfo.tshirt_size')
+            ->set('clothesInfo.tshirt_size', 'Error Size');
+})->throws(ValueError::class);
+
+it('saves known sizes', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ])
+            ->set('clothesInfo.tshirt_size', 'M')
+            ->assertHasNoErrors('clothesInfo.tshirt_size');
+
+    $inbound->refresh();
+    expect($inbound->clothesInfo->tshirt_size)
+        ->toBe(ClothesSize::M);
+});
+
 test('passport issue date must be in the past', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
@@ -825,6 +856,16 @@ it('requires user to be authenticated', function () {
     Livewire::test('event-registration', [
         'event' => $this->event,
     ])->assertStatus(401);
+});
+
+test('Tshirt Size validation allows null', function () {
+    expect(EventRegistration::NULLABLE_CLOTHES_SIZE)
+        ->toContain('nullable');
+});
+
+test('TShirt size validation allows all ClothesSize cases', function () {
+    expect(EventRegistration::NULLABLE_CLOTHES_SIZE)
+        ->toContain(ClothesSize::inEnumCasesValidationString());
 });
 
 /**

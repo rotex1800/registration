@@ -29,7 +29,12 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Comment whereCreatedAt($value)
  * @method static Builder|Comment whereId($value)
  * @method static Builder|Comment whereUpdatedAt($value)
+ *
  * @mixin Eloquent
+ *
+ * @property int|null $document_id
+ *
+ * @method static Builder|Comment whereDocumentId($value)
  */
 class Comment extends Model
 {

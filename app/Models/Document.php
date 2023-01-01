@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\DocumentFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,7 +43,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Document whereState($value)
  * @method static Builder|Document whereType($value)
  * @method static Builder|Document whereUpdatedAt($value)
+ *
  * @mixin Eloquent
+ *
+ * @property-read Collection|Comment[] $comments
+ * @property-read int|null $comments_count
  */
 class Document extends Model
 {

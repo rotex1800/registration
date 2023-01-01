@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Database\Factories\BioFamilyFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\BioFamily
@@ -14,22 +18,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $phone
  * @property string|null $email
  * @property int|null $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  *
- * @method static \Database\Factories\BioFamilyFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily query()
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily whereParentOne($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily whereParentTwo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BioFamily whereUserId($value)
- * @mixin \Eloquent
+ * @method static BioFamilyFactory factory(...$parameters)
+ * @method static Builder|BioFamily newModelQuery()
+ * @method static Builder|BioFamily newQuery()
+ * @method static Builder|BioFamily query()
+ * @method static Builder|BioFamily whereCreatedAt($value)
+ * @method static Builder|BioFamily whereEmail($value)
+ * @method static Builder|BioFamily whereId($value)
+ * @method static Builder|BioFamily whereParentOne($value)
+ * @method static Builder|BioFamily whereParentTwo($value)
+ * @method static Builder|BioFamily wherePhone($value)
+ * @method static Builder|BioFamily whereUpdatedAt($value)
+ * @method static Builder|BioFamily whereUserId($value)
+ *
+ * @mixin Eloquent
  */
 class BioFamily extends Model
 {

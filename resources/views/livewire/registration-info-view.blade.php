@@ -1,10 +1,14 @@
 @php use App\Models\DocumentCategory; @endphp
 <div>
-    <select wire:model="currentPosition">
-        @foreach($attendees as $index => $attendee)
-            <option value="{{ $index }}">{!! $attendee->overallDocumentState()->displayName().' '.$attendee->full_name !!}</option>
-        @endforeach
-    </select>
+    <label>
+        {{ __('registrations.selected') }}
+        <select wire:model="currentPosition">
+            @foreach($attendees as $index => $attendee)
+                <option
+                    value="{{ $index }}">{!! $attendee->overallDocumentState()->displayName().' '.$attendee->full_name !!}</option>
+            @endforeach
+        </select>
+    </label>
 
     <div class="flex flex-row my-2">
         @if($this->hasPrevious())
@@ -25,6 +29,7 @@
             <div>{{ __('registration.gender.gender').': '.($currentAttendee?->gender ?: '--') }}</div>
             <div>{{ __('signup.email').': '.($currentAttendee?->email ?: '--') }}</div>
             <div>{{ __('registration.mobile_phone').': '.($currentAttendee?->mobile_phone ?: '--') }}</div>
+            <div>{{ __('registration.tshirt-size').': '.($currentAttendee?->clothesInfo?->tshirt_size->displayName() ?: '--') }}</div>
             <div>{{ __('registration.health_issues').': '.($currentAttendee?->health_issues ?: '--') }}</div>
         </div>
         <div>

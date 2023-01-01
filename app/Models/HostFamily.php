@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\HostFamilyFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -36,7 +37,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|HostFamily wherePhone($value)
  * @method static Builder|HostFamily whereUpdatedAt($value)
  * @method static Builder|HostFamily whereUserId($value)
+ *
  * @mixin Eloquent
+ *
+ * @method static HostFamilyFactory factory(...$parameters)
  */
 class HostFamily extends Model
 {

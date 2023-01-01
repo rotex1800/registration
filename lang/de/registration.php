@@ -17,6 +17,7 @@ return [
     'first_name' => 'Vorname',
     'about-you' => 'Zu Dir',
     'passport' => 'Reisepass',
+    'tshirt-size' => 'T-Shirt Größe',
     'passport-explanation' => 'Wenn du keinen Reisepass hast, sondern dich stattdessen mit einem anderen
      Ausweisdokument in Deutschland ausweist, kannst du natürlich auch dieses hier eintragen.',
     'nationality' => 'Nationalität',

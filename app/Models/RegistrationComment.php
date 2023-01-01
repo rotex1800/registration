@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\RegistrationCommentFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\RegistrationComment
@@ -12,20 +16,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property string|null $body
  * @property int|null $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User|null $user
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read User|null $user
  *
- * @method static \Database\Factories\RegistrationCommentFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|RegistrationComment newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|RegistrationComment newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|RegistrationComment query()
- * @method static \Illuminate\Database\Eloquent\Builder|RegistrationComment whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RegistrationComment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RegistrationComment whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RegistrationComment whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RegistrationComment whereUserId($value)
- * @mixin \Eloquent
+ * @method static RegistrationCommentFactory factory(...$parameters)
+ * @method static Builder|RegistrationComment newModelQuery()
+ * @method static Builder|RegistrationComment newQuery()
+ * @method static Builder|RegistrationComment query()
+ * @method static Builder|RegistrationComment whereBody($value)
+ * @method static Builder|RegistrationComment whereCreatedAt($value)
+ * @method static Builder|RegistrationComment whereId($value)
+ * @method static Builder|RegistrationComment whereUpdatedAt($value)
+ * @method static Builder|RegistrationComment whereUserId($value)
+ *
+ * @mixin Eloquent
  */
 class RegistrationComment extends Model
 {

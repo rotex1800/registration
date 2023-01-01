@@ -32,6 +32,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|YeoInfo wherePhone($value)
  * @method static Builder|YeoInfo whereUpdatedAt($value)
  * @method static Builder|YeoInfo whereUserId($value)
+ *
  * @mixin Eloquent
  */
 class YeoInfo extends Model

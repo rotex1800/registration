@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\BioFamily;
+use App\Models\ClothesInfo;
 use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\HostFamily;
@@ -35,6 +36,8 @@ class EventRegistration extends Component
         self::PART_TWO,
     ];
 
+    public const NULLABLE_CLOTHES_SIZE = 'nullable|in:NA,XS,S,M,L,XL,XXL,XXXL';
+
     public Event $event;
 
     public RotaryInfo $rotary;
@@ -47,6 +50,8 @@ class EventRegistration extends Component
     public User $user;
 
     public Passport $passport;
+
+    public ClothesInfo $clothesInfo;
 
     public CounselorInfo $counselor;
 
@@ -129,6 +134,7 @@ class EventRegistration extends Component
         'hostFamilyThree.phone' => self::NULLABLE,
 
         'comment.body' => self::NULLABLE,
+        'clothesInfo.tshirt_size' => self::NULLABLE_CLOTHES_SIZE,
     ];
 
     public function mount(): void
@@ -143,6 +149,7 @@ class EventRegistration extends Component
 
         $this->user = $user;
         $this->passport = $this->user->passport()->firstOrNew();
+        $this->clothesInfo = $this->user->clothesInfo()->firstOrNew();
         $this->rotary = $this->user->rotaryInfo()->firstOrNew();
         $this->counselor = $this->user->counselor()->firstOrNew();
         $this->yeo = $this->user->yeo()->firstOrNew();
@@ -207,6 +214,11 @@ class EventRegistration extends Component
     public function updatedUser(): void
     {
         $this->user->save();
+    }
+
+    public function updatedClothesInfo(): void
+    {
+        $this->user->clothesInfo()->save($this->clothesInfo);
     }
 
     public function updatedPassport(): void

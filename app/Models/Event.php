@@ -36,7 +36,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Event whereName($value)
  * @method static Builder|Event whereStart($value)
  * @method static Builder|Event whereUpdatedAt($value)
+ *
  * @mixin Eloquent
+ *
+ * @property-read string $short_name
  */
 class Event extends Model
 {
@@ -63,6 +66,7 @@ class Event extends Model
 
     /**
      * @return BelongsToMany
+     *
      * @phpstan-return BelongsToMany<User>
      */
     public function attendees(): BelongsToMany

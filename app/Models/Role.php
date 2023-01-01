@@ -31,6 +31,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Role whereId($value)
  * @method static Builder|Role whereName($value)
  * @method static Builder|Role whereUpdatedAt($value)
+ *
  * @mixin Eloquent
  */
 class Role extends Model
@@ -43,6 +44,7 @@ class Role extends Model
 
     /**
      * @return BelongsToMany
+     *
      * @phpstan-return BelongsToMany<User>
      */
     public function users(): BelongsToMany
@@ -52,6 +54,7 @@ class Role extends Model
 
     /**
      * @return BelongsToMany
+     *
      * @phpstan-return BelongsToMany<Event>
      */
     public function events(): BelongsToMany

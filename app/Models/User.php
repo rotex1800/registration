@@ -54,6 +54,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
+ *
  * @mixin Eloquent
  */
 
@@ -118,7 +119,12 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereUuid($value)
+ *
  * @mixin Eloquent
+ *
+ * @property-read ClothesInfo|null $clothesInfo
+ * @property-read string $comment_display_name
+ * @property-read string $short_name
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -202,6 +208,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return BelongsToMany
+     *
      * @phpstan-return BelongsToMany<Event>
      */
     public function events(): BelongsToMany
@@ -211,6 +218,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return HasMany
+     *
      * @phpstan-return HasMany<Comment>
      */
     public function authoredComments(): HasMany
@@ -225,6 +233,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @retrun HasOne
+     *
      * @phpstan-return HasOne<CounselorInfo>
      */
     public function counselor(): HasOne
@@ -234,6 +243,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @retrun HasOne
+     *
      * @phpstan-return HasOne<YeoInfo>
      */
     public function yeo(): HasOne
@@ -243,6 +253,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @retrun HasOne
+     *
      * @phpstan-return HasOne<RotaryInfo>
      */
     public function rotaryInfo(): HasOne
@@ -252,11 +263,20 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @retrun HasOne
+     *
      * @phpstan-return HasOne<BioFamily>
      */
     public function bioFamily(): HasOne
     {
         return $this->hasOne(BioFamily::class, 'user_id');
+    }
+
+    /**
+     * @return HasOne<ClothesInfo>
+     */
+    public function clothesInfo(): HasOne
+    {
+        return $this->hasOne(ClothesInfo::class, 'user_id');
     }
 
     public function firstHostFamily(): HostFamily
@@ -284,6 +304,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return HasMany
+     *
      * @phpstan-return HasMany<HostFamily>
      */
     public function hostFamilies(): HasMany
@@ -303,6 +324,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return Collection
+     *
      * @phpstan-return Collection<Event>
      */
     public function canRegisterFor(): Collection
@@ -315,6 +337,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * All events that the user shares at least one role with.
      *
      * @return Collection
+     *
      * @phpstan-return Collection<Event>
      */
     public function possibleEvents(): Collection
@@ -331,6 +354,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return Collection
+     *
      * @phpstan-return Collection<Event>
      */
     public function participatesIn(): Collection
@@ -346,6 +370,10 @@ class User extends Authenticatable implements MustVerifyEmail
             && $this->notBlankOrEmpty($this->birthday)
             && $this->notBlankOrEmpty($this->gender)
             && $this->notBlankOrEmpty($this->mobile_phone)
+            && (
+                $this->notBlankOrEmpty($this->clothesInfo?->tshirt_size->value ?? '')
+                && ($this->clothesInfo?->tshirt_size ?? ClothesSize::NA) != ClothesSize::NA
+            )
             && $this->notBlankOrEmpty($this->health_issues);
     }
 
