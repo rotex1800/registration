@@ -380,6 +380,14 @@ it('has registration comment', function () {
         ->toBeInstanceOf(HasOne::class);
 });
 
+it('has many payments', function () {
+    $user = User::factory()->create();
+    expect($user->payments())
+        ->toBeInstanceOf(HasMany::class)
+        ->and($user->payments)
+        ->toBeInstanceOf(Collection::class);
+});
+
 /*
  * Expected: First Name, Last Name, Birthday, Gender, Mobile Phone, Health
  */
