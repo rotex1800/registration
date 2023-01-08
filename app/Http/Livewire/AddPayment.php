@@ -22,8 +22,7 @@ class AddPayment extends Component
 
     public function render(): Factory|View|Application
     {
-        $paymentSum = 0;
-        $payments = Payment::whereEventId($this->event->id)
+        $paymentSum = Payment::whereEventId($this->event->id)
                            ->whereUserId($this->payer->id)
                            ->sum('amount');
 

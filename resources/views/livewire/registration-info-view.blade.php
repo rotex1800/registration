@@ -24,7 +24,11 @@
     <div class="text-lg mt-4 grid gap-4 grid-cols-1 lg:grid-cols-2">
         <div>
             <div class="text-2xl">{{ __('registration.payment') }}</div>
-            <livewire:add-payment :payer="$currentAttendee" :event="$event"/>
+            <livewire:add-payment
+                :payer="$currentAttendee"
+                :event="$event"
+                wire:key="{{ $currentAttendee->id.'payment' }}"
+            />
         </div>
         <div>
             <div class="text-2xl">{{ __('registration.about-person') }}</div>
