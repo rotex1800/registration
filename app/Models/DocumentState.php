@@ -15,17 +15,7 @@ enum DocumentState: string
      */
     public static function sort(array $states): array
     {
-        usort($states, function (?DocumentState $lhs, ?DocumentState $rhs): int {
-            if ($lhs == null && $rhs == null) {
-                return 0;
-            }
-            if ($lhs == null) {
-                return 1;
-            }
-            if ($rhs == null) {
-                return -1;
-            }
-
+        usort($states, function (DocumentState $lhs, DocumentState $rhs): int {
             return $lhs->compareTo($rhs);
         });
 

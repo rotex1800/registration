@@ -7,6 +7,7 @@ use App\Models\CounselorInfo;
 use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
+use App\Models\Event;
 use App\Models\HostFamily;
 use App\Models\Passport;
 use App\Models\Role;
@@ -33,7 +34,7 @@ it('has events relation', function () {
 });
 
 it('can determine if user has registered for event', function () {
-    $event = \App\Models\Event::factory()->create();
+    $event = Event::factory()->create();
     $user = User::factory()->create();
     assertFalse($user->hasRegisteredFor($event));
     $user->events()->save($event);
@@ -48,7 +49,7 @@ it('belongs to roles', function () {
 
 it('returns registered-for events', function () {
     $user = User::factory()->create();
-    $expected = \App\Models\Event::factory()->count(2)->create();
+    $expected = Event::factory()->count(2)->create();
     $user->events()->saveMany($expected);
 
     $actual = $user->participatesIn();
@@ -61,11 +62,11 @@ it('returns events the user can still register for', function () {
     $user = User::factory()->create();
     $user->roles()->attach($role);
 
-    $attends = \App\Models\Event::factory()->create();
+    $attends = Event::factory()->create();
     $attends->roles()->attach($role);
     $user->events()->attach($attends);
 
-    $canAttend = \App\Models\Event::factory()->create();
+    $canAttend = Event::factory()->create();
     $canAttend->roles()->attach($role);
 
     assertFalse($user->canRegisterFor()->contains($attends));
@@ -377,6 +378,14 @@ it('has registration comment', function () {
 
     expect($user->registrationComment())
         ->toBeInstanceOf(HasOne::class);
+});
+
+it('has many payments', function () {
+    $user = User::factory()->create();
+    expect($user->payments())
+        ->toBeInstanceOf(HasMany::class)
+        ->and($user->payments)
+        ->toBeInstanceOf(Collection::class);
 });
 
 /*

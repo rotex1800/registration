@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -10,6 +11,11 @@ use Livewire\Component;
 
 class RegistrationInfoView extends Component
 {
+    /**
+     * @var Event
+     */
+    public $event;
+
     /**
      * @var Collection<int, User>
      */
@@ -27,6 +33,7 @@ class RegistrationInfoView extends Component
 
     public function mount(): void
     {
+        $this->attendees = $this->event->attendees;
         if ($this->attendees != null && count($this->attendees) > 0) {
             $first = $this->attendees[0];
             $this->currentPosition = 0;
@@ -40,6 +47,7 @@ class RegistrationInfoView extends Component
     {
         return view('livewire.registration-info-view')->with([
             'attendees' => $this->attendees,
+            'event' => $this->event,
         ]);
     }
 

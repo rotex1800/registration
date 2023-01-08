@@ -362,6 +362,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->events()->get();
     }
 
+    /**
+     * @return HasMany
+     */
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     public function isComplete(): bool
     {
         return

@@ -98,3 +98,17 @@ it('requires email to be verified', function () {
          ->get('/registrations/1')
          ->assertRedirect(route('verification.notice'));
 });
+
+it('contains component to add new payments', function () {
+    $user = createUserWithRole('rotex');
+
+    $event = Event::factory()->create();
+    $attendees = User::factory()->count(10)->make();
+    $event->attendees()->saveMany($attendees);
+
+    Event::factory()->create();
+    actingAs($user)
+        ->get('/registrations/1')
+        ->assertOk()
+        ->assertSeeLivewire('add-payment');
+});

@@ -1,10 +1,13 @@
 <?php
 
 use App\Models\Event;
+use App\Models\Payment;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Collection;
 
 uses(RefreshDatabase::class);
 
@@ -86,4 +89,13 @@ it('has short name', function () {
 
     expect($event->short_name)
         ->toBe('AE-2022');
+});
+
+it('has many payments', function () {
+    $event = Event::factory()->has(Payment::factory())->create();
+    expect(($event)->payments())
+        ->toBeInstanceOf(HasMany::class)
+        ->and($event->payments)
+        ->toBeInstanceOf(Collection::class)
+        ->first()->toBeInstanceOf(Payment::class);
 });
