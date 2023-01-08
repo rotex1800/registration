@@ -10,7 +10,7 @@ enum DocumentState: string
     case Missing = 'missing';
 
     /**
-     * @param DocumentState[] $states
+     * @param  DocumentState[]  $states
      * @return DocumentState[]
      */
     public static function sort(array $states): array
