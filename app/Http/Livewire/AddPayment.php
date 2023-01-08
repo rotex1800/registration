@@ -36,8 +36,7 @@ class AddPayment extends Component
     public function addPayment(PaymentPolicy $policy): void
     {
         // Ensure only certain users can create a new payment.
-        $authenticatable = Auth::user();
-        if ($policy->createPayment($authenticatable)->denied()) {
+        if ($policy->createPayment(Auth::user())->denied()) {
             return;
         }
         $payment = new Payment([

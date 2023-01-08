@@ -23,3 +23,9 @@ it('denies guest to create payment', function () {
     expect((new PaymentPolicy())->createPayment(null))
         ->toBeDenied();
 });
+
+it('denies Authenticatable without HasRoles trait', function () {
+    $authenticatable = new TestAuthenticatableWithoutRoles();
+    expect((new PaymentPolicy())->createPayment($authenticatable))
+        ->toBeDenied();
+});
