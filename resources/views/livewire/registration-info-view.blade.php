@@ -23,6 +23,10 @@
 
     <div class="text-lg mt-4 grid gap-4 grid-cols-1 lg:grid-cols-2">
         <div>
+            <div class="text-2xl">{{ __('registration.payment') }}</div>
+            <livewire:add-payment :payer="$currentAttendee" :event="$event"/>
+        </div>
+        <div>
             <div class="text-2xl">{{ __('registration.about-person') }}</div>
             <div>{{ __('event.registration-overview.full-name').': '.$currentAttendee?->full_name }}</div>
             <div>{{ __('registration.birthday').': '.($currentAttendee?->birthday?->translatedFormat('d. F Y') ?: '--') }}</div>

@@ -12,9 +12,10 @@ class PaymentPolicy
 
     public function createPayment(?User $user): Response
     {
-        if ($user == null || !$user->hasRole('rotex')) {
+        if ($user == null || ! $user->hasRole('rotex')) {
             return $this->deny();
         }
+
         return $this->allow();
     }
 }

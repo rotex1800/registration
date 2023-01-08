@@ -13,15 +13,20 @@ use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Collection;
 use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
 it('can render', function () {
-    Livewire::test('registration-info-view')
-            ->assertOk();
+    $event = Event::factory()->create();
+    $attendees = User::factory()->count(10)->make();
+    $event->attendees()->saveMany($attendees);
+
+    Livewire::test('registration-info-view', [
+        'event' => $event,
+        'attendees' => $attendees,
+    ])->assertOk();
 });
 
 it('shows full names and overall state of all registered attendees in select', function () {
@@ -45,6 +50,7 @@ it('shows full names and overall state of all registered attendees in select', f
 
     Livewire::test('registration-info-view', [
         'attendees' => $attendees,
+        'event' => $event,
     ])->assertSee(
         $fullNames,
         escape: false);
@@ -67,14 +73,14 @@ it('has attendee preselected', function () {
 
     actingAs($user);
     $component = Livewire::test('registration-info-view', [
-        'attendees' => $attendees,
+        'event' => $event,
     ]);
     $component
         ->assertOk()
         ->assertSee($attendees->first()?->full_name, escape: false);
 
     $currentAttendee = $component->get('currentAttendee');
-    expect($currentAttendee)->toBe($attendees->first());
+    expect($currentAttendee)->toBeSameEntityAs($attendees->first());
 });
 
 it('shows attributes of currently selected attendee', function () {
@@ -98,9 +104,13 @@ it('shows attributes of currently selected attendee', function () {
     assert($firstAttendee->yeo != null);
     assert($firstAttendee->counselor != null);
     assert($firstAttendee->bioFamily != null);
-
+    $event = Event::factory()->create();
+    $event->attendees()->saveMany($attendees);
+    $user = createUserWithRole('rotex');
+    Livewire::actingAs($user);
     Livewire::test('registration-info-view', [
         'attendees' => $attendees,
+        'event' => $event,
     ])
             ->assertOk()
             ->set('currentPosition', 0)
@@ -164,6 +174,7 @@ it('shows attributes of currently selected attendee', function () {
 });
 
 it('can handle user properties being null', function () {
+    $event = Event::factory()->create();
     $attendee = User::factory()
                     ->state([
                         'id' => 1,
@@ -173,8 +184,9 @@ it('can handle user properties being null', function () {
                         'health_issues' => null,
                     ])
                     ->make();
+    $event->attendees()->save($attendee);
     Livewire::test('registration-info-view', [
-        'attendees' => Collection::make([$attendee]),
+        'event' => $event,
     ])->assertOk()->assertSee([
         __('registration.birthday').': --',
         __('registration.gender.gender').': --',
@@ -209,9 +221,11 @@ it('can handle user properties being null', function () {
 });
 
 it('has current attendee wired', function () {
+    $event = Event::factory()->create();
     $a = User::factory()->create();
+    $event->attendees()->save($a);
     Livewire::test('registration-info-view', [
-        'attendees' => Collection::make([$a]),
+        'event' => $event,
     ])
             ->assertOk()
             ->assertPropertyWired('currentPosition');
@@ -221,9 +235,12 @@ it('updates the current attendee when updating the current attendee id', functio
     $attendees = User::factory()->count(2)->create();
     $firstAttendee = $attendees[0];
     $secondAttendee = $attendees[1];
+    $event = Event::factory()->create();
+    $event->attendees()->saveMany($attendees);
 
     $component = Livewire::test('registration-info-view', [
         'attendees' => $attendees,
+        'event' => $event,
     ]);
     $component
         ->assertOk()
@@ -254,6 +271,7 @@ it('shows and hides navigation based on current position', function () {
 
     $component = Livewire::test('registration-info-view', [
         'attendees' => $attendees,
+        'event' => $event,
     ]);
 
     $component

@@ -36,7 +36,7 @@ it('returns attendees sorted by first name', function () {
 
     // Act & Assert
     $sortedAttendees = $event->attendeesSortedByFirstName();
-    $firstNames = $sortedAttendees->map(fn($e) => $e->first_name);
+    $firstNames = $sortedAttendees->map(fn ($e) => $e->first_name);
     expect($firstNames)
         ->toArray()->toEqual(['A', 'B', 'C']);
 });

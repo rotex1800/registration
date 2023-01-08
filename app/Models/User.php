@@ -198,7 +198,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Checks whether the user has registered for the given event.
      *
-     * @param Event $event
+     * @param  Event  $event
      * @return bool
      */
     public function hasRegisteredFor(Event $event): bool
@@ -285,7 +285,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @param int $order
+     * @param  int  $order
      * @return HostFamily
      */
     public function hostFamily(int $order): HostFamily
