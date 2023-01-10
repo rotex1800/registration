@@ -25,6 +25,60 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.9.0](https://github.com/rotex1800/registration/compare/v1.8.11...v1.9.0) (2023-01-10)
+
+
+### Features
+
+* 266 checkbox for payment complete ([#284](https://github.com/rotex1800/registration/issues/284)) ([33ae251](https://github.com/rotex1800/registration/commit/33ae251d1ed6fc915e5c686209356c320bad40a2))
+* Add `ValidatableEnum` trait ([d93382c](https://github.com/rotex1800/registration/commit/d93382c96dc1ffc34161a89cdf0b4e2ae72a3948))
+* Add field for allergies ([#273](https://github.com/rotex1800/registration/issues/273)) ([6e71a2b](https://github.com/rotex1800/registration/commit/6e71a2be941d83144f74a0e7a32b2318bfb161e2))
+* Add shirt size ([#272](https://github.com/rotex1800/registration/issues/272)) ([4194537](https://github.com/rotex1800/registration/commit/419453701dae6868e7166ec0d3ac5c6041253105))
+
+
+### Bug Fixes
+
+* **deploy:** Remove automatic dusk installation ([d5f139d](https://github.com/rotex1800/registration/commit/d5f139d64a09a88972b76dff8e966e6e99343751))
+
+
+### Miscellaneous Chores
+
+* Add label for selected attendee ([af9d32e](https://github.com/rotex1800/registration/commit/af9d32e6a47b63596c64984dab8c4f319a89b303))
+* Deploy into sandbox from release-pr ([#285](https://github.com/rotex1800/registration/issues/285)) ([f43a32e](https://github.com/rotex1800/registration/commit/f43a32ee8940c35c83240de1778e0feaa75c7395))
+* **deps:** bump axios from 1.2.1 to 1.2.2 ([1536b9a](https://github.com/rotex1800/registration/commit/1536b9a5a653100f59c6c12dea065176480c4459))
+* **deps:** bump axios from 1.2.1 to 1.2.2 ([#269](https://github.com/rotex1800/registration/issues/269)) ([bb9e6e7](https://github.com/rotex1800/registration/commit/bb9e6e720fe64a2e02a780b9656fbd0c40315067))
+* **deps:** bump brianium/paratest from 6.7.0 to 6.8.0 ([cecb605](https://github.com/rotex1800/registration/commit/cecb6051ee9831ccc18a85ddf77b79f2573b137f))
+* **deps:** bump brianium/paratest from 6.7.0 to 6.8.0 ([#270](https://github.com/rotex1800/registration/issues/270)) ([f64d796](https://github.com/rotex1800/registration/commit/f64d79638e7381eeac0375ba2c2ea5d3653f0b67))
+* **deps:** bump laravel/dusk from 7.2.1 to 7.3.0 ([0ccce65](https://github.com/rotex1800/registration/commit/0ccce65315ca2e0d06a6393078b9a3e6fe7f7a80))
+* **deps:** bump laravel/dusk from 7.2.1 to 7.3.0 ([#278](https://github.com/rotex1800/registration/issues/278)) ([67ba621](https://github.com/rotex1800/registration/commit/67ba6212432b0ca39dd01dba23c32d10e7b87c51))
+* **deps:** bump laravel/fortify from 1.14.1 to 1.15.0 ([c658602](https://github.com/rotex1800/registration/commit/c658602aa2186f77c08e8ba09429e854ea4f6873))
+* **deps:** bump laravel/fortify from 1.14.1 to 1.15.0 ([#279](https://github.com/rotex1800/registration/issues/279)) ([a031ee7](https://github.com/rotex1800/registration/commit/a031ee7e7a3f780ba5c4b022453d5b06c2ce3448))
+* **deps:** bump laravel/sail from 1.16.6 to 1.17.0 ([066db5b](https://github.com/rotex1800/registration/commit/066db5b1ac005dc0c0c4a7aed695b1693236f426))
+* **deps:** bump laravel/sail from 1.16.6 to 1.17.0 ([#277](https://github.com/rotex1800/registration/issues/277)) ([bf06711](https://github.com/rotex1800/registration/commit/bf067115020c9e5271638ef48bef76ce07f2e599))
+* **deps:** bump maatwebsite/excel from 3.1.44 to 3.1.45 ([71eb295](https://github.com/rotex1800/registration/commit/71eb295c5ff2081205b8515289938a73e679bd23))
+* **deps:** bump maatwebsite/excel from 3.1.44 to 3.1.45 ([#274](https://github.com/rotex1800/registration/issues/274)) ([2f75ed0](https://github.com/rotex1800/registration/commit/2f75ed08ad7b9d85dc3c929bccea1f3218c4106c))
+* **deps:** bump nunomaduro/collision from 6.3.2 to 6.4.0 ([6288477](https://github.com/rotex1800/registration/commit/6288477afdbc0cafab3e288757897397bd134381))
+* **deps:** bump nunomaduro/collision from 6.3.2 to 6.4.0 ([#282](https://github.com/rotex1800/registration/issues/282)) ([6f22923](https://github.com/rotex1800/registration/commit/6f2292390141eb3eae79d5f294e1677ff3d7a093))
+* **deps:** bump nunomaduro/larastan from 2.3.1 to 2.3.3 ([4f0a92a](https://github.com/rotex1800/registration/commit/4f0a92a7a21b1bea882cabbc7d83c003972374d8))
+* **deps:** bump nunomaduro/larastan from 2.3.1 to 2.3.3 ([#271](https://github.com/rotex1800/registration/issues/271)) ([077fb04](https://github.com/rotex1800/registration/commit/077fb047716ccd154ec1c3468cfed5aeefa90cb0))
+* **deps:** bump nunomaduro/larastan from 2.3.3 to 2.3.4 ([0938c6f](https://github.com/rotex1800/registration/commit/0938c6fb543d918a56b1cfa4e0742078cd09f26c))
+* **deps:** bump nunomaduro/larastan from 2.3.3 to 2.3.4 ([#275](https://github.com/rotex1800/registration/issues/275)) ([7772ad4](https://github.com/rotex1800/registration/commit/7772ad4a776f6b3a3be634beb31327fdf6a14533))
+* **deps:** bump postcss from 8.4.20 to 8.4.21 ([3062e4f](https://github.com/rotex1800/registration/commit/3062e4ffaacaae91ebc61ce38d5af1f3a6b2d66e))
+* **deps:** bump postcss from 8.4.20 to 8.4.21 ([#283](https://github.com/rotex1800/registration/issues/283)) ([865d04e](https://github.com/rotex1800/registration/commit/865d04eb8639606e5a084afac3e0c19713835c1c))
+* **deps:** bump prettier from 2.8.1 to 2.8.2 ([5eb65a5](https://github.com/rotex1800/registration/commit/5eb65a56a5d3667607c78a6f5fd86be16246b8c8))
+* **deps:** bump prettier from 2.8.1 to 2.8.2 ([#286](https://github.com/rotex1800/registration/issues/286)) ([7ea1583](https://github.com/rotex1800/registration/commit/7ea15839e06e58e2e4d4f1d4b41594e0db3ae665))
+* **deps:** bump psr/simple-cache from 2.0.0 to 3.0.0 ([b76fabc](https://github.com/rotex1800/registration/commit/b76fabc1ceafb5236895c54b4e7c244386b725b0))
+* **deps:** bump psr/simple-cache from 2.0.0 to 3.0.0 ([#281](https://github.com/rotex1800/registration/issues/281)) ([adeec93](https://github.com/rotex1800/registration/commit/adeec93d631c1acf99cb26a452ec5ad664922268))
+* **deps:** bump spatie/laravel-ignition from 1.6.2 to 1.6.3 ([887f91b](https://github.com/rotex1800/registration/commit/887f91b5af06610de49ff3b9335e18b0f0935d04))
+* **deps:** bump spatie/laravel-ignition from 1.6.2 to 1.6.3 ([#264](https://github.com/rotex1800/registration/issues/264)) ([ef30985](https://github.com/rotex1800/registration/commit/ef30985fcc2a0804f2405e2ff1ad11323d1fdeec))
+* **deps:** bump spatie/laravel-ignition from 1.6.3 to 1.6.4 ([5b2f5df](https://github.com/rotex1800/registration/commit/5b2f5df73d3be14e054ab41b957a6b71d5bb053a))
+* **deps:** bump spatie/laravel-ignition from 1.6.3 to 1.6.4 ([#280](https://github.com/rotex1800/registration/issues/280)) ([c1c37b1](https://github.com/rotex1800/registration/commit/c1c37b1398a5e7335ab78064dc33d92606d7134c))
+* **deps:** bump vite from 4.0.3 to 4.0.4 ([e8ef78e](https://github.com/rotex1800/registration/commit/e8ef78e9ec35d757524fd65fc8dcca771069fffa))
+* **deps:** bump vite from 4.0.3 to 4.0.4 ([#276](https://github.com/rotex1800/registration/issues/276)) ([2dba65e](https://github.com/rotex1800/registration/commit/2dba65e455344b577195347d91cb1bca07324d5c))
+* install chromedriver after package install ([f7b5a2d](https://github.com/rotex1800/registration/commit/f7b5a2db804d575d130ce5a11ee1dc0a3f17f5e3))
+* phpstan ([a5c6f98](https://github.com/rotex1800/registration/commit/a5c6f98b5f4f5f141fdd9a1b6a7be2352f91752b))
+* Update IDE-Helper Data ([85c7f06](https://github.com/rotex1800/registration/commit/85c7f0673580703e1bb84a3b6edfa1f2e2787274))
+
 ## [1.8.11](https://github.com/rotex1800/registration/compare/v1.8.10...v1.8.11) (2022-12-24)
 
 
