@@ -63,7 +63,7 @@ it('does not trim current_password', function () {
 it('expects all these inputs', function () {
     class TestTrimStrings extends TrimStrings
     {
-        function test()
+        public function test()
         {
             expect($this->except)
                 ->toHaveCount(3)
