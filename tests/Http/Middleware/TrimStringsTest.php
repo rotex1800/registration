@@ -59,3 +59,22 @@ it('does not trim current_password', function () {
         }
     );
 });
+
+it('expects all these inputs', function () {
+    class TestTrimStrings extends TrimStrings
+    {
+        public function test()
+        {
+            expect($this->except)
+                ->toHaveCount(3)
+                ->toContain(
+                    'current_password',
+                    'password',
+                    'password_confirmation'
+                );
+        }
+    }
+
+    $cut = new TestTrimStrings();
+    $cut->test();
+});
