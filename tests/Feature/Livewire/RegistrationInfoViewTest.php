@@ -317,5 +317,12 @@ it('shows and hides navigation based on current position', function () {
         ->call('goToNext')
         ->assertSee([__('registrations.previous')])
         ->assertDontSee([__('registrations.next')])
-        ->assertMethodNotWired('goToNext');
+        ->assertMethodNotWired('goToNext')
+        ->call('goToPrevious')
+        ->assertSee([
+            __('registrations.next'),
+            __('registrations.previous'),
+        ])
+        ->assertMethodWired('goToNext')
+        ->assertMethodWired('goToPrevious');
 });
