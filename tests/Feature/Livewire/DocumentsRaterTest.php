@@ -7,7 +7,10 @@ use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
+use ErrorException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 
@@ -169,6 +172,59 @@ it('does not crash declining for missing document', function () {
             ->call('decline')
             ->assertStatus(200);
 });
+
+it('downloads documents if a path is present', function () {
+    // Arrange
+    $user = User::factory()->create();
+
+    $category = DocumentCategory::Rules;
+    $fileName = $category->name.'.jpg';
+    $fakeImage = UploadedFile::fake()->image($fileName);
+    $path = 'documents/'.$this->user->uuid;
+
+    Storage::fake();
+    $actualPath = Storage::disk()->putFileAs($path, $fakeImage, $fileName);
+
+    $document = Document::factory([
+        'category' => $category,
+        'path' => $actualPath,
+    ])->make();
+    $user->documents()->save($document);
+
+    // Act & Assert
+    $component = Livewire::test('documents-rater', [
+        'user' => $user,
+        'category' => $category,
+    ])
+                         ->call('download')
+                         ->assertFileDownloaded();
+
+    $response = json_decode($component->lastResponse->content())
+        ->effects
+        ->download;
+    expect($response)
+        ->name->toContain(strtolower($user->first_name))
+              ->toContain(strtolower($user->family_name))
+              ->toContain(strtolower($category->displayName()))
+        ->content->not->toBeEmpty()
+        ->contentType->toBe('image/jpeg');
+});
+
+it('does not download document without a path', function () {
+    // Arrange
+    $user = User::factory()->create();
+    $category = DocumentCategory::Rules;
+
+    // Act & Assert
+    $component = Livewire::test('documents-rater', [
+        'user' => $user,
+        'category' => $category,
+    ])->call('download');
+
+    $response = json_decode($component->lastResponse->content())
+        ->effects;
+    expect($response->download);
+})->throws(ErrorException::class, 'Undefined property: stdClass::$download');
 
 // SECTION START: Comments
 it('has save comment method wired', function () {
