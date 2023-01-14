@@ -136,6 +136,7 @@ class EventRegistration extends Component
         'comment.body' => self::NULLABLE,
 
         'additionalInfo.tshirt_size' => self::NULLABLE_CLOTHES_SIZE,
+        'additionalInfo.allergies' => self::NULLABLE,
         'additionalInfo.diet' => self::NULLABLE,
     ];
 

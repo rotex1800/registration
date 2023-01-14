@@ -18,10 +18,10 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
+use ValueError;
 use function Pest\Laravel\actingAs;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use ValueError;
 
 uses(RefreshDatabase::class);
 
@@ -335,8 +335,8 @@ it('has passport inputs bound to component', function () {
 });
 
 /**
- * @param  TestableLivewire  $component
- * @param  string  $property
+ * @param TestableLivewire $component
+ * @param string $property
  * @param    $update_value
  * @return void
  */
@@ -877,13 +877,22 @@ it('saves diet information', function () {
     Livewire::test('event-registration', [
         'event' => $this->event
     ])
-        ->set('additionalInfo.diet', 'Vegan')
-        ->assertHasNoErrors()
-    ;
+            ->set('additionalInfo.diet', 'Vegan')
+            ->assertHasNoErrors();
+});
+
+it('saves allergies information', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test('event-registration', [
+        'event' => $this->event
+    ])
+            ->set('additionalInfo.allergies', 'Ibuprofen')
+            ->assertHasNoErrors();
 });
 
 /**
- * @param  TestableLivewire  $component
+ * @param TestableLivewire $component
  * @param $headlineKey
  * @param $removingProperty
  * @return void
