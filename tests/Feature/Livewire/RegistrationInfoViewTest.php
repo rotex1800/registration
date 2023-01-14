@@ -280,7 +280,6 @@ it('falls back to empty collection for no attendees', function () {
         ->toHaveCount(0);
 });
 
-
 it('shows and hides navigation based on current position', function () {
     createUserWithRole('rotex');
     $event = Event::factory()->create();
@@ -303,22 +302,36 @@ it('shows and hides navigation based on current position', function () {
 
     $component
         ->assertSee([__('registrations.selected')])
+
+        // Assert first position
         ->assertSee([__('registrations.next')])
         ->assertDontSee([__('registrations.previous')])
         ->assertMethodNotWired('goToPrevious')
         ->assertMethodWired('goToNext')
+
+        // Navigate forward
         ->call('goToNext')
+
+        // Assert middle position
         ->assertSee([
             __('registrations.next'),
             __('registrations.previous'),
         ])
         ->assertMethodWired('goToNext')
         ->assertMethodWired('goToPrevious')
+
+        // Navigate forward
         ->call('goToNext')
+
+        // Assert last position
         ->assertSee([__('registrations.previous')])
         ->assertDontSee([__('registrations.next')])
         ->assertMethodNotWired('goToNext')
+
+        // Navigate backward
         ->call('goToPrevious')
+
+        // Assert middle position
         ->assertSee([
             __('registrations.next'),
             __('registrations.previous'),
