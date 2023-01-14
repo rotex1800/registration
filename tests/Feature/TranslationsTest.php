@@ -22,7 +22,7 @@ it('Overrides Password Reset Mail text in german', function () {
                                        ->and(Lang::get('signup.new-password'))->toBe('Neues Passwort')
                                        ->and(Lang::get('signup.new-password-confirmation'))->toBe('Neues Passwort wiederholen')
                                        ->and(Lang::get('You are receiving this email because we received a password reset request for your account.'))
-                                       ->toBe('Du erhältst diese E-Mail weil ein Passwort-Reset für deinen Account angefrafgt wurde.')
+                                       ->toBe('Du erhältst diese E-Mail weil ein Passwort-Reset für deinen Account angefragt wurde.')
                                        ->and(Lang::get('Reset Password'))
                                        ->toBe('Passwort zurücksetzen')
                                        ->and(Lang::get('If you did not request a password reset, no further action is required.'))
