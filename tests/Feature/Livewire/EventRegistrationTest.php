@@ -287,6 +287,8 @@ it('has user inputs bound to component', function () {
         ->assertPropertyWired('user.gender')
         ->assertPropertyWired('user.mobile_phone')
         ->assertPropertyWired('user.health_issues')
+        ->assertPropertyWired('additionalInfo.allergies')
+        ->assertPropertyWired('additionalInfo.diet')
         ->set('user.first_name', $fakeFirstName)
         ->set('user.family_name', $fakeLastName)
         ->set('user.gender', $fakeGender)
@@ -867,6 +869,17 @@ test('Tshirt Size validation allows null', function () {
 test('TShirt size validation allows all ClothesSize cases', function () {
     expect(EventRegistration::NULLABLE_CLOTHES_SIZE)
         ->toContain(ClothesSize::inEnumCasesValidationString());
+});
+
+it('saves diet information', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test('event-registration', [
+        'event' => $this->event
+    ])
+        ->set('additionalInfo.diet', 'Vegan')
+        ->assertHasNoErrors()
+    ;
 });
 
 /**

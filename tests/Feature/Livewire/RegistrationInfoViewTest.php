@@ -122,6 +122,7 @@ it('shows attributes of currently selected attendee', function () {
                 __('registration.mobile_phone').': '.$firstAttendee->mobile_phone,
                 __('registration.tshirt-size').': '.$firstAttendee->additionalInfo->tshirt_size->displayName(),
                 __('registration.allergies').': '.$firstAttendee->additionalInfo->allergies,
+                __('registration.diet').': '.$firstAttendee->additionalInfo->diet,
                 __('registration.health_issues').': '.$firstAttendee->health_issues,
 
                 __('registration.passport'),
@@ -193,6 +194,7 @@ it('can handle user properties being null', function () {
         __('registration.mobile_phone').': --',
         __('registration.tshirt-size').': --',
         __('registration.allergies').': --',
+        __('registration.diet').': --',
         __('registration.health_issues').': --',
         __('registration.passport-number').': --',
         __('registration.nationality').': --',
