@@ -19,14 +19,18 @@ beforeEach(function () {
 });
 
 it('can render', function () {
+    $payment = Payment::factory(['amount' => 123])->make();
+    $this->payer->payments()->save($payment);
+    $this->event->payments()->save($payment);
+
     Livewire::test('add-payment', [
         'event' => $this->event,
         'payer' => $this->payer,
     ])
             ->assertStatus(200)
             ->assertSee([
-                $this->event->name,
-                $this->payer->comment_display_name,
+                __('Summe'),
+                123,
             ]);
 });
 
@@ -122,4 +126,42 @@ it('clears input after adding payment', function () {
                       ->get('amount');
 
     assertEquals(null, $actual);
+});
+
+it('allows payment string to contain comma', function () {
+    $actor = createUserWithRole('rotex');
+    Livewire::actingAs($actor);
+    Livewire::test('add-payment', [
+        'payer' => $this->payer,
+        'event' => $this->event,
+    ])
+            ->set('amount', '1,23')
+            ->assertHasNoErrors()
+            ->call('addPayment')
+            ->assertHasNoErrors();
+    assertDatabaseHas('payments', [
+        'amount' => 1.23,
+    ]);
+});
+
+it('allows exactly one decimal marker in payment amount', function () {
+    $actor = createUserWithRole('rotex');
+    Livewire::actingAs($actor);
+    Livewire::test('add-payment', [
+        'payer' => $this->payer,
+        'event' => $this->event,
+    ])
+            ->assertStatus(200)
+            ->assertHasNoErrors()
+            ->set('amount', 'Hallo')
+            ->assertHasErrors()
+            ->set('amount', '32,1,2')
+            ->assertHasErrors('amount')
+            ->assertSee([
+                __('validation.numeric', ['attribute' => __('validation.attributes.amount')]),
+            ])
+            ->set('amount', '12,0')
+            ->assertHasNoErrors()
+            ->set('amount', '32.1.2')
+            ->assertHasErrors('amount');
 });

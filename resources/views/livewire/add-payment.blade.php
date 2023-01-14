@@ -1,9 +1,14 @@
 <div>
     <p>Summe: {{ $sum }}</p>
-    <p>{{ $event->name }}</p>
-    <p>{{ $payer->comment_display_name }}</p>
+    <div>
+        @error('amount')
+        <div class="text-red-500">{{ $message }}</div>
+        @enderror
+    </div>
     <div class="flex flex-row w-full mt-2">
+
         <input type="text"
+               id="amount"
                placeholder="{{ __('payment.amount') }}"
                class="block w-auto grow rounded-lg"
                wire:model.debounce.500ms="amount"
