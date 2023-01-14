@@ -25,6 +25,47 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.10.0](https://github.com/rotex1800/registration/compare/v1.9.0...v1.10.0) (2023-01-14)
+
+
+### Features
+
+* Add Diet field ([#296](https://github.com/rotex1800/registration/issues/296)) ([ad117c7](https://github.com/rotex1800/registration/commit/ad117c7e7a76f9c40931054c7c914d45d98131df))
+
+
+### Bug Fixes
+
+* Allow commas in payment ([#299](https://github.com/rotex1800/registration/issues/299)) ([842e459](https://github.com/rotex1800/registration/commit/842e4598345eb3ffab6c6d60e3c81c450ec2acad))
+
+
+### Miscellaneous Chores
+
+* Add test for download of documents ([f1903de](https://github.com/rotex1800/registration/commit/f1903de8eadf685edebc1ffde4237eb799471203))
+* Add test for download of documents ([#298](https://github.com/rotex1800/registration/issues/298)) ([a0ed863](https://github.com/rotex1800/registration/commit/a0ed8637d80e441a4ec1624816fb863eb54e9346))
+* add test for inputs excluded from TrimStrings.php ([6ff2199](https://github.com/rotex1800/registration/commit/6ff2199b7eccc3bf9616423d645f2158880bbc24))
+* add test for inputs excluded from TrimStrings.php ([#297](https://github.com/rotex1800/registration/issues/297)) ([7a7bdb5](https://github.com/rotex1800/registration/commit/7a7bdb56f813cca96727c963644968f2b30ead8e))
+* add test for no attendees in event ([c14b71a](https://github.com/rotex1800/registration/commit/c14b71a4079a41791c10da05547f7cbf06472bb8))
+* **deps:** bump laravel/dusk from 7.3.0 to 7.4.0 ([693e4a8](https://github.com/rotex1800/registration/commit/693e4a8d4d77b3917ede396a9b0ee74ef8eeaabe))
+* **deps:** bump laravel/dusk from 7.3.0 to 7.4.0 ([#287](https://github.com/rotex1800/registration/issues/287)) ([66cc92a](https://github.com/rotex1800/registration/commit/66cc92a8ab9cab567d87656a1e3ba576429903d7))
+* **deps:** bump laravel/fortify from 1.15.0 to 1.16.0 ([6fee29d](https://github.com/rotex1800/registration/commit/6fee29d93cfe75a34502cfb2b1fb457561cb8278))
+* **deps:** bump laravel/fortify from 1.15.0 to 1.16.0 ([#294](https://github.com/rotex1800/registration/issues/294)) ([42784da](https://github.com/rotex1800/registration/commit/42784da4f4346c337a99b12d0df468f8be6b88ef))
+* **deps:** bump laravel/pint from 1.3.0 to 1.4.0 ([ef53866](https://github.com/rotex1800/registration/commit/ef5386600849246f852b87f3b94e36da106fdcdd))
+* **deps:** bump laravel/pint from 1.3.0 to 1.4.0 ([#291](https://github.com/rotex1800/registration/issues/291)) ([d5572d8](https://github.com/rotex1800/registration/commit/d5572d828f7048304789043135f4a05e0a47287d))
+* **deps:** bump laravel/sail from 1.17.0 to 1.18.0 ([2c6c612](https://github.com/rotex1800/registration/commit/2c6c612c07f5e4f1639095bca460d5b30eb93b13))
+* **deps:** bump laravel/sail from 1.17.0 to 1.18.0 ([#289](https://github.com/rotex1800/registration/issues/289)) ([a073164](https://github.com/rotex1800/registration/commit/a073164fffe612014153de9c7deb327ab2eb2786))
+* **deps:** bump laravel/tinker from 2.7.3 to 2.8.0 ([6f435ea](https://github.com/rotex1800/registration/commit/6f435ea9c344133406930f110b91285b8c213d69))
+* **deps:** bump laravel/tinker from 2.7.3 to 2.8.0 ([#288](https://github.com/rotex1800/registration/issues/288)) ([f746de4](https://github.com/rotex1800/registration/commit/f746de4cbe45469a0b31015903885f6d53fb3ac4))
+* **deps:** bump nunomaduro/larastan from 2.3.4 to 2.3.5 ([d9efc13](https://github.com/rotex1800/registration/commit/d9efc13e987190ba8716932121eac7cbb51cfed0))
+* **deps:** bump nunomaduro/larastan from 2.3.4 to 2.3.5 ([#290](https://github.com/rotex1800/registration/issues/290)) ([38bd483](https://github.com/rotex1800/registration/commit/38bd4834a769bc44ecd68629e221cbd6698fb04b))
+* **deps:** bump nunomaduro/larastan from 2.3.5 to 2.4.0 ([830a104](https://github.com/rotex1800/registration/commit/830a1043b7a9585bf8ba81fa23db88150acac814))
+* **deps:** bump nunomaduro/larastan from 2.3.5 to 2.4.0 ([#293](https://github.com/rotex1800/registration/issues/293)) ([31e2de8](https://github.com/rotex1800/registration/commit/31e2de8497ce58d5aba3b90c46e10cdcbeb2b781))
+* **deps:** bump pestphp/pest-plugin-laravel from 1.3.0 to 1.4.0 ([3e525f0](https://github.com/rotex1800/registration/commit/3e525f0f65c94438ecbcaaa65c370c3f0167e423))
+* **deps:** bump pestphp/pest-plugin-laravel from 1.3.0 to 1.4.0 ([#295](https://github.com/rotex1800/registration/issues/295)) ([2c65224](https://github.com/rotex1800/registration/commit/2c65224d1cc2ccc68ff1d672c3f0a9e001545285))
+* fix typo in password reset email ([270cc46](https://github.com/rotex1800/registration/commit/270cc46daa27f48e25050da296c8715363556518))
+* Improve coverage ([#300](https://github.com/rotex1800/registration/issues/300)) ([9ebd65e](https://github.com/rotex1800/registration/commit/9ebd65e3d2c6d032e6db4ef3e6e66f76284768ab))
+* Improve coverage on registration info navigation ([e0f78fb](https://github.com/rotex1800/registration/commit/e0f78fb6186f6184f3e78e36810e11e7036008bc))
+* remove unused override of method ([71f321f](https://github.com/rotex1800/registration/commit/71f321f0ac39cfa9ad8e403acda5dae80aeda231))
+
 ## [1.9.0](https://github.com/rotex1800/registration/compare/v1.8.11...v1.9.0) (2023-01-10)
 
 
