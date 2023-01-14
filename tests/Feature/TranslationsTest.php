@@ -30,3 +30,7 @@ it('Overrides Password Reset Mail text in german', function () {
                                        ->and(Lang::get('This password reset link will expire in :count minutes.'))
                                        ->toBe('Dieser Reset Link wird in :count Minuten ablaufen.');
 });
+
+it('Overrides validation messages in german', function () {
+    expect(Lang::get('validation.numeric'))->toBe('Der :attribute muss eine Zahl sein.');
+});

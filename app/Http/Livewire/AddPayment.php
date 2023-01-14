@@ -18,19 +18,32 @@ class AddPayment extends Component
 
     public Event $event;
 
-    public ?float $amount = null;
+    public ?string $amount = null;
+
+    /**
+     * @var array|string[]
+     */
+    protected array $rules = [
+        'amount' => 'nullable|numeric',
+    ];
 
     public function render(): Factory|View|Application
     {
         $paymentSum = Payment::whereEventId($this->event->id)
-                           ->whereUserId($this->payer->id)
-                           ->sum('amount');
+                             ->whereUserId($this->payer->id)
+                             ->sum('amount');
 
         return view('livewire.add-payment', [
             'payer' => $this->payer,
             'event' => $this->event,
             'sum' => $paymentSum,
         ]);
+    }
+
+    public function updatedAmount(): void
+    {
+        $this->amount = str_replace(',', '.', $this->amount ?? '');
+        $this->validateOnly('amount');
     }
 
     public function addPayment(PaymentPolicy $policy): void
