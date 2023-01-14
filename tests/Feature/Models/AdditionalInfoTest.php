@@ -29,7 +29,7 @@ it('has allergies column', function () {
 });
 
 it('has diet information', function () {
-   $info = AdditionalInfo::factory()->make();
-   expect($info->diet)
-       ->toBeString();
+    $info = AdditionalInfo::factory()->make();
+    expect($info->diet)
+        ->toBeString();
 });

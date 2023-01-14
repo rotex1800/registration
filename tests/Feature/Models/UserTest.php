@@ -21,10 +21,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Ramsey\Uuid\Uuid;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
+use Ramsey\Uuid\Uuid;
 
 uses(RefreshDatabase::class);
 
@@ -581,8 +581,8 @@ test('state for all documents is declined if at least one is declined', function
 });
 
 /**
- * @param DocumentState[] $states
- * @param DocumentState $expectedOverallState
+ * @param  DocumentState[]  $states
+ * @param  DocumentState  $expectedOverallState
  * @return void
  */
 function checkOverallStateFor(array $states, DocumentState $expectedOverallState): void
@@ -593,7 +593,7 @@ function checkOverallStateFor(array $states, DocumentState $expectedOverallState
     expect(count($categories))->toBe(count($states));
     $docs = Document::factory()
                     ->count(count($categories))
-                    ->sequence(fn($sequence) => [
+                    ->sequence(fn ($sequence) => [
                         'category' => $categories[$sequence->index],
                         'state' => $states[$sequence->index],
                     ])
