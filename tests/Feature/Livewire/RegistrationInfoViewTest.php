@@ -13,6 +13,7 @@ use App\Models\RotaryInfo;
 use App\Models\User;
 use App\Models\YeoInfo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Collection;
 use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 
@@ -255,6 +256,30 @@ it('updates the current attendee when updating the current attendee id', functio
     expect($component->get('currentAttendee'))
         ->toBeSameEntityAs($secondAttendee);
 });
+
+it('falls back to empty collection for no attendees', function () {
+    $attendees = User::factory()->count(2)->create();
+    $firstAttendee = $attendees[0];
+    $secondAttendee = $attendees[1];
+    $event = Event::factory()->create();
+
+    $component = Livewire::test('registration-info-view', [
+        'attendees' => $attendees,
+        'event' => $event,
+    ]);
+    $attendees = $component
+        ->assertOk()
+        ->get('attendees');
+
+    $currentAttendee = $component
+        ->assertOk()
+        ->get('currentAttendee');
+    expect($currentAttendee)->toBeNull();
+    expect($attendees)
+        ->toBeInstanceOf(Collection::class)
+        ->toHaveCount(0);
+});
+
 
 it('shows and hides navigation based on current position', function () {
     createUserWithRole('rotex');
