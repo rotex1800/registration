@@ -39,6 +39,7 @@
             <div>{{ __('registration.mobile_phone').': '.($currentAttendee?->mobile_phone ?: '--') }}</div>
             <div>{{ __('registration.tshirt-size').': '.($currentAttendee?->additionalInfo?->tshirt_size->displayName() ?: '--') }}</div>
             <div>{{ __('registration.allergies').': '.($currentAttendee?->additionalInfo?->allergies ?: '--') }}</div>
+            <div>{{ __('registration.diet').': '.($currentAttendee?->additionalInfo?->diet ?: '--') }}</div>
             <div>{{ __('registration.health_issues').': '.($currentAttendee?->health_issues ?: '--') }}</div>
         </div>
         <div>

@@ -19,6 +19,7 @@ return [
     'passport' => 'Reisepass',
     'tshirt-size' => 'T-Shirt Größe',
     'allergies' => 'Allergien',
+    'diet' => 'Ernährung',
     'passport-explanation' => 'Wenn du keinen Reisepass hast, sondern dich stattdessen mit einem anderen
      Ausweisdokument in Deutschland ausweist, kannst du natürlich auch dieses hier eintragen.',
     'nationality' => 'Nationalität',

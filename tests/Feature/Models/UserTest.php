@@ -514,6 +514,16 @@ test('short name works for "Ab-cbe  Fghijk"', function () {
         ->toMatch('/AF-\d{4}/');
 });
 
+it('has additional info', function () {
+    $user = User::factory()
+                ->has(AdditionalInfo::factory())
+                ->create();
+    expect($user->additionalInfo())
+        ->toBeInstanceOf(HasOne::class)
+        ->and($user->additionalInfo)
+        ->toBeInstanceOf(AdditionalInfo::class);
+});
+
 test('state for all documents is approved if all are approved', function () {
     checkOverallStateFor([
         DocumentState::Approved,

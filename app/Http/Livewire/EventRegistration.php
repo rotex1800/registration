@@ -134,7 +134,10 @@ class EventRegistration extends Component
         'hostFamilyThree.phone' => self::NULLABLE,
 
         'comment.body' => self::NULLABLE,
+
         'additionalInfo.tshirt_size' => self::NULLABLE_CLOTHES_SIZE,
+        'additionalInfo.allergies' => self::NULLABLE,
+        'additionalInfo.diet' => self::NULLABLE,
     ];
 
     public function mount(): void

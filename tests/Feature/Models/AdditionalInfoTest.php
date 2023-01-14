@@ -27,3 +27,9 @@ it('has allergies column', function () {
     expect($info->allergies)
         ->toBeString();
 });
+
+it('has diet information', function () {
+    $info = AdditionalInfo::factory()->make();
+    expect($info->diet)
+        ->toBeString();
+});

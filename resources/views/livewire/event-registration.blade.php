@@ -78,6 +78,9 @@
                 <div><label for="allergies">{{ __('registration.allergies') }}</label></div>
                 <input class="rounded" type="text" id="allergies" wire:model.debounce.500ms="additionalInfo.allergies">
 
+                <div><label for="diet">{{ __('registration.diet') }}</label></div>
+                <input class="rounded" type="text" id="diet" wire:model.debounce.500ms="additionalInfo.diet">
+
                 <label for="health-issues">{{ __('registration.health_issues') }}</label>
                 <textarea class="rounded min-h-40" id="health-issues"
                           wire:model.debounce.500ms="user.health_issues"></textarea>
