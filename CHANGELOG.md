@@ -25,6 +25,24 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.11.0](https://github.com/rotex1800/registration/compare/v1.10.1...v1.11.0) (2023-01-17)
+
+
+### Features
+
+* Include sum of payments for event in export ([10cd78d](https://github.com/rotex1800/registration/commit/10cd78d818b28598744da4e5fa4751f427585309))
+
+
+### Bug Fixes
+
+* Include additional info in export ([9538e97](https://github.com/rotex1800/registration/commit/9538e97e04cc3649a31e39597981d81cca6896e8))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump phpunit/phpunit from 9.5.27 to 9.5.28 ([903a898](https://github.com/rotex1800/registration/commit/903a8982e6da2857b38eb4f9f36af4bb2fbedef0))
+* **deps:** bump phpunit/phpunit from 9.5.27 to 9.5.28 ([#303](https://github.com/rotex1800/registration/issues/303)) ([2e2e4c7](https://github.com/rotex1800/registration/commit/2e2e4c7121683c4b1cda75eaa304912f17f5bcb3))
+
 ## [1.10.1](https://github.com/rotex1800/registration/compare/v1.10.0...v1.10.1) (2023-01-16)
 
 
