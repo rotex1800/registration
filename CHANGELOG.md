@@ -25,6 +25,14 @@
 
 **Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
 
+## [1.11.1](https://github.com/rotex1800/registration/compare/v1.11.0...v1.11.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* use T-Shirt Size Displayname for export ([311efd5](https://github.com/rotex1800/registration/commit/311efd5e39ec7cdcaeb7397d950999546258b2dc))
+* Use T-Shirt Size Displayname for export ([#308](https://github.com/rotex1800/registration/issues/308)) ([69a2f97](https://github.com/rotex1800/registration/commit/69a2f97a52eb3237b90fb7756ebf58129a3c0113))
+
 ## [1.11.0](https://github.com/rotex1800/registration/compare/v1.10.1...v1.11.0) (2023-01-17)
 
 
