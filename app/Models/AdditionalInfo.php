@@ -34,6 +34,10 @@ use Illuminate\Support\Carbon;
  * @property string|null $allergies
  *
  * @method static Builder|AdditionalInfo whereAllergies($value)
+ *
+ * @property string $diet
+ *
+ * @method static Builder|AdditionalInfo whereDiet($value)
  */
 class AdditionalInfo extends Model
 {

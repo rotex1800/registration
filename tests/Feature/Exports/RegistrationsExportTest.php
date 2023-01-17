@@ -1,6 +1,7 @@
 <?php
 
 use App\Exports\RegistrationsExport;
+use App\Models\AdditionalInfo;
 use App\Models\BioFamily;
 use App\Models\CounselorInfo;
 use App\Models\Event;
@@ -35,6 +36,8 @@ it('contains expected columns', function () {
     $user->hostFamilies()->save(HostFamily::factory()->nth(2)->make());
     $user->hostFamilies()->save(HostFamily::factory()->nth(3)->make());
 
+    $user->additionalInfo()->save(AdditionalInfo::factory()->make());
+
     $event->attendees()->save($user);
 
     $export = new RegistrationsExport($event);
@@ -49,6 +52,9 @@ it('contains expected columns', function () {
             $user->gender,
             $user->email,
             $user->mobile_phone,
+            $user->additionalInfo?->tshirt_size ?? '',
+            $user->additionalInfo?->diet ?? '',
+            $user->additionalInfo?->allergies ?? '',
             $user->health_issues,
             $user->passport?->nationality ?? '',
             $user->passport?->passport_number ?? '',
@@ -96,6 +102,11 @@ it('contains expected headings', function () {
             'Geschlecht',
             'E-Mail',
             'Handy',
+            'T-Shirt',
+            'Ernährung',
+            'Allergien',
+            // TODO: Add address for bio family
+//        ->toContain($user->bioFamily->address)
             'Gesundheitliche Probleme',
             'Nationalität',
             'Passnummer',
