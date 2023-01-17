@@ -29,9 +29,7 @@ class AddPayment extends Component
 
     public function render(): Factory|View|Application
     {
-        $paymentSum = Payment::whereEventId($this->event->id)
-                             ->whereUserId($this->payer->id)
-                             ->sum('amount');
+        $paymentSum = $this->payer->sumPaidFor($this->event);
 
         return view('livewire.add-payment', [
             'payer' => $this->payer,

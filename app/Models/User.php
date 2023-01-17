@@ -125,6 +125,8 @@ use Illuminate\Support\Carbon;
  * @property-read AdditionalInfo|null $additionalInfo
  * @property-read string $comment_display_name
  * @property-read string $short_name
+ * @property-read Collection|Payment[] $payments
+ * @property-read int|null $payments_count
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -409,5 +411,14 @@ class User extends Authenticatable implements MustVerifyEmail
         $docStates = DocumentState::sort($docStates);
 
         return $docStates[0];
+    }
+
+    public function sumPaidFor(Event $event): float
+    {
+        $sum = Payment::whereEventId($event->id)
+                      ->whereUserId($this->id)
+                      ->sum('amount');
+
+        return floatval($sum);
     }
 }

@@ -41,6 +41,8 @@ use Illuminate\Support\Carbon;
  * @mixin Eloquent
  *
  * @property-read string $short_name
+ * @property-read Collection|\App\Models\Payment[] $payments
+ * @property-read int|null $payments_count
  */
 class Event extends Model
 {

@@ -63,9 +63,13 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
             'Nachname',
             'Referenznummer',
             'Geburtstag',
+            'Summe bezahlt',
             'Geschlecht',
             'E-Mail',
             'Handy',
+            'T-Shirt',
+            'Ernährung',
+            'Allergien',
             'Gesundheitliche Probleme',
             'Nationalität',
             'Passnummer',
@@ -89,18 +93,15 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
             'Gastfamilie 1 Name',
             'Gastfamlilie 1 E-Mail',
             'Gastfamilie 1 Telefon',
-            // TODO: Addresse
-            //            "Gastfamilie 1 Adresse",
+            'Gastfamilie 1 Adresse',
             'Gastfamilie 2 Name',
             'Gastfamilie 2 E-Mail',
             'Gastfamilie 2 Telefon',
-            // TODO: Addresse
-            //            "Gastfamilie 2 Adresse",
+            'Gastfamilie 2 Adresse',
             'Gastfamilie 3 Name',
             'Gastfamilie 3 E-Mail',
             'Gastfamilie 3 Telefon',
-            // TODO: Addresse
-            //            "Gastfamilie 3 Adresse",
+            'Gastfamilie 3 Adresse',
             'Kommentar',
         ];
     }
@@ -121,9 +122,13 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
                 $user->family_name,
                 $this->transferReferenceForUser($user),
                 $this->getExcelDate($user->birthday),
+                $user->sumPaidFor($this->event),
                 $user->gender,
                 $user->email,
                 $user->mobile_phone,
+                $user->additionalInfo?->tshirt_size,
+                $user->additionalInfo?->diet,
+                $user->additionalInfo?->allergies,
                 $user->health_issues,
 
                 $user->passport?->nationality ?? '',
@@ -154,18 +159,26 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
                 $user->firstHostFamily()->name,
                 $user->firstHostFamily()->phone,
                 $user->firstHostFamily()->email,
+                $user->firstHostFamily()->address,
 
                 $user->secondHostFamily()->name,
                 $user->secondHostFamily()->phone,
                 $user->secondHostFamily()->email,
+                $user->secondHostFamily()->address,
 
                 $user->thirdHostFamily()->name,
                 $user->thirdHostFamily()->phone,
                 $user->thirdHostFamily()->email,
+                $user->thirdHostFamily()->address,
 
                 $user->registrationComment?->body ?? '',
             ],
         ];
+    }
+
+    public function transferReferenceForUser(User $user): string
+    {
+        return $user->short_name;
     }
 
     /**
@@ -179,10 +192,5 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
         }
 
         return Date::dateTimeToExcel($date);
-    }
-
-    public function transferReferenceForUser(User $user): string
-    {
-        return $user->short_name;
     }
 }
