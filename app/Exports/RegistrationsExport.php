@@ -174,6 +174,11 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
         ];
     }
 
+    public function transferReferenceForUser(User $user): string
+    {
+        return $user->short_name;
+    }
+
     /**
      * @param  Carbon|null  $date
      * @return float|string
@@ -185,10 +190,5 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
         }
 
         return Date::dateTimeToExcel($date);
-    }
-
-    public function transferReferenceForUser(User $user): string
-    {
-        return $user->short_name;
     }
 }

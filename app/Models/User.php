@@ -125,6 +125,8 @@ use Illuminate\Support\Carbon;
  * @property-read AdditionalInfo|null $additionalInfo
  * @property-read string $comment_display_name
  * @property-read string $short_name
+ * @property-read Collection|\App\Models\Payment[] $payments
+ * @property-read int|null $payments_count
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
