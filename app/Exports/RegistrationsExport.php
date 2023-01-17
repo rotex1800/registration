@@ -126,7 +126,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
                 $user->gender,
                 $user->email,
                 $user->mobile_phone,
-                $user->additionalInfo?->tshirt_size,
+                $user->additionalInfo?->tshirt_size->displayName(),
                 $user->additionalInfo?->diet,
                 $user->additionalInfo?->allergies,
                 $user->health_issues,
