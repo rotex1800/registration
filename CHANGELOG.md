@@ -1,29 +1,11 @@
 # Changelog
 
-## What's Changed
-* chore: use github changelog by @paulschuberth in https://github.com/rotex1800/registration/pull/52
+## [1.11.1](https://github.com/rotex1800/registration/compare/v1.11.0...v1.11.1) (2023-01-17)
 
 
-**Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.0...v0.7.1
+### Bug Fixes
 
-## What's Changed
-* fix: inherit secrets to release worflow by @paulschuberth in https://github.com/rotex1800/registration/pull/54
-
-
-**Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.1...v0.7.2
-
-## What's Changed
-* feat: Add views for fortify's password reset by @paulschuberth in https://github.com/rotex1800/registration/pull/63
-* feat: allow rotex to review documents #57 by @paulschuberth in https://github.com/rotex1800/registration/pull/66
-
-
-**Full Changelog**: https://github.com/rotex1800/registration/compare/v0.7.2...v0.8.0
-
-## What's Changed
-* fix: Actually use workflow input to determine deployment target by @paulschuberth in https://github.com/rotex1800/registration/pull/67
-
-
-**Full Changelog**: https://github.com/rotex1800/registration/compare/v0.8.0...v0.8.1
+* Use T-Shirt Size Displayname for export ([#308](https://github.com/rotex1800/registration/issues/308)) ([69a2f97](https://github.com/rotex1800/registration/commit/69a2f97a52eb3237b90fb7756ebf58129a3c0113))
 
 ## [1.11.0](https://github.com/rotex1800/registration/compare/v1.10.1...v1.11.0) (2023-01-17)
 
