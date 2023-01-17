@@ -7,6 +7,7 @@ use App\Models\CounselorInfo;
 use App\Models\Event;
 use App\Models\HostFamily;
 use App\Models\Passport;
+use App\Models\Payment;
 use App\Models\RegistrationComment;
 use App\Models\User;
 use App\Models\YeoInfo;
@@ -19,8 +20,11 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 uses(RefreshDatabase::class);
 
 it('contains expected columns', function () {
+    $payment = Payment::factory()->make();
     $event = Event::factory()->create();
+    $event->payments()->save($payment);
     $user = User::factory()->create();
+    $user->payments()->save($payment);
 
     $user->yeo()->save(YeoInfo::factory()->make());
 
@@ -49,6 +53,7 @@ it('contains expected columns', function () {
             $user->family_name,
             $export->transferReferenceForUser($user),
             Date::dateTimeToExcel($user->birthday),
+            $user->sumPaidFor($event),
             $user->gender,
             $user->email,
             $user->mobile_phone,
@@ -102,6 +107,7 @@ it('contains expected headings', function () {
             'Nachname',
             'Referenznummer',
             'Geburtstag',
+            'Summe bezahlt',
             'Geschlecht',
             'E-Mail',
             'Handy',
