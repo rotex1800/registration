@@ -33,7 +33,10 @@ class RegistrationInfoView extends Component
 
     public function mount(): void
     {
-        $this->attendees = $this->event->attendees;
+        $this->attendees = $this
+            ->event
+            ->attendees
+            ->sortBy([['first_name', 'asc'], ['family_name', 'asc']]);
         if ($this->attendees != null && count($this->attendees) > 0) {
             $first = $this->attendees[0];
             $this->currentPosition = 0;

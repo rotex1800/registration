@@ -42,7 +42,9 @@ it('shows full names and overall state of all registered attendees in select', f
                      ->has(HostFamily::factory()->nth(1))
                      ->has(HostFamily::factory()->nth(2))
                      ->has(HostFamily::factory()->nth(3))
-                     ->create();
+                     ->create()
+                     ->sortBy([['first_name', 'asc'], ['family_name', 'asc']])
+                     ->values();
     $event->attendees()->saveMany($attendees);
 
     $fullNames = $attendees->map(function ($e) {
@@ -52,9 +54,8 @@ it('shows full names and overall state of all registered attendees in select', f
     Livewire::test('registration-info-view', [
         'attendees' => $attendees,
         'event' => $event,
-    ])->assertSee(
-        $fullNames,
-        escape: false);
+    ])
+        ->assertSeeInOrder($fullNames, false);
 });
 
 it('has attendee preselected', function () {
@@ -95,7 +96,9 @@ it('shows attributes of currently selected attendee', function () {
                      ->has(HostFamily::factory()->nth(2))
                      ->has(HostFamily::factory()->nth(3))
                      ->has(AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::S]))
-                     ->create();
+                     ->create()
+                     ->sortBy([['first_name', 'asc'], ['family_name', 'asc']])
+                     ->values();
     $firstAttendee = $attendees[0];
     assert($firstAttendee != null);
     assert($firstAttendee->birthday != null);
@@ -235,7 +238,11 @@ it('has current attendee wired', function () {
 });
 
 it('updates the current attendee when updating the current attendee id', function () {
-    $attendees = User::factory()->count(2)->create();
+    $attendees = User::factory()
+                     ->count(2)
+                     ->create()
+                     ->sortBy([['first_name', 'asc'], ['family_name', 'asc']])
+                     ->values();
     $firstAttendee = $attendees[0];
     $secondAttendee = $attendees[1];
     $event = Event::factory()->create();
@@ -292,7 +299,9 @@ it('shows and hides navigation based on current position', function () {
                      ->has(HostFamily::factory()->nth(1))
                      ->has(HostFamily::factory()->nth(2))
                      ->has(HostFamily::factory()->nth(3))
-                     ->create();
+                     ->create()
+                     ->sortBy([['first_name', 'asc'], ['family_name', 'asc']])
+                     ->values();
     $event->attendees()->saveMany($attendees);
 
     $component = Livewire::test('registration-info-view', [
