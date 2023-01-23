@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.11.2](https://github.com/rotex1800/registration/compare/v1.11.1...v1.11.2) (2023-01-23)
+
+
+### Bug Fixes
+
+* Sort attendees alphabetically ([#316](https://github.com/rotex1800/registration/issues/316)) ([0103a8c](https://github.com/rotex1800/registration/commit/0103a8c87f1bdb9ca24e16c0c3bcdbcc5d1fe9b8))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump @prettier/plugin-php from 0.19.2 to 0.19.3 ([0af2a0a](https://github.com/rotex1800/registration/commit/0af2a0ab92901f1580d6e37d747ee10660293649))
+* **deps:** bump @prettier/plugin-php from 0.19.2 to 0.19.3 ([#315](https://github.com/rotex1800/registration/issues/315)) ([fdbfc76](https://github.com/rotex1800/registration/commit/fdbfc763ded751ce51134403cd9e8ab3da01d26b))
+* **deps:** bump axios from 1.2.2 to 1.2.3 ([f191273](https://github.com/rotex1800/registration/commit/f1912732f6076ac9f5f36c1a4cc4d1bf55d0b66d))
+* **deps:** bump axios from 1.2.2 to 1.2.3 ([#312](https://github.com/rotex1800/registration/issues/312)) ([b291db5](https://github.com/rotex1800/registration/commit/b291db55292f9e9bfa1706daecf3c3b9fbf30fbf))
+* **deps:** bump brianium/paratest from 6.8.0 to 6.8.1 ([59721f4](https://github.com/rotex1800/registration/commit/59721f4bd70bcc767d715aa6f1a14746f826af48))
+* **deps:** bump brianium/paratest from 6.8.0 to 6.8.1 ([#313](https://github.com/rotex1800/registration/issues/313)) ([0ec8229](https://github.com/rotex1800/registration/commit/0ec8229c4b263a931991a639abe4cb555c850a58))
+* **deps:** bump laravel/sail from 1.18.0 to 1.18.1 ([0fa5dd1](https://github.com/rotex1800/registration/commit/0fa5dd1d376e0d29f957e0671315b7fb563d25b9))
+* **deps:** bump laravel/sail from 1.18.0 to 1.18.1 ([#311](https://github.com/rotex1800/registration/issues/311)) ([7e74880](https://github.com/rotex1800/registration/commit/7e748808e53392f4d12ec3129b73dcdd78c0add2))
+
 ## [1.11.1](https://github.com/rotex1800/registration/compare/v1.11.0...v1.11.1) (2023-01-17)
 
 
