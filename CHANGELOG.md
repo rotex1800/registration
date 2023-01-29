@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.11.3](https://github.com/rotex1800/registration/compare/v1.11.2...v1.11.3) (2023-01-29)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump `actions/checkout` to v3 ([f8346dd](https://github.com/rotex1800/registration/commit/f8346ddf77826dcf3f638093af6c8da50a34b3fc))
+* **deps:** bump axios from 1.2.3 to 1.2.4 ([9319062](https://github.com/rotex1800/registration/commit/9319062ed78086752e4b79f8adb5a5f41e8e4085))
+* **deps:** bump axios from 1.2.3 to 1.2.4 ([#317](https://github.com/rotex1800/registration/issues/317)) ([4ba7d7f](https://github.com/rotex1800/registration/commit/4ba7d7f73fbafe3a4baf13bd44bb6b3e7b775514))
+* **deps:** bump axios from 1.2.4 to 1.2.5 ([168aeab](https://github.com/rotex1800/registration/commit/168aeab3c6fdde386cbf40ad1e0d21bc097ec014))
+* **deps:** bump axios from 1.2.5 to 1.2.6 ([403e394](https://github.com/rotex1800/registration/commit/403e3944ce534eb26e481ae83c064f7fab9d9576))
+* **deps:** bump livewire/livewire from 2.11.0 to 2.11.1 ([8fe9a44](https://github.com/rotex1800/registration/commit/8fe9a44581a27c1ba067a449aaa87bcb505d31cc))
+* **deps:** bump maatwebsite/excel from 3.1.45 to 3.1.46 ([abee315](https://github.com/rotex1800/registration/commit/abee315852b9db962d3dcefd98de417ef55ee968))
+
 ## [1.11.2](https://github.com/rotex1800/registration/compare/v1.11.1...v1.11.2) (2023-01-23)
 
 
