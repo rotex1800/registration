@@ -170,7 +170,7 @@ jobs:
 
   deploy-into-sandbox:
     needs: [ dependency-review, actionlint, phpstan-linter, pint, scan-for-secrets, shellcheck, test, conventional-commits ]
-    if: ${{ github.ref_name == 'release-please--branches--main' }}
+    if: ${{ github.head_ref == 'release-please--branches--main' }}
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
     with:
