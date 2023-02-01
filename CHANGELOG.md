@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.11.4](https://github.com/rotex1800/registration/compare/v1.11.3...v1.11.4) (2023-02-01)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.2.6 to 1.3.0 ([02f4b82](https://github.com/rotex1800/registration/commit/02f4b82a491ecb056bf454822dbfe67548ec4868))
+* **deps:** bump laravel/dusk from 7.4.0 to 7.5.0 ([c974b63](https://github.com/rotex1800/registration/commit/c974b632d9b1aeb61724e1246f615ab17a4df696))
+* **deps:** bump laravel/framework from 9.48.0 to 9.49.0 ([ba01a69](https://github.com/rotex1800/registration/commit/ba01a6950c211f96315c26f0100ed4e7659365c1))
+* **deps:** bump laravel/pint from 1.4.0 to 1.4.1 ([6c1ef5d](https://github.com/rotex1800/registration/commit/6c1ef5d872764d6ac96682e41b28c7dc05a47897))
+* **deps:** bump laravel/sail from 1.18.1 to 1.19.0 ([2d18f0f](https://github.com/rotex1800/registration/commit/2d18f0fe1a2889f27c1f8113b1f12a867ebf8df2))
+* **deps:** bump livewire/livewire from 2.11.1 to 2.11.2 ([5682d8a](https://github.com/rotex1800/registration/commit/5682d8afc67ea0255da7ee08e27bee6ad1b48463))
+
 ## [1.11.3](https://github.com/rotex1800/registration/compare/v1.11.2...v1.11.3) (2023-01-29)
 
 
