@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.11.5](https://github.com/rotex1800/registration/compare/v1.11.4...v1.11.5) (2023-02-02)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/framework from 9.49.0 to 9.50.1 ([84b9ef9](https://github.com/rotex1800/registration/commit/84b9ef9d617cf3065755964aecd46e1b3192fdb7))
+* **deps:** bump symfony/http-kernel from 6.2.5 to 6.2.6 ([304a259](https://github.com/rotex1800/registration/commit/304a259610bd318ea9971a424e5b3eba5eedfd1c))
+
 ## [1.11.4](https://github.com/rotex1800/registration/compare/v1.11.3...v1.11.4) (2023-02-01)
 
 
