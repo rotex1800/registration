@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.11.6](https://github.com/rotex1800/registration/compare/v1.11.5...v1.11.6) (2023-02-04)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.3.0 to 1.3.2 ([3b2c431](https://github.com/rotex1800/registration/commit/3b2c431bb2281a248b1f6a0fe7524784c8721ea7))
+* **deps:** bump laravel/framework from 9.50.1 to 9.50.2 ([0bccb5d](https://github.com/rotex1800/registration/commit/0bccb5d8aa55accde0f92ef93326e8ab8a912828))
+* **deps:** bump pestphp/pest from 1.22.3 to 1.22.4 ([d5fdbd3](https://github.com/rotex1800/registration/commit/d5fdbd3eadf4d42c90727a02cfc8a50ef9fa3691))
+* **deps:** bump pestphp/pest-plugin-parallel from 1.2.0 to 1.2.1 ([b225a4d](https://github.com/rotex1800/registration/commit/b225a4d3b1511c44c3da00c30716be46cf5a64bb))
+* **deps:** bump vite from 4.0.4 to 4.1.1 ([505193c](https://github.com/rotex1800/registration/commit/505193c30f84d593faa4ef4cdbd471e8a8b093f2))
+
 ## [1.11.5](https://github.com/rotex1800/registration/compare/v1.11.4...v1.11.5) (2023-02-02)
 
 
