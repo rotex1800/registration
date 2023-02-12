@@ -5,7 +5,7 @@
         <select wire:model="currentPosition">
             @foreach($attendees as $index => $attendee)
                 <option
-                    value="{{ $index }}">{!! $attendee->overallDocumentState()->displayName().' '.$attendee->full_name !!}</option>
+                    value="{{ $index }}">{{ $attendee->overallDocumentState()->displayName().' '.$attendee->full_name }}</option>
             @endforeach
         </select>
     </label>
