@@ -17,7 +17,7 @@ class NotePolicy
     }
 
     /**
-     * @param Authenticatable|null $authenticatable
+     * @param  Authenticatable|null  $authenticatable
      * @return Response
      */
     private function allowAuthenticatedRotexUser(?Authenticatable $authenticatable): Response
@@ -38,5 +38,4 @@ class NotePolicy
     {
         return $this->allowAuthenticatedRotexUser($authenticatable);
     }
-
 }
