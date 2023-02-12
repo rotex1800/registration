@@ -112,3 +112,14 @@ it('contains component to add new payments', function () {
         ->assertOk()
         ->assertSeeLivewire('add-payment');
 });
+
+it('contains component to add new note', function () {
+    $user = createUserWithRole('rotex');
+    $event = Event::factory()->create();
+    $attendee = User::factory()->make();
+    $event->attendees()->save($attendee);
+    actingAs($user)
+        ->get('/registrations/1')
+        ->assertOk()
+        ->assertSeeLivewire('add-note');
+});

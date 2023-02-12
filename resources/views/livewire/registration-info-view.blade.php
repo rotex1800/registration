@@ -30,6 +30,8 @@
                     :event="$event"
                     wire:key="{{ $currentAttendee->id.'payment' }}"
                 />
+                <div class="mt-2 text-2xl">Notiz</div>
+                <livewire:add-note :attendee="$currentAttendee"/>
             @endif
         </div>
         <div>
