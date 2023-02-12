@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.12.0](https://github.com/rotex1800/registration/compare/v1.11.6...v1.12.0) (2023-02-12)
+
+
+### Features
+
+* Add note to export ([fc6793f](https://github.com/rotex1800/registration/commit/fc6793fe453538a270cf2c259b7b1f2e8ac712ae))
+* Add Notes input to RegistrationInfoView ([92d03e6](https://github.com/rotex1800/registration/commit/92d03e6079d3e6e0b92abe4126230839cfbc319d))
+
+
+### Bug Fixes
+
+* crash when accessing RegistrationInfoView for attendee without tshirt size ([eed311f](https://github.com/rotex1800/registration/commit/eed311f71c78ce213a75de0a1a1ba372aa2495c3))
+
+
+### Miscellaneous Chores
+
+* **check:** Disable checks that don't support `merge_group` event ([abd3c68](https://github.com/rotex1800/registration/commit/abd3c68cdc74d08f1daf83692b992576c7b7ffda))
+* **deps:** bump barryvdh/laravel-ide-helper from 2.12.3 to 2.13.0 ([a1f4a46](https://github.com/rotex1800/registration/commit/a1f4a4623230be1acb1875f3cd14097d381a56b6))
+* **deps:** bump brianium/paratest from 6.8.1 to 6.9.0 ([7609865](https://github.com/rotex1800/registration/commit/760986501d62436ce9e183f4c3c4d5ebea107639))
+* **deps:** bump laravel-vite-plugin from 0.7.3 to 0.7.4 ([f39373d](https://github.com/rotex1800/registration/commit/f39373d8bc08eca675a675940467de9808c41b2e))
+* **deps:** bump laravel/dusk from 7.5.0 to 7.6.0 ([5bab9fb](https://github.com/rotex1800/registration/commit/5bab9fbce90c2b7a31a70f29b8ae414a734f6150))
+* **deps:** bump laravel/sail from 1.19.0 to 1.20.1 ([396ff45](https://github.com/rotex1800/registration/commit/396ff45f055c575469b5d916b52cddb0a0eabc28))
+* **deps:** bump prettier from 2.8.3 to 2.8.4 ([c51ab23](https://github.com/rotex1800/registration/commit/c51ab23c5f4c096b4b1f8a4421c6e8148509b717))
+* **deps:** bump tailwindcss from 3.2.4 to 3.2.6 ([05d68bf](https://github.com/rotex1800/registration/commit/05d68bf14173bb8cccd37dd79d981e0d657b6a16))
+* stabilize test ([0178ca2](https://github.com/rotex1800/registration/commit/0178ca2de275ccb7382076fcb39ff9f786045a17))
+
 ## [1.11.6](https://github.com/rotex1800/registration/compare/v1.11.5...v1.11.6) (2023-02-04)
 
 
