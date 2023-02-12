@@ -36,9 +36,10 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
     public function columnFormats(): array
     {
         return [
-            'C' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'J' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'K' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'D' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'I' => NumberFormat::FORMAT_TEXT,
+            'O' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'P' => NumberFormat::FORMAT_DATE_DDMMYYYY,
         ];
     }
 
@@ -64,6 +65,7 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
             'Referenznummer',
             'Geburtstag',
             'Summe bezahlt',
+            'Notiz',
             'Geschlecht',
             'E-Mail',
             'Handy',
@@ -123,10 +125,11 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
                 $this->transferReferenceForUser($user),
                 $this->getExcelDate($user->birthday),
                 $user->sumPaidFor($this->event),
+                $user->additionalInfo?->note,
                 $user->gender,
                 $user->email,
                 $user->mobile_phone,
-                $user->additionalInfo?->tshirt_size->displayName(),
+                $user->additionalInfo?->tshirt_size?->displayName(),
                 $user->additionalInfo?->diet,
                 $user->additionalInfo?->allergies,
                 $user->health_issues,

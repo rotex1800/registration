@@ -54,10 +54,11 @@ it('contains expected columns', function () {
             $export->transferReferenceForUser($user),
             Date::dateTimeToExcel($user->birthday),
             $user->sumPaidFor($event),
+            $user->additionalInfo->note ?? '',
             $user->gender,
             $user->email,
             $user->mobile_phone,
-            $user->additionalInfo?->tshirt_size->displayName() ?? '',
+            $user->additionalInfo?->tshirt_size?->displayName() ?? '',
             $user->additionalInfo?->diet ?? '',
             $user->additionalInfo?->allergies ?? '',
             $user->health_issues,
@@ -108,6 +109,7 @@ it('contains expected headings', function () {
             'Referenznummer',
             'Geburtstag',
             'Summe bezahlt',
+            'Notiz',
             'Geschlecht',
             'E-Mail',
             'Handy',
@@ -156,9 +158,9 @@ it('formats dates columns correctly', function () {
     $event = Event::factory()->create();
     $export = new RegistrationsExport($event);
     expect($export->columnFormats())
-        ->toHaveKey('C', NumberFormat::FORMAT_DATE_DDMMYYYY)
-        ->toHaveKey('J', NumberFormat::FORMAT_DATE_DDMMYYYY)
-        ->toHaveKey('K', NumberFormat::FORMAT_DATE_DDMMYYYY);
+        ->toHaveKey('D', NumberFormat::FORMAT_DATE_DDMMYYYY)
+        ->toHaveKey('O', NumberFormat::FORMAT_DATE_DDMMYYYY)
+        ->toHaveKey('P', NumberFormat::FORMAT_DATE_DDMMYYYY);
 });
 
 it('applies bold style to first row', function () {
