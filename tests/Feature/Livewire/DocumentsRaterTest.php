@@ -11,6 +11,7 @@ use ErrorException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 
@@ -202,10 +203,11 @@ it('downloads documents if a path is present', function () {
     $response = json_decode($component->lastResponse->content())
         ->effects
         ->download;
-    expect($response)
-        ->name->toContain(strtolower($user->first_name))
-              ->toContain(strtolower($user->family_name))
-              ->toContain(strtolower($category->displayName()))
+    expect(Str::snake($response->name))
+        ->toContain(strtolower($user->first_name))
+        ->toContain(strtolower($user->family_name))
+        ->toContain(strtolower($category->displayName()))
+        ->and($response)
         ->content->not->toBeEmpty()
         ->contentType->toBe('image/jpeg');
 });
