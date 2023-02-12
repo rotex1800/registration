@@ -33,3 +33,9 @@ it('has diet information', function () {
     expect($info->diet)
         ->toBeString();
 });
+
+it('has internal note', function () {
+    $info = AdditionalInfo::factory()->make();
+    expect($info->note)
+        ->toBeString();
+});

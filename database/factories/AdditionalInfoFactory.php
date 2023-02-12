@@ -22,6 +22,7 @@ class AdditionalInfoFactory extends Factory
             'allergies' => fake()->text,
             'user_id' => fake()->randomNumber(),
             'diet' => fake()->words(asText: true),
+            'note' => fake()->text,
         ];
     }
 }
