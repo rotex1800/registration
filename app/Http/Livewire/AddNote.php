@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\AdditionalInfo;
 use App\Models\User;
 use App\Policies\NotePolicy;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +9,6 @@ use Livewire\Component;
 
 class AddNote extends Component
 {
-
     public User $attendee;
 
     public ?string $note = null;
@@ -18,6 +16,7 @@ class AddNote extends Component
     public function render()
     {
         $this->note = $this->attendee->additionalInfo?->note;
+
         return view('livewire.add-note');
     }
 
@@ -29,5 +28,4 @@ class AddNote extends Component
             $this->attendee->additionalInfo->save();
         }
     }
-
 }
