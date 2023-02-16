@@ -17,20 +17,21 @@ beforeEach(function () {
 });
 
 it('can render', function () {
-    $additionalInfo = AdditionalInfo::factory()->make();
+    $additionalInfo = AdditionalInfo::factory()
+                                    ->state([
+                                        'note' => 'Hello World'
+                                    ])->make();
     $this->attendee->additionalInfo()->save($additionalInfo);
 
-    Livewire::test('add-note', [
-        'attendee' => $this->attendee,
-    ])
+    Livewire::test('add-note', ['attendee' => $this->attendee,])
             ->assertStatus(200)
             ->assertSee([
                 __('Notiz'),
-                $additionalInfo->note,
+                'Hello World',
             ]);
 });
 
-it('requires notee parameter', function () {
+it('requires attendee parameter', function () {
     Livewire::test('add-note');
 })->throws(ViewException::class);
 

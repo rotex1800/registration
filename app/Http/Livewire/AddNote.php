@@ -21,7 +21,9 @@ class AddNote extends Component
     {
         $this->note = $this->attendee->additionalInfo?->note;
 
-        return view('livewire.add-note');
+        return view('livewire.add-note')->with([
+            'note' => $this->note
+        ]);
     }
 
     public function updatedNote(string $note): void
