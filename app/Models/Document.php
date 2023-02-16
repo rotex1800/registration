@@ -44,10 +44,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Document whereType($value)
  * @method static Builder|Document whereUpdatedAt($value)
  *
- * @mixin Eloquent
- *
  * @property-read Collection|Comment[] $comments
  * @property-read int|null $comments_count
+ *
+ * @mixin Eloquent
  */
 class Document extends Model
 {
