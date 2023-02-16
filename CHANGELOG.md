@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.12.1](https://github.com/rotex1800/registration/compare/v1.12.0...v1.12.1) (2023-02-16)
+
+
+### Bug Fixes
+
+* add missing double quote ([a4c874d](https://github.com/rotex1800/registration/commit/a4c874d70fb6578451348a6c83c1c8cb05dd21e6))
+* Add wire key to note ([6bfadba](https://github.com/rotex1800/registration/commit/6bfadbaee813f9699db5bc72f7abe3c3ae202a8e))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.3.2 to 1.3.3 ([c9c4a00](https://github.com/rotex1800/registration/commit/c9c4a00e49f9c02df3cc35223a4e1eed5493be75))
+* **deps:** bump christophrumpel/missing-livewire-assertions ([646086f](https://github.com/rotex1800/registration/commit/646086f376b4d2a585fa021da35b7e5cb6a52ea3))
+* **deps:** bump laravel/dusk from 7.6.0 to 7.6.1 ([dd36bac](https://github.com/rotex1800/registration/commit/dd36bac1a03f95f77237817ec94a3a3470de3f17))
+* **deps:** bump laravel/pint from 1.4.1 to 1.5.0 ([b231a10](https://github.com/rotex1800/registration/commit/b231a10b9fd2022bc8501878e1961c458203e9f1))
+* **deps:** bump laravel/sail from 1.20.1 to 1.20.2 ([92cbf76](https://github.com/rotex1800/registration/commit/92cbf767cd7fcb52ba7209c8f81e264c6d549491))
+
 ## [1.12.0](https://github.com/rotex1800/registration/compare/v1.11.6...v1.12.0) (2023-02-12)
 
 
