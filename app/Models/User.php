@@ -120,13 +120,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereUuid($value)
  *
- * @mixin Eloquent
- *
  * @property-read AdditionalInfo|null $additionalInfo
  * @property-read string $comment_display_name
  * @property-read string $short_name
  * @property-read Collection|Payment[] $payments
  * @property-read int|null $payments_count
+ *
+ * @mixin Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

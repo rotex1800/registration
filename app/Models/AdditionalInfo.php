@@ -29,8 +29,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|AdditionalInfo whereUpdatedAt($value)
  * @method static Builder|AdditionalInfo whereUserId($value)
  *
- * @mixin Eloquent
- *
  * @property string|null $allergies
  *
  * @method static Builder|AdditionalInfo whereAllergies($value)
@@ -38,6 +36,12 @@ use Illuminate\Support\Carbon;
  * @property string $diet
  *
  * @method static Builder|AdditionalInfo whereDiet($value)
+ *
+ * @property string|null $note
+ *
+ * @method static Builder|AdditionalInfo whereNote($value)
+ *
+ * @mixin Eloquent
  */
 class AdditionalInfo extends Model
 {

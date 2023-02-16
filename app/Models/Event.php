@@ -38,11 +38,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Event whereStart($value)
  * @method static Builder|Event whereUpdatedAt($value)
  *
- * @mixin Eloquent
- *
  * @property-read string $short_name
  * @property-read Collection|\App\Models\Payment[] $payments
  * @property-read int|null $payments_count
+ *
+ * @mixin Eloquent
  */
 class Event extends Model
 {
