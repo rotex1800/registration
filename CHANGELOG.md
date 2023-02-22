@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.12.2](https://github.com/rotex1800/registration/compare/v1.12.1...v1.12.2) (2023-02-22)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump livewire/livewire from 2.11.2 to 2.12.0 ([ac14f89](https://github.com/rotex1800/registration/commit/ac14f894b66817a11f149a7db8d49ec4e21c79c1))
+* **deps:** bump lucassabreu/comment-coverage-clover ([f8250da](https://github.com/rotex1800/registration/commit/f8250dae8270a5afe3f673e565da282c0211e4d3))
+* **deps:** bump maatwebsite/excel from 3.1.46 to 3.1.47 ([75f494e](https://github.com/rotex1800/registration/commit/75f494e91be949cf52e9aea1e75ca1130944bfa6))
+* **deps:** bump nunomaduro/larastan from 2.4.0 to 2.4.1 ([2f0372a](https://github.com/rotex1800/registration/commit/2f0372ab49709893e72acfc5146ac470f1cc76f4))
+* **deps:** bump tailwindcss from 3.2.6 to 3.2.7 ([c00cde5](https://github.com/rotex1800/registration/commit/c00cde5f4a1ca85bcb96d90893051d2994b44555))
+* **deps:** bump vite from 4.1.1 to 4.1.3 ([077a7eb](https://github.com/rotex1800/registration/commit/077a7ebbcfe5f934c983a6034c97d4652f82462b))
+
 ## [1.12.1](https://github.com/rotex1800/registration/compare/v1.12.0...v1.12.1) (2023-02-16)
 
 
