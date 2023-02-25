@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.12.3](https://github.com/rotex1800/registration/compare/v1.12.2...v1.12.3) (2023-02-25)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.3.3 to 1.3.4 ([32e4aad](https://github.com/rotex1800/registration/commit/32e4aadd4e21c285119d3630f21a71e421891ab0))
+* **deps:** bump laravel/dusk from 7.6.1 to 7.7.0 ([89880ee](https://github.com/rotex1800/registration/commit/89880eed33d832dea71e5c14756323970f28ef6d))
+* **deps:** bump laravel/pint from 1.5.0 to 1.6.0 ([7689ec3](https://github.com/rotex1800/registration/commit/7689ec3d66c41200e0de8489885f7ce19eeee923))
+* **deps:** bump laravel/sail from 1.20.2 to 1.21.0 ([1dfb415](https://github.com/rotex1800/registration/commit/1dfb415f9bcece174145342470f2ca300a8791fb))
+* **deps:** bump livewire/livewire from 2.12.0 to 2.12.1 ([06288d3](https://github.com/rotex1800/registration/commit/06288d38984e1d29f45125fc09ca61b1912951e2))
+* **deps:** bump maatwebsite/excel from 3.1.47 to 3.1.48 ([584ee1e](https://github.com/rotex1800/registration/commit/584ee1e6a0c1353dbe9d58689525e1c75c6fafff))
+* **deps:** bump vite from 4.1.3 to 4.1.4 ([3b7dcbd](https://github.com/rotex1800/registration/commit/3b7dcbd02c12a4ad93f2923bb0871c96dba70cd7))
+
 ## [1.12.2](https://github.com/rotex1800/registration/compare/v1.12.1...v1.12.2) (2023-02-22)
 
 
