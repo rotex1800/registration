@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.12.4](https://github.com/rotex1800/registration/compare/v1.12.3...v1.12.4) (2023-03-05)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump brianium/paratest from 6.9.0 to 6.9.1 ([1ccc7f9](https://github.com/rotex1800/registration/commit/1ccc7f9b9ee5227317939d06b9d1bfdc5845dac8))
+* **deps:** bump laravel/sail from 1.21.0 to 1.21.1 ([23d00f9](https://github.com/rotex1800/registration/commit/23d00f91ad685f131dd8643056b0c776aa6a326f))
+* **deps:** bump laravel/tinker from 2.8.0 to 2.8.1 ([2e866d9](https://github.com/rotex1800/registration/commit/2e866d949c09b59a09074ecf17ff3bd15135522c))
+* **deps:** bump livewire/livewire from 2.12.1 to 2.12.2 ([4aa87a6](https://github.com/rotex1800/registration/commit/4aa87a6b70a89a51db756a9b897f78b6dcd8bece))
+* **deps:** bump lucassabreu/comment-coverage-clover ([1b021c1](https://github.com/rotex1800/registration/commit/1b021c16d7846f04d9bff3ba3a7d4ecc6ece2ee1))
+* **deps:** bump pestphp/pest from 1.22.4 to 1.22.5 ([5629140](https://github.com/rotex1800/registration/commit/5629140d63977882bd9f245535a0d9e3655ced7f))
+* **deps:** bump phpunit/phpunit from 9.6.3 to 9.6.4 ([3276247](https://github.com/rotex1800/registration/commit/327624768e6e8c81b25eb0ca5e7c830f1483fe1d))
+* update to Laravel 10 ([4a44924](https://github.com/rotex1800/registration/commit/4a4492466e4add298c3b489d393d04bba3578fdc))
+
 ## [1.12.3](https://github.com/rotex1800/registration/compare/v1.12.2...v1.12.3) (2023-02-25)
 
 
