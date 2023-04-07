@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.12.5](https://github.com/rotex1800/registration/compare/v1.12.4...v1.12.5) (2023-04-07)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump @prettier/plugin-php from 0.19.3 to 0.19.4 ([ff5ad86](https://github.com/rotex1800/registration/commit/ff5ad867230a495deda4ccbee7a1fa40780538fe))
+* **deps:** bump autoprefixer from 10.4.13 to 10.4.14 ([76807a1](https://github.com/rotex1800/registration/commit/76807a15189dec8efce142e017d5801d2fa2b355))
+* **deps:** bump laravel/framework from 10.2.0 to 10.5.1 ([7285e8d](https://github.com/rotex1800/registration/commit/7285e8d4a49f73e87f2a25477f9bfe3d3b41855f))
+* **deps:** bump laravel/pint from 1.6.0 to 1.7.0 ([b159808](https://github.com/rotex1800/registration/commit/b1598083f48da2f1779cf055e60ec8f98843e35d))
+* **deps:** bump laravel/sail from 1.21.1 to 1.21.4 ([70d885b](https://github.com/rotex1800/registration/commit/70d885b4e03efb37802fc066e8f4e0398735188e))
+* **deps:** bump lucassabreu/comment-coverage-clover ([0d65e14](https://github.com/rotex1800/registration/commit/0d65e145d9bece96171ba642cee22d08fa1796a5))
+* **deps:** bump pestphp/pest from 1.22.5 to 1.22.6 ([7d11394](https://github.com/rotex1800/registration/commit/7d11394bcacc81342087cfd2e0166a9a63f18d03))
+* **deps:** bump prettier from 2.8.4 to 2.8.7 ([3f4f001](https://github.com/rotex1800/registration/commit/3f4f001ea60adc928e76823157a85d0a680e9dce))
+* **deps:** bump tailwindcss from 3.2.7 to 3.3.1 ([4b02b02](https://github.com/rotex1800/registration/commit/4b02b02bc5d8349e9d7a20295b751c8f3d47f42d))
+* **deps:** bump vite from 4.1.4 to 4.2.1 ([f045412](https://github.com/rotex1800/registration/commit/f04541210a7ff4705219d9b82e8b2c7eb7e2f8d5))
+
 ## [1.12.4](https://github.com/rotex1800/registration/compare/v1.12.3...v1.12.4) (2023-03-05)
 
 
