@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.6](https://github.com/rotex1800/registration/compare/v1.12.5...v1.12.6) (2023-04-08)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump pestphp to `^2.0` ([a06dc58](https://github.com/rotex1800/registration/commit/a06dc587b707a77c81623991d0f05c7b8fc6adaa))
+
 ## [1.12.5](https://github.com/rotex1800/registration/compare/v1.12.4...v1.12.5) (2023-04-07)
 
 
