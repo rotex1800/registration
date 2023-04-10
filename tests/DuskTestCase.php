@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Http\Middleware\ApplicationAvailability;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
@@ -22,15 +23,21 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public static function prepare()
     {
-        if (! static::runningInSail()) {
+        if (!static::runningInSail()) {
             static::startChromeDriver();
         }
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutMiddleware(ApplicationAvailability::class);
     }
 
     /**
      * Create the RemoteWebDriver instance.
      *
-     * @return \Facebook\WebDriver\Remote\RemoteWebDriver
+     * @return RemoteWebDriver
      */
     protected function driver()
     {
