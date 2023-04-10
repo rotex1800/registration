@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.13.0](https://github.com/rotex1800/registration/compare/v1.12.6...v1.13.0) (2023-04-10)
+
+
+### Features
+
+* enable application availability middleware ([780c1f9](https://github.com/rotex1800/registration/commit/780c1f90a8d819f5359033d038c5172ccb9d042d))
+
+
+### Miscellaneous Chores
+
+* migrate phpunit xml ([caffbe0](https://github.com/rotex1800/registration/commit/caffbe059a0cc21503bbba3d17ef81ea05fcde8c))
+* move tests into default directory ([688c0f8](https://github.com/rotex1800/registration/commit/688c0f87f652ef3910946ba9413dfa5d96be0a1b))
+
 ## [1.12.6](https://github.com/rotex1800/registration/compare/v1.12.5...v1.12.6) (2023-04-08)
 
 
