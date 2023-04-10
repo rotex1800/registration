@@ -21,7 +21,7 @@ it('redircts to home for authenticated users', function () {
         ->assertStatus(302);
 });
 
-it('naviagtes to password reset', function () {
+it('navigates to password reset', function () {
     $this->browse(function (Browser $browser) {
         $browser->visit(route('login'))
                 ->assertSeeLink(__('signup.forgot-password'))
