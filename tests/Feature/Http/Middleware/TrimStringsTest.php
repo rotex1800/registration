@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Http\Middleware;
+namespace Tests\Feature\Http\Middleware;
 
 use App\Http\Middleware\TrimStrings;
 
