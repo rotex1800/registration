@@ -334,12 +334,6 @@ it('has passport inputs bound to component', function () {
                      ->and($passport->expiration_date->toDateString())->toBe($properties_and_values['passport.expiration_date']);
 });
 
-/**
- * @param  TestableLivewire  $component
- * @param  string  $property
- * @param    $update_value
- * @return void
- */
 function assertPropertyTwoWayBound(TestableLivewire $component, string $property, $update_value): void
 {
     $component->assertPropertyWired($property)
@@ -891,12 +885,6 @@ it('saves allergies information', function () {
             ->assertHasNoErrors();
 });
 
-/**
- * @param  TestableLivewire  $component
- * @param $headlineKey
- * @param $removingProperty
- * @return void
- */
 function assertSeesCompletenessIndication(TestableLivewire $component, $headlineKey, $removingProperty): void
 {
     $component->assertSeeText(__($headlineKey).' ✅')

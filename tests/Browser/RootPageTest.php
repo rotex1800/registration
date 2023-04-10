@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Middleware\ApplicationAvailability;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 it('is accessible', function () {
     $this->get('/')

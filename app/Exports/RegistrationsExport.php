@@ -44,7 +44,6 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
     }
 
     /**
-     * @param  Worksheet  $sheet
      * @return array<mixed>
      */
     public function styles(Worksheet $sheet): array
@@ -109,7 +108,6 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
     }
 
     /**
-     * @param  mixed  $user
      * @return array<int, array<int, mixed>>
      */
     public function map(mixed $user): array
@@ -184,10 +182,6 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
         return $user->short_name;
     }
 
-    /**
-     * @param  Carbon|null  $date
-     * @return float|string
-     */
     private function getExcelDate(?Carbon $date): float|string
     {
         if ($date == null) {

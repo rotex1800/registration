@@ -199,9 +199,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Checks whether the user has registered for the given event.
-     *
-     * @param  Event  $event
-     * @return bool
      */
     public function hasRegisteredFor(Event $event): bool
     {
@@ -209,8 +206,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return BelongsToMany
-     *
      * @phpstan-return BelongsToMany<Event>
      */
     public function events(): BelongsToMany
@@ -219,8 +214,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasMany
-     *
      * @phpstan-return HasMany<Comment>
      */
     public function authoredComments(): HasMany
@@ -286,10 +279,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hostFamily(1);
     }
 
-    /**
-     * @param  int  $order
-     * @return HostFamily
-     */
     public function hostFamily(int $order): HostFamily
     {
         $familyOrNull = $this
@@ -305,8 +294,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasMany
-     *
      * @phpstan-return HasMany<HostFamily>
      */
     public function hostFamilies(): HasMany
@@ -325,8 +312,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return Collection
-     *
      * @phpstan-return Collection<Event>
      */
     public function canRegisterFor(): Collection
@@ -338,7 +323,6 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * All events that the user shares at least one role with.
      *
-     * @return Collection
      *
      * @phpstan-return Collection<Event>
      */
@@ -355,8 +339,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return Collection
-     *
      * @phpstan-return Collection<Event>
      */
     public function participatesIn(): Collection
@@ -364,9 +346,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->events()->get();
     }
 
-    /**
-     * @return HasMany
-     */
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);

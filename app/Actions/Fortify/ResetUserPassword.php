@@ -16,7 +16,6 @@ class ResetUserPassword implements ResetsUserPasswords
      *
      * @param  Model  $user
      * @param  string[]  $input
-     * @return void
      */
     public function reset($user, array $input): void
     {

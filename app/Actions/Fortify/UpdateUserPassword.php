@@ -16,7 +16,6 @@ class UpdateUserPassword implements UpdatesUserPasswords
      *
      * @param  User  $user
      * @param  string[]  $input
-     * @return void
      */
     public function update($user, array $input): void
     {

@@ -19,11 +19,11 @@ beforeEach(function () {
 it('can render', function () {
     $additionalInfo = AdditionalInfo::factory()
                                     ->state([
-                                        'note' => 'Hello World'
+                                        'note' => 'Hello World',
                                     ])->make();
     $this->attendee->additionalInfo()->save($additionalInfo);
 
-    Livewire::test('add-note', ['attendee' => $this->attendee,])
+    Livewire::test('add-note', ['attendee' => $this->attendee])
             ->assertStatus(200)
             ->assertSee([
                 __('Notiz'),

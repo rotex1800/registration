@@ -14,10 +14,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-/**
- * @param  Factory  $factory
- * @return void
- */
 function assertCompletenessCheck(Factory $factory): void
 {
     $attrs = $factory->definition();

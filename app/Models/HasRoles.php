@@ -8,9 +8,6 @@ trait HasRoles
 {
     /**
      * Indicates whether the user has a role of the given name
-     *
-     * @param  string  $roleName
-     * @return bool
      */
     public function hasRole(string $roleName): bool
     {
@@ -18,8 +15,6 @@ trait HasRoles
     }
 
     /**
-     * @return BelongsToMany
-     *
      * @phpstan-return BelongsToMany<Role>
      */
     public function roles(): BelongsToMany

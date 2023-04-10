@@ -33,8 +33,6 @@ class UserFactory extends Factory
 
     /**
      * Indicate that the model's email address should be unverified.
-     *
-     * @return static
      */
     public function unverified(): static
     {
@@ -47,8 +45,6 @@ class UserFactory extends Factory
 
     /**
      * Set the hash of the given plain text into as password
-     *
-     * @return static
      */
     public function withPassword(string $plain): static
     {
