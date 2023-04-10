@@ -16,10 +16,6 @@ class NotePolicy
         return $this->allowAuthenticatedRotexUser($authenticatable);
     }
 
-    /**
-     * @param  Authenticatable|null  $authenticatable
-     * @return Response
-     */
     private function allowAuthenticatedRotexUser(?Authenticatable $authenticatable): Response
     {
         if ($authenticatable == null) {

@@ -54,10 +54,6 @@ class RegistrationInfoView extends Component
         ]);
     }
 
-    /**
-     * @param  int  $position
-     * @return void
-     */
     public function updatedCurrentPosition(int $position): void
     {
         $newCurrent = $this->attendees->slice($position, 1)->first();
@@ -76,8 +72,6 @@ class RegistrationInfoView extends Component
 
     /**
      * Indicates whether there is a previous attendee to show details for.
-     *
-     * @return bool
      */
     public function hasPrevious(): bool
     {
@@ -94,8 +88,6 @@ class RegistrationInfoView extends Component
 
     /**
      * Indicates whether there is a next attendee to show details for.
-     *
-     * @return bool
      */
     public function hasNext(): bool
     {

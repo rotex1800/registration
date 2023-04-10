@@ -205,10 +205,6 @@ class EventRegistration extends Component
         $this->user->save();
     }
 
-    /**
-     * @param  string  $propertyName
-     * @return void
-     */
     public function updated(string $propertyName): void
     {
         $this->validateOnly($propertyName);

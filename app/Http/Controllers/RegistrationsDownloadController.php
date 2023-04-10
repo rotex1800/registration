@@ -12,9 +12,6 @@ class RegistrationsDownloadController extends Controller
 {
     /**
      * Handle the incoming request.
-     *
-     * @param  Request  $request
-     * @return BinaryFileResponse
      */
     public function __invoke(Request $request, Event $event): BinaryFileResponse
     {

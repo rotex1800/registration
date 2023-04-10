@@ -582,8 +582,6 @@ test('state for all documents is declined if at least one is declined', function
 
 /**
  * @param  DocumentState[]  $states
- * @param  DocumentState  $expectedOverallState
- * @return void
  */
 function checkOverallStateFor(array $states, DocumentState $expectedOverallState): void
 {

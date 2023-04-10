@@ -22,8 +22,6 @@ class RolePolicy
 
     /**
      * Indicate whether a role can be deleted
-     *
-     * @return Response
      */
     public function isDeletionAllowed(Role $role): Response
     {

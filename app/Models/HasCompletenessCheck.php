@@ -8,7 +8,6 @@ trait HasCompletenessCheck
 
     /**
      * @param  array<mixed>  $requiredAttrs
-     * @return bool
      */
     protected function isCompleteCheck(array $requiredAttrs): bool
     {

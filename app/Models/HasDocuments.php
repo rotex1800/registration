@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 
 trait HasDocuments
 {
-    /**
-     * @param  Document  $document
-     * @return bool
-     */
     public function owns(Document $document): bool
     {
         $owner = $document->owner;
@@ -37,9 +33,6 @@ trait HasDocuments
     /**
      * Returns the first document matching the category or null if no such
      * Document can be found.
-     *
-     * @param  DocumentCategory  $category
-     * @return Document
      */
     public function documentBy(DocumentCategory $category): Document
     {
@@ -62,8 +55,6 @@ trait HasDocuments
     }
 
     /**
-     * @return HasMany
-     *
      * @phpstan-return HasMany<Document>
      */
     public function documents(): HasMany
