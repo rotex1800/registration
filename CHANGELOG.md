@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.1](https://github.com/rotex1800/registration/compare/v1.13.0...v1.13.1) (2023-04-20)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump guzzlehttp/psr7 from 2.4.4 to 2.5.0 ([accc084](https://github.com/rotex1800/registration/commit/accc084e66d920d5257537d55401cc65efe09f95))
+
 ## [1.13.0](https://github.com/rotex1800/registration/compare/v1.12.6...v1.13.0) (2023-04-10)
 
 
