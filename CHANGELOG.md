@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.13.2](https://github.com/rotex1800/registration/compare/v1.13.1...v1.13.2) (2023-04-22)
+
+
+### Miscellaneous Chores
+
+* add env variable to deactivate application availability middleware ([918774a](https://github.com/rotex1800/registration/commit/918774ac6cd2bd2e3167974cbc02780d96ca5c76))
+* **deps:** bump axios from 1.3.4 to 1.3.6 ([d63b5df](https://github.com/rotex1800/registration/commit/d63b5dfcf2b2fed238ff88e637309432e5f99a2f))
+* **deps:** bump laravel/dusk from 7.7.0 to 7.7.1 ([2b663bf](https://github.com/rotex1800/registration/commit/2b663bfda33e1581cb415dcbce457f6d5df94c52))
+* **deps:** bump nunomaduro/larastan from 2.5.1 to 2.6.0 ([0f34517](https://github.com/rotex1800/registration/commit/0f34517c9e7f33ca30b1aae827933715adbf5025))
+* **deps:** bump pestphp/pest from 2.4.0 to 2.5.2 ([bc49fac](https://github.com/rotex1800/registration/commit/bc49fac1cfb3bc52b703b395278b81d39e5be99b))
+* **deps:** bump postcss from 8.4.21 to 8.4.23 ([87764db](https://github.com/rotex1800/registration/commit/87764dba58de7050042e0bb5845f92d90a45de8e))
+* **deps:** bump spatie/laravel-ignition from 2.0.0 to 2.1.0 ([fb8fdd2](https://github.com/rotex1800/registration/commit/fb8fdd244069002672644a474a64339e720f216a))
+* **deps:** bump vite from 4.2.1 to 4.3.1 ([bd2c98e](https://github.com/rotex1800/registration/commit/bd2c98ef795a9dce0d8af0303f2e3889714b5730))
+
 ## [1.13.1](https://github.com/rotex1800/registration/compare/v1.13.0...v1.13.1) (2023-04-20)
 
 
