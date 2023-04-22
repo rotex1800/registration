@@ -27,6 +27,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Availability Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Whether the application availability middleware is enabled or not.
+    |
+    */
+    'availability-middleware' => [
+        'enabled' => env('APP_AVAILABILITY_ENABLED', true),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
