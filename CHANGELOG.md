@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.13.3](https://github.com/rotex1800/registration/compare/v1.13.2...v1.13.3) (2023-05-02)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.3.6 to 1.4.0 ([75283ed](https://github.com/rotex1800/registration/commit/75283edb26163dabf1c82cab6a4e24dc9d5e62e5))
+* **deps:** bump guzzlehttp/guzzle from 7.5.0 to 7.5.1 ([30c80fa](https://github.com/rotex1800/registration/commit/30c80fa4bc71a1ebd606208f6a6486fe260783ea))
+* **deps:** bump laravel/fortify from 1.16.0 to 1.17.1 ([cb52132](https://github.com/rotex1800/registration/commit/cb521322d99c20d691e9d8aecfc99e8d2f3d8494))
+* **deps:** bump laravel/pint from 1.8.0 to 1.10.0 ([caae55d](https://github.com/rotex1800/registration/commit/caae55d7510a08baa86d6b0891522dcc2840f019))
+* **deps:** bump laravel/sail from 1.21.4 to 1.21.5 ([468014c](https://github.com/rotex1800/registration/commit/468014c8a6404b75a3dad08506c766534731ef42))
+* **deps:** bump pestphp/pest from 2.5.2 to 2.5.3 ([bca5c6c](https://github.com/rotex1800/registration/commit/bca5c6ca285459f4caae84978c8207ca9e17c95d))
+* **deps:** bump prettier from 2.8.7 to 2.8.8 ([7100fbd](https://github.com/rotex1800/registration/commit/7100fbd15a0c472b6b70aec87f4299a79139f64e))
+* **deps:** bump tailwindcss from 3.3.1 to 3.3.2 ([bcb3fce](https://github.com/rotex1800/registration/commit/bcb3fce82274b8981d89d9180f80f0483d5d0f6b))
+* **deps:** bump vite from 4.3.1 to 4.3.3 ([27cd244](https://github.com/rotex1800/registration/commit/27cd244654cf36e19e6b79deb38c31cb4ccc5082))
+
 ## [1.13.2](https://github.com/rotex1800/registration/compare/v1.13.1...v1.13.2) (2023-04-22)
 
 
