@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.13.4](https://github.com/rotex1800/registration/compare/v1.13.3...v1.13.4) (2023-05-19)
+
+
+### Miscellaneous Chores
+
+* remove meilisearch and redis ([57107ef](https://github.com/rotex1800/registration/commit/57107ef642802527b5c1f8f47fdef53b066fdf19))
+* remove selenium from docker-compose ([1368012](https://github.com/rotex1800/registration/commit/1368012444bd70d2266ea12e6108e855e0b343e4))
+
 ## [1.13.3](https://github.com/rotex1800/registration/compare/v1.13.2...v1.13.3) (2023-05-02)
 
 
