@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.13.5](https://github.com/rotex1800/registration/compare/v1.13.4...v1.13.5) (2023-06-02)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump @prettier/plugin-php from 0.19.4 to 0.19.5 ([dbe088d](https://github.com/rotex1800/registration/commit/dbe088d65d520e0961860c2fc7642599da2118cb))
+* **deps:** bump fakerphp/faker from 1.21.0 to 1.22.0 ([eec5875](https://github.com/rotex1800/registration/commit/eec5875b21c6fa6103ed86b740d131c825703c93))
+* **deps:** bump guzzlehttp/guzzle from 7.5.1 to 7.7.0 ([58a6b9e](https://github.com/rotex1800/registration/commit/58a6b9e4bb1e6f9055b9b3f70d571dc936214caf))
+* **deps:** bump laravel-vite-plugin from 0.7.4 to 0.7.8 ([a242155](https://github.com/rotex1800/registration/commit/a2421559db7dc83c51f71ee580cf924e8439c1c6))
+* **deps:** bump laravel/framework from 10.9.0 to 10.13.0 ([4cceddf](https://github.com/rotex1800/registration/commit/4cceddfb898f92c495ef5dab6c4da459a7e2ac36))
+* **deps:** bump laravel/sail from 1.21.5 to 1.22.0 ([184ad72](https://github.com/rotex1800/registration/commit/184ad728b3b011ef7ba7e92641093a4c3e1133c8))
+* **deps:** bump lucassabreu/comment-coverage-clover ([690b2ce](https://github.com/rotex1800/registration/commit/690b2ce839b3707347382bdf3a1b35fe7f8f59c5))
+* **deps:** bump pestphp/pest from 2.5.3 to 2.6.1 ([d1de012](https://github.com/rotex1800/registration/commit/d1de0124e1e33b2fd04d312a72377f34ea3cf6a8))
+* **deps:** bump postcss from 8.4.23 to 8.4.24 ([0eae351](https://github.com/rotex1800/registration/commit/0eae351070fc5e732e5c5ebae40aec6ba20354ae))
+* **deps:** bump vite from 4.3.3 to 4.3.9 ([8f998d9](https://github.com/rotex1800/registration/commit/8f998d9694ffa9b77299b99d8f01f4305608f974))
+
 ## [1.13.4](https://github.com/rotex1800/registration/compare/v1.13.3...v1.13.4) (2023-05-19)
 
 
