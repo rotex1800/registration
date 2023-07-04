@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.13.6](https://github.com/rotex1800/registration/compare/v1.13.5...v1.13.6) (2023-07-04)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump @prettier/plugin-php from 0.19.5 to 0.19.6 ([9d461a3](https://github.com/rotex1800/registration/commit/9d461a37a5aa410e9791b1d26f6f40d1b84246c0))
+* **deps:** bump fakerphp/faker from 1.22.0 to 1.23.0 ([2999108](https://github.com/rotex1800/registration/commit/299910832fa156c152e7c1323ce84f3b209fcf38))
+* **deps:** bump laravel/framework from 10.13.0 to 10.14.1 ([a348e78](https://github.com/rotex1800/registration/commit/a348e782e5c00e844841254f4edc4287fa0819c8))
+* **deps:** bump nunomaduro/collision from 7.5.2 to 7.7.0 ([285e3b4](https://github.com/rotex1800/registration/commit/285e3b459a49fd8e754a00c5da7d7002b8ae4bc3))
+* **deps:** bump pestphp/pest from 2.6.1 to 2.8.2 ([08b35af](https://github.com/rotex1800/registration/commit/08b35aff4bbe1ef6cf706606f1c6bdc733b01483))
+* **deps:** bump spatie/laravel-ignition from 2.1.0 to 2.2.0 ([c22bec4](https://github.com/rotex1800/registration/commit/c22bec45ab13af5e72175b2fab627c498482e1f6))
+
 ## [1.13.5](https://github.com/rotex1800/registration/compare/v1.13.4...v1.13.5) (2023-06-02)
 
 
