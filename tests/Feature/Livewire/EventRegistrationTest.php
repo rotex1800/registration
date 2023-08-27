@@ -18,10 +18,10 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
+use ValueError;
 use function Pest\Laravel\actingAs;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use ValueError;
 
 uses(RefreshDatabase::class);
 
@@ -782,7 +782,7 @@ it('rejects non email for host family three email', function () {
             ->assertHasNoErrors('hostFamilyThree.email');
 });
 
-test('birthday must be in the past', function () {
+test('birthday must be before 2009-01-01', function () {
     $inbound = createInboundRegisteredFor($this->event);
     actingAs($inbound);
     Livewire::test(EventRegistration::class, [
@@ -791,6 +791,10 @@ test('birthday must be in the past', function () {
             ->set('user.birthday', Carbon::now()->addDay())
             ->assertHasErrors('user.birthday')
             ->set('user.birthday', null)
+            ->assertHasNoErrors('user.birthday')
+            ->set('user.birthday', Carbon::parse('2009-01-01'))
+            ->assertHasErrors('user.birthday')
+            ->set('user.birthday', Carbon::parse('2008-12-31'))
             ->assertHasNoErrors('user.birthday')
             ->set('user.birthday', Carbon::now()->subYears(15))
             ->assertHasNoErrors('user.birthday');
