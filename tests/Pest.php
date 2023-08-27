@@ -79,10 +79,10 @@ expect()->extend('toBackEnumCase', function ($case) {
 function createUserWithRole(string $role): User
 {
     return User::factory()
-               ->has(Role::factory()->state([
-                   'name' => $role,
-               ]))
-               ->create();
+        ->has(Role::factory()->state([
+            'name' => $role,
+        ]))
+        ->create();
 }
 
 function createInboundRegisteredFor(App\Models\Event $event): User

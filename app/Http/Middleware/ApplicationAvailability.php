@@ -17,8 +17,8 @@ class ApplicationAvailability
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Config::get('app.availability-middleware.enabled',
-                true) || Carbon::now()->isAfter('2023-08-10T00:00:00')) {
+        if (! Config::get('app.availability-middleware.enabled',
+            true) || Carbon::now()->isAfter('2023-08-10T00:00:00')) {
             return $next($request);
         } else {
             return redirect('https://rotex1800.de');

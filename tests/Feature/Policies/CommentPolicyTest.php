@@ -16,7 +16,7 @@ it('allows participant user to comment on own document', function () {
     $user->save();
 
     expect($policy->userCanCommentDocument($user, $document))
-    ->toBeAllowed();
+        ->toBeAllowed();
 });
 
 it('denies participant user to comment other document', function () {
@@ -25,7 +25,7 @@ it('denies participant user to comment other document', function () {
     $user = createUserWithRole('participant');
 
     expect($policy->userCanCommentDocument($user, $document))
-    ->toBeDenied();
+        ->toBeDenied();
 });
 
 it('denies other user to comment', function () {
@@ -34,7 +34,7 @@ it('denies other user to comment', function () {
     $user = createUserWithRole('other');
 
     expect($policy->userCanCommentDocument($user, $document))
-    ->toBeDenied();
+        ->toBeDenied();
 });
 
 it('allows rotex user to comment on own document', function () {
@@ -46,7 +46,7 @@ it('allows rotex user to comment on own document', function () {
     $user->save();
 
     expect($policy->userCanCommentDocument($user, $document))
-    ->toBeAllowed();
+        ->toBeAllowed();
 });
 
 it('allows rotex user to comment on other document', function () {
@@ -55,5 +55,5 @@ it('allows rotex user to comment on other document', function () {
     $user = createUserWithRole('rotex');
 
     expect($policy->userCanCommentDocument($user, $document))
-    ->toBeAllowed();
+        ->toBeAllowed();
 });

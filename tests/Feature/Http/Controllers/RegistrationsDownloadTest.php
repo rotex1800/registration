@@ -23,7 +23,7 @@ it('can download excel file', function () {
 
 it('can not download as guest', function () {
     $this->get('/registrations/1/download')
-         ->assertRedirect(route('login'));
+        ->assertRedirect(route('login'));
 });
 
 it('can not download as participant', function () {
@@ -41,5 +41,5 @@ it('does not fail exporting null values', function () {
     $event->attendees()->save($attendee);
 
     actingAs($user)->get(route('registrations.download', $event))
-                   ->assertStatus(200);
+        ->assertStatus(200);
 });

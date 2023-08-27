@@ -21,9 +21,9 @@ beforeEach(function () {
     $this->category = DocumentCategory::SchoolCertificate;
     $this->user = User::factory()->create();
     $this->document = Document::factory()
-                              ->submitted()
-                              ->withCategory($this->category)
-                              ->make();
+        ->submitted()
+        ->withCategory($this->category)
+        ->make();
 
     $this->user->documents()->save($this->document);
     actingAs($this->user);
@@ -39,7 +39,7 @@ it('can render', function () {
 
 it('contains description', function () {
     $this->component->assertStatus(200)
-                    ->assertSeeText($this->category->displayName());
+        ->assertSeeText($this->category->displayName());
 });
 
 it('has download method wired', function () {
@@ -51,11 +51,11 @@ it('has download method not wired for document with null path', function () {
     $category = DocumentCategory::SchoolCertificate;
     $user = User::factory()->create();
     $document = Document::factory()
-                        ->state([
-                            'path' => null,
-                        ])
-                        ->withCategory($category)
-                        ->make();
+        ->state([
+            'path' => null,
+        ])
+        ->withCategory($category)
+        ->make();
 
     $user->documents()->save($document);
     $component = Livewire::test('documents-rater', [
@@ -64,39 +64,39 @@ it('has download method not wired for document with null path', function () {
     ]);
 
     $component->assertStatus(200)
-              ->assertMethodNotWired('download');
+        ->assertMethodNotWired('download');
 });
 
 it('shows submitted state', function () {
     $category = DocumentCategory::Rules;
     $user = User::factory()->create();
     $document = Document::factory()
-                        ->submitted()
-                        ->withCategory($category)
-                        ->make();
+        ->submitted()
+        ->withCategory($category)
+        ->make();
 
     $user->documents()->save($document);
     Livewire::test('documents-rater', [
         'user' => $user,
         'category' => $category,
     ])
-            ->assertSee('⬆️');
+        ->assertSee('⬆️');
 });
 
 it('shows approved state', function () {
     $category = DocumentCategory::Rules;
     $user = User::factory()->create();
     $document = Document::factory()
-                        ->approved()
-                        ->withCategory($category)
-                        ->make();
+        ->approved()
+        ->withCategory($category)
+        ->make();
 
     $user->documents()->save($document);
     Livewire::test('documents-rater', [
         'user' => $user,
         'category' => $category,
     ])
-            ->assertSee('✅');
+        ->assertSee('✅');
 });
 
 it('shows missing state', function () {
@@ -106,23 +106,23 @@ it('shows missing state', function () {
         'user' => $user,
         'category' => $category,
     ])
-            ->assertSee('🤷‍');
+        ->assertSee('🤷‍');
 });
 
 it('shows declined state', function () {
     $category = DocumentCategory::Rules;
     $user = User::factory()->create();
     $document = Document::factory()
-                        ->declined()
-                        ->withCategory($category)
-                        ->make();
+        ->declined()
+        ->withCategory($category)
+        ->make();
 
     $user->documents()->save($document);
     Livewire::test('documents-rater', [
         'user' => $user,
         'category' => $category,
     ])
-            ->assertSee('⛔️');
+        ->assertSee('⛔️');
 });
 
 it('has approve method wired', function () {
@@ -159,8 +159,8 @@ it('does not crash approving for missing document', function () {
         'user' => $user,
         'category' => $category,
     ])
-            ->call('approve')
-            ->assertStatus(200);
+        ->call('approve')
+        ->assertStatus(200);
 });
 
 it('does not crash declining for missing document', function () {
@@ -170,8 +170,8 @@ it('does not crash declining for missing document', function () {
         'user' => $user,
         'category' => $category,
     ])
-            ->call('decline')
-            ->assertStatus(200);
+        ->call('decline')
+        ->assertStatus(200);
 });
 
 it('downloads documents if a path is present', function () {
@@ -197,8 +197,8 @@ it('downloads documents if a path is present', function () {
         'user' => $user,
         'category' => $category,
     ])
-                         ->call('download')
-                         ->assertFileDownloaded();
+        ->call('download')
+        ->assertFileDownloaded();
 
     $response = json_decode($component->lastResponse->content())
         ->effects
@@ -318,8 +318,8 @@ it('shows comments', function () {
     $component->assertStatus(200);
     foreach ($comments as $comment) {
         $component->assertSeeText($comment->content)
-                  ->assertSeeText($comment->author->full_name)
-                  ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:i'));
+            ->assertSeeText($comment->author->full_name)
+            ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:i'));
     }
 });
 
@@ -335,8 +335,8 @@ test('currently authenticated user is author of comment', function () {
     // Act
     actingAs($rotex);
     $component->assertStatus(200)
-              ->set('comment', 'Comment by Rotex')
-              ->call('saveComment');
+        ->set('comment', 'Comment by Rotex')
+        ->call('saveComment');
 
     // Assert
     expect($this->document->comments[0])

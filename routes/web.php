@@ -26,16 +26,16 @@ Route::post('login', [AuthenticationController::class, 'authenticate']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'home'])
-         ->name('home')
-         ->middleware('auth');
+        ->name('home')
+        ->middleware('auth');
 
     Route::get('/event/{event}', [EventController::class, 'show'])
-         ->name('event.show')
-         ->middleware('can:show,event');
+        ->name('event.show')
+        ->middleware('can:show,event');
 
     Route::get('/registrations/{event}/download', RegistrationsDownloadController::class)
-         ->name('registrations.download');
+        ->name('registrations.download');
 
     Route::get('/registrations/{event}', EventRegistrationsController::class)
-         ->name('registrations.show');
+        ->name('registrations.show');
 });

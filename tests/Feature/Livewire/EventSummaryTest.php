@@ -36,9 +36,9 @@ it('shows correct dates', function () {
     Livewire::test('event-summary', [
         'event' => $event,
     ])
-            ->assertStatus(200)
-            ->assertSee('22. März 2023')
-            ->assertSee('08. April 2023');
+        ->assertStatus(200)
+        ->assertSee('22. März 2023')
+        ->assertSee('08. April 2023');
 });
 
 it('redirects to events detail page', function () {
