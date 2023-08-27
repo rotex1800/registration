@@ -27,11 +27,11 @@ it('can render', function () {
         'event' => $this->event,
         'payer' => $this->payer,
     ])
-            ->assertStatus(200)
-            ->assertSee([
-                __('Summe'),
-                123,
-            ]);
+        ->assertStatus(200)
+        ->assertSee([
+            __('Summe'),
+            123,
+        ]);
 });
 
 it('requires event parameter', function () {
@@ -57,8 +57,8 @@ it('shows sum of all payments by payer for event', function () {
         'event' => $this->event,
         'payer' => $this->payer,
     ])
-            ->assertStatus(200)
-            ->assertSee(`Summe: $sum`);
+        ->assertStatus(200)
+        ->assertSee(`Summe: $sum`);
 });
 
 it('contains text input', function () {
@@ -66,8 +66,8 @@ it('contains text input', function () {
         'event' => $this->event,
         'payer' => $this->payer,
     ])
-            ->assertStatus(200)
-            ->assertSeeHtml(['input', 'type="text"', 'placeholder="Betrag"']);
+        ->assertStatus(200)
+        ->assertSeeHtml(['input', 'type="text"', 'placeholder="Betrag"']);
 });
 
 it('has amount property wired', function () {
@@ -75,8 +75,8 @@ it('has amount property wired', function () {
         'event' => $this->event,
         'payer' => $this->payer,
     ])
-            ->assertStatus(200)
-            ->assertPropertyWired('amount');
+        ->assertStatus(200)
+        ->assertPropertyWired('amount');
 });
 
 it('has method for adding payment wired', function () {
@@ -84,8 +84,8 @@ it('has method for adding payment wired', function () {
         'event' => $this->event,
         'payer' => $this->payer,
     ])
-            ->assertStatus(200)
-            ->assertMethodWired('addPayment');
+        ->assertStatus(200)
+        ->assertMethodWired('addPayment');
 });
 
 it('adds payment for actor with correct role', function () {
@@ -95,8 +95,8 @@ it('adds payment for actor with correct role', function () {
         'payer' => $this->payer,
         'event' => $this->event,
     ])
-            ->set('amount', 123)
-            ->call('addPayment');
+        ->set('amount', 123)
+        ->call('addPayment');
 
     assertDatabaseHas('payments', [
         'amount' => 123,
@@ -109,8 +109,8 @@ it('does not add payment for actor with incorrect role', function () {
         'payer' => $this->payer,
         'event' => $this->event,
     ])
-            ->set('amount', 123)
-            ->call('addPayment');
+        ->set('amount', 123)
+        ->call('addPayment');
     assertDatabaseCount('payments', 0);
 });
 
@@ -121,9 +121,9 @@ it('clears input after adding payment', function () {
         'payer' => $this->payer,
         'event' => $this->event,
     ])
-                      ->set('amount', 123)
-                      ->call('addPayment')
-                      ->get('amount');
+        ->set('amount', 123)
+        ->call('addPayment')
+        ->get('amount');
 
     assertEquals(null, $actual);
 });
@@ -135,10 +135,10 @@ it('allows payment string to contain comma', function () {
         'payer' => $this->payer,
         'event' => $this->event,
     ])
-            ->set('amount', '1,23')
-            ->assertHasNoErrors()
-            ->call('addPayment')
-            ->assertHasNoErrors();
+        ->set('amount', '1,23')
+        ->assertHasNoErrors()
+        ->call('addPayment')
+        ->assertHasNoErrors();
     assertDatabaseHas('payments', [
         'amount' => 1.23,
     ]);
@@ -151,17 +151,17 @@ it('allows exactly one decimal marker in payment amount', function () {
         'payer' => $this->payer,
         'event' => $this->event,
     ])
-            ->assertStatus(200)
-            ->assertHasNoErrors()
-            ->set('amount', 'Hallo')
-            ->assertHasErrors()
-            ->set('amount', '32,1,2')
-            ->assertHasErrors('amount')
-            ->assertSee([
-                __('validation.numeric', ['attribute' => __('validation.attributes.amount')]),
-            ])
-            ->set('amount', '12,0')
-            ->assertHasNoErrors()
-            ->set('amount', '32.1.2')
-            ->assertHasErrors('amount');
+        ->assertStatus(200)
+        ->assertHasNoErrors()
+        ->set('amount', 'Hallo')
+        ->assertHasErrors()
+        ->set('amount', '32,1,2')
+        ->assertHasErrors('amount')
+        ->assertSee([
+            __('validation.numeric', ['attribute' => __('validation.attributes.amount')]),
+        ])
+        ->set('amount', '12,0')
+        ->assertHasNoErrors()
+        ->set('amount', '32.1.2')
+        ->assertHasErrors('amount');
 });

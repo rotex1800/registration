@@ -25,5 +25,5 @@ it('contains rules', function () {
     Livewire::test(DocumentsTableRow::class, [
         'user' => User::factory()->create(),
     ])
-            ->assertSeeText(__('registration.rules'));
+        ->assertSeeText(__('registration.rules'));
 });

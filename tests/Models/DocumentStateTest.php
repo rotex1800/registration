@@ -32,21 +32,21 @@ test('states are ordered correctly', function () {
     expect(
         $missing->compareTo($missing)
     )->toBe(0)
-     ->and($missing->compareTo($declined))->toBe(-1)
-     ->and($missing->compareTo($submitted))->toBe(-1)
-     ->and($missing->compareTo($approved))->toBe(-1)
-     ->and($declined->compareTo($missing))->toBe(1)
-     ->and($declined->compareTo($declined))->toBe(0)
-     ->and($declined->compareTo($submitted))->toBe(-1)
-     ->and($declined->compareTo($approved))->toBe(-1)
-     ->and($submitted->compareTo($missing))->toBe(1)
-     ->and($submitted->compareTo($declined))->toBe(1)
-     ->and($submitted->compareTo($submitted))->toBe(0)
-     ->and($submitted->compareTo($approved))->toBe(-1)
-     ->and($approved->compareTo($missing))->toBe(1)
-     ->and($approved->compareTo($declined))->toBe(1)
-     ->and($approved->compareTo($submitted))->toBe(1)
-     ->and($approved->compareTo($approved))->toBe(0);
+        ->and($missing->compareTo($declined))->toBe(-1)
+        ->and($missing->compareTo($submitted))->toBe(-1)
+        ->and($missing->compareTo($approved))->toBe(-1)
+        ->and($declined->compareTo($missing))->toBe(1)
+        ->and($declined->compareTo($declined))->toBe(0)
+        ->and($declined->compareTo($submitted))->toBe(-1)
+        ->and($declined->compareTo($approved))->toBe(-1)
+        ->and($submitted->compareTo($missing))->toBe(1)
+        ->and($submitted->compareTo($declined))->toBe(1)
+        ->and($submitted->compareTo($submitted))->toBe(0)
+        ->and($submitted->compareTo($approved))->toBe(-1)
+        ->and($approved->compareTo($missing))->toBe(1)
+        ->and($approved->compareTo($declined))->toBe(1)
+        ->and($approved->compareTo($submitted))->toBe(1)
+        ->and($approved->compareTo($approved))->toBe(0);
 });
 
 it('can sort an array of states', function () {
@@ -91,7 +91,7 @@ it('can sort an array of states', function () {
 
 it('has display names', function () {
     expect(DocumentState::Missing->displayName())->toBe('🤷‍')
-                                                 ->and(DocumentState::Declined->displayName())->toBe('⛔️')
-                                                 ->and(DocumentState::Submitted->displayName())->toBe('⬆️')
-                                                 ->and(DocumentState::Approved->displayName())->toBe('✅');
+        ->and(DocumentState::Declined->displayName())->toBe('⛔️')
+        ->and(DocumentState::Submitted->displayName())->toBe('⬆️')
+        ->and(DocumentState::Approved->displayName())->toBe('✅');
 });

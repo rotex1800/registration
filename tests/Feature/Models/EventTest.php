@@ -18,8 +18,8 @@ test('event has attendees relation', function () {
 
 test('event can retrieve attendees', function () {
     $event = Event::factory()
-                  ->has(User::factory()->count(3), 'attendees')
-                  ->create();
+        ->has(User::factory()->count(3), 'attendees')
+        ->create();
 
     expect($event->attendees()->get())
         ->toHaveCount(3)
@@ -56,11 +56,11 @@ test('event start time', function () {
         'start' => Carbon::parse('2022-07-23T08:12:30', 'Europe/Berlin'),
     ])->create();
     expect($event->start->year)->toBe(2022)
-                               ->and($event->start->month)->toBe(7)
-                               ->and($event->start->day)->toBe(23)
-                               ->and($event->start->hour)->toBe(8)
-                               ->and($event->start->minute)->toBe(12)
-                               ->and($event->start->second)->toBe(30);
+        ->and($event->start->month)->toBe(7)
+        ->and($event->start->day)->toBe(23)
+        ->and($event->start->hour)->toBe(8)
+        ->and($event->start->minute)->toBe(12)
+        ->and($event->start->second)->toBe(30);
 });
 
 test('event end time', function () {
@@ -68,11 +68,11 @@ test('event end time', function () {
         'end' => Carbon::parse('2020-05-21T18:02:45', 'Europe/Madrid'),
     ])->create();
     expect($event->end->year)->toBe(2020)
-                             ->and($event->end->month)->toBe(5)
-                             ->and($event->end->day)->toBe(21)
-                             ->and($event->end->hour)->toBe(18)
-                             ->and($event->end->minute)->toBe(2)
-                             ->and($event->end->second)->toBe(45);
+        ->and($event->end->month)->toBe(5)
+        ->and($event->end->day)->toBe(21)
+        ->and($event->end->hour)->toBe(18)
+        ->and($event->end->minute)->toBe(2)
+        ->and($event->end->second)->toBe(45);
 });
 
 it('has role relation', function () {

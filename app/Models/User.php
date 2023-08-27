@@ -317,7 +317,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function canRegisterFor(): Collection
     {
         return $this->possibleEvents()
-                    ->diff($this->participatesIn());
+            ->diff($this->participatesIn());
     }
 
     /**
@@ -395,8 +395,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sumPaidFor(Event $event): float
     {
         $sum = Payment::whereEventId($event->id)
-                      ->whereUserId($this->id)
-                      ->sum('amount');
+            ->whereUserId($this->id)
+            ->sum('amount');
 
         return floatval($sum);
     }

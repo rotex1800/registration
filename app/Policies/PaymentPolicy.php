@@ -22,7 +22,7 @@ class PaymentPolicy
         }
 
         $user = User::whereId($authenticatable->getAuthIdentifier())
-                    ->first();
+            ->first();
         if ($user == null || ! $user->hasRole('rotex')) {
             return $this->deny();
         }

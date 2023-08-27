@@ -48,10 +48,10 @@ it('shows name passed to component', function () {
     ]);
 
     $comp->assertStatus(200)
-         ->assertSee('Test File')
-         ->set('displayName', 'Other File')
-         ->assertStatus(200)
-         ->assertSee('Other File');
+        ->assertSee('Test File')
+        ->set('displayName', 'Other File')
+        ->assertStatus(200)
+        ->assertSee('Other File');
 });
 
 it('has save method wired to form', function () {
@@ -74,8 +74,8 @@ it('stores uploaded file', function () {
     $file = UploadedFile::fake()->create('foo.pdf', 1024, 'application/pdf');
 
     Livewire::test('document-upload', ['category' => 'passport'])
-            ->set('file', $file)
-            ->call('save');
+        ->set('file', $file)
+        ->call('save');
     Storage::disk()->assertExists('documents/'.$user->uuid.'/passport.pdf');
 });
 
@@ -85,8 +85,8 @@ it('requires pdf files', function () {
     $file = UploadedFile::fake()->image('avatar.png');
 
     Livewire::test('document-upload', ['category' => 'passport'])
-            ->set('file', $file)
-            ->call('save');
+        ->set('file', $file)
+        ->call('save');
     Storage::disk()->assertMissing('documents/'.$user->uuid.'/passport.png');
 });
 
@@ -96,8 +96,8 @@ it('allows image upload for the picture', function () {
     $file = UploadedFile::fake()->image('avatar.png');
 
     Livewire::test('document-upload', ['category' => 'picture'])
-            ->set('file', $file)
-            ->call('save');
+        ->set('file', $file)
+        ->call('save');
     Storage::disk()->assertExists('documents/'.$user->uuid.'/picture.png');
 });
 
@@ -106,8 +106,8 @@ test('uploading file creates entry in document table', function () {
     $file = UploadedFile::fake()->create('foo.pdf', 1024, 'application/pdf');
 
     Livewire::test('document-upload', ['category' => 'passport'])
-            ->set('file', $file)
-            ->call('save');
+        ->set('file', $file)
+        ->call('save');
 
     $userPassport = $this->user->documentBy(DocumentCategory::PassportCopy);
     expect($userPassport)
@@ -120,22 +120,22 @@ test('uploading file creates entry in document table', function () {
 
 it('has consts for document types', function () {
     expect(Document::TYPE_DIGITAL)->toBe(0)
-                                  ->and(Document::TYPE_ANALOG)->toBe(1);
+        ->and(Document::TYPE_ANALOG)->toBe(1);
 });
 
 it('it shows approved status', function () {
     $document = Document::factory()
-                        ->approved()
-                        ->withCategory(DocumentCategory::PassportCopy)
-                        ->make();
+        ->approved()
+        ->withCategory(DocumentCategory::PassportCopy)
+        ->make();
 
     $this->user->documents()->save($document);
 
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])
-            ->assertStatus(200)
-            ->assertSee(__('✅'));
+        ->assertStatus(200)
+        ->assertSee(__('✅'));
 });
 
 it('it shows submitted status', function () {
@@ -145,8 +145,8 @@ it('it shows submitted status', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])
-            ->assertStatus(200)
-            ->assertSee(__('⬆️'));
+        ->assertStatus(200)
+        ->assertSee(__('⬆️'));
 });
 
 it('it shows declined status', function () {
@@ -156,25 +156,25 @@ it('it shows declined status', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])
-            ->assertStatus(200)
-            ->assertSee(__('⛔️'));
+        ->assertStatus(200)
+        ->assertSee(__('⛔️'));
 });
 
 it('shows not uploaded status', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])
-            ->assertStatus(200)
-            ->assertSee(__('❓'));
+        ->assertStatus(200)
+        ->assertSee(__('❓'));
 });
 
 it('shows file input for complete form', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::PassportCopy->value,
     ])->assertStatus(200)
-            ->assertSet('message', __('document.state_not_uploaded'))
-            ->assertSee(__('document.state_not_uploaded'))
-            ->assertSeeHtml('<input');
+        ->assertSet('message', __('document.state_not_uploaded'))
+        ->assertSee(__('document.state_not_uploaded'))
+        ->assertSeeHtml('<input');
 });
 
 it('it does not cause error for a second upload of the same document', function () {
@@ -184,11 +184,11 @@ it('it does not cause error for a second upload of the same document', function 
     Livewire::test('document-upload', [
         'category' => DocumentCategory::InsurancePolice->value,
     ])
-            ->assertStatus(200)
-            ->set('file', $fileOne)
-            ->call('save')
-            ->set('file', $fileTwo)
-            ->call('save');
+        ->assertStatus(200)
+        ->set('file', $fileOne)
+        ->call('save')
+        ->set('file', $fileTwo)
+        ->call('save');
 
     $doc = $this->user->documentBy(DocumentCategory::InsurancePolice);
     expect($doc->name)->toBe('two.pdf');
@@ -200,21 +200,21 @@ it('shows success message after upload', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::InsurancePolice->value,
     ])
-            ->assertStatus(200)
-            ->set('file', $file)
-            ->call('save')
-            ->assertSee(__('registration.upload-success'));
+        ->assertStatus(200)
+        ->set('file', $file)
+        ->call('save')
+        ->assertSee(__('registration.upload-success'));
 });
 
 it('shows error message if upload is attempted before file selection', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::Motivation->value,
     ])
-            ->assertStatus(200)
-            ->call('save')
-            ->assertHasErrors([
-                'file' => 'required',
-            ]);
+        ->assertStatus(200)
+        ->call('save')
+        ->assertHasErrors([
+            'file' => 'required',
+        ]);
 });
 
 // SECTION START: Comments
@@ -222,7 +222,7 @@ it('has save comment method wired', function () {
     Livewire::test('document-upload', [
         'category' => $this->category->value,
     ])->assertStatus(200)
-            ->assertMethodWired('saveComment');
+        ->assertMethodWired('saveComment');
 });
 
 it('saves a comment', function () {
@@ -264,9 +264,9 @@ it('does not save blank comments', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::Motivation->value,
     ])
-            ->assertStatus(200)
-            ->set('comment', '    ')
-            ->call('saveComment');
+        ->assertStatus(200)
+        ->set('comment', '    ')
+        ->call('saveComment');
 
     $this->document->refresh();
     expect($this->document->comments)
@@ -279,9 +279,9 @@ it('does not save empty comment', function () {
     Livewire::test('document-upload', [
         'category' => DocumentCategory::Motivation->value,
     ])
-            ->assertStatus(200)
-            ->set('comment', '')
-            ->call('saveComment');
+        ->assertStatus(200)
+        ->set('comment', '')
+        ->call('saveComment');
 
     $this->document->refresh();
     expect($this->document->comments)
@@ -293,9 +293,9 @@ it('trims comments', function () {
     Livewire::test('document-upload', [
         'category' => $this->category->value,
     ])
-            ->assertStatus(200)
-            ->set('comment', 'I am a comment!            ')
-            ->call('saveComment');
+        ->assertStatus(200)
+        ->set('comment', 'I am a comment!            ')
+        ->call('saveComment');
 
     $this->document->refresh();
     expect($this->document->comments)
@@ -321,8 +321,8 @@ it('shows comments', function () {
     $component->assertStatus(200);
     foreach ($comments as $comment) {
         $component->assertSeeText($comment->content)
-                  ->assertSeeText($comment->author->full_name)
-                  ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:i'));
+            ->assertSeeText($comment->author->full_name)
+            ->assertSeeText($comment->created_at->translatedFormat('d. F Y H:i'));
     }
 });
 
@@ -337,8 +337,8 @@ test('currently authenticated user is author of comment', function () {
     // Act
     actingAs($attendee);
     $component->assertStatus(200)
-              ->set('comment', 'Comment by attendee')
-              ->call('saveComment');
+        ->set('comment', 'Comment by attendee')
+        ->call('saveComment');
 
     // Assert
     expect($this->document->comments[0])

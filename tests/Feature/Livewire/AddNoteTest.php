@@ -18,17 +18,17 @@ beforeEach(function () {
 
 it('can render', function () {
     $additionalInfo = AdditionalInfo::factory()
-                                    ->state([
-                                        'note' => 'Hello World',
-                                    ])->make();
+        ->state([
+            'note' => 'Hello World',
+        ])->make();
     $this->attendee->additionalInfo()->save($additionalInfo);
 
     Livewire::test('add-note', ['attendee' => $this->attendee])
-            ->assertStatus(200)
-            ->assertSee([
-                __('Notiz'),
-                'Hello World',
-            ]);
+        ->assertStatus(200)
+        ->assertSee([
+            __('Notiz'),
+            'Hello World',
+        ]);
 });
 
 it('requires attendee parameter', function () {
@@ -39,16 +39,16 @@ it('contains text area', function () {
     Livewire::test('add-note', [
         'attendee' => $this->attendee,
     ])
-            ->assertStatus(200)
-            ->assertSeeHtml(['textarea']);
+        ->assertStatus(200)
+        ->assertSeeHtml(['textarea']);
 });
 
 it('has note property wired', function () {
     Livewire::test('add-note', [
         'attendee' => $this->attendee,
     ])
-            ->assertStatus(200)
-            ->assertPropertyWired('note');
+        ->assertStatus(200)
+        ->assertPropertyWired('note');
 });
 
 it('adds note for actor with correct role', function () {
@@ -78,7 +78,7 @@ it('does not edit note for actor with incorrect role', function () {
     Livewire::test('add-note', [
         'attendee' => $this->attendee,
     ])
-            ->set('note', 'New Test Note');
+        ->set('note', 'New Test Note');
     $this->attendee->refresh();
     assertNotEquals('New Test Note', $this->attendee->additionalInfo?->note);
 });
