@@ -10,7 +10,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.1.0",
+        "php": "^8.2.0",
         "christophrumpel/missing-livewire-assertions": "^1.0.0",
         "comcast/php-legal-licenses": "^1.2",
         "fakerphp/faker": "^1.9.1",
