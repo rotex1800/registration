@@ -23,7 +23,9 @@ class EventRegistration extends Component
 
     private const NULLABLE_EMAIL = 'nullable|email';
 
-    private const NULLABLE_PAST_DATE = 'nullable|date|before:today';
+    private const NULLABLE_PARTICIPANT_BIRTHDAY = 'nullable|date|before:2009-01-01';
+
+    private const NULLABLE_PAST_DATE = 'nullable|date|before:now';
 
     private const NULLABLE_FUTURE_DATE = 'nullable|date|after:today';
 
@@ -91,7 +93,7 @@ class EventRegistration extends Component
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
         'user.gender' => 'nullable|in:female,male,diverse,na',
-        'user.birthday' => self::NULLABLE_PAST_DATE,
+        'user.birthday' => self::NULLABLE_PARTICIPANT_BIRTHDAY,
         'user.mobile_phone' => self::NULLABLE,
         'user.health_issues' => self::NULLABLE,
 
