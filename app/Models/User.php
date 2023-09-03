@@ -165,6 +165,67 @@ class User extends Authenticatable implements MustVerifyEmail
         'birthday' => 'date:Y-m-d',
     ];
 
+    protected static function booted()
+    {
+        static::deleting(function (User $user) {
+            $user->authoredComments()->delete();
+            $user->bioFamily()->delete();
+            $user->hostFamilies()->delete();
+            $user->documents()->delete();
+            $user->yeo()->delete();
+            $user->counselor()->delete();
+            $user->passport()->delete();
+            $user->additionalInfo()->delete();
+            $user->payments()->delete();
+        });
+    }
+
+    /**
+     * @phpstan-return HasMany<Comment>
+     */
+    public function authoredComments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'author_id');
+    }
+
+    /**
+     * @retrun HasOne
+     *
+     * @phpstan-return HasOne<BioFamily>
+     */
+    public function bioFamily(): HasOne
+    {
+        return $this->hasOne(BioFamily::class, 'user_id');
+    }
+
+    /**
+     * @phpstan-return HasMany<HostFamily>
+     */
+    public function hostFamilies(): HasMany
+    {
+        return $this->hasMany(HostFamily::class, 'user_id');
+    }
+
+    /**
+     * @retrun HasOne
+     *
+     * @phpstan-return HasOne<YeoInfo>
+     */
+    public function yeo(): HasOne
+    {
+        return $this->hasOne(YeoInfo::class, 'user_id');
+    }
+
+    /**
+     * @retrun HasOne
+     *
+     * @phpstan-return HasOne<CounselorInfo>
+     */
+    public function counselor(): HasOne
+    {
+        return $this->hasOne(CounselorInfo::class, 'user_id');
+    }
+
     /**
      * Accessor combining first name and family name
      */
@@ -213,37 +274,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Event::class);
     }
 
-    /**
-     * @phpstan-return HasMany<Comment>
-     */
-    public function authoredComments(): HasMany
-    {
-        return $this->hasMany(Comment::class, 'author_id');
-    }
-
     public function registrationComment(): HasOne
     {
         return $this->hasOne(RegistrationComment::class);
-    }
-
-    /**
-     * @retrun HasOne
-     *
-     * @phpstan-return HasOne<CounselorInfo>
-     */
-    public function counselor(): HasOne
-    {
-        return $this->hasOne(CounselorInfo::class, 'user_id');
-    }
-
-    /**
-     * @retrun HasOne
-     *
-     * @phpstan-return HasOne<YeoInfo>
-     */
-    public function yeo(): HasOne
-    {
-        return $this->hasOne(YeoInfo::class, 'user_id');
     }
 
     /**
@@ -254,16 +287,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function rotaryInfo(): HasOne
     {
         return $this->hasOne(RotaryInfo::class, 'user_id');
-    }
-
-    /**
-     * @retrun HasOne
-     *
-     * @phpstan-return HasOne<BioFamily>
-     */
-    public function bioFamily(): HasOne
-    {
-        return $this->hasOne(BioFamily::class, 'user_id');
     }
 
     /**
@@ -291,14 +314,6 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         return HostFamily::factory()->empty()->nth($order)->make();
-    }
-
-    /**
-     * @phpstan-return HasMany<HostFamily>
-     */
-    public function hostFamilies(): HasMany
-    {
-        return $this->hasMany(HostFamily::class, 'user_id');
     }
 
     public function secondHostFamily(): HostFamily
