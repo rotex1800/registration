@@ -394,10 +394,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sumPaidFor(Event $event): float
     {
+        /** @var float $sum */
         $sum = Payment::whereEventId($event->id)
-            ->whereUserId($this->id)
-            ->sum('amount');
+                      ->whereUserId($this->id)
+                      ->sum('amount');
 
-        return floatval($sum);
+        return $sum;
     }
 }
