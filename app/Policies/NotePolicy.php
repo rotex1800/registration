@@ -21,7 +21,9 @@ class NotePolicy
         if ($authenticatable == null) {
             return Response::deny();
         }
-        $id = intval($authenticatable->getAuthIdentifier());
+        /** @var int $authIdentifier */
+        $authIdentifier = $authenticatable->getAuthIdentifier();
+        $id = $authIdentifier;
         $user = User::find($id);
         if ($user != null && $user->hasRole('rotex')) {
             return Response::allow();
