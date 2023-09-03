@@ -12,7 +12,9 @@ trait HasCompletenessCheck
     protected function isCompleteCheck(array $requiredAttrs): bool
     {
         foreach (array_keys($requiredAttrs) as $required) {
-            $actualAttr = strval($this->getAttribute($required));
+            /** @var string $attr */
+            $attr = $this->getAttribute($required);
+            $actualAttr = strval($attr);
             if ($actualAttr == null || trim($actualAttr) == '') {
                 return false;
             }
