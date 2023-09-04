@@ -45,7 +45,7 @@ class AssignRole extends Command
             return Command::FAILURE;
         }
         $this->info("Assigning role '".$role."' to user with email '".$email."'");
-        $user->giveRole("".$role);
+        $user->giveRole(''.$role);
 
         return Command::SUCCESS;
     }
