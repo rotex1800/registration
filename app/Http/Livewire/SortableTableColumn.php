@@ -10,7 +10,7 @@ class SortableTableColumn
 
     private Closure $supplier;
 
-    public function __construct(mixed $header, Closure $supplier)
+    public function __construct(string $header, Closure $supplier)
     {
         $this->header = strval($header);
         $this->supplier = $supplier;
