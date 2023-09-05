@@ -276,7 +276,7 @@ it('has user inputs bound to component', function () {
     $fakeFirstName = fake()->firstName;
     $fakeLastName = fake()->lastName;
     $fakeGender = fake()->randomElement(['female', 'male', 'diverse', 'na']);
-    $fakeBirthday = fake()->date;
+    $fakeBirthday = fake()->dateTimeBetween(endDate: '2009-01-01')->format('Y-m-d');
     $fakeMobilePhone = fake()->phoneNumber;
     $fakeHealthIssues = fake()->paragraph;
 
