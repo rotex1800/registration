@@ -58,7 +58,7 @@ it('shows sum of all payments by payer for event', function () {
         'payer' => $this->payer,
     ])
         ->assertStatus(200)
-        ->assertSee(`Summe: $sum`);
+        ->assertSee("Summe: $sum");
 });
 
 it('contains text input', function () {
