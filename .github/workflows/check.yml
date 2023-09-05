@@ -73,7 +73,8 @@ jobs:
           XDEBUG_MODE: coverage
         run: >-
           ./vendor/bin/infection --test-framework=pest --test-framework-options='--exclude-testsuite=Browser'
-          --show-mutations --configuration=infection.json5 --threads=10 --git-diff-filter=AM
+          --show-mutations --configuration=infection.json5 --threads=10
+          --git-diff-base=origin/$GITHUB_BASE_REF --git-diff-filter=AM
           --min-msi=90 --min-covered-msi=90
 
       - name: Read infection per mutator report
