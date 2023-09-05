@@ -34,7 +34,7 @@ use Illuminate\Support\Carbon;
  */
 class RegistrationComment extends Model
 {
-    use HasFactory, HasCompletenessCheck;
+    use HasCompletenessCheck, HasFactory;
 
     public function user(): BelongsTo
     {

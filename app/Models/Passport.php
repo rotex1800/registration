@@ -40,8 +40,8 @@ use Illuminate\Support\Carbon;
  */
 class Passport extends Model
 {
-    use HasFactory;
     use HasCompletenessCheck;
+    use HasFactory;
 
     /**
      * The attributes that should be cast.

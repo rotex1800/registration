@@ -38,7 +38,7 @@ use Illuminate\Support\Carbon;
  */
 class BioFamily extends Model
 {
-    use HasFactory, HasCompletenessCheck;
+    use HasCompletenessCheck, HasFactory;
 
     public function isComplete(): bool
     {

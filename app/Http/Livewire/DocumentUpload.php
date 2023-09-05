@@ -17,7 +17,7 @@ use Livewire\WithFileUploads;
 
 class DocumentUpload extends Component
 {
-    use WithFileUploads, HasCommentSection;
+    use HasCommentSection, WithFileUploads;
 
     /**
      * @var string

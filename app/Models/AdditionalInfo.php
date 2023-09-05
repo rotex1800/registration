@@ -45,8 +45,8 @@ use Illuminate\Support\Carbon;
  */
 class AdditionalInfo extends Model
 {
-    use PersonInfo;
     use HasFactory;
+    use PersonInfo;
 
     protected $casts = [
         'tshirt_size' => ClothesSize::class,

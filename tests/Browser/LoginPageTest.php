@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Http\Middleware\ApplicationAvailability;
 use App\Models\User;
 use Laravel\Dusk\Browser;
+
 use function Pest\Laravel\actingAs;
 
 it('shows the login form for non authenticated users', function () {

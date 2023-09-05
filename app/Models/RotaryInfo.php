@@ -40,7 +40,7 @@ use Illuminate\Support\Carbon;
  */
 class RotaryInfo extends Model
 {
-    use HasFactory, HasCompletenessCheck;
+    use HasCompletenessCheck, HasFactory;
 
     /**
      * Inverse of the one-to-one relation between a user and RotaryInfo

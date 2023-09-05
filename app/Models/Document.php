@@ -82,7 +82,7 @@ class Document extends Model
      */
     public function isApproved(): bool
     {
-        return DocumentState::Approved == $this->state;
+        return $this->state == DocumentState::Approved;
     }
 
     /**
@@ -90,7 +90,7 @@ class Document extends Model
      */
     public function isSubmitted(): bool
     {
-        return DocumentState::Submitted == $this->state;
+        return $this->state == DocumentState::Submitted;
     }
 
     /**
