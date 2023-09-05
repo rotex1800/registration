@@ -76,6 +76,14 @@ jobs:
           --show-mutations --configuration=infection.json5 --threads=10 --git-diff-filter=AM
           --min-msi=90 --min-covered-msi=90
 
+      - name: Read infection per mutator report
+        id: mutation-report
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: per-mutator.md
+
+      - run: echo "${{ steps.mutation-report.outputs.content }}" >> "$GITHUB_STEP_SUMMARY"
+
       - name: Upload Screenshots
         if: failure()
         uses: actions/upload-artifact@v3
