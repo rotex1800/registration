@@ -1,5 +1,6 @@
 <div class="w-full h-16 bg-blue-800 flex flex-row items-center p-2 space-x-2">
-    <div class="text-white align-middle" title="Version: {{ config('app.version') }}">{{ $applicationName }}</div>
+    <div class="text-white align-middle"
+         title="Version: {{ config('app.version') }}">{{ strval($applicationName) }}</div>
     <div class="w-3"></div>
     @auth('web')
         <div wire:click.prevent="toHome" class="text-white align-middle cursor-pointer">Home</div>
