@@ -77,13 +77,21 @@ jobs:
           --git-diff-base=origin/$GITHUB_BASE_REF --git-diff-filter=AM
           --min-msi=90 --min-covered-msi=90
 
+      - name: Check per-mutator.md existence
+        id: mutator-report-file
+        uses: andstor/file-existence-action@v2
+        with:
+          files: per-mutator.md"
+
       - name: Read infection per mutator report
+        if: ${{ steps.mutator-report-file.outputs.file_exists }}
         id: mutation-report
         uses: juliangruber/read-file-action@v1
         with:
           path: per-mutator.md
 
-      - run: echo "${{ steps.mutation-report.outputs.content }}" >> "$GITHUB_STEP_SUMMARY"
+      - if: ${{ steps.mutator-report-file.outputs.file_exists }}
+        run: echo "${{ steps.mutation-report.outputs.content }}" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Screenshots
         if: failure()
