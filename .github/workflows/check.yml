@@ -66,7 +66,7 @@ jobs:
           file: coverage-report.xml
 
       # Fetch base to run mutation tests only for changed files
-      - run: git fetch --depth=1 origin $GITHUB_BASE_REF
+      - run: git fetch --depth=1 origin "$GITHUB_BASE_REF"
 
       - name: Mutation tests
         env:
@@ -74,7 +74,7 @@ jobs:
         run: >-
           ./vendor/bin/infection --test-framework=pest --test-framework-options='--exclude-testsuite=Browser'
           --show-mutations --configuration=infection.json5 --threads=10
-          --git-diff-base=origin/$GITHUB_BASE_REF --git-diff-filter=AM
+          --git-diff-base=origin/"$GITHUB_BASE_REF" --git-diff-filter=AM
           --min-msi=90 --min-covered-msi=90
 
       - name: Check per-mutator.md existence
