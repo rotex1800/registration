@@ -162,7 +162,7 @@ jobs:
           level: 'error'
           fail_on_error: 'true'
           target_directory: 'app'
-          phpstan_level: 8
+          phpstan_level: max
 
   dependency-review:
     runs-on: ubuntu-latest
