@@ -12,7 +12,7 @@ use Livewire\Redirector;
 
 class MainNavigation extends Component
 {
-    public string $applicationName;
+    public mixed $applicationName;
 
     public string $name;
 
@@ -25,7 +25,7 @@ class MainNavigation extends Component
 
     public function render(): Application|Factory|View
     {
-        $this->applicationName = strval(config('app.name'));
+        $this->applicationName = config('app.name');
         $this->name = Auth::user()?->full_name ?: '';
 
         return view('livewire.main-navigation');
