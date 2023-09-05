@@ -19,7 +19,9 @@ class EventController extends Controller
 
         $part = EventRegistration::PART_ONE;
         if ($request->filled('part')) {
-            $input = strtolower(strval($request->input('part')));
+            /** @var string $requestedPart */
+            $requestedPart = $request->input('part');
+            $input = strtolower($requestedPart);
             if (in_array($input, EventRegistration::KNOWN_PARTS)) {
                 $part = $input;
             }
