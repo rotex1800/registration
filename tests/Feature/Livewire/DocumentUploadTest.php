@@ -13,8 +13,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
 use Livewire\WithFileUploads;
-use function Pest\Laravel\actingAs;
 use Storage;
+
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 

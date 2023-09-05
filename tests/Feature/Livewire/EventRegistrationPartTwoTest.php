@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\EventRegistration;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);

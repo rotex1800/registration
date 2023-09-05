@@ -43,7 +43,7 @@ use Illuminate\Support\Carbon;
  */
 class HostFamily extends Model
 {
-    use HasFactory, HasCompletenessCheck;
+    use HasCompletenessCheck, HasFactory;
 
     public function inbound(): BelongsTo
     {

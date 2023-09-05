@@ -37,9 +37,9 @@ use Illuminate\Support\Carbon;
  */
 class CounselorInfo extends Model
 {
+    use HasCompletenessCheck;
     use HasFactory;
     use PersonInfo;
-    use HasCompletenessCheck;
 
     public function isComplete(): bool
     {

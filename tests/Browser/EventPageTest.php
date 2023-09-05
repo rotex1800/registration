@@ -3,6 +3,7 @@
 use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 
 it('shows main navigation', function () {
