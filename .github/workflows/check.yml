@@ -65,6 +65,17 @@ jobs:
         with:
           file: coverage-report.xml
 
+      # Fetch base to run mutation tests only for changed files
+      - run: git fetch --depth=1 origin $GITHUB_BASE_REF
+
+      - name: Mutation tests
+        env:
+          XDEBUG_MODE: coverage
+        run: >-
+          ./vendor/bin/infection --test-framework=pest --test-framework-options='--exclude-testsuite=Browser'
+          --show-mutations --configuration=infection.json5 --threads=10 --git-diff-filter=AM
+          --min-msi=90 --min-covered-msi=90
+
       - name: Upload Screenshots
         if: failure()
         uses: actions/upload-artifact@v3
