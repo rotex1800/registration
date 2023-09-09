@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Event;
+use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
@@ -30,10 +31,12 @@ class CreateEvent extends Command
         $name = $this->ask('What is the name of the event?');
         $start = Carbon::parse($this->ask('When does it start?'));
         $end = Carbon::parse($this->ask('When does it end?'));
-        Event::factory()->create([
+        $event = Event::factory()->create([
             'name' => $name,
             'start' => $start,
-            'end' => $end
+            'end' => $end,
         ]);
+        $role = $this->ask('Who is the target audience of the event?');
+        $event->giveRole($role);
     }
 }
