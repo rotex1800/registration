@@ -80,13 +80,13 @@ jobs:
           files: per-mutator.md
 
       - name: Read infection per mutator report
-        if: ${{ steps.mutator-report-file.outputs.file_exists }}
+        if: ${{ steps.mutator-report-file.outputs.files_exists == 'true' }}
         id: mutation-report
         uses: juliangruber/read-file-action@v1
         with:
           path: per-mutator.md
 
-      - if: ${{ steps.mutator-report-file.outputs.file_exists }}
+      - if: ${{ steps.mutator-report-file.outputs.files_exists == 'true' }}
         run: echo "${{ steps.mutation-report.outputs.content }}" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Screenshots
