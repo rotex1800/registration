@@ -61,6 +61,7 @@ jobs:
       - name: Run tests
         env:
           XDEBUG_MODE: coverage
+          INFECTION_DASHBOARD_API_KEY: ${{ secrets.INFECTION_DASHBOARD_API_KEY }}
         run: >-
           ./vendor/bin/infection --test-framework=pest
           --test-framework-options="--ci --coverage --coverage-clover=coverage-report.xml --min=95"
