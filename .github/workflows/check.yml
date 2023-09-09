@@ -58,9 +58,6 @@ jobs:
       - name: Run Laravel Server
         run: php artisan serve &
 
-      # Fetch base to run mutation tests only for changed files
-      - run: git fetch --depth=1 origin "$GITHUB_BASE_REF"
-
       - name: Run tests
         env:
           XDEBUG_MODE: coverage
@@ -68,7 +65,6 @@ jobs:
           ./vendor/bin/infection --test-framework=pest
           --test-framework-options="--ci --coverage --coverage-clover=coverage-report.xml --min=95"
           --show-mutations --configuration=infection.json5 --threads=10
-          --git-diff-base=origin/"$GITHUB_BASE_REF" --git-diff-filter=AM
           --min-msi=95 --min-covered-msi=95
 
       - name: Report Coverage in comment
