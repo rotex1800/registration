@@ -72,7 +72,7 @@ jobs:
         env:
           XDEBUG_MODE: coverage
         run: >-
-          ./vendor/bin/infection --test-framework=pest --test-framework-options='
+          ./vendor/bin/infection --test-framework=pest
           --show-mutations --configuration=infection.json5 --threads=10
           --git-diff-base=origin/"$GITHUB_BASE_REF" --git-diff-filter=AM
           --min-msi=90 --min-covered-msi=90
