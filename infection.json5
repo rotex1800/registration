@@ -17,7 +17,7 @@
         "perMutator": "per-mutator.md",
         "github": true,
         "stryker": {
-            "badge": "/^release-.*$/"
+            "report": "/^release-.*$/"
         },
         "summaryJson": "summary.json"
     }
