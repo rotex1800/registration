@@ -1,5 +1,69 @@
 # Changelog
 
+## [1.14.0](https://github.com/rotex1800/registration/compare/v1.13.6...v1.14.0) (2023-09-09)
+
+
+### Features
+
+* Add artisan command to clean up events ([86a127a](https://github.com/rotex1800/registration/commit/86a127ac8c3d19d3e54dff5add899ccf9b10badb))
+* artisan command to create new events ([2df2713](https://github.com/rotex1800/registration/commit/2df2713c3dffb8842b2f9f4e3949d0a04018018b))
+
+
+### Bug Fixes
+
+* ask for event audience on creation ([3969843](https://github.com/rotex1800/registration/commit/39698433ab8296f5f4e21eb2010c27d95da3a953))
+* branch name in stryker config ([0282512](https://github.com/rotex1800/registration/commit/02825128134eafbe3686bd3d52fe9c41f05d41c5))
+* broken infection tests parameter ([39c32f2](https://github.com/rotex1800/registration/commit/39c32f2548887939269d032d6afee72f3caf12ac))
+* crash when cleaning up event with unknown id ([c5cb91a](https://github.com/rotex1800/registration/commit/c5cb91ad9b5bffbb399249b51ad1deab553cd01a))
+* disable conventional commits and dependency review checks on push push to main ([2cd1940](https://github.com/rotex1800/registration/commit/2cd19405db71c6693a7159b2bcc6f54aebb7f0a1))
+* name of infection report file ([b032ff8](https://github.com/rotex1800/registration/commit/b032ff8dca01fbb006a75d9d5a7a2b05136a3590))
+* Provide infection dashboard api key in env variable ([ea68244](https://github.com/rotex1800/registration/commit/ea68244c9cfdb20df0410443be7ce2e9b5767e77))
+* publish infection report ([c786a96](https://github.com/rotex1800/registration/commit/c786a9664b15e1f90ec6f07f170e337dcbd17b19))
+* remove php-prettier while it still doesnt support prettier 3 ([c8db92d](https://github.com/rotex1800/registration/commit/c8db92d6095db3facc1939c4b099da207fd86e21))
+* Require birthdays of participants to be before 2009-01-01 ([03f90fe](https://github.com/rotex1800/registration/commit/03f90fed2ea4983eeb85c6b8eed44b14a7f2d2f3)), closes [#390](https://github.com/rotex1800/registration/issues/390)
+
+
+### Miscellaneous Chores
+
+* allow to set multiple roles to an event at the same time ([8197bf9](https://github.com/rotex1800/registration/commit/8197bf978bc610060f7d2a37d64a57afbafddb4c))
+* **deps:** bump @tailwindcss/forms from 0.5.3 to 0.5.4 ([a1dd2aa](https://github.com/rotex1800/registration/commit/a1dd2aa8cfd3fba0aa7518e25d669259fff6ebf5))
+* **deps:** bump autoprefixer from 10.4.14 to 10.4.15 ([4aa785e](https://github.com/rotex1800/registration/commit/4aa785e66c23bd6f5121c95800480a8ce4c34605))
+* **deps:** bump axios from 1.4.0 to 1.5.0 ([eab1f70](https://github.com/rotex1800/registration/commit/eab1f7020af7b25b452654e3984619ecbf2f9c14))
+* **deps:** bump guzzlehttp/guzzle from 7.7.0 to 7.8.0 ([a4e26c3](https://github.com/rotex1800/registration/commit/a4e26c3933f8f1e6476a7b7dff4a87dd7b8b0324))
+* **deps:** bump laravel-vite-plugin from 0.7.8 to 0.8.0 ([d919c1c](https://github.com/rotex1800/registration/commit/d919c1c9c6c6e309317c301fe65cb67b433e96d4))
+* **deps:** bump laravel/dusk from 7.7.1 to 7.9.2 ([368053d](https://github.com/rotex1800/registration/commit/368053d72a10fe4461408c1c8f84952c982a7feb))
+* **deps:** bump laravel/fortify from 1.17.1 to 1.17.4 ([9caabc7](https://github.com/rotex1800/registration/commit/9caabc7ad082b48da8485624bee31e5cd306a3f5))
+* **deps:** bump livewire/livewire from 2.12.3 to 2.12.4 ([bcfa973](https://github.com/rotex1800/registration/commit/bcfa973f8609fbe62f54e3abaa07f0736953a8da))
+* **deps:** bump lucassabreu/comment-coverage-clover ([bb23b07](https://github.com/rotex1800/registration/commit/bb23b07f61ce85ecb95909e9cc68e11945c1dc06))
+* **deps:** bump nunomaduro/larastan from 2.6.0 to 2.6.4 ([9e0b6c6](https://github.com/rotex1800/registration/commit/9e0b6c62af4bfddc0c763fd11727242bb96acf4e))
+* **deps:** bump pestphp/pest from 2.8.2 to 2.11.0 ([863e3d1](https://github.com/rotex1800/registration/commit/863e3d1903d47cfa5352cc81c9342637cca6c52a))
+* **deps:** bump php to 8.2 ([2b73a71](https://github.com/rotex1800/registration/commit/2b73a710eeb835622a77e360015eab930f21cd43))
+* **deps:** bump postcss from 8.4.24 to 8.4.27 ([8e244fa](https://github.com/rotex1800/registration/commit/8e244fa070c3d1a3b4779b112b41329490b09b93))
+* **deps:** bump prettier from 2.8.8 to 3.0.1 ([2e5cb84](https://github.com/rotex1800/registration/commit/2e5cb849a92f2882ac63b8532b0ebc79b86ee93b))
+* **deps:** bump prettier from 3.0.1 to 3.0.3 ([5d7cd25](https://github.com/rotex1800/registration/commit/5d7cd2540514c96bbf72fb948349152bfcd1fa10))
+* **deps:** bump tailwindcss from 3.3.2 to 3.3.3 ([54dff0c](https://github.com/rotex1800/registration/commit/54dff0cdc1e84a5be5a099bfa1e4c43c46735ff2))
+* **deps:** bump vite from 4.3.9 to 4.4.8 ([9b59503](https://github.com/rotex1800/registration/commit/9b59503f0a5e9b141385107ffa410d8c9e5b4a3f))
+* **deps:** bump vite from 4.4.8 to 4.4.9 ([0d46518](https://github.com/rotex1800/registration/commit/0d465187b21109d3cd35e351e47d098bcac9c3cb))
+* **dev-deps:** add infection ([d899f64](https://github.com/rotex1800/registration/commit/d899f64e0d48cb250f281ddc430533787d725ad0))
+* Don't trigger CI by editing pull requests ([7524441](https://github.com/rotex1800/registration/commit/7524441182d8ecae7429f81452acd5a52f4bae2d))
+* exclude `User.php` from pint ([a23e9bc](https://github.com/rotex1800/registration/commit/a23e9bce0cea67090d7b5188550da3c393a02723))
+* migrate php unit xml file to new schema ([8f176d6](https://github.com/rotex1800/registration/commit/8f176d6730ac85b87669f0d7778d70a8f28b03cc))
+* Pin chromedriver to version 114 ([a5d3748](https://github.com/rotex1800/registration/commit/a5d3748e68c2856883b913eade8baa6dd9167af7))
+* Raise `AssignRole` to phpstan level 9 ([9145aa1](https://github.com/rotex1800/registration/commit/9145aa1371682b5317e36ab7de71e90d96184ceb))
+* Raise `EventController` to phpstan level 9 ([94ac7b4](https://github.com/rotex1800/registration/commit/94ac7b427f92121a2b49769463c635113e947fac))
+* Raise `HasCommentSection` to phpstan level 9 ([ea32a4c](https://github.com/rotex1800/registration/commit/ea32a4c9e6811d4b0dbfde996f30d001519f7018))
+* Raise `HasCompletenessCheck` to phpstan level 9 ([eb5a381](https://github.com/rotex1800/registration/commit/eb5a3817fef1066622a1b1c5a2b450f425273175))
+* Raise `MainNavigation` to phpstan level 9 ([040b4eb](https://github.com/rotex1800/registration/commit/040b4ebfbbfd4d77f26239e09007e11fe9fb565c))
+* Raise `NotePolicy` to phpstan level 9 ([6cd1031](https://github.com/rotex1800/registration/commit/6cd103130482de93d8f81fbc314b7de7bc48753c))
+* Raise `SortableTableColumn` to phpstan level 9 ([9907bee](https://github.com/rotex1800/registration/commit/9907bee164bd76cdd322a2e1bce4cea33897d954))
+* Raise `User` to phpstan level 9 ([b511850](https://github.com/rotex1800/registration/commit/b511850765f183e8cdabb8435875624f2fb75af8))
+* Run checks for pushes to main ([f136ab1](https://github.com/rotex1800/registration/commit/f136ab1ddeb4cfe7b166d6182149da26e3cff7b3))
+* Run mutation tests in CI ([3ff072f](https://github.com/rotex1800/registration/commit/3ff072fb7cbc65794605662011451a8de7325779))
+* run phpstan in max level in CI ([5757cad](https://github.com/rotex1800/registration/commit/5757cad6977b9a140f91281e2006076677340554))
+* Show mutation summary in github step summary ([d59018d](https://github.com/rotex1800/registration/commit/d59018db5a420bdf06e5a89926d4c9b7ebc09ae5))
+* Update README ([5fb51ca](https://github.com/rotex1800/registration/commit/5fb51ca80cdc7f82d74e3b34dffaf45aaaa609a5))
+* update sail container to 8.2 ([5782774](https://github.com/rotex1800/registration/commit/5782774ebf0a3f5842a1740c62e6d139b92a784b))
+
 ## [1.13.6](https://github.com/rotex1800/registration/compare/v1.13.5...v1.13.6) (2023-07-04)
 
 
