@@ -63,7 +63,7 @@ jobs:
           XDEBUG_MODE: coverage
         run: >-
           ./vendor/bin/infection --test-framework=pest
-          --test-framework-options="--ci --log-junit=junit-report.xml --coverage --coverage-clover=coverage-report.xml --min=95"
+          --test-framework-options="--ci --coverage --coverage-clover=coverage-report.xml --min=95"
           --show-mutations --configuration=infection.json5 --threads=10
           --git-diff-base=origin/"$GITHUB_BASE_REF" --git-diff-filter=AM
           --min-msi=95 --min-covered-msi=95
@@ -109,12 +109,6 @@ jobs:
         with:
           name: screenshots
           path: screenshots/
-
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          junit_files: ./junit-report.xml
 
   pint:
     runs-on: ubuntu-latest
