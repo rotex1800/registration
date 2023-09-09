@@ -55,27 +55,23 @@ jobs:
       - name: Run Laravel Server
         run: php artisan serve &
 
-      - name: Execute tests
+      # Fetch base to run mutation tests only for changed files
+      - run: git fetch --depth=1 origin "$GITHUB_BASE_REF"
+
+      - name: Run tests
         env:
           XDEBUG_MODE: coverage
-        run: vendor/bin/pest --ci --log-junit junit-report.xml --coverage --coverage-clover coverage-report.xml --min=95
+        run: >-
+          ./vendor/bin/infection --test-framework=pest
+          --test-framework-options="--ci --log-junit=junit-report.xml --coverage --coverage-clover=coverage-report.xml --min=95"
+          --show-mutations --configuration=infection.json5 --threads=10
+          --git-diff-base=origin/"$GITHUB_BASE_REF" --git-diff-filter=AM
+          --min-msi=90 --min-covered-msi=90
 
       - name: Report Coverage in comment
         uses: lucassabreu/comment-coverage-clover@v0.10.2
         with:
           file: coverage-report.xml
-
-      # Fetch base to run mutation tests only for changed files
-      - run: git fetch --depth=1 origin "$GITHUB_BASE_REF"
-
-      - name: Mutation tests
-        env:
-          XDEBUG_MODE: coverage
-        run: >-
-          ./vendor/bin/infection --test-framework=pest
-          --show-mutations --configuration=infection.json5 --threads=10
-          --git-diff-base=origin/"$GITHUB_BASE_REF" --git-diff-filter=AM
-          --min-msi=90 --min-covered-msi=90
 
       - name: Check per-mutator.md existence
         id: mutator-report-file
