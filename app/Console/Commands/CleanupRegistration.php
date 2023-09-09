@@ -25,7 +25,7 @@ class CleanupRegistration extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $events = Event::all(['id', 'name'])->toArray();
 
@@ -43,6 +43,7 @@ class CleanupRegistration extends Command
 
     private function cleanUpEvent(mixed $id): void
     {
+        /** @var Event|null $event */
         $event = Event::find($id);
         if ($event == null) {
             $this->warn("Did not find an event with id '".$id."'");
