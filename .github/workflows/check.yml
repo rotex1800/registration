@@ -81,7 +81,7 @@ jobs:
         id: mutator-report-file
         uses: andstor/file-existence-action@v2
         with:
-          files: per-mutator.md"
+          files: per-mutator.md
 
       - name: Read infection per mutator report
         if: ${{ steps.mutator-report-file.outputs.file_exists }}
