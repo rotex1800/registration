@@ -19,8 +19,7 @@ use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseMissing;
 
 uses(RefreshDatabase::class);
-
-it('lists events and their ids', function () {
+it('cleans up users attending only the select event', function () {
     $eventOne = Event::factory()
         ->has(User::factory()
             ->has(Comment::factory()->count(3), 'authoredComments')
@@ -65,6 +64,21 @@ it('lists events and their ids', function () {
     assertDatabaseCount('passports', 0);
     assertDatabaseCount('additional_infos', 0);
     assertDatabaseCount('payments', 0);
+});
+
+it('does not fail for unknown event id', function () {
+    $eventOne = Event::factory()
+        ->create();
+    assertDatabaseCount('events', 1);
+
+    $this->artisan('registration:cleanup-event')
+        ->expectsOutputToContain('Which of the following events should be cleaned up?')
+        ->expectsOutputToContain("$eventOne->name")
+        ->expectsQuestion('Id of the event to be cleaned up?', 'q')
+        ->expectsOutput("Did not find an event with id 'q'")
+        ->assertOk();
+
+    assertDatabaseCount('events', 1);
 });
 
 it('Ends early if there are no events', function () {

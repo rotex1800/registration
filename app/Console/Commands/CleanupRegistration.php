@@ -44,6 +44,11 @@ class CleanupRegistration extends Command
     private function cleanUpEvent(mixed $id): void
     {
         $event = Event::find($id);
+        if ($event == null) {
+            $this->warn("Did not find an event with id '".$id."'");
+
+            return;
+        }
         $event->attendees()->each(function (User $attendee) {
             if ($attendee->events->count() == 1) {
                 $attendee->delete();
