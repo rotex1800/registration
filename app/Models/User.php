@@ -165,7 +165,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'birthday' => 'date:Y-m-d',
     ];
 
-    protected static function booted()
+    protected static function booted(): void
     {
         static::deleting(function (User $user) {
             $user->authoredComments()->delete();
