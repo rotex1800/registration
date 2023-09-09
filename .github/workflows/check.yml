@@ -152,7 +152,7 @@ jobs:
 
   conventional-commits:
     runs-on: ubuntu-latest
-    if: github.event_name != 'merge_group'
+    if: github.event_name != 'merge_group' && github.event_name != 'push'
     steps:
       - name: At least one conventional commit
         env:
@@ -186,7 +186,7 @@ jobs:
 
   dependency-review:
     runs-on: ubuntu-latest
-    if: github.event_name != 'merge_group'
+    if: github.event_name != 'merge_group' && github.event_name != 'push'
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
