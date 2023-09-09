@@ -36,7 +36,22 @@ class CreateEvent extends Command
             'start' => $start,
             'end' => $end,
         ]);
-        $role = $this->ask('Who is the target audience of the event?');
-        $event->giveRole($role);
+        $this->assignRolesToEvent($event);
+    }
+
+    private function assignRolesToEvent(Event $event): void
+    {
+        $roles = $this->choice(
+            'Who is the target audience of the event?',
+            Role::all()->map(fn (Role $role) => $role->name)->toArray(),
+            multiple: true
+        );
+        if (is_array($roles)) {
+            foreach ($roles as $role) {
+                $event->giveRole($role);
+            }
+        } else {
+            $event->giveRole($roles);
+        }
     }
 }
