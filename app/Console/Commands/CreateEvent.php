@@ -26,11 +26,15 @@ class CreateEvent extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $name = $this->ask('What is the name of the event?');
-        $start = Carbon::parse($this->ask('When does it start?'));
-        $end = Carbon::parse($this->ask('When does it end?'));
+        /** @var string $startDateInput */
+        $startDateInput = $this->ask('When does it start?');
+        $start = Carbon::parse($startDateInput);
+        /** @var string $endDateInput */
+        $endDateInput = $this->ask('When does it end?');
+        $end = Carbon::parse($endDateInput);
         $event = Event::factory()->create([
             'name' => $name,
             'start' => $start,
