@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/rotex1800/registration/compare/v1.14.0...v1.14.1) (2023-09-10)
+
+
+### Bug Fixes
+
+* do not delete users with role `rotex` ([be668b8](https://github.com/rotex1800/registration/commit/be668b810d8ea3e34663fa35d797c6b756875a59))
+
 ## [1.14.0](https://github.com/rotex1800/registration/compare/v1.13.6...v1.14.0) (2023-09-09)
 
 
