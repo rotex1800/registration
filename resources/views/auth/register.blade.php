@@ -51,7 +51,7 @@
                     @enderror
                 </label>
 
-                <button type="submit" class="bg-blue-500 rounded h-11 text-white">
+                <button type="submit" class="p-2 rounded bg-blue-600 hover:bg-blue-500 h-11 text-white">
                     {{__('signup.register')}}
                 </button>
             </form>
