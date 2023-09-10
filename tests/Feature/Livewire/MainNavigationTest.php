@@ -19,7 +19,7 @@ it('shows the users name', function () {
     $user = User::factory()->create();
     $this->actingAs($user);
     Livewire::test(MainNavigation::class)
-        ->assertSee($user->full_name);
+        ->assertSee($user->first_name);
 });
 
 it('handles logged out state', function () {

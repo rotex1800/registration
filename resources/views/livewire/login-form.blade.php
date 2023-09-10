@@ -26,14 +26,14 @@
                        class="input-form rounded w-full focus:shadow">
             </label>
             <label>
-                Login merken
+                {{ __('Stay logged in') }}
                 <input type="checkbox"
                        name="remember"
-                       class="rounded"
+                       class="ml-2 rounded align-middle"
                        wire:model="remember">
             </label>
             <button type="submit"
-                    class="bg-blue-500 rounded h-11 text-white">Login
+                    class="p-2 rounded bg-blue-600 hover:bg-blue-500 h-11 text-white">{{ __('Login') }}
             </button>
             <a class="underline text-blue-500"
                href="{{ route('password.request') }}">{{ __('signup.forgot-password') }}</a>
