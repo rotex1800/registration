@@ -51,7 +51,7 @@ class CleanupRegistration extends Command
             return;
         }
         $event->attendees()->each(function (User $attendee) {
-            if ($attendee->events->count() == 1) {
+            if ($attendee->events->count() == 1 && ! $attendee->hasRole('rotex')) {
                 $attendee->delete();
             }
         });

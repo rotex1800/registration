@@ -1,14 +1,11 @@
 <?php
 
-use App\Models\AdditionalInfo;
-use App\Models\BioFamily;
 use App\Models\Comment;
 use App\Models\CounselorInfo;
 use App\Models\Document;
 use App\Models\Event;
 use App\Models\HostFamily;
 use App\Models\Passport;
-use App\Models\Payment;
 use App\Models\Role;
 use App\Models\RotaryInfo;
 use App\Models\User;
@@ -28,13 +25,11 @@ it('cleans up users attending only the select event', function () {
             ->has(YeoInfo::factory(), 'yeo')
             ->has(RotaryInfo::factory())
             ->has(Passport::factory())
-            ->has(Role::factory()->participant()), 'attendees')
+            ->has(HostFamily::factory()->count(3))
+            ->has(Role::factory()->participant()),
+            'attendees')
         ->has(User::factory()
-            ->has(Role::factory()->rotex())
-            ->has(BioFamily::factory())
-            ->has(AdditionalInfo::factory())
-            ->has(Payment::factory()->count(2))
-            ->has(HostFamily::factory()->count(3)), 'attendees')
+            ->has(Role::factory()->rotex()), 'attendees')
         ->create();
     $eventTwo = Event::factory()
         ->create();
@@ -44,7 +39,6 @@ it('cleans up users attending only the select event', function () {
     $attendsBothEvents->events()->attach($eventTwo);
 
     assertDatabaseCount('users', 3);
-    assertDatabaseCount('users', 3);
     $this->artisan('registration:cleanup-event')
         ->expectsOutputToContain('Which of the following events should be cleaned up?')
         ->expectsOutputToContain("$eventOne->name")
@@ -52,7 +46,7 @@ it('cleans up users attending only the select event', function () {
         ->expectsQuestion('Id of the event to be cleaned up?', 1);
 
     assertDatabaseMissing('events', ['id' => 1]);
-    assertDatabaseCount('users', 1);
+    assertDatabaseCount('users', 2);
     assertDatabaseCount('comments', 0);
     assertDatabaseCount('bio_families', 0);
     assertDatabaseCount('host_families', 0);
