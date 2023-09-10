@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\FileDownload;
 use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
@@ -91,6 +92,15 @@ it('shows overview of registrations', function () {
             $eventOne->name,
             $eventTwo->name,
         ]);
+});
+
+it('shows download section', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user)
+        ->get(route('home'))
+        ->assertStatus(200)
+        ->assertSee(__('Available downloads'))
+        ->assertSeeLivewire(FileDownload::class);
 });
 
 it('shows overview of registrations for non-rotex role', function () {
