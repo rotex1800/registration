@@ -49,7 +49,7 @@ it('shows events the user can attend', function () {
 
     actingAs($user)
         ->get('/home')
-        ->assertSee('Weitere Events');
+        ->assertSee('Verfügbare Events');
 });
 
 it('does not show events the user is attending in further events', function () {
@@ -59,7 +59,7 @@ it('does not show events the user is attending in further events', function () {
     actingAs($user)
         ->get('/home')
         ->assertSeeLivewire('event-summary')
-        ->assertDontSee('Weitere Events')
+        ->assertDontSee('Verfügbare Events')
         ->assertSee($event->name);
 });
 
@@ -74,7 +74,7 @@ it('does not show events the user can not attend', function () {
 
     actingAs($user)
         ->get('/home')
-        ->assertDontSee('Weitere Events');
+        ->assertDontSee('Verfügbare Events');
 });
 
 it('shows overview of registrations', function () {
