@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'email' => fake()->safeEmail(),
             'birthday' => fake()->date,
             'gender' => fake()->randomElement(['female', 'male', 'na', 'diverse']),
-            'mobile_phone' => fake()->phoneNumber,
+            'mobile_phone' => fake()->e164PhoneNumber(),
             'health_issues' => fake()->paragraph,
             'email_verified_at' => now(),
             'uuid' => fake()->uuid,

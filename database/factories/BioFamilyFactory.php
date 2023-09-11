@@ -14,7 +14,7 @@ class BioFamilyFactory extends Factory
         return [
             'parent_one' => fake()->name,
             'parent_two' => fake()->name,
-            'phone' => fake()->phoneNumber,
+            'phone' => fake()->e164PhoneNumber(),
             'email' => fake()->email,
         ];
     }

@@ -278,7 +278,7 @@ it('has user inputs bound to component', function () {
     $fakeLastName = fake()->lastName;
     $fakeGender = fake()->randomElement(['female', 'male', 'diverse', 'na']);
     $fakeBirthday = fake()->dateTimeBetween(endDate: '2009-01-01')->format('Y-m-d');
-    $fakeMobilePhone = fake()->phoneNumber;
+    $fakeMobilePhone = fake()->e164PhoneNumber();
     $fakeHealthIssues = fake()->paragraph;
 
     $component
@@ -379,7 +379,7 @@ it('has rotary counselor bound to component', function () {
     $properties_and_values = [
         'counselor.email' => fake()->email,
         'counselor.name' => fake()->words(asText: true),
-        'counselor.phone' => fake()->words(asText: true),
+        'counselor.phone' => fake()->e164PhoneNumber,
     ];
 
     foreach ($properties_and_values as $property => $value) {
@@ -404,7 +404,7 @@ it('has rotary yeo bound to component', function () {
     $properties_and_values = [
         'yeo.email' => fake()->email,
         'yeo.name' => fake()->words(asText: true),
-        'yeo.phone' => fake()->words(asText: true),
+        'yeo.phone' => fake()->e164PhoneNumber,
     ];
 
     foreach ($properties_and_values as $property => $value) {
@@ -430,7 +430,7 @@ it('has bio family bound to component', function () {
         'bioFamily.parent_one' => fake()->words(asText: true),
         'bioFamily.parent_two' => fake()->words(asText: true),
         'bioFamily.email' => fake()->email,
-        'bioFamily.phone' => fake()->words(asText: true),
+        'bioFamily.phone' => fake()->e164PhoneNumber,
     ];
 
     foreach ($properties_and_values as $property => $value) {
@@ -456,17 +456,17 @@ it('has host families wired to component', function () {
     $properties_and_values = [
         'hostFamilyOne.name' => fake()->words(asText: true),
         'hostFamilyOne.email' => fake()->email,
-        'hostFamilyOne.phone' => fake()->phoneNumber,
+        'hostFamilyOne.phone' => fake()->e164PhoneNumber(),
         'hostFamilyOne.address' => fake()->words(asText: true),
 
         'hostFamilyTwo.name' => fake()->words(asText: true),
         'hostFamilyTwo.email' => fake()->email,
-        'hostFamilyTwo.phone' => fake()->phoneNumber,
+        'hostFamilyTwo.phone' => fake()->e164PhoneNumber(),
         'hostFamilyTwo.address' => fake()->words(asText: true),
 
         'hostFamilyThree.name' => fake()->words(asText: true),
         'hostFamilyThree.email' => fake()->email,
-        'hostFamilyThree.phone' => fake()->phoneNumber,
+        'hostFamilyThree.phone' => fake()->e164PhoneNumber(),
         'hostFamilyThree.address' => fake()->words(asText: true),
     ];
 
@@ -698,6 +698,36 @@ it('displays no checkmark for empty comment on load', function () {
         'event' => $this->event,
     ]);
     $component->assertDontSeeText(__('registration.comment').' ✅');
+});
+
+it('validates phone numbers', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    $mobile = '+49 152 28817386';
+    $mobileNoCountry = '0152 28817386';
+    $fixedLine = '+49 30 23125 123';
+    $component = Livewire::test(EventRegistration::class, [
+        'event' => $this->event,
+    ]);
+
+    $properties = ['user.mobile_phone',
+        'counselor.phone',
+        'yeo.phone',
+        'bioFamily.phone',
+        'hostFamilyOne.phone',
+        'hostFamilyTwo.phone',
+        'hostFamilyThree.phone'];
+    foreach ($properties as $property) {
+        $component->assertOk()
+            ->set($property, $fixedLine)
+            ->assertHasErrors($property)
+            ->set($property, $mobile)
+            ->assertHasNoErrors($property)
+            ->set($property, $mobileNoCountry)
+            ->assertHasErrors($property)
+            ->assertSee(__('validation.phone'))
+            ->assertOk();
+    }
 });
 
 it('rejects non email for yeo email', function () {
