@@ -193,6 +193,8 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v3
+        with:
+          retry-on-snapshot-warnings: true
 
   deploy-into-sandbox:
     needs: [ dependency-review, actionlint, phpstan-linter, scan-for-secrets, shellcheck, test, conventional-commits ]
