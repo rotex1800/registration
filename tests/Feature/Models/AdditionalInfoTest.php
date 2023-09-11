@@ -39,3 +39,9 @@ it('has internal note', function () {
     expect($info->note)
         ->toBeString();
 });
+
+it('has desired group column', function () {
+    $info = AdditionalInfo::factory()->make();
+    expect($info->desired_group)
+        ->toBeString();
+});

@@ -290,6 +290,7 @@ it('has user inputs bound to component', function () {
         ->assertPropertyWired('user.health_issues')
         ->assertPropertyWired('additionalInfo.allergies')
         ->assertPropertyWired('additionalInfo.diet')
+        ->assertPropertyWired('additionalInfo.desired_group')
         ->set('user.first_name', $fakeFirstName)
         ->set('user.family_name', $fakeLastName)
         ->set('user.gender', $fakeGender)
@@ -917,6 +918,16 @@ it('saves allergies information', function () {
         'event' => $this->event,
     ])
         ->set('additionalInfo.allergies', 'Ibuprofen')
+        ->assertHasNoErrors();
+});
+
+it('saves desired group information', function () {
+    $inbound = createInboundRegisteredFor($this->event);
+    actingAs($inbound);
+    Livewire::test('event-registration', [
+        'event' => $this->event,
+    ])
+        ->set('additionalInfo.desired_group', 'Lynn, Freya und Paul')
         ->assertHasNoErrors();
 });
 

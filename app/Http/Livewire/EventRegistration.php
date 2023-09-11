@@ -142,6 +142,7 @@ class EventRegistration extends Component
         'additionalInfo.tshirt_size' => self::NULLABLE_CLOTHES_SIZE,
         'additionalInfo.allergies' => self::NULLABLE,
         'additionalInfo.diet' => self::NULLABLE,
+        'additionalInfo.desired_group' => self::NULLABLE,
     ];
 
     public function mount(): void

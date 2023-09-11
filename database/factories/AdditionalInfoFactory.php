@@ -23,6 +23,7 @@ class AdditionalInfoFactory extends Factory
             'user_id' => fake()->randomNumber(),
             'diet' => fake()->words(asText: true),
             'note' => fake()->text,
+            'desired_group' => fake()->text,
         ];
     }
 }
