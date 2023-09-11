@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.15.0](https://github.com/rotex1800/registration/compare/v1.14.1...v1.15.0) (2023-09-11)
+
+
+### Features
+
+* Add input for desired KG ([cdc0a75](https://github.com/rotex1800/registration/commit/cdc0a750bff19015126b179cda5aae1b3790dd8b)), closes [#488](https://github.com/rotex1800/registration/issues/488)
+* Add validation for mobile phone numbers ([0c2337f](https://github.com/rotex1800/registration/commit/0c2337f7bbd0314e1b8bd655984f646bc41c99b5))
+* provide file downloads for tour ([cdb3285](https://github.com/rotex1800/registration/commit/cdb3285841ae12402af80a992ce821cbde4616bc))
+
+
+### Miscellaneous Chores
+
+* Adjust main navigation ([c108ff7](https://github.com/rotex1800/registration/commit/c108ff70c3abfa2cb41b1795ddabc4fd7d46f1b1))
+* Externalize translations ([f55907b](https://github.com/rotex1800/registration/commit/f55907b61418ddd83cdad691a8d2564605e55913))
+* retry dependency review ([8f4c3bf](https://github.com/rotex1800/registration/commit/8f4c3bffbadcf27d62ab3fcb5c8482bbacc31d55))
+
 ## [1.14.1](https://github.com/rotex1800/registration/compare/v1.14.0...v1.14.1) (2023-09-10)
 
 
