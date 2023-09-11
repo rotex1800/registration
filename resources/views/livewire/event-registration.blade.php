@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="my-1 text-white my-4">
+    <div class="text-white my-4">
         @if($this->hasUserRegistered())
             <button class="bg-red-500 p-3 rounded"
                     wire:click="unregister">{{ __('registration.dont-participate') }}</button>
@@ -65,7 +65,13 @@
                     <option value="na">{{ __('registration.gender.na') }}</option>
                 </select>
 
-                <div><label for="mobile_phone">{{ __('registration.mobile_phone') }}</label></div>
+                <div>
+                    <label for="mobile_phone">{{ __('registration.mobile_phone') }}</label>
+                    @error('user.mobile_phone')
+                    <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+
+                </div>
                 <input type="tel" id="mobile_phone" class="rounded" wire:model.debounce.500ms="user.mobile_phone">
 
                 <div><label for="tshirt-size">{{ __('registration.tshirt-size') }}</label></div>
@@ -88,7 +94,7 @@
 
             <h2 class="text-2xl mt-8">{{  __('registration.passport') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
             <p>{{ __('registration.passport-explanation') }}</p>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
                 <div><label for="nationality">{{ __('registration.nationality') }}</label></div>
                 <input id="nationality" type="text" class="rounded" wire:model.lazy="passport.nationality">
 
@@ -118,7 +124,7 @@
 
             <h2 class="text-2xl mt-8">{{  __('registration.about-rotary') }} {{ $rotary->isComplete() ? '✅' : '' }}</h2>
             <p>{{__('registration.rotary-explanation')}}</p>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="host-club">{{ __('registration.rotary.host-club') }}</label></div>
                 <input id="host-club" class="rounded" type="text" wire:model.debounce.500ms="rotary.host_club">
@@ -140,13 +146,16 @@
             <h2 class="text-2xl mt-8">
                 {{  __('registration.about-counselor') }} {{ $counselor->isComplete() ? '✅' : '' }}
             </h2>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="counselor-name">{{ __('registration.counselor.name') }}</label></div>
                 <input id="counselor-name" class="rounded" type="text" wire:model.debounce.500ms="counselor.name">
 
                 <div><label for="counselor-telephone">{{ __('registration.counselor.telephone') }}</label></div>
                 <input id="counselor-telephone" type="tel" class="rounded" wire:model.debounce.500ms="counselor.phone">
+                @error('counselor.phone')
+                <div class="text-red-500">{{ $message }}</div>
+                @enderror
 
                 <div>
                     <label for="counselor-email">{{ __('registration.counselor.email') }}</label>
@@ -159,14 +168,16 @@
             </div>
 
             <h2 class="text-2xl mt-8">{{  __('registration.about-yeo') }} {{ $yeo->isComplete() ? '✅' : '' }}</h2>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="yeo-name">{{ __('registration.yeo.name') }}</label></div>
                 <input id="yeo-name" class="rounded" type="text" wire:model.debounce.500ms="yeo.name">
 
                 <div><label for="yeo-telephone">{{ __('registration.yeo.telephone') }}</label></div>
                 <input id="yeo-telephone" type="tel" class="rounded" wire:model.debounce.500ms="yeo.phone">
-
+                @error('yeo.phone')
+                <div class="text-red-500">{{ $message }}</div>
+                @enderror
                 <div>
                     <label for="yeo-email">{{ __('registration.yeo.email') }}</label>
                     @error('yeo.email')
@@ -181,7 +192,7 @@
                 {{  __('registration.about-bio-family') }} {{ $bioFamily->isComplete() ? '✅' : '' }}
             </h2>
             <p>{{__('registration.bio-family-explanation')}}</p>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div>
                     <label for="bio-mother">{{ __('registration.bio-family.parent-one') }}</label>
@@ -201,13 +212,16 @@
 
                 <div><label for="bio-telephone">{{ __('registration.bio-family.telephone') }}</label></div>
                 <input type="tel" id="bio-telephone" class="rounded" wire:model.debounce.500ms="bioFamily.phone">
+                @error('bioFamily.phone')
+                <div class="text-red-500">{{ $message }}</div>
+                @enderror
 
             </div>
 
             <h2 class="text-2xl mt-8">
                 {{  __('registration.about-host-family-one') }} {{ $hostFamilyOne->isComplete() ? '✅' : '' }}
             </h2>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="host-name-one">{{ __('registration.host-family.name') }}</label></div>
                 <input type="text" id="host-name-one" class="rounded" wire:model.debounce.500ms="hostFamilyOne.name">
@@ -221,7 +235,11 @@
 
                 <input type="text" id="host-email-one" class="rounded" wire:model.debounce.500ms="hostFamilyOne.email">
 
-                <div><label for="host-phone-one">{{ __('registration.host-family.phone') }}</label></div>
+                <div><label for="host-phone-one">{{ __('registration.host-family.phone') }}</label>
+                    @error('hostFamilyOne.phone')
+                    <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
                 <input type="text" id="host-phone-one" class="rounded" wire:model.debounce.500ms="hostFamilyOne.phone">
 
                 <div><label for="host-address-one">{{ __('registration.host-family.address') }}</label></div>
@@ -234,7 +252,7 @@
                 {{  __('registration.about-host-family-two') }} {{ $hostFamilyTwo->isComplete() ? '✅' : '' }}
             </h2>
             <p>{{__('registration.nth-host-family-explanation')}}</p>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="host-name-two">{{ __('registration.host-family.name') }}</label></div>
                 <input type="text" id="host-name-two" class="rounded" wire:model.debounce.500ms="hostFamilyTwo.name">
@@ -247,7 +265,11 @@
                 </div>
                 <input type="text" id="host-email-two" class="rounded" wire:model.debounce.500ms="hostFamilyTwo.email">
 
-                <div><label for="host-phone-two">{{ __('registration.host-family.phone') }}</label></div>
+                <div><label for="host-phone-two">{{ __('registration.host-family.phone') }}</label>
+                    @error('hostFamilyTwo.phone')
+                    <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
                 <input type="text" id="host-phone-two" class="rounded" wire:model.debounce.500ms="hostFamilyTwo.phone">
 
                 <div><label for="host-address-two">{{ __('registration.host-family.address') }}</label></div>
@@ -260,7 +282,7 @@
                 {{  __('registration.about-host-family-three') }} {{ $hostFamilyThree->isComplete() ? '✅' : '' }}
             </h2>
             <p>{{__('registration.nth-host-family-explanation')}}</p>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div>
                     <label for="host-name-three">{{ __('registration.host-family.name') }}</label>
@@ -277,7 +299,11 @@
                 <input type="text" id="host-email-three" class="rounded"
                        wire:model.debounce.500ms="hostFamilyThree.email">
 
-                <div><label for="host-phone-three">{{ __('registration.host-family.phone') }}</label></div>
+                <div><label for="host-phone-three">{{ __('registration.host-family.phone') }}</label>
+                    @error('hostFamilyThree.phone')
+                    <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
                 <input type="text" id="host-phone-three" class="rounded"
                        wire:model.debounce.500ms="hostFamilyThree.phone">
 
@@ -291,7 +317,7 @@
                 {{  __('registration.comment') }} {{ $comment->isComplete() ? '✅' : '' }}
             </h2>
             <p>{{__('registration.comment-explanation')}}</p>
-            <div class="grid mt-4 grid grid-cols-input gap-4 items-center">
+            <div class="grid mt-4 grid-cols-input gap-4 items-center">
                 <label for="comment">{{ __('registration.comment') }}</label>
                 <textarea class="rounded min-h-40" id="comment"
                           wire:model.defer="comment.body">{{ $comment->body }}</textarea>

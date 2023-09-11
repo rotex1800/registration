@@ -24,7 +24,7 @@ class HostFamilyFactory extends Factory
             'name' => fake()->name,
             'email' => fake()->email,
             'address' => fake()->address,
-            'phone' => fake()->phoneNumber,
+            'phone' => fake()->e164PhoneNumber(),
             'order' => fake()->numberBetween(int1: 20, int2: 50),
         ];
     }

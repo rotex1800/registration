@@ -29,6 +29,8 @@ class EventRegistration extends Component
 
     private const NULLABLE_FUTURE_DATE = 'nullable|date|after:today';
 
+    private const NULLABLE_PHONE_MOBILE = 'nullable|phone:mobile';
+
     public const PART_ONE = 'one';
 
     public const PART_TWO = 'two';
@@ -94,7 +96,7 @@ class EventRegistration extends Component
         'user.family_name' => self::NULLABLE,
         'user.gender' => 'nullable|in:female,male,diverse,na',
         'user.birthday' => self::NULLABLE_PARTICIPANT_BIRTHDAY,
-        'user.mobile_phone' => self::NULLABLE,
+        'user.mobile_phone' => self::NULLABLE_PHONE_MOBILE,
         'user.health_issues' => self::NULLABLE,
 
         'passport.nationality' => self::NULLABLE,
@@ -108,32 +110,32 @@ class EventRegistration extends Component
         'rotary.sponsor_club' => self::NULLABLE,
 
         'counselor.name' => self::NULLABLE,
-        'counselor.phone' => self::NULLABLE,
+        'counselor.phone' => self::NULLABLE_PHONE_MOBILE,
         'counselor.email' => self::NULLABLE_EMAIL,
 
         'yeo.name' => self::NULLABLE,
-        'yeo.phone' => self::NULLABLE,
+        'yeo.phone' => self::NULLABLE_PHONE_MOBILE,
         'yeo.email' => self::NULLABLE_EMAIL,
 
         'bioFamily.parent_one' => self::NULLABLE,
         'bioFamily.parent_two' => self::NULLABLE,
         'bioFamily.email' => self::NULLABLE_EMAIL,
-        'bioFamily.phone' => self::NULLABLE,
+        'bioFamily.phone' => self::NULLABLE_PHONE_MOBILE,
 
         'hostFamilyOne.name' => self::NULLABLE,
         'hostFamilyOne.email' => self::NULLABLE_EMAIL,
         'hostFamilyOne.address' => self::NULLABLE,
-        'hostFamilyOne.phone' => self::NULLABLE,
+        'hostFamilyOne.phone' => self::NULLABLE_PHONE_MOBILE,
 
         'hostFamilyTwo.name' => self::NULLABLE,
         'hostFamilyTwo.email' => self::NULLABLE_EMAIL,
         'hostFamilyTwo.address' => self::NULLABLE,
-        'hostFamilyTwo.phone' => self::NULLABLE,
+        'hostFamilyTwo.phone' => self::NULLABLE_PHONE_MOBILE,
 
         'hostFamilyThree.name' => self::NULLABLE,
         'hostFamilyThree.email' => self::NULLABLE_EMAIL,
         'hostFamilyThree.address' => self::NULLABLE,
-        'hostFamilyThree.phone' => self::NULLABLE,
+        'hostFamilyThree.phone' => self::NULLABLE_PHONE_MOBILE,
 
         'comment.body' => self::NULLABLE,
 

@@ -398,7 +398,7 @@ it('is complete for expected attributes', function () {
         'family_name' => fake()->lastName,
         'birthday' => fake()->date,
         'gender' => fake()->word,
-        'mobile_phone' => fake()->phoneNumber,
+        'mobile_phone' => fake()->e164PhoneNumber(),
         'health_issues' => fake()->paragraphs(asText: true),
     ])
         ->has(AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::XXXL]))
@@ -416,7 +416,7 @@ it('is NOT complete if one expected attribute is null', function () {
         'family_name' => fake()->lastName,
         'birthday' => fake()->date,
         'gender' => fake()->word,
-        'mobile_phone' => fake()->phoneNumber,
+        'mobile_phone' => fake()->e164PhoneNumber(),
         'health_issues' => fake()->paragraphs(asText: true),
     ];
 

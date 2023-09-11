@@ -17,7 +17,7 @@ class CounselorInfoFactory extends Factory
         return [
             'name' => fake()->name,
             'email' => fake()->email,
-            'phone' => fake()->phoneNumber,
+            'phone' => fake()->e164PhoneNumber(),
         ];
     }
 }
