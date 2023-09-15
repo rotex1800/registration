@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventRegistrationsController;
 use App\Http\Controllers\HomeController;
@@ -23,6 +24,13 @@ Route::get('/', function () {
 });
 
 Route::post('login', [AuthenticationController::class, 'authenticate']);
+
+Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+    ->name('verification.verify');
+
+Route::post('/email/verification-notification', [EmailVerificationController::class, 'notify'])
+    ->middleware('auth')
+    ->name('verification.send');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'home'])
