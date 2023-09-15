@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.15.2](https://github.com/rotex1800/registration/compare/v1.15.1...v1.15.2) (2023-09-15)
+
+
+### Bug Fixes
+
+* add gap between events ([3252979](https://github.com/rotex1800/registration/commit/325297994c2d880204f6fe912f63d027319d79cd))
+* blank screen after requesting verification mail ([c17f4c9](https://github.com/rotex1800/registration/commit/c17f4c968e0d1ecd9e7a069f472fbc6d9befd210))
+* blank screen after verifying email ([06f66b2](https://github.com/rotex1800/registration/commit/06f66b21ee32e2a074455143163f93532b94643e))
+* do not require login to verify email ([cffaeda](https://github.com/rotex1800/registration/commit/cffaeda180f4a7a0ac6c039cc9af58e9157b8cd0))
+
+
+### Miscellaneous Chores
+
+* Update Flyer ([0f031ed](https://github.com/rotex1800/registration/commit/0f031ed1d6c8bc4f5e0954fe889bd4a95d8d2acf))
+
 ## [1.15.1](https://github.com/rotex1800/registration/compare/v1.15.0...v1.15.1) (2023-09-15)
 
 
