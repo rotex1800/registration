@@ -22,7 +22,7 @@ it('verifies logged out users', closure: function () {
 
     // Act
     $this->get($url)
-        ->assertOk();
+        ->assertRedirect(route('home'));
 
     // Assert
     $user->refresh();
@@ -41,7 +41,7 @@ it('does not verify user for bad hash', function () {
 
     // Act
     $this->get($url)
-        ->assertOk();
+        ->assertRedirect(route('home'));
 
     // Assert
     $user->refresh();
@@ -54,12 +54,26 @@ it('sends verification email', function () {
     $user = User::factory()->unverified()->create();
 
     $this->actingAs($user)
-        ->post(route('verification.send'));
+        ->post(route('verification.send'))
+        ->assertRedirect(route('verification.notice'));
 
     Notification::assertSentTo($user, VerifyEmail::class);
 });
 
 it('requires authentication to request verification email', function () {
     $this->post(route('verification.send'))
+        ->assertRedirect(route('login'));
+});
+
+it('shows verification hint for unverified user', function () {
+    $user = User::factory()->unverified()->create();
+
+    $this->actingAs($user)
+        ->get(route('home'))
+        ->assertRedirect(route('verification.notice'));
+});
+
+it('requires authentication to see verification hint', function () {
+    $this->get(route('verification.notice'))
         ->assertRedirect(route('login'));
 });
