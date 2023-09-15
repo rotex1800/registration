@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Laravel\Fortify\Fortify;
 
 class EmailVerificationController extends Controller
 {
@@ -16,8 +18,10 @@ class EmailVerificationController extends Controller
         }
     }
 
-    public function notify(Request $request): void
+    public function notify(Request $request): RedirectResponse
     {
         $request->user()?->sendEmailVerificationNotification();
+
+        return redirect(route('verification.notice'))->with(['status' => Fortify::VERIFICATION_LINK_SENT]);
     }
 }
