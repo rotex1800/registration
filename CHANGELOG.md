@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.1](https://github.com/rotex1800/registration/compare/v1.15.0...v1.15.1) (2023-09-15)
+
+
+### Miscellaneous Chores
+
+* Update flyer ([873ecf9](https://github.com/rotex1800/registration/commit/873ecf904f463fbf7cb18700bf2d58cb9df8e3c5))
+
 ## [1.15.0](https://github.com/rotex1800/registration/compare/v1.14.1...v1.15.0) (2023-09-11)
 
 
