@@ -9,13 +9,15 @@ use Laravel\Fortify\Fortify;
 
 class EmailVerificationController extends Controller
 {
-    public function verify(Request $request, string $id, string $hash): void
+    public function verify(Request $request, string $id, string $hash): RedirectResponse
     {
         $user = User::find($id);
         $email = $user?->email;
         if ($email != null && hash_equals(sha1($email), $hash)) {
             $user->markEmailAsVerified();
         }
+
+        return redirect(route('home'));
     }
 
     public function notify(Request $request): RedirectResponse

@@ -22,7 +22,7 @@ it('verifies logged out users', closure: function () {
 
     // Act
     $this->get($url)
-        ->assertOk();
+        ->assertRedirect(route('home'));
 
     // Assert
     $user->refresh();
@@ -41,7 +41,7 @@ it('does not verify user for bad hash', function () {
 
     // Act
     $this->get($url)
-        ->assertOk();
+        ->assertRedirect(route('home'));
 
     // Assert
     $user->refresh();
