@@ -14,12 +14,16 @@
     @endif
 
     @can('seeRegistrations', App\Models\Event::class)
-        <div class="flex text-4xl mt-6 mb-3">Anmeldungen</div>
+        <div class="text-4xl mt-6 mb-3">Anmeldungen</div>
         @if(count($allEvents) > 0)
-            @foreach($allEvents as $event)
-                <a class="text-xl" href="{{ route('registrations.show', $event) }}">Anmeldungen
-                    für {{ $event->name }}</a>
-            @endforeach
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                @foreach($allEvents as $event)
+                    <div class="bg-white p-4 rounded-lg shadow-lg mb-5">
+                        <a class="text-xl" href="{{ route('registrations.show', $event) }}">
+                            Anmeldungen für {{ $event->name }}</a>
+                    </div>
+                @endforeach
+            </div>
         @else
             <p>Derzeit gibt es keine offenen Anmeldungen</p>
         @endif
