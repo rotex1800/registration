@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Livewire;
 
+use App\Http\Livewire\RegistrationInfoView;
 use App\Models\AdditionalInfo;
 use App\Models\BioFamily;
 use App\Models\ClothesSize;
@@ -27,7 +28,6 @@ it('can render', function () {
 
     Livewire::test('registration-info-view', [
         'event' => $event,
-        'attendees' => $attendees,
     ])->assertOk();
 });
 
@@ -53,7 +53,6 @@ it('shows full names and overall state of all registered attendees in select', f
     })->toArray();
 
     Livewire::test('registration-info-view', [
-        'attendees' => $attendees,
         'event' => $event,
     ])
         ->assertSeeInOrder($fullNames, false);
@@ -114,7 +113,6 @@ it('shows attributes of currently selected attendee', function () {
     $user = createUserWithRole('rotex');
     Livewire::actingAs($user);
     Livewire::test('registration-info-view', [
-        'attendees' => $attendees,
         'event' => $event,
     ])
         ->assertOk()
@@ -250,7 +248,6 @@ it('updates the current attendee when updating the current attendee id', functio
     $event->attendees()->saveMany($attendees);
 
     $component = Livewire::test('registration-info-view', [
-        'attendees' => $attendees,
         'event' => $event,
     ]);
     $component
@@ -267,12 +264,9 @@ it('updates the current attendee when updating the current attendee id', functio
 
 it('falls back to empty collection for no attendees', function () {
     $attendees = User::factory()->count(2)->create();
-    $firstAttendee = $attendees[0];
-    $secondAttendee = $attendees[1];
     $event = Event::factory()->create();
 
     $component = Livewire::test('registration-info-view', [
-        'attendees' => $attendees,
         'event' => $event,
     ]);
     $attendees = $component
@@ -306,7 +300,6 @@ it('shows and hides navigation based on current position', function () {
     $event->attendees()->saveMany($attendees);
 
     $component = Livewire::test('registration-info-view', [
-        'attendees' => $attendees,
         'event' => $event,
     ]);
 
@@ -348,4 +341,30 @@ it('shows and hides navigation based on current position', function () {
         ])
         ->assertMethodWired('goToNext')
         ->assertMethodWired('goToPrevious');
+});
+
+it('uses lexicographical order to determine the initially shown attendee', function () {
+    // Arrange
+    $userB = User::factory()->create(['first_name' => 'B', 'family_name' => 'B']);
+    $userC = User::factory()->create(['first_name' => 'C', 'family_name' => 'C']);
+    $userA = User::factory()->create(['first_name' => 'A', 'family_name' => 'A']);
+    $event = Event::factory()->create();
+    $attendees = [$userA, $userB, $userC];
+    $event->attendees()->saveMany($attendees);
+
+    // Act
+    $component = Livewire::test(RegistrationInfoView::class, [
+        'event' => $event,
+    ]);
+
+    // Assert
+    $component
+        ->assertOk()
+        ->assertSee('Name: '.$userA->full_name)
+        ->assertDontSee('Name: '.$userB->full_name)
+        ->assertDontSee('Name: '.$userC->full_name);
+
+    expect($component)
+        ->get('currentAttendee')->toBeSameEntityAs($userA);
+
 });

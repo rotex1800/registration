@@ -38,9 +38,8 @@ class RegistrationInfoView extends Component
             ->attendees
             ->sortBy([['first_name', 'asc'], ['family_name', 'asc']]);
         if ($this->attendees != null && count($this->attendees) > 0) {
-            $first = $this->attendees[0];
             $this->currentPosition = 0;
-            $this->currentAttendee = $first;
+            $this->currentAttendee = $this->attendees->first();
         } else {
             $this->attendees = Collection::empty();
         }
@@ -48,10 +47,7 @@ class RegistrationInfoView extends Component
 
     public function render(): View|Factory
     {
-        return view('livewire.registration-info-view')->with([
-            'attendees' => $this->attendees,
-            'event' => $this->event,
-        ]);
+        return view('livewire.registration-info-view');
     }
 
     public function updatedCurrentPosition(int $position): void
