@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.15.3](https://github.com/rotex1800/registration/compare/v1.15.2...v1.15.3) (2023-09-18)
+
+
+### Bug Fixes
+
+* registration info view initialization ([39e2307](https://github.com/rotex1800/registration/commit/39e23078a34cc27fc4bf353eab51e0f23d7f9b2b))
+
+
+### Miscellaneous Chores
+
+* add gaps between multiple event registrations ([c57db5a](https://github.com/rotex1800/registration/commit/c57db5a161e773113715f8f060111e61cdd0f1d2))
+
 ## [1.15.2](https://github.com/rotex1800/registration/compare/v1.15.1...v1.15.2) (2023-09-15)
 
 
