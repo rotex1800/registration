@@ -41,7 +41,7 @@ class DocumentsRater extends Component
     public function download(): ?StreamedResponse
     {
         if ($this->document != null && $this->document->path != null) {
-            $name = Str::snake($this->user->full_name.' '.$this->category->displayName());
+            $name = Str::snake($this->user->file_path_name.' '.$this->category->displayName());
 
             return Storage::disk()->download($this->document->path, $name);
         }
