@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.15.4](https://github.com/rotex1800/registration/compare/v1.15.3...v1.15.4) (2023-09-25)
+
+
+### Bug Fixes
+
+* do not create deutschland tour event on deploy ([5524957](https://github.com/rotex1800/registration/commit/55249573051c77f3e60e0c0198ff7452674d7d89))
+
+
+### Miscellaneous Chores
+
+* stabilize flakey test failing on single quote in name ([75e6e52](https://github.com/rotex1800/registration/commit/75e6e522dec53a8da81f9790caad273086085506))
+
 ## [1.15.3](https://github.com/rotex1800/registration/compare/v1.15.2...v1.15.3) (2023-09-18)
 
 
