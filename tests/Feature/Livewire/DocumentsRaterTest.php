@@ -175,9 +175,11 @@ it('does not crash declining for missing document', function () {
         ->assertStatus(200);
 });
 
-it('downloads documents if a path is present', function () {
+it('downloads documents if a path is present', function (string $familyName) {
     // Arrange
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'family_name' => $familyName,
+    ]);
 
     $category = DocumentCategory::Rules;
     $fileName = $category->name.'.jpg';
@@ -205,13 +207,12 @@ it('downloads documents if a path is present', function () {
         ->effects
         ->download;
     expect(Str::snake($response->name))
-        ->toContain(strtolower($user->first_name))
-        ->toContain(strtolower($user->family_name))
+        ->toContain(strtolower(Str::snake($user->file_path_name)))
         ->toContain(strtolower($category->displayName()))
         ->and($response)
         ->content->not->toBeEmpty()
         ->contentType->toBe('image/jpeg');
-});
+})->with(['Smith', "O' Connor"]);
 
 it('does not download document without a path', function () {
     // Arrange

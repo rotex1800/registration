@@ -235,6 +235,17 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Convenience wrapper around the full name accessor, replacing every non-word character
+     * with an underscore.
+     * @return string
+     */
+    public function getFilePathNameAttribute(): string
+    {
+        $onlyWordAndWhitespaceCharacters = preg_replace('/[^\s\w-]/', ' ', $this->full_name) ?? '';
+        return preg_replace('/\s+/', ' ',$onlyWordAndWhitespaceCharacters) ?? '';
+    }
+
+    /**
      * Accessor for the display name used in comments
      * Returns the full_name for normal users, and "Rotex 1800" for 'rotex'
      * users

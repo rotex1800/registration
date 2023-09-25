@@ -164,6 +164,16 @@ it('has full name accessor', function () {
         ->toBe($user->first_name.' '.$user->family_name);
 });
 
+it('has file path name accessor without single quotes', function (string $familyName) {
+    $user = User::factory()->create([
+        'family_name' => $familyName,
+    ]);
+    expect($user->filePathName)
+        ->toBeString()
+        ->toMatch("/^([^']*)$/")
+        ->not->toContain('  ');
+})->with(['Smith', "O' Conner"]);
+
 test('comment display name is full name for any role', function () {
     $user = User::factory()
         ->has(Role::factory(['name' => 'participant']))
