@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use App\Models\Event;
 use App\Models\Role;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
