@@ -15,10 +15,7 @@
         </div>
     </div>
     <div class="text-white my-4">
-        @if($this->hasUserRegistered())
-            <button class="bg-red-500 p-3 rounded"
-                    wire:click="unregister">{{ __('registration.dont-participate') }}</button>
-        @else
+        @if(!$this->hasUserRegistered())
             <button class="bg-blue-800 p-3 rounded" wire:click="register">{{ __('registration.apply') }}</button>
         @endif
     </div>
@@ -371,5 +368,8 @@
                                       wire:key="{{ App\Models\DocumentCategory::Motivation->value }}"
             />
         @endif
+
+        <button class="bg-red-500 p-3 rounded mt-5 text-white font-bold"
+                wire:click="unregister">{{ __('registration.dont-participate') }}</button>
     @endif
 </div>
