@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\EventSummary;
+use App\Livewire\EventSummary;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\DocumentUpload;
+use App\Livewire\DocumentUpload;
 use App\Models\Comment;
 use App\Models\Document;
 use App\Models\DocumentCategory;

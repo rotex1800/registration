@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Livewire\EventRegistration;
+use App\Livewire\EventRegistration;
 use App\Models\Event;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

@@ -7,10 +7,10 @@
             </div>
         @endif
 
-        <form class="grid gap-4 grid-flow-row" wire:submit.prevent="login" method="post">
+        <form class="grid gap-4 grid-flow-row" wire:submit="login" method="post">
             @csrf
             <label>E-Mail
-                <input wire:model="email"
+                <input wire:model.live="email"
                        type="email"
                        name="email"
                        id="email"
@@ -18,7 +18,7 @@
                        class="rounded w-full focus:shadow">
             </label>
             <label>Passwort
-                <input wire:model="password"
+                <input wire:model.live="password"
                        type="password"
                        name="password"
                        id="password"
@@ -30,7 +30,7 @@
                 <input type="checkbox"
                        name="remember"
                        class="ml-2 rounded align-middle"
-                       wire:model="remember">
+                       wire:model.live="remember">
             </label>
             <button type="submit"
                     class="p-2 rounded bg-blue-600 hover:bg-blue-500 h-11 text-white">{{ __('Login') }}

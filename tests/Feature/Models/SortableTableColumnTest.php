@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\SortableTableColumn;
+use App\Livewire\SortableTableColumn;
 
 it('can be constructed with a string and a closure', function () {
     $column = new SortableTableColumn('Header', function ($params) {

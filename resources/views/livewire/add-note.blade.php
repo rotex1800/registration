@@ -6,6 +6,6 @@
                   id="note"
                   class="block w-auto grow rounded-lg"
                   placeholder="Notiz"
-                  wire:model.debounce.500ms="note">{{ $note }}</textarea>
+                  wire:model.live.debounce.500ms="note">{{ $note }}</textarea>
     </div>
 </div>

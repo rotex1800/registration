@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\EventRegistration;
+use App\Livewire\EventRegistration;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use function Pest\Laravel\actingAs;

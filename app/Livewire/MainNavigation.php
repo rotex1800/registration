@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Livewire\Redirector;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class MainNavigation extends Component
 {
@@ -38,17 +38,17 @@ class MainNavigation extends Component
         return redirect()->route('login');
     }
 
-    public function toHome(): RedirectResponse|Redirector
+    public function toHome(): Redirector
     {
         return redirect()->route('home');
     }
 
-    public function toRegister(): RedirectResponse|Redirector
+    public function toRegister(): Redirector
     {
         return redirect()->route('register');
     }
 
-    public function toLogin(): RedirectResponse|Redirector
+    public function toLogin(): Redirector
     {
         return redirect()->route('login');
     }
