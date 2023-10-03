@@ -38,17 +38,17 @@ class MainNavigation extends Component
         return redirect()->route('login');
     }
 
-    public function toHome(): Redirector
+    public function toHome(): RedirectResponse|Redirector
     {
         return redirect()->route('home');
     }
 
-    public function toRegister(): Redirector
+    public function toRegister(): RedirectResponse|Redirector
     {
         return redirect()->route('register');
     }
 
-    public function toLogin(): Redirector
+    public function toLogin(): RedirectResponse|Redirector
     {
         return redirect()->route('login');
     }

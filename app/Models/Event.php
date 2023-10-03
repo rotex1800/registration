@@ -68,7 +68,7 @@ class Event extends Model
     }
 
     /**
-     * @phpstan-return BelongsToMany<User>
+     * @return BelongsToMany<User>
      */
     public function attendees(): BelongsToMany
     {
