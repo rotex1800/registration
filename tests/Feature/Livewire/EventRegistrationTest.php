@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\EventRegistration;
+use App\Livewire\EventRegistration;
 use App\Models\AdditionalInfo;
 use App\Models\BioFamily;
 use App\Models\ClothesSize;
@@ -17,7 +17,7 @@ use App\Models\YeoInfo;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use Livewire\Testing\TestableLivewire;
+use Livewire\Features\SupportTesting\Testable;
 use ValueError;
 
 use function Pest\Laravel\actingAs;
@@ -336,7 +336,7 @@ it('has passport inputs bound to component', function () {
         ->and($passport->expiration_date->toDateString())->toBe($properties_and_values['passport.expiration_date']);
 });
 
-function assertPropertyTwoWayBound(TestableLivewire $component, string $property, $update_value): void
+function assertPropertyTwoWayBound(Testable $component, string $property, $update_value): void
 {
     $component->assertPropertyWired($property)
         ->set($property, $update_value)
@@ -931,7 +931,7 @@ it('saves desired group information', function () {
         ->assertHasNoErrors();
 });
 
-function assertSeesCompletenessIndication(TestableLivewire $component, $headlineKey, $removingProperty): void
+function assertSeesCompletenessIndication(Testable $component, $headlineKey, $removingProperty): void
 {
     $component->assertSeeText(__($headlineKey).' ✅')
         ->set($removingProperty, '')

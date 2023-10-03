@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.22.0.
+ * Generated for Laravel 10.26.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2860,6 +2860,7 @@
          *
          * @param string $path
          * @return bool 
+         * @throws \ErrorException
          * @static 
          */ 
         public static function isExpired($path)
@@ -13447,7 +13448,7 @@
                     /**
          * Create a new redirect response to a controller action.
          *
-         * @param string $action
+         * @param array|string $action
          * @param mixed $parameters
          * @param int $status
          * @param array $headers
@@ -18505,6 +18506,7 @@
             /**
      * 
      *
+     * @method static void setUpdateUri()
      * @see \Livewire\LivewireManager
      */ 
         class Livewire {
@@ -18513,30 +18515,90 @@
          *
          * @static 
          */ 
-        public static function component($alias, $viewClass = null)
+        public static function setProvider($provider)
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->component($alias, $viewClass);
+                        return $instance->setProvider($provider);
         }
                     /**
          * 
          *
          * @static 
          */ 
-        public static function getAlias($class, $default = null)
+        public static function provide($callback)
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->getAlias($class, $default);
+                        return $instance->provide($callback);
         }
                     /**
          * 
          *
          * @static 
          */ 
-        public static function getComponentAliases()
+        public static function component($name, $class = null)
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->getComponentAliases();
+                        return $instance->component($name, $class);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function componentHook($hook)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->componentHook($hook);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function propertySynthesizer($synth)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->propertySynthesizer($synth);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function directive($name, $callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->directive($name, $callback);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function precompiler($callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->precompiler($callback);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function new($name, $id = null)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->new($name, $id);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isDiscoverable($componentNameOrClass)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isDiscoverable($componentNameOrClass);
         }
                     /**
          * 
@@ -18553,40 +18615,160 @@
          *
          * @static 
          */ 
-        public static function getClass($alias)
+        public static function mount($name, $params = [], $key = null)
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->getClass($alias);
+                        return $instance->mount($name, $params, $key);
         }
                     /**
          * 
          *
          * @static 
          */ 
-        public static function getInstance($component, $id)
+        public static function snapshot($component)
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->getInstance($component, $id);
+                        return $instance->snapshot($component);
         }
                     /**
          * 
          *
          * @static 
          */ 
-        public static function mount($name, $params = [])
+        public static function fromSnapshot($snapshot)
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->mount($name, $params);
+                        return $instance->fromSnapshot($snapshot);
         }
                     /**
          * 
          *
          * @static 
          */ 
-        public static function dummyMount($id, $tagName)
+        public static function listen($eventName, $callback)
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->dummyMount($id, $tagName);
+                        return $instance->listen($eventName, $callback);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function current()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->current();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function update($snapshot, $diff, $calls)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->update($snapshot, $diff, $calls);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function updateProperty($component, $path, $value)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->updateProperty($component, $path, $value);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isLivewireRequest()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isLivewireRequest();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function componentHasBeenRendered()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->componentHasBeenRendered();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function forceAssetInjection()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->forceAssetInjection();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setUpdateRoute($callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->setUpdateRoute($callback);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getUpdateUri()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getUpdateUri();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setScriptRoute($callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->setScriptRoute($callback);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function useScriptTagAttributes($attributes)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->useScriptTagAttributes($attributes);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function withUrlParams($params)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->withUrlParams($params);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function withQueryParams($params)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->withQueryParams($params);
         }
                     /**
          * 
@@ -18603,10 +18785,10 @@
          *
          * @static 
          */ 
-        public static function visit($browser, $class, $queryString = '')
+        public static function visit($name)
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->visit($browser, $class, $queryString);
+                        return $instance->visit($name);
         }
                     /**
          * 
@@ -18617,6 +18799,16 @@
         {
                         /** @var \Livewire\LivewireManager $instance */
                         return $instance->actingAs($user, $driver);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isRunningServerless()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isRunningServerless();
         }
                     /**
          * 
@@ -18653,50 +18845,10 @@
          *
          * @static 
          */ 
-        public static function styles($options = [])
+        public static function flushState()
         {
                         /** @var \Livewire\LivewireManager $instance */
-                        return $instance->styles($options);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function scripts($options = [])
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->scripts($options);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function isLivewireRequest()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->isLivewireRequest();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function isDefinitelyLivewireRequest()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->isDefinitelyLivewireRequest();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function isProbablyLivewireRequest()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->isProbablyLivewireRequest();
+                        return $instance->flushState();
         }
                     /**
          * 
@@ -18727,116 +18879,6 @@
         {
                         /** @var \Livewire\LivewireManager $instance */
                         return $instance->originalMethod();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getRootElementTagName($dom)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->getRootElementTagName($dom);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function dispatch($event, ...$params)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->dispatch($event, ...$params);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function listen($event, $callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->listen($event, $callback);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function isOnVapor()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->isOnVapor();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function isRunningServerless()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->isRunningServerless();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function withQueryParams($queryParams)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->withQueryParams($queryParams);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function setBackButtonCache()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->setBackButtonCache();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function disableBackButtonCache()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->disableBackButtonCache();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function enableBackButtonCache()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->enableBackButtonCache();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function shouldDisableBackButtonCache()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->shouldDisableBackButtonCache();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function flushState()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->flushState();
         }
          
     }
@@ -19565,79 +19607,6 @@
      
 }
 
-    namespace Illuminate\Testing { 
-            /**
-     * 
-     *
-     * @mixin \Illuminate\Http\Response
-     */ 
-        class TestResponse {
-                    /**
-         * 
-         *
-         * @see \Livewire\LivewireServiceProvider::registerTestMacros()
-         * @param mixed $component
-         * @static 
-         */ 
-        public static function assertSeeLivewire($component)
-        {
-                        return \Illuminate\Testing\TestResponse::assertSeeLivewire($component);
-        }
-                    /**
-         * 
-         *
-         * @see \Livewire\LivewireServiceProvider::registerTestMacros()
-         * @param mixed $component
-         * @static 
-         */ 
-        public static function assertDontSeeLivewire($component)
-        {
-                        return \Illuminate\Testing\TestResponse::assertDontSeeLivewire($component);
-        }
-                    /**
-         * 
-         *
-         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
-         * @static 
-         */ 
-        public static function ray()
-        {
-                        return \Illuminate\Testing\TestResponse::ray();
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class TestView {
-                    /**
-         * 
-         *
-         * @see \Livewire\LivewireServiceProvider::registerTestMacros()
-         * @param mixed $component
-         * @static 
-         */ 
-        public static function assertSeeLivewire($component)
-        {
-                        return \Illuminate\Testing\TestView::assertSeeLivewire($component);
-        }
-                    /**
-         * 
-         *
-         * @see \Livewire\LivewireServiceProvider::registerTestMacros()
-         * @param mixed $component
-         * @static 
-         */ 
-        public static function assertDontSeeLivewire($component)
-        {
-                        return \Illuminate\Testing\TestView::assertDontSeeLivewire($component);
-        }
-         
-    }
-     
-}
-
     namespace Illuminate\Validation { 
             /**
      * 
@@ -19653,6 +19622,28 @@
         public static function phone()
         {
                         return \Illuminate\Validation\Rule::phone();
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Testing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Http\Response
+     */ 
+        class TestResponse {
+                    /**
+         * 
+         *
+         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
+         * @static 
+         */ 
+        public static function ray()
+        {
+                        return \Illuminate\Testing\TestResponse::ray();
         }
          
     }
@@ -19680,13 +19671,13 @@
      
 }
 
-    namespace Livewire\Testing { 
+    namespace Livewire\Features\SupportTesting { 
             /**
      * 
      *
      * @mixin \Illuminate\Testing\TestResponse
      */ 
-        class TestableLivewire {
+        class Testable {
                     /**
          * 
          *
@@ -19696,7 +19687,7 @@
          */ 
         public static function assertPropertyWired($property)
         {
-                        return \Livewire\Testing\TestableLivewire::assertPropertyWired($property);
+                        return \Livewire\Features\SupportTesting\Testable::assertPropertyWired($property);
         }
                     /**
          * 
@@ -19707,7 +19698,7 @@
          */ 
         public static function assertPropertyNotWired($property)
         {
-                        return \Livewire\Testing\TestableLivewire::assertPropertyNotWired($property);
+                        return \Livewire\Features\SupportTesting\Testable::assertPropertyNotWired($property);
         }
                     /**
          * 
@@ -19718,7 +19709,7 @@
          */ 
         public static function assertPropertyEntangled($property)
         {
-                        return \Livewire\Testing\TestableLivewire::assertPropertyEntangled($property);
+                        return \Livewire\Features\SupportTesting\Testable::assertPropertyEntangled($property);
         }
                     /**
          * 
@@ -19729,7 +19720,7 @@
          */ 
         public static function assertPropertyNotEntangled($property)
         {
-                        return \Livewire\Testing\TestableLivewire::assertPropertyNotEntangled($property);
+                        return \Livewire\Features\SupportTesting\Testable::assertPropertyNotEntangled($property);
         }
                     /**
          * 
@@ -19740,7 +19731,7 @@
          */ 
         public static function assertMethodWired($method)
         {
-                        return \Livewire\Testing\TestableLivewire::assertMethodWired($method);
+                        return \Livewire\Features\SupportTesting\Testable::assertMethodWired($method);
         }
                     /**
          * 
@@ -19751,7 +19742,7 @@
          */ 
         public static function assertMethodNotWired($method)
         {
-                        return \Livewire\Testing\TestableLivewire::assertMethodNotWired($method);
+                        return \Livewire\Features\SupportTesting\Testable::assertMethodNotWired($method);
         }
                     /**
          * 
@@ -19762,7 +19753,7 @@
          */ 
         public static function assertMethodWiredToForm($method)
         {
-                        return \Livewire\Testing\TestableLivewire::assertMethodWiredToForm($method);
+                        return \Livewire\Features\SupportTesting\Testable::assertMethodWiredToForm($method);
         }
                     /**
          * 
@@ -19773,7 +19764,55 @@
          */ 
         public static function assertMethodNotWiredToForm($method)
         {
-                        return \Livewire\Testing\TestableLivewire::assertMethodNotWiredToForm($method);
+                        return \Livewire\Features\SupportTesting\Testable::assertMethodNotWiredToForm($method);
+        }
+                    /**
+         * 
+         *
+         * @see \Christophrumpel\MissingLivewireAssertions\CustomLivewireAssertionsMixin::assertMethodWiredToEvent()
+         * @param string $method
+         * @param string $event
+         * @static 
+         */ 
+        public static function assertMethodWiredToEvent($method, $event)
+        {
+                        return \Livewire\Features\SupportTesting\Testable::assertMethodWiredToEvent($method, $event);
+        }
+                    /**
+         * 
+         *
+         * @see \Christophrumpel\MissingLivewireAssertions\CustomLivewireAssertionsMixin::assertMethodNotWiredToEvent()
+         * @param string $method
+         * @param string $event
+         * @static 
+         */ 
+        public static function assertMethodNotWiredToEvent($method, $event)
+        {
+                        return \Livewire\Features\SupportTesting\Testable::assertMethodNotWiredToEvent($method, $event);
+        }
+                    /**
+         * 
+         *
+         * @see \Christophrumpel\MissingLivewireAssertions\CustomLivewireAssertionsMixin::assertMethodWiredToEventWithoutModifiers()
+         * @param string $method
+         * @param string $event
+         * @static 
+         */ 
+        public static function assertMethodWiredToEventWithoutModifiers($method, $event)
+        {
+                        return \Livewire\Features\SupportTesting\Testable::assertMethodWiredToEventWithoutModifiers($method, $event);
+        }
+                    /**
+         * 
+         *
+         * @see \Christophrumpel\MissingLivewireAssertions\CustomLivewireAssertionsMixin::assertMethodNotWiredToEventWithoutModifiers()
+         * @param string $method
+         * @param string $event
+         * @static 
+         */ 
+        public static function assertMethodNotWiredToEventWithoutModifiers($method, $event)
+        {
+                        return \Livewire\Features\SupportTesting\Testable::assertMethodNotWiredToEventWithoutModifiers($method, $event);
         }
                     /**
          * 
@@ -19784,7 +19823,7 @@
          */ 
         public static function assertContainsLivewireComponent($componentNeedleClass)
         {
-                        return \Livewire\Testing\TestableLivewire::assertContainsLivewireComponent($componentNeedleClass);
+                        return \Livewire\Features\SupportTesting\Testable::assertContainsLivewireComponent($componentNeedleClass);
         }
                     /**
          * 
@@ -19795,7 +19834,7 @@
          */ 
         public static function assertDoesNotContainLivewireComponent($componentNeedleClass)
         {
-                        return \Livewire\Testing\TestableLivewire::assertDoesNotContainLivewireComponent($componentNeedleClass);
+                        return \Livewire\Features\SupportTesting\Testable::assertDoesNotContainLivewireComponent($componentNeedleClass);
         }
                     /**
          * 
@@ -19806,7 +19845,7 @@
          */ 
         public static function assertContainsBladeComponent($componentNeedleClass)
         {
-                        return \Livewire\Testing\TestableLivewire::assertContainsBladeComponent($componentNeedleClass);
+                        return \Livewire\Features\SupportTesting\Testable::assertContainsBladeComponent($componentNeedleClass);
         }
                     /**
          * 
@@ -19817,7 +19856,7 @@
          */ 
         public static function assertDoesNotContainBladeComponent($componentNeedleClass)
         {
-                        return \Livewire\Testing\TestableLivewire::assertDoesNotContainBladeComponent($componentNeedleClass);
+                        return \Livewire\Features\SupportTesting\Testable::assertDoesNotContainBladeComponent($componentNeedleClass);
         }
                     /**
          * 
@@ -19829,7 +19868,7 @@
          */ 
         public static function assertSeeBefore($valueBefore, $valueAfter)
         {
-                        return \Livewire\Testing\TestableLivewire::assertSeeBefore($valueBefore, $valueAfter);
+                        return \Livewire\Features\SupportTesting\Testable::assertSeeBefore($valueBefore, $valueAfter);
         }
                     /**
          * 
@@ -19841,7 +19880,29 @@
          */ 
         public static function assertDoNotSeeBefore($valueBefore, $valueAfter)
         {
-                        return \Livewire\Testing\TestableLivewire::assertDoNotSeeBefore($valueBefore, $valueAfter);
+                        return \Livewire\Features\SupportTesting\Testable::assertDoNotSeeBefore($valueBefore, $valueAfter);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Routing { 
+            /**
+     * 
+     *
+     */ 
+        class Route {
+                    /**
+         * 
+         *
+         * @see \Livewire\Features\SupportLazyLoading\SupportLazyLoading::registerRouteMacro()
+         * @param mixed $enabled
+         * @static 
+         */ 
+        public static function lazy($enabled = true)
+        {
+                        return \Illuminate\Routing\Route::lazy($enabled);
         }
          
     }
@@ -19857,7 +19918,7 @@
                     /**
          * 
          *
-         * @see \Livewire\LivewireServiceProvider::registerViewMacros()
+         * @see \Livewire\Features\SupportBladeAttributes\SupportBladeAttributes::provide()
          * @param mixed $name
          * @static 
          */ 
@@ -19875,7 +19936,51 @@
                     /**
          * 
          *
-         * @see \Livewire\Macros\ViewMacros::extends()
+         * @see \Livewire\Features\SupportPageComponents\SupportPageComponents::registerLayoutViewMacros()
+         * @param mixed $data
+         * @static 
+         */ 
+        public static function layoutData($data = [])
+        {
+                        return \Illuminate\View\View::layoutData($data);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Features\SupportPageComponents\SupportPageComponents::registerLayoutViewMacros()
+         * @param mixed $section
+         * @static 
+         */ 
+        public static function section($section)
+        {
+                        return \Illuminate\View\View::section($section);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Features\SupportPageComponents\SupportPageComponents::registerLayoutViewMacros()
+         * @param mixed $title
+         * @static 
+         */ 
+        public static function title($title)
+        {
+                        return \Illuminate\View\View::title($title);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Features\SupportPageComponents\SupportPageComponents::registerLayoutViewMacros()
+         * @param mixed $slot
+         * @static 
+         */ 
+        public static function slot($slot)
+        {
+                        return \Illuminate\View\View::slot($slot);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Features\SupportPageComponents\SupportPageComponents::registerLayoutViewMacros()
          * @param mixed $view
          * @param mixed $params
          * @static 
@@ -19887,7 +19992,7 @@
                     /**
          * 
          *
-         * @see \Livewire\Macros\ViewMacros::layout()
+         * @see \Livewire\Features\SupportPageComponents\SupportPageComponents::registerLayoutViewMacros()
          * @param mixed $view
          * @param mixed $params
          * @static 
@@ -19895,39 +20000,6 @@
         public static function layout($view, $params = [])
         {
                         return \Illuminate\View\View::layout($view, $params);
-        }
-                    /**
-         * 
-         *
-         * @see \Livewire\Macros\ViewMacros::layoutData()
-         * @param mixed $data
-         * @static 
-         */ 
-        public static function layoutData($data = [])
-        {
-                        return \Illuminate\View\View::layoutData($data);
-        }
-                    /**
-         * 
-         *
-         * @see \Livewire\Macros\ViewMacros::section()
-         * @param mixed $section
-         * @static 
-         */ 
-        public static function section($section)
-        {
-                        return \Illuminate\View\View::section($section);
-        }
-                    /**
-         * 
-         *
-         * @see \Livewire\Macros\ViewMacros::slot()
-         * @param mixed $slot
-         * @static 
-         */ 
-        public static function slot($slot)
-        {
-                        return \Illuminate\View\View::slot($slot);
         }
          
     }
@@ -19967,7 +20039,7 @@ namespace  {
              * Register a new global scope.
              *
              * @param string $identifier
-             * @param \Illuminate\Database\Eloquent\Scope|\Closure $scope
+             * @param \Illuminate\Database\Eloquent\Scope|\Illuminate\Database\Eloquent\(\Closure(static):  void)  $scope
              * @return \Illuminate\Database\Eloquent\Builder|static 
              * @static 
              */ 
@@ -20044,7 +20116,7 @@ namespace  {
                 /**
              * Add a basic where clause to the query.
              *
-             * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+             * @param \Illuminate\Database\Eloquent\(\Closure(self):  void)|string|array|\Illuminate\Contracts\Database\Query\Expression  $column
              * @param mixed $operator
              * @param mixed $value
              * @param string $boolean
@@ -20060,7 +20132,7 @@ namespace  {
                 /**
              * Add a basic where clause to the query, and return the first result.
              *
-             * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+             * @param \Illuminate\Database\Eloquent\(\Closure(self):  void)|string|array|\Illuminate\Contracts\Database\Query\Expression  $column
              * @param mixed $operator
              * @param mixed $value
              * @param string $boolean
@@ -20076,7 +20148,7 @@ namespace  {
                 /**
              * Add an "or where" clause to the query.
              *
-             * @param \Closure|array|string|\Illuminate\Contracts\Database\Query\Expression $column
+             * @param \Illuminate\Database\Eloquent\(\Closure(self):  void)|array|string|\Illuminate\Contracts\Database\Query\Expression  $column
              * @param mixed $operator
              * @param mixed $value
              * @return \Illuminate\Database\Eloquent\Builder|static 
@@ -20091,7 +20163,7 @@ namespace  {
                 /**
              * Add a basic "where not" clause to the query.
              *
-             * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+             * @param \Illuminate\Database\Eloquent\(\Closure(self):  void)|string|array|\Illuminate\Contracts\Database\Query\Expression  $column
              * @param mixed $operator
              * @param mixed $value
              * @param string $boolean
@@ -20107,7 +20179,7 @@ namespace  {
                 /**
              * Add an "or where not" clause to the query.
              *
-             * @param \Closure|array|string|\Illuminate\Contracts\Database\Query\Expression $column
+             * @param \Illuminate\Database\Eloquent\(\Closure(self):  void)|array|string|\Illuminate\Contracts\Database\Query\Expression  $column
              * @param mixed $operator
              * @param mixed $value
              * @return \Illuminate\Database\Eloquent\Builder|static 
@@ -20233,8 +20305,8 @@ namespace  {
              * Find a model by its primary key or call a callback.
              *
              * @param mixed $id
-             * @param \Closure|array|string $columns
-             * @param \Closure|null $callback
+             * @param \Illuminate\Database\Eloquent\(\Closure():  mixed)|array|string  $columns
+             * @param \Illuminate\Database\Eloquent\(\Closure():  mixed)|null  $callback
              * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|mixed 
              * @static 
              */ 
@@ -20317,8 +20389,8 @@ namespace  {
                 /**
              * Execute the query and get the first result or call a callback.
              *
-             * @param \Closure|array|string $columns
-             * @param \Closure|null $callback
+             * @param \Illuminate\Database\Eloquent\(\Closure():  mixed)|array|string  $columns
+             * @param \Illuminate\Database\Eloquent\(\Closure():  mixed)|null  $callback
              * @return \Illuminate\Database\Eloquent\Model|static|mixed 
              * @static 
              */ 
@@ -20453,11 +20525,10 @@ namespace  {
                 /**
              * Paginate the given query.
              *
-             * @param int|null|\Closure $perPage
+             * @param int|null|\Illuminate\Database\Eloquent\(\Closure(int):  int|null)  $perPage
              * @param array|string $columns
              * @param string $pageName
              * @param int|null $page
-             * @param \Closure|int|null $total
              * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
              * @throws \InvalidArgumentException
              * @static 
@@ -20557,7 +20628,7 @@ namespace  {
                 /**
              * Register a replacement for the default delete function.
              *
-             * @param \Closure $callback
+             * @param \Closure(static):  mixed  $callback
              * @return void 
              * @static 
              */ 
@@ -20849,7 +20920,7 @@ namespace  {
                 /**
              * Run a map over each item while chunking.
              *
-             * @param callable $callback
+             * @param \Illuminate\Database\Eloquent\callable(object):  mixed  $callback
              * @param int $count
              * @return \Illuminate\Support\Collection 
              * @static 
@@ -20863,7 +20934,7 @@ namespace  {
                 /**
              * Execute a callback over each item while chunking.
              *
-             * @param callable $callback
+             * @param \Illuminate\Database\Eloquent\callable(object,  int): bool  $callback
              * @param int $count
              * @return bool 
              * @throws \RuntimeException
@@ -20894,7 +20965,7 @@ namespace  {
                 /**
              * Execute a callback over each item while chunking by ID.
              *
-             * @param callable $callback
+             * @param \Illuminate\Database\Eloquent\callable(object,  int): bool  $callback
              * @param int $count
              * @param string|null $column
              * @param string|null $alias
@@ -21574,7 +21645,7 @@ namespace  {
                 /**
              * Add a subselect expression to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string  $query
              * @param string $as
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
@@ -21603,7 +21674,7 @@ namespace  {
                 /**
              * Makes "from" fetch from a subquery.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string  $query
              * @param string $as
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
@@ -21657,7 +21728,7 @@ namespace  {
                 /**
              * Set the table which the query is targeting.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $table
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string  $table
              * @param string|null $as
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -21711,9 +21782,9 @@ namespace  {
              * Add a join clause to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $table
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string|null $operator
-             * @param string|null $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string|null $second
              * @param string $type
              * @param bool $where
              * @return \Illuminate\Database\Query\Builder 
@@ -21729,9 +21800,9 @@ namespace  {
              * Add a "join where" clause to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $table
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string $operator
-             * @param string $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string $second
              * @param string $type
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -21745,11 +21816,11 @@ namespace  {
                 /**
              * Add a subquery join clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string  $query
              * @param string $as
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string|null $operator
-             * @param string|null $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string|null $second
              * @param string $type
              * @param bool $where
              * @return \Illuminate\Database\Query\Builder 
@@ -21766,9 +21837,9 @@ namespace  {
              * Add a left join to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $table
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string|null $operator
-             * @param string|null $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string|null $second
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -21782,9 +21853,9 @@ namespace  {
              * Add a "join where" clause to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $table
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string $operator
-             * @param string $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string|null $second
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -21797,11 +21868,11 @@ namespace  {
                 /**
              * Add a subquery left join to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string  $query
              * @param string $as
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string|null $operator
-             * @param string|null $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string|null $second
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -21815,9 +21886,9 @@ namespace  {
              * Add a right join to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $table
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string|null $operator
-             * @param string|null $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string|null $second
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -21831,9 +21902,9 @@ namespace  {
              * Add a "right join where" clause to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $table
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string $operator
-             * @param string $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string $second
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -21846,11 +21917,11 @@ namespace  {
                 /**
              * Add a subquery right join to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string  $query
              * @param string $as
-             * @param \Closure|string $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string  $first
              * @param string|null $operator
-             * @param string|null $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string|null $second
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -21864,9 +21935,9 @@ namespace  {
              * Add a "cross join" clause to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $table
-             * @param \Closure|string|null $first
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\JoinClause):  void)|string|null  $first
              * @param string|null $operator
-             * @param string|null $second
+             * @param \Illuminate\Contracts\Database\Query\Expression|string|null $second
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -21879,7 +21950,7 @@ namespace  {
                 /**
              * Add a subquery cross join to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string  $query
              * @param string $as
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -22429,7 +22500,7 @@ namespace  {
                 /**
              * Add a nested where statement to the query.
              *
-             * @param \Closure $callback
+             * @param \Closure(\Illuminate\Database\Query\Builder):  void  $callback
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -22469,7 +22540,7 @@ namespace  {
                 /**
              * Add an exists clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $callback
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder  $callback
              * @param string $boolean
              * @param bool $not
              * @return \Illuminate\Database\Query\Builder 
@@ -22484,7 +22555,7 @@ namespace  {
                 /**
              * Add an or exists clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $callback
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder  $callback
              * @param bool $not
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -22498,7 +22569,7 @@ namespace  {
                 /**
              * Add a where not exists clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $callback
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder  $callback
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -22512,7 +22583,7 @@ namespace  {
                 /**
              * Add a where not exists clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $callback
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder  $callback
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -22787,7 +22858,7 @@ namespace  {
                 /**
              * Add a "having" clause to the query.
              *
-             * @param \Illuminate\Contracts\Database\Query\Expression|\Closure|string $column
+             * @param \Illuminate\Contracts\Database\Query\Expression|\Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|string  $column
              * @param string|int|float|null $operator
              * @param string|int|float|null $value
              * @param string $boolean
@@ -22803,7 +22874,7 @@ namespace  {
                 /**
              * Add an "or having" clause to the query.
              *
-             * @param \Illuminate\Contracts\Database\Query\Expression|\Closure|string $column
+             * @param \Illuminate\Contracts\Database\Query\Expression|\Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|string  $column
              * @param string|int|float|null $operator
              * @param string|int|float|null $value
              * @return \Illuminate\Database\Query\Builder 
@@ -22818,7 +22889,7 @@ namespace  {
                 /**
              * Add a nested having statement to the query.
              *
-             * @param \Closure $callback
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)  $callback
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -22946,7 +23017,7 @@ namespace  {
                 /**
              * Add an "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|\Illuminate\Contracts\Database\Query\Expression|string $column
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|\Illuminate\Contracts\Database\Query\Expression|string  $column
              * @param string $direction
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
@@ -22961,7 +23032,7 @@ namespace  {
                 /**
              * Add a descending "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|\Illuminate\Contracts\Database\Query\Expression|string $column
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|\Illuminate\Contracts\Database\Query\Expression|string  $column
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -23097,7 +23168,7 @@ namespace  {
                 /**
              * Remove all existing orders and optionally add a new order.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Contracts\Database\Query\Expression|string|null $column
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Contracts\Database\Query\Expression|string|null  $column
              * @param string $direction
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -23111,7 +23182,7 @@ namespace  {
                 /**
              * Add a union statement to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder  $query
              * @param bool $all
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -23125,7 +23196,7 @@ namespace  {
                 /**
              * Add a union all statement to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder  $query
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -23175,7 +23246,7 @@ namespace  {
                 /**
              * Register a closure to be invoked before the query is executed.
              *
-             * @param callable $callback
+             * @param \Illuminate\Database\Query\callable(static):  void  $callback
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -23289,8 +23360,9 @@ namespace  {
                 /**
              * Execute the given callback if no rows exist for the current query.
              *
-             * @param \Closure $callback
-             * @return mixed 
+             * @template TValue
+             * @param \Closure():  TValue  $callback
+             * @return \Illuminate\Database\Query\TValue|bool 
              * @static 
              */ 
             public static function existsOr($callback)
@@ -23302,8 +23374,9 @@ namespace  {
                 /**
              * Execute the given callback if rows exist for the current query.
              *
-             * @param \Closure $callback
-             * @return mixed 
+             * @template TValue
+             * @param \Closure():  TValue  $callback
+             * @return \Illuminate\Database\Query\TValue|bool 
              * @static 
              */ 
             public static function doesntExistOr($callback)
@@ -23462,7 +23535,7 @@ namespace  {
              * Insert new records into the table using a subquery.
              *
              * @param array $columns
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
+             * @param \Illuminate\Database\Query\(\Closure(\Illuminate\Database\Query\Builder):  void)|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string  $query
              * @return int 
              * @static 
              */ 

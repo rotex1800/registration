@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\AdditionalInfo;
 use App\Models\BioFamily;
@@ -15,6 +15,7 @@ use App\Models\YeoInfo;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class EventRegistration extends Component
@@ -71,6 +72,7 @@ class EventRegistration extends Component
 
     public RegistrationComment $comment;
 
+    #[Url(as: 'part')]
     public string $activePart = self::PART_ONE;
 
     /**
@@ -180,7 +182,7 @@ class EventRegistration extends Component
 
     public function isPartOneActive(): bool
     {
-        return $this->activePart == self::PART_ONE;
+        return $this->activePart == self::PART_ONE || $this->activePart != self::PART_TWO;
     }
 
     public function isPartTwoActive(): bool

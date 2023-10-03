@@ -20,7 +20,7 @@
            class="block w-auto grow rounded-lg"
            type="text"
            wire:keydown.enter="saveComment"
-           wire:model.debounce.500ms="comment">
+           wire:model.live.debounce.500ms="comment">
     <button class="ml-2 p-2 bg-blue-500 text-white rounded-lg"
             wire:click="saveComment">{{ __('document-comments.comment') }}</button>
 </div>

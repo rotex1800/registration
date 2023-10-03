@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\FileDownload;
+use App\Livewire\FileDownload;
 use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;

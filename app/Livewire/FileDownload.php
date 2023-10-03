@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\DownloadableFileType;
 use Illuminate\Contracts\View\View;

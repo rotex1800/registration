@@ -2,7 +2,7 @@
 <div>
     <label>
         {{ __('registrations.selected') }}
-        <select wire:model="currentPosition">
+        <select wire:model.live="currentPosition">
             @foreach($attendees as $index => $attendee)
                 <option
                     value="{{ $index }}">{{ $attendee->overallDocumentState()->displayName().' '.$attendee->full_name }}</option>

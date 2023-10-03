@@ -203,10 +203,8 @@ it('downloads documents if a path is present', function (string $familyName) {
         ->call('download')
         ->assertFileDownloaded();
 
-    $response = json_decode($component->lastResponse->content())
-        ->effects
-        ->download;
-    expect(Str::snake($response->name))
+    $response = data_get($component->effects, 'download');
+    expect(Str::snake($response['name']))
         ->toContain(strtolower(Str::snake($user->file_path_name)))
         ->toContain(strtolower($category->displayName()))
         ->and($response)
@@ -223,12 +221,12 @@ it('does not download document without a path', function () {
     $component = Livewire::test('documents-rater', [
         'user' => $user,
         'category' => $category,
-    ])->call('download');
+    ])->call('download')
+        ->assertOk();
 
-    $response = json_decode($component->lastResponse->content())
-        ->effects;
-    expect($response->download);
-})->throws(ErrorException::class, 'Undefined property: stdClass::$download');
+    expect(data_get($component->effects, 'download'))
+        ->toBeNull();
+});
 
 // SECTION START: Comments
 it('has save comment method wired', function () {

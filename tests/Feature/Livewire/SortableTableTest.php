@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\SortableTable;
-use App\Http\Livewire\SortableTableColumn;
+use App\Livewire\SortableTable;
+use App\Livewire\SortableTableColumn;
 use App\Models\User;
 use Arr;
 use Illuminate\Foundation\Testing\RefreshDatabase;

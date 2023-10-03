@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\FileDownload;
+use App\Livewire\FileDownload;
 use App\Models\DownloadableFileType;
 use Livewire\Livewire;
 

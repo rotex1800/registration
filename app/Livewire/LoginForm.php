@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Livewire\Redirector;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class LoginForm extends Component
 {
@@ -31,7 +31,7 @@ class LoginForm extends Component
         return view('livewire.login-form');
     }
 
-    public function login(): RedirectResponse|Redirector
+    public function login(): Redirector
     {
         $this->validate();
 

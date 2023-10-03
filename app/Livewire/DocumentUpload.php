@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Document;
 use App\Models\DocumentCategory;
@@ -132,7 +132,7 @@ class DocumentUpload extends Component
     /**
      * @return string[]
      */
-    protected function getRules(): array
+    public function getRules(): array
     {
         if ($this->category == DocumentCategory::Picture->value) {
             return $this->pictureRules;
