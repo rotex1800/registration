@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.15.5](https://github.com/rotex1800/registration/compare/v1.15.4...v1.15.5) (2023-10-03)
+
+
+### Miscellaneous Chores
+
+* Change text of and move un-participate button ([d5299d7](https://github.com/rotex1800/registration/commit/d5299d7967ded738267bc0da4f8ac733ec3e914b))
+* **deps:** bump @tailwindcss/forms from 0.5.4 to 0.5.6 ([dfcba41](https://github.com/rotex1800/registration/commit/dfcba41c91a589b7eaf80905ac1909bf3a495224))
+* **deps:** bump actions/checkout from 3 to 4 ([ba9683d](https://github.com/rotex1800/registration/commit/ba9683dff6aab315e087f1f16a560159c2eb273c))
+* **deps:** bump autoprefixer from 10.4.15 to 10.4.16 ([844f5b0](https://github.com/rotex1800/registration/commit/844f5b0f15f73ddc06a63efee3c35f5fa22b6c78))
+* **deps:** bump axios from 1.5.0 to 1.5.1 ([821d327](https://github.com/rotex1800/registration/commit/821d32753390c0390cc5caf584825f546c77e06a))
+* **deps:** bump christophrumpel/missing-livewire-assertions ([4c73643](https://github.com/rotex1800/registration/commit/4c736438ec7a2eeed49104233248f050e9f3d2c2))
+* **deps:** bump laravel-vite-plugin from 0.8.0 to 0.8.1 ([4f0ab49](https://github.com/rotex1800/registration/commit/4f0ab49facab01f8a6b08adce1e31b4379bba682))
+* **deps:** bump laravel/dusk from 7.10.0 to 7.11.1 ([8d5ef73](https://github.com/rotex1800/registration/commit/8d5ef733231899b9cd65c09e450956a95553472a))
+* **deps:** bump laravel/fortify from 1.17.6 to 1.18.0 ([c237b5d](https://github.com/rotex1800/registration/commit/c237b5d0e736ff340cc2fb5d034ab877020e2ba3))
+* **deps:** bump nunomaduro/collision from 7.8.1 to 7.9.0 ([19ed0cc](https://github.com/rotex1800/registration/commit/19ed0cc26238e8136640f614d3f8937d6b3e131d))
+* **deps:** bump pestphp/pest from 2.18.0 to 2.20.0 ([5fefb49](https://github.com/rotex1800/registration/commit/5fefb4982bbe0c61394a5c4cc55f9f2b100b4457))
+* **deps:** bump postcss from 8.4.27 to 8.4.31 ([80bb295](https://github.com/rotex1800/registration/commit/80bb2955ced21e2a52a32639daff7ae19b3cb652))
+* Run `pint` ([f139720](https://github.com/rotex1800/registration/commit/f1397209477c132229729c233472afc59a0350b5))
+
 ## [1.15.4](https://github.com/rotex1800/registration/compare/v1.15.3...v1.15.4) (2023-09-25)
 
 
