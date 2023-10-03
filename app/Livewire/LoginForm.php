@@ -31,7 +31,7 @@ class LoginForm extends Component
         return view('livewire.login-form');
     }
 
-    public function login(): Redirector
+    public function login(): RedirectResponse|Redirector
     {
         $this->validate();
 

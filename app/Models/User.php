@@ -181,7 +181,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @phpstan-return HasMany<Comment>
+     * @return HasMany<Comment>
      */
     public function authoredComments(): HasMany
     {
@@ -191,7 +191,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @retrun HasOne
      *
-     * @phpstan-return HasOne<BioFamily>
+     * @return HasOne<BioFamily>
      */
     public function bioFamily(): HasOne
     {
@@ -199,7 +199,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @phpstan-return HasMany<HostFamily>
+     * @return HasMany<HostFamily>
      */
     public function hostFamilies(): HasMany
     {
@@ -209,7 +209,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @retrun HasOne
      *
-     * @phpstan-return HasOne<YeoInfo>
+     * @return HasOne<YeoInfo>
      */
     public function yeo(): HasOne
     {
@@ -219,7 +219,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @retrun HasOne
      *
-     * @phpstan-return HasOne<CounselorInfo>
+     * @return HasOne<CounselorInfo>
      */
     public function counselor(): HasOne
     {
@@ -262,7 +262,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      *; @return HasOne
      *
-     * @phpstan-return HasOne<Passport>
+     * @return HasOne<Passport>
      */
     public function passport(): HasOne
     {
@@ -278,7 +278,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @phpstan-return BelongsToMany<Event>
+     * @return BelongsToMany<Event>
      */
     public function events(): BelongsToMany
     {
@@ -293,7 +293,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @retrun HasOne
      *
-     * @phpstan-return HasOne<RotaryInfo>
+     * @return HasOne<RotaryInfo>
      */
     public function rotaryInfo(): HasOne
     {
@@ -338,7 +338,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @phpstan-return Collection<Event>
+     * @return Collection<Event>
      */
     public function canRegisterFor(): Collection
     {
@@ -350,7 +350,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * All events that the user shares at least one role with.
      *
      *
-     * @phpstan-return Collection<Event>
+     * @return Collection<Event>
      */
     public function possibleEvents(): Collection
     {
@@ -365,7 +365,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @phpstan-return Collection<Event>
+     * @return Collection<Event>
      */
     public function participatesIn(): Collection
     {

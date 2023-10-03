@@ -21,6 +21,10 @@ class SortableTable extends Component
 
     private string $extraRowLivewire = '';
 
+    /**
+     * @param  SortableTableColumn[]  $columns
+     * @param  object[]  $rows
+     */
     public function mount(array $columns = [], array $rows = [], string $extraRowLivewire = ''): void
     {
         $this->rows = $rows;

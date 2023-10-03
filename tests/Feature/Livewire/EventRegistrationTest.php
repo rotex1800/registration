@@ -16,8 +16,8 @@ use App\Models\User;
 use App\Models\YeoInfo;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Livewire\Livewire;
 use Livewire\Features\SupportTesting\Testable;
+use Livewire\Livewire;
 use ValueError;
 
 use function Pest\Laravel\actingAs;

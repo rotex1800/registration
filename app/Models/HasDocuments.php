@@ -55,7 +55,7 @@ trait HasDocuments
     }
 
     /**
-     * @phpstan-return HasMany<Document>
+     * @return HasMany<Document>
      */
     public function documents(): HasMany
     {
