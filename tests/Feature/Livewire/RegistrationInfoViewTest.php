@@ -22,15 +22,20 @@ use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
-it('can render', function () {
+it('uses array position as key for attendees', function () {
     $event = Event::factory()->create();
     $attendees = User::factory()->count(10)->make();
     $event->attendees()->saveMany($attendees);
 
-    Livewire::test('registration-info-view', [
+    $component = Livewire::test('registration-info-view', [
         'event' => $event,
     ])->assertOk();
-});
+
+    $componentAttendees = $component->get('attendees');
+    expect($componentAttendees->keys())
+        ->first()->toBe(0)
+        ->last()->toBe(9);
+})->repeat(15);
 
 it('shows full names and overall state of all registered attendees in select', function () {
     createUserWithRole('rotex');
