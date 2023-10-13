@@ -36,7 +36,8 @@ class RegistrationInfoView extends Component
         $this->attendees = $this
             ->event
             ->attendees
-            ->sortBy([['first_name', 'asc'], ['family_name', 'asc']]);
+            ->sortBy([['first_name', 'asc'], ['family_name', 'asc']])
+            ->values();
         if ($this->attendees != null && count($this->attendees) > 0) {
             $this->currentPosition = 0;
             $this->currentAttendee = $this->attendees->first();
