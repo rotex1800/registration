@@ -61,8 +61,8 @@ it('shows full names and overall state of all registered attendees in select', f
     Livewire::test('registration-info-view', [
         'event' => $event,
     ])
-        ->assertSeeInOrder($fullNames, false);
-});
+        ->assertSeeInOrder($fullNames);
+})->repeat(20);
 
 it('has attendee preselected', function () {
     $user = createUserWithRole('rotex');
