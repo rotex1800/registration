@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.15.7](https://github.com/rotex1800/registration/compare/v1.15.6...v1.15.7) (2023-10-14)
+
+
+### Miscellaneous Chores
+
+* Increase coverage in `AddNote` ([90e411c](https://github.com/rotex1800/registration/commit/90e411cca231aff34b2bb8c8870ffe6a5d669695))
+* Increase coverage in `CreateEvent` ([e13db48](https://github.com/rotex1800/registration/commit/e13db4898dc2726a44106d6b7aba4beb0cd166c1))
+
 ## [1.15.6](https://github.com/rotex1800/registration/compare/v1.15.5...v1.15.6) (2023-10-14)
 
 
