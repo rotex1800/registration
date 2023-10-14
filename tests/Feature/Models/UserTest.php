@@ -525,6 +525,26 @@ test('short name works for "Ab-cbe  Fghijk"', function () {
         ->toMatch('/AF-\d{4}/');
 });
 
+test('short name works for NULL family name', function () {
+    $user = User::factory()->state([
+        'first_name' => 'Test Test',
+        'family_name' => null,
+    ])->make();
+
+    expect($user->short_name)
+        ->toMatch('/TT-\d{4}/');
+});
+
+test('short name works for NULL first name', function () {
+    $user = User::factory()->state([
+        'first_name' => null,
+        'family_name' => 'Foo Bar',
+    ])->make();
+
+    expect($user->short_name)
+        ->toMatch('/FB-\d{4}/');
+});
+
 it('has additional info', function () {
     $user = User::factory()
         ->has(AdditionalInfo::factory())

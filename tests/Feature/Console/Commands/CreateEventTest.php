@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Role;
-use App\Models\User;
 use App\Policies\EventPolicy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -9,7 +8,7 @@ use function Pest\Laravel\assertDatabaseCount;
 
 uses(RefreshDatabase::class);
 
-it('creates a new event', function () {
+it('creates a new event with multiple roles', function (array|string $eventRoles) {
     // Arrange
     Role::factory()->participant()->create();
     Role::factory()->rotex()->create();
@@ -21,7 +20,7 @@ it('creates a new event', function () {
         ->expectsQuestion('When does it end?', '2024-04-14')
         ->expectsChoice(
             'Who is the target audience of the event?',
-            ['rotex', 'participant'],
+            $eventRoles,
             ['participant', 'rotex']
         )
         ->assertOk();
@@ -29,19 +28,26 @@ it('creates a new event', function () {
     // Assert
     assertDatabaseCount('events', 1);
     $actual = App\Models\Event::all()->first();
-    $participant = User::factory()
-        ->create();
-    $participant->giveRole('participant');
-    $rotex = User::factory()->create();
-    $rotex->giveRole('rotex');
 
-    $eventPolicy = new EventPolicy();
-    expect($eventPolicy->show($participant, $actual))
-        ->toBeAllowed()
-        ->and($eventPolicy->show($rotex, $actual))
-        ->toBeAllowed()
-        ->and($actual)
+    if (is_array($eventRoles)) {
+        foreach ($eventRoles as $eventRole) {
+            assertEventCanBeShownToRole($actual, $eventRole);
+        }
+    } else {
+        assertEventCanBeShownToRole($actual, $eventRoles);
+    }
+    expect($actual)
         ->name->toBe('EuropaTour 2024')
         ->start->format('Y-m-d')->toBe('2024-03-25')
         ->end->format('Y-m-d')->toBe('2024-04-14');
-});
+})->with([
+    'participant',
+    [['rotex', 'participant']],
+]);
+
+function assertEventCanBeShownToRole(App\Models\Event $event, string $role): void
+{
+    $eventPolicy = new EventPolicy();
+    expect($eventPolicy)
+        ->show(createUserWithRole($role), $event)->toBeAllowed();
+}
