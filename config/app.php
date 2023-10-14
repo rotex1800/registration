@@ -9,7 +9,7 @@ return [
      | Application version
      */
     // x-release-please-start-version
-    'version' => '1.15.5',
+    'version' => '1.15.6',
     // x-release-please-end
 
     /*

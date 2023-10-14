@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.15.6](https://github.com/rotex1800/registration/compare/v1.15.5...v1.15.6) (2023-10-14)
+
+
+### Bug Fixes
+
+* Synchronize select and show attendee ([da342c2](https://github.com/rotex1800/registration/commit/da342c2cce58eaa21e7fde8cba31394a47e28a2d))
+
+
+### Miscellaneous Chores
+
+* Cancel in progress check when not on release-please branch ([634c07b](https://github.com/rotex1800/registration/commit/634c07bd53fc4cb42abc7f940bf0d6f050964b35))
+* stabilize some more tests ([1978d2a](https://github.com/rotex1800/registration/commit/1978d2adfab9b305de5ea5135931ec9f602e9bf3))
+* stabilize test ([a867d39](https://github.com/rotex1800/registration/commit/a867d397bf23b103cc48b77b3db54dfee4cc1523))
+
 ## [1.15.5](https://github.com/rotex1800/registration/compare/v1.15.4...v1.15.5) (2023-10-03)
 
 
