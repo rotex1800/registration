@@ -85,7 +85,7 @@ it('has attendee preselected', function () {
     ]);
     $component
         ->assertOk()
-        ->assertSee($attendees->first()?->full_name, escape: false);
+        ->assertSee($attendees->first()?->full_name);
 
     $currentAttendee = $component->get('currentAttendee');
     expect($currentAttendee)->toBeSameEntityAs($attendees->first());
