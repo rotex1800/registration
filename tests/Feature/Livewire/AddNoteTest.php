@@ -52,6 +52,18 @@ it('has note property wired', function () {
         ->assertPropertyWired('note');
 });
 
+it('adds note for user without additional info', function () {
+    $actor = createUserWithRole('rotex');
+    Livewire::actingAs($actor);
+    Livewire::test('add-note', [
+        'attendee' => $this->attendee,
+    ])->assertOk()
+        ->set('note', 'Note without previous additional info');
+    assertDatabaseHas('additional_infos', [
+        'note' => 'Note without previous additional info',
+    ]);
+});
+
 it('adds note for actor with correct role', function () {
     $actor = createUserWithRole('rotex');
     $info = AdditionalInfo::factory()->state([
