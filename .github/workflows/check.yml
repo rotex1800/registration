@@ -69,7 +69,7 @@ jobs:
           --min-msi=95 --min-covered-msi=95
 
       - name: Report Coverage in comment
-        uses: lucassabreu/comment-coverage-clover@v0.10.2
+        uses: lucassabreu/comment-coverage-clover@v0.10.4
         with:
           file: coverage-report.xml
 
