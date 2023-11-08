@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.15.8](https://github.com/rotex1800/registration/compare/v1.15.7...v1.15.8) (2023-11-08)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.5.1 to 1.6.0 ([1b8d0ff](https://github.com/rotex1800/registration/commit/1b8d0fff56a657a356526bebb54c153b8ed89e6a))
+* **deps:** bump christophrumpel/missing-livewire-assertions ([5fede8c](https://github.com/rotex1800/registration/commit/5fede8cd474f8a032fefe146ea0f32037e4007a9))
+* **deps:** bump laravel/sail from 1.24.1 to 1.26.0 ([d28236e](https://github.com/rotex1800/registration/commit/d28236eb3b52d417d6e397e42bd8b0b2e1e6364a))
+* **deps:** bump lucassabreu/comment-coverage-clover ([7e2fce9](https://github.com/rotex1800/registration/commit/7e2fce9fc6d07ec6cfb7705e4c4c10c58766a2a6))
+* **deps:** bump nunomaduro/collision from 7.9.0 to 7.10.0 ([9b50f22](https://github.com/rotex1800/registration/commit/9b50f2267d2e2345331eb424895a071e3995aacf))
+* **deps:** bump spatie/laravel-ignition from 2.3.0 to 2.3.1 ([4bca814](https://github.com/rotex1800/registration/commit/4bca814a6734fe84b5caeb33b94ab19b111ac6f9))
+* **deps:** bump staudenmeir/dusk-updater from 1.3 to 1.4 ([ad3ee45](https://github.com/rotex1800/registration/commit/ad3ee45086aebbdee3ad6e0bea7ea0e55cf39e14))
+* **deps:** bump tailwindcss from 3.3.3 to 3.3.5 ([92de24d](https://github.com/rotex1800/registration/commit/92de24d0616bf52ef222dc95d754425a86d0ab70))
+* **deps:** bump vite from 4.4.9 to 4.5.0 ([34a4dac](https://github.com/rotex1800/registration/commit/34a4dac77df722ab90733b729a516ecfecebaebb))
+
 ## [1.15.7](https://github.com/rotex1800/registration/compare/v1.15.6...v1.15.7) (2023-10-14)
 
 
