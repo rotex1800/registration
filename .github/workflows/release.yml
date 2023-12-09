@@ -14,10 +14,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v4
         id: rp
         with:
-          release-type: php
           token: ${{ secrets.PAT }}
-          extra-files: |
-            config/app.php
 
   deploy-into-production:
     needs: [ release-please ]
