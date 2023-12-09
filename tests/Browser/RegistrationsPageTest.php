@@ -2,11 +2,8 @@
 
 use App\Models\Event;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use function Pest\Laravel\actingAs;
-
-uses(RefreshDatabase::class);
 
 test('rotex user can access registrations page', function () {
     Event::factory()->create();
