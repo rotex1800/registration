@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.15.9](https://github.com/rotex1800/registration/compare/v1.15.8...v1.15.9) (2023-12-23)
+
+
+### Miscellaneous Chores
+
+* bootstrap releases for path: . ([a17c7ad](https://github.com/rotex1800/registration/commit/a17c7ad8f670f81d0f38c094f027d90491979861))
+* Configure release-please with manifest ([a729ad7](https://github.com/rotex1800/registration/commit/a729ad760c873420a6ff67cc998cfbd7b9726394))
+* **deps:** bump @tailwindcss/forms from 0.5.6 to 0.5.7 ([6bd8ffe](https://github.com/rotex1800/registration/commit/6bd8ffe901b8ae6bc2dc3466f94f3c78cffab02a))
+* **deps:** Bump `laravel-vite-plugin` to `1.0.0` ([a9048db](https://github.com/rotex1800/registration/commit/a9048db115ed27eee4017cceb3bd1e01cbc77200))
+* **deps:** bump axios from 1.6.0 to 1.6.2 ([1225498](https://github.com/rotex1800/registration/commit/12254983183f8457bcd1fbe05723b2ff89b6a309))
+* **deps:** bump google-github-actions/release-please-action ([e66b9eb](https://github.com/rotex1800/registration/commit/e66b9eb205b515e00fe74cfbdb4c544f7a322236))
+* **deps:** bump infection/infection from 0.27.0 to 0.27.8 ([f655311](https://github.com/rotex1800/registration/commit/f6553113aa0fc9f2837a23fd9031764ee032f92e))
+* **deps:** bump laravel/dusk from 7.11.1 to 7.11.4 ([d21944d](https://github.com/rotex1800/registration/commit/d21944dd5b3934d2b6aa8159018a4695d82945e1))
+* **deps:** bump laravel/pint from 1.13.1 to 1.13.6 ([05bf8fd](https://github.com/rotex1800/registration/commit/05bf8fdeba7e8651f0841771d487f95721200323))
+* **deps:** bump livewire/livewire from 3.0.5 to 3.2.6 ([7b303ee](https://github.com/rotex1800/registration/commit/7b303eee599be99fa5c529677b41beb3c220f1d2))
+* **deps:** bump pestphp/pest from 2.20.0 to 2.26.0 ([c1a41b4](https://github.com/rotex1800/registration/commit/c1a41b43988dbc6527477c8743dce261f9444036))
+* **deps:** bump prettier from 3.0.3 to 3.1.0 ([454978d](https://github.com/rotex1800/registration/commit/454978d2e370eb19bc62c4ba8f4f1c2c318f2597))
+* **deps:** bump vite from 4.5.0 to 4.5.1 ([c571de4](https://github.com/rotex1800/registration/commit/c571de45e0dd9f71938e70cd0958749dd83259fa))
+* **deps:** bump vite from 4.5.1 to 5.0.5 ([7bb9606](https://github.com/rotex1800/registration/commit/7bb96063672a8b06eee2dacfd3e95284281ccebd))
+
 ## [1.15.8](https://github.com/rotex1800/registration/compare/v1.15.7...v1.15.8) (2023-11-08)
 
 
