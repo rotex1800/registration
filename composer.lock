@@ -186,16 +186,16 @@
         },
         {
             "name": "christophrumpel/missing-livewire-assertions",
-            "version": "v2.2.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/christophrumpel/missing-livewire-assertions.git",
-                "reference": "29247ea57524f96bc2d4cdad9d8a293b73b629be"
+                "reference": "7d1a788f13fef7ea53f03955c5c3462c562be702"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/christophrumpel/missing-livewire-assertions/zipball/29247ea57524f96bc2d4cdad9d8a293b73b629be",
-                "reference": "29247ea57524f96bc2d4cdad9d8a293b73b629be",
+                "url": "https://api.github.com/repos/christophrumpel/missing-livewire-assertions/zipball/7d1a788f13fef7ea53f03955c5c3462c562be702",
+                "reference": "7d1a788f13fef7ea53f03955c5c3462c562be702",
                 "shasum": ""
             },
             "require": {
@@ -244,9 +244,9 @@
             ],
             "support": {
                 "issues": "https://github.com/christophrumpel/missing-livewire-assertions/issues",
-                "source": "https://github.com/christophrumpel/missing-livewire-assertions/tree/v2.2.0"
+                "source": "https://github.com/christophrumpel/missing-livewire-assertions/tree/v2.3.0"
             },
-            "time": "2023-10-17T07:46:28+00:00"
+            "time": "2023-12-16T13:49:43+00:00"
         },
         {
             "name": "comcast/php-legal-licenses",
