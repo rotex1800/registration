@@ -19,7 +19,7 @@ php artisan optimize
 
 # Compile npm assets
 npm ci --foreground-scripts
-npm run build
+npm run build -- --ssr
 
 # Run database migrations
 php artisan migrate --force

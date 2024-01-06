@@ -19,3 +19,4 @@ junit-report.xml
 coverage-report.txt
 tests/Browser/screenshots
 tests/Browser/console
+bootstrap/ssr/
