@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.15.10](https://github.com/rotex1800/registration/compare/v1.15.9...v1.15.10) (2024-01-07)
+
+
+### Bug Fixes
+
+* Use server side rendering option in deploy script ([34b363f](https://github.com/rotex1800/registration/commit/34b363f68e2f205e4b2c7e745d00ea1ea054a633))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump actions/upload-artifact from 3 to 4 ([245f58a](https://github.com/rotex1800/registration/commit/245f58a04aeec4dd7bfb2ee88de295147d324992))
+* **deps:** bump axios from 1.6.2 to 1.6.3 ([001edb3](https://github.com/rotex1800/registration/commit/001edb3a6312c75659476a7a1142bc5e5889d1f3))
+* **deps:** bump christophrumpel/missing-livewire-assertions ([ea0ff31](https://github.com/rotex1800/registration/commit/ea0ff3136e51df3e4f1bca1f517af09c2efb7bf7))
+* **deps:** bump fakerphp/faker from 1.23.0 to 1.23.1 ([122ed2c](https://github.com/rotex1800/registration/commit/122ed2c6955c1d2dbc07240ed6f8b82f104e0500))
+* **deps:** bump infection/infection from 0.27.8 to 0.27.9 ([ebfed15](https://github.com/rotex1800/registration/commit/ebfed15a150f53b70313b911c5c87ee13854b71d))
+* **deps:** bump laravel-vite-plugin from 1.0.0 to 1.0.1 ([88dff7e](https://github.com/rotex1800/registration/commit/88dff7eb1abdb0edd3677e2c43fb94c8580e7dbd))
+* **deps:** bump laravel/dusk from 7.11.4 to 7.12.0 ([696ada5](https://github.com/rotex1800/registration/commit/696ada579bdefbd69aad22e1ca1f5154c4bd10e1))
+* **deps:** bump laravel/fortify from 1.18.0 to 1.19.1 ([04cfda5](https://github.com/rotex1800/registration/commit/04cfda50bc1d04682842836e9a784fe947f6d348))
+* **deps:** bump laravel/pint from 1.13.6 to 1.13.7 ([5e97491](https://github.com/rotex1800/registration/commit/5e97491c86c27f6a3c286e2daf6d51ab0101ed7f))
+* **deps:** bump laravel/sail from 1.26.0 to 1.26.3 ([9e9f639](https://github.com/rotex1800/registration/commit/9e9f639eea261d679b068e149a7bbbdc74e38c9c))
+* **deps:** bump livewire/livewire from 3.2.6 to 3.3.5 ([d89b1d9](https://github.com/rotex1800/registration/commit/d89b1d91f2042d57a6a5045578ae34fe59eb701c))
+* **deps:** bump maatwebsite/excel from 3.1.48 to 3.1.51 ([d16eee1](https://github.com/rotex1800/registration/commit/d16eee12fea0e2015063b19f99e972a2ec1c30cb))
+* **deps:** bump mockery/mockery from 1.6.6 to 1.6.7 ([bd2a617](https://github.com/rotex1800/registration/commit/bd2a617698ab31189ba8a6ed10940c5e3e9d1b75))
+* **deps:** bump nunomaduro/larastan from 2.6.4 to 2.8.0 ([4c91d89](https://github.com/rotex1800/registration/commit/4c91d898259e122bacc99a10093d2e69c3da05f0))
+* **deps:** bump pestphp/pest from 2.26.0 to 2.30.0 ([9e5c1cf](https://github.com/rotex1800/registration/commit/9e5c1cf8d67963883a5df79459937778ca360ecc))
+* **deps:** bump prettier from 3.1.0 to 3.1.1 ([7151a28](https://github.com/rotex1800/registration/commit/7151a282f8fca4871eb19725f7977cf32f90ff6a))
+* **deps:** bump propaganistas/laravel-phone from 5.0.3 to 5.1.0 ([5617378](https://github.com/rotex1800/registration/commit/5617378fb0119092d910146aaa8335fb950d3305))
+* **deps:** bump spatie/laravel-ignition from 2.3.1 to 2.4.0 ([dafeea9](https://github.com/rotex1800/registration/commit/dafeea932d17e22ad684b4e213a02db2b752a2e3))
+* **deps:** bump spatie/laravel-ray from 1.33.0 to 1.33.1 ([d3c6ec3](https://github.com/rotex1800/registration/commit/d3c6ec3a205b001c7bd46ffc3dca0be1e24e5410))
+* **deps:** bump tailwindcss from 3.3.5 to 3.4.1 ([3dd34d3](https://github.com/rotex1800/registration/commit/3dd34d372db5ef1a77217f9b0780da1b23b4e9c6))
+
 ## [1.15.9](https://github.com/rotex1800/registration/compare/v1.15.8...v1.15.9) (2023-12-23)
 
 
