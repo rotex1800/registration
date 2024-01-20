@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.15.11](https://github.com/rotex1800/registration/compare/v1.15.10...v1.15.11) (2024-01-20)
+
+
+### Miscellaneous Chores
+
+* Bump vite to 5.0.12 ([7460b03](https://github.com/rotex1800/registration/commit/7460b0368011fdfd05b0ea286ec9eb63a51d50dc))
+* **deps-dev:** bump follow-redirects from 1.15.2 to 1.15.4 ([1f975a0](https://github.com/rotex1800/registration/commit/1f975a07dc6075c75ac48802b0fbe2d975f38594))
+
 ## [1.15.10](https://github.com/rotex1800/registration/compare/v1.15.9...v1.15.10) (2024-01-07)
 
 
