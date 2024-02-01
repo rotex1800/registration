@@ -75,7 +75,7 @@ jobs:
 
       - name: Check per-mutator.md existence
         id: mutator-report-file
-        uses: andstor/file-existence-action@v2
+        uses: andstor/file-existence-action@v3
         with:
           files: per-mutator.md
 
