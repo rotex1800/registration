@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.16.0](https://github.com/rotex1800/registration/compare/v1.15.11...v1.16.0) (2024-02-03)
+
+
+### Features
+
+* Add health check after deployment script has completed ([231b616](https://github.com/rotex1800/registration/commit/231b616e32608dab7f6ab3e75bdf9c140a9c05c7))
+* Add health endpoint ([838c442](https://github.com/rotex1800/registration/commit/838c442dcaebed407e178556d7c65d8da25d0638))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump actions/dependency-review-action from 3 to 4 ([62f885f](https://github.com/rotex1800/registration/commit/62f885f60c5baa7056215b7c0ea6a7ce5d26cd7c))
+* **deps:** bump andstor/file-existence-action from 2 to 3 ([a840b03](https://github.com/rotex1800/registration/commit/a840b03e90d3b521fdf09b6d85560e30d403a932))
+* **deps:** bump autoprefixer from 10.4.16 to 10.4.17 ([839891d](https://github.com/rotex1800/registration/commit/839891d263423da6ed95f6a9e64e5fd532eaa826))
+* **deps:** bump axios from 1.6.3 to 1.6.7 ([e2a4f44](https://github.com/rotex1800/registration/commit/e2a4f442c4cb35c13cea59e1eefa8c3626b31984))
+* **deps:** bump laravel/fortify from 1.19.1 to 1.20.0 ([d93b0aa](https://github.com/rotex1800/registration/commit/d93b0aaa8b709a1061ff0347a273b933ab4e735b))
+* **deps:** bump laravel/pint from 1.13.7 to 1.13.10 ([946c1e4](https://github.com/rotex1800/registration/commit/946c1e48693fd5eb3d548229c426e3f69f33772b))
+* **deps:** bump lucassabreu/comment-coverage-clover ([8916ea3](https://github.com/rotex1800/registration/commit/8916ea37d65150484746ec06ea26d26c12bcd6e6))
+* **deps:** bump lucassabreu/comment-coverage-clover ([bb74b11](https://github.com/rotex1800/registration/commit/bb74b1159012d18b75a9b1e73cb2fbb805d0fe54))
+* **deps:** bump maatwebsite/excel from 3.1.51 to 3.1.52 ([93178c0](https://github.com/rotex1800/registration/commit/93178c027e9819c5ddbbefd469b1af8fcd17725f))
+* **deps:** bump postcss from 8.4.32 to 8.4.33 ([d1d1c84](https://github.com/rotex1800/registration/commit/d1d1c84c11416f2f320b0d813c092153eed7dfb6))
+* **deps:** bump prettier from 3.1.1 to 3.2.4 ([fd27c1d](https://github.com/rotex1800/registration/commit/fd27c1db72b524e9de2846bef6b2c5c0e29da32a))
+* **deps:** bump spatie/laravel-ray from 1.33.1 to 1.34.0 ([8c5f228](https://github.com/rotex1800/registration/commit/8c5f22892118a073ca7c7034491768c8d2b938b1))
+
 ## [1.15.11](https://github.com/rotex1800/registration/compare/v1.15.10...v1.15.11) (2024-01-20)
 
 
