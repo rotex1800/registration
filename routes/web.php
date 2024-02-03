@@ -7,6 +7,7 @@ use App\Http\Controllers\EventRegistrationsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistrationsDownloadController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/registrations/{event}', EventRegistrationsController::class)
         ->name('registrations.show');
 });
+
+Route::get('health', HealthCheckResultsController::class);
