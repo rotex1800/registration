@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.0](https://github.com/rotex1800/registration/compare/v1.16.0...v1.17.0) (2024-02-13)
+
+
+### Features
+
+* Include desired group in registrations export ([f2695e2](https://github.com/rotex1800/registration/commit/f2695e2e6a18c8c6a9fc132ed68e2770e0996e86))
+* Show desired group in info view ([52bb40f](https://github.com/rotex1800/registration/commit/52bb40f65515b33b01c9bd50d81779d1ad9c3fd7))
+
 ## [1.16.0](https://github.com/rotex1800/registration/compare/v1.15.11...v1.16.0) (2024-02-03)
 
 
