@@ -136,6 +136,7 @@ it('shows attributes of currently selected attendee', function () {
             __('registration.allergies').': '.$firstAttendee->additionalInfo->allergies,
             //            __('registration.diet').': '.$firstAttendee->additionalInfo->diet,
             //            __('registration.health_issues').': '.$firstAttendee->health_issues,
+            __('registration.desired_group').': '.$firstAttendee->additionalInfo->desired_group,
 
             __('registration.passport'),
             //            __('registration.nationality').': '.$firstAttendee->passport->nationality,
