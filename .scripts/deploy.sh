@@ -16,6 +16,7 @@ php artisan clear-compiled
 
 # Recreate cache
 php artisan optimize
+php artisan event:cache
 
 # Compile npm assets
 npm ci --foreground-scripts
