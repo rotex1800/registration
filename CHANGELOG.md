@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.1](https://github.com/rotex1800/registration/compare/v1.17.0...v1.17.1) (2024-02-13)
+
+
+### Miscellaneous Chores
+
+* Also cache events ([8e81950](https://github.com/rotex1800/registration/commit/8e819503e737964c2b7b2e0e8dfc4bdf7ac48aef))
+
 ## [1.17.0](https://github.com/rotex1800/registration/compare/v1.16.0...v1.17.0) (2024-02-13)
 
 
