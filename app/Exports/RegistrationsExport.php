@@ -71,6 +71,7 @@ class RegistrationsExport implements FromQuery, ShouldAutoSize, WithColumnFormat
             'T-Shirt',
             'Ernährung',
             'Allergien',
+            'Wunschgruppe',
             'Gesundheitliche Probleme',
             'Nationalität',
             'Passnummer',
@@ -130,6 +131,7 @@ class RegistrationsExport implements FromQuery, ShouldAutoSize, WithColumnFormat
                 $user->additionalInfo?->tshirt_size?->displayName(),
                 $user->additionalInfo?->diet,
                 $user->additionalInfo?->allergies,
+                $user->additionalInfo?->desired_group,
                 $user->health_issues,
 
                 $user->passport?->nationality ?? '',

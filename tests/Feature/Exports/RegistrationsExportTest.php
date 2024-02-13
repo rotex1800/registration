@@ -61,6 +61,7 @@ it('contains expected columns', function () {
             $user->additionalInfo?->tshirt_size?->displayName() ?? '',
             $user->additionalInfo?->diet ?? '',
             $user->additionalInfo?->allergies ?? '',
+            $user->additionalInfo->desired_group ?? '',
             $user->health_issues,
             $user->passport?->nationality ?? '',
             $user->passport?->passport_number ?? '',
@@ -116,6 +117,7 @@ it('contains expected headings', function () {
             'T-Shirt',
             'Ernährung',
             'Allergien',
+            'Wunschgruppe',
             // TODO: Add address for bio family
             //        ->toContain($user->bioFamily->address)
             'Gesundheitliche Probleme',
