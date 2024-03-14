@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.17.2](https://github.com/rotex1800/registration/compare/v1.17.1...v1.17.2) (2024-03-14)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump autoprefixer from 10.4.17 to 10.4.18 ([3d2f0d1](https://github.com/rotex1800/registration/commit/3d2f0d1fb1a6a39f9307c06fa40765a280fd3c77))
+* **deps:** bump laravel-vite-plugin from 1.0.1 to 1.0.2 ([9ebc36c](https://github.com/rotex1800/registration/commit/9ebc36cf857ec5afdc8fe708a4f4423cc27a986c))
+* **deps:** bump laravel/dusk from 7.12.0 to 7.13.0 ([d2b3a08](https://github.com/rotex1800/registration/commit/d2b3a0868a40447f7386864b38a5c2fdbbab8b8b))
+* **deps:** bump laravel/framework from 10.43.0 to 10.46.0 ([755303e](https://github.com/rotex1800/registration/commit/755303e8c71faa1ed51245d316c2baa374bd5023))
+* **deps:** bump laravel/tinker from 2.8.2 to 2.9.0 ([4c36a75](https://github.com/rotex1800/registration/commit/4c36a75945d8fb8e03706cee0504320bfa548010))
+* **deps:** bump livewire/livewire from 3.3.5 to 3.4.8 ([fc77e92](https://github.com/rotex1800/registration/commit/fc77e9210af8d0c0775a093397c59ff8d155b396))
+* **deps:** bump nunomaduro/larastan from 2.8.0 to 2.9.2 ([eb2fb5f](https://github.com/rotex1800/registration/commit/eb2fb5fbd2a2afcad9849495b1e9581fe9723041))
+* **deps:** bump prettier from 3.2.4 to 3.2.5 ([29db150](https://github.com/rotex1800/registration/commit/29db1509b762e807cbfd46289b995576341268b6))
+* **deps:** bump vite from 5.0.12 to 5.1.4 ([4b81005](https://github.com/rotex1800/registration/commit/4b810052501990a7b615ee6e45e89b55cc0bd654))
+
 ## [1.17.1](https://github.com/rotex1800/registration/compare/v1.17.0...v1.17.1) (2024-02-13)
 
 
