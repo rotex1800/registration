@@ -28,7 +28,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
         "infection/infection": "^0.27.0",
-        "laravel/dusk": "^7.1",
+        "laravel/dusk": "^8.2",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
