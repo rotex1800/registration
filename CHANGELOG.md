@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.17.3](https://github.com/rotex1800/registration/compare/v1.17.2...v1.17.3) (2024-07-02)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump braces ([5423fb4](https://github.com/rotex1800/registration/commit/5423fb4d0dd26d03f87c51d845ef338316bf2f5d))
+* **deps:** bump autoprefixer from 10.4.18 to 10.4.19 ([a4bbce1](https://github.com/rotex1800/registration/commit/a4bbce1d6d16f53cdd78efe500b48433952e691f))
+* **deps:** bump axios from 1.6.7 to 1.7.2 ([ab60046](https://github.com/rotex1800/registration/commit/ab6004683004b15664e1f698bc4137b6c66d4646))
+* **deps:** bump comcast/php-legal-licenses from 1.2.0 to 1.3.0 ([5ae9076](https://github.com/rotex1800/registration/commit/5ae90769c9dcfbf3a6284994e057266a7d731f8d))
+* **deps:** bump laravel-vite-plugin from 1.0.2 to 1.0.4 ([9133b9a](https://github.com/rotex1800/registration/commit/9133b9ae21c4b2b4c2621e1b4ce0aff4bc23009d))
+* **deps:** bump laravel/pint from 1.13.10 to 1.16.0 ([6cb2404](https://github.com/rotex1800/registration/commit/6cb24047699993d04cd5aa36ccb1fcdbd48019ab))
+* **deps:** bump livewire/livewire from 3.4.8 to 3.4.11 ([03a4f00](https://github.com/rotex1800/registration/commit/03a4f008fe5d1e7d785e30d396d213c80579f416))
+* **deps:** bump lucassabreu/comment-coverage-clover ([5dd7e16](https://github.com/rotex1800/registration/commit/5dd7e16e6ec7d1400361c80bd89cf70e438cc140))
+* **deps:** bump maatwebsite/excel from 3.1.52 to 3.1.55 ([3709c54](https://github.com/rotex1800/registration/commit/3709c54b99b07eb6d07521999c67ca987de12202))
+* **deps:** bump mockery/mockery from 1.6.11 to 1.6.12 ([f256bfe](https://github.com/rotex1800/registration/commit/f256bfeb495bc5ddbfe549157de5d50ef192e99c))
+* **deps:** bump mockery/mockery from 1.6.7 to 1.6.11 ([677270c](https://github.com/rotex1800/registration/commit/677270c75275093cb7bc7755bba0418fcee54e95))
+* **deps:** bump ondram/ci-detector from 4.1.0 to 4.2.0 ([b8202aa](https://github.com/rotex1800/registration/commit/b8202aae1c92aedf5ba8bffd80e8144fc446b6d6))
+* **deps:** bump prettier from 3.2.5 to 3.3.2 ([78a1bcf](https://github.com/rotex1800/registration/commit/78a1bcfb82266ce6925bae2db4f67e62f14da743))
+* **deps:** bump staudenmeir/dusk-updater from 1.4 to 1.5 ([6dc7c02](https://github.com/rotex1800/registration/commit/6dc7c02db4fbaa124bcc4b1d142801ec2b79291b))
+* **deps:** bump tailwindcss from 3.4.1 to 3.4.3 ([ba78c48](https://github.com/rotex1800/registration/commit/ba78c4891184d6b7ec77fd4b0016ea0b5ea573fd))
+* **deps:** bump vite from 5.1.4 to 5.2.10 ([774bd1a](https://github.com/rotex1800/registration/commit/774bd1aacb013d0f141f7aef491bee53a367241e))
+* **deps:** bump vite from 5.2.10 to 5.3.1 ([a5f9e38](https://github.com/rotex1800/registration/commit/a5f9e385bd723386d4f7b8fde9016b8538a9a30b))
+
 ## [1.17.2](https://github.com/rotex1800/registration/compare/v1.17.1...v1.17.2) (2024-03-14)
 
 
