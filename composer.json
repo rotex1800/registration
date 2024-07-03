@@ -26,7 +26,7 @@
         "spatie/laravel-health": "^1.25"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.12",
+        "barryvdh/laravel-ide-helper": "^3.0",
         "infection/infection": "^0.27.0",
         "laravel/dusk": "^8.2",
         "laravel/pint": "^1.0",
