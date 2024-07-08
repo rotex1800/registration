@@ -58,15 +58,21 @@ jobs:
       - name: Run Laravel Server
         run: php artisan serve &
 
+#      - name: Run tests
+#        env:
+#          XDEBUG_MODE: coverage
+#          INFECTION_DASHBOARD_API_KEY: ${{ secrets.INFECTION_DASHBOARD_API_KEY }}
+#        run: >-
+#          ./vendor/bin/infection --test-framework=pest
+#          --test-framework-options="--ci --coverage --coverage-clover=coverage-report.xml --min=95"
+#          --show-mutations --configuration=infection.json5 --threads=10
+#          --min-msi=95 --min-covered-msi=95
+
+      # Run normal tests until https://github.com/pestphp/pest/pull/1145 is fixed
       - name: Run tests
         env:
           XDEBUG_MODE: coverage
-          INFECTION_DASHBOARD_API_KEY: ${{ secrets.INFECTION_DASHBOARD_API_KEY }}
-        run: >-
-          ./vendor/bin/infection --test-framework=pest
-          --test-framework-options="--ci --coverage --coverage-clover=coverage-report.xml --min=95"
-          --show-mutations --configuration=infection.json5 --threads=10
-          --min-msi=95 --min-covered-msi=95
+        run: vendor/bin/pest --ci --log-junit junit-report.xml --coverage --coverage-clover coverage-report.xml --min=95
 
       - name: Report Coverage in comment
         uses: lucassabreu/comment-coverage-clover@v0.13.0
