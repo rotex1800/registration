@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.17.4](https://github.com/rotex1800/registration/compare/v1.17.3...v1.17.4) (2024-08-03)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.7.2 to 1.7.3 ([e7d2b21](https://github.com/rotex1800/registration/commit/e7d2b21440bf98e7b0d519070ad59e79b53f7719))
+* **deps:** bump laravel-vite-plugin from 1.0.4 to 1.0.5 ([bb414d4](https://github.com/rotex1800/registration/commit/bb414d4cd2324fcae75929426fd51e0603949bef))
+* **deps:** bump laravel/dusk from 8.2.0 to 8.2.2 ([aeedc79](https://github.com/rotex1800/registration/commit/aeedc79402637a5c6c86c161842ed27892f0dc28))
+* **deps:** bump laravel/sail from 1.30.1 to 1.31.0 ([61c79fd](https://github.com/rotex1800/registration/commit/61c79fdd459e741b542e3685314b702410720a4e))
+* **deps:** bump pestphp/pest from 2.34.8 to 2.35.0 ([1156e93](https://github.com/rotex1800/registration/commit/1156e93af2d0bf3e2a75b8497ef549e62fd47f6c))
+* **deps:** bump prettier from 3.3.2 to 3.3.3 ([0124342](https://github.com/rotex1800/registration/commit/0124342ea21b03e12fcc13d7d4608f7c3306bd4e))
+* **deps:** bump spatie/laravel-health from 1.29.1 to 1.30.0 ([04a79dc](https://github.com/rotex1800/registration/commit/04a79dce82d033c2c66d1cb6971cdf81cebe8e0b))
+* **deps:** bump tailwindcss from 3.4.4 to 3.4.7 ([4a2f9e7](https://github.com/rotex1800/registration/commit/4a2f9e794951d4840f0fd49c1383e48edd1b076b))
+* **deps:** bump vite from 5.3.2 to 5.3.5 ([e7517e3](https://github.com/rotex1800/registration/commit/e7517e3d25403a9fcc53e0a52ed00e0a952f550f))
+
 ## [1.17.3](https://github.com/rotex1800/registration/compare/v1.17.2...v1.17.3) (2024-07-08)
 
 
