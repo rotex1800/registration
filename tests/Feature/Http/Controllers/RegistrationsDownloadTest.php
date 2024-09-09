@@ -3,6 +3,7 @@
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
@@ -23,7 +24,7 @@ it('can download excel file', function () {
 
 it('can not download as guest', function () {
     $this->get('/registrations/1/download')
-         ->assertRedirect(route('login'));
+        ->assertRedirect(route('login'));
 });
 
 it('can not download as participant', function () {
@@ -41,5 +42,5 @@ it('does not fail exporting null values', function () {
     $event->attendees()->save($attendee);
 
     actingAs($user)->get(route('registrations.download', $event))
-                   ->assertStatus(200);
+        ->assertStatus(200);
 });

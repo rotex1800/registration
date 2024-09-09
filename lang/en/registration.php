@@ -2,7 +2,7 @@
 
 return [
     'apply' => 'Bewerben',
-    'dont-participate' => 'Nein, ich möchte nicht an der Tour teilnehmen!',
+    'dont-participate' => 'Klicke hier, wenn Du nicht auf EuropaTour fahren möchtest.',
     'about-person' => 'Zur Person',
     'payment' => 'Bezahlung',
 ];

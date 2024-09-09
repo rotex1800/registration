@@ -37,8 +37,8 @@ use Illuminate\Support\Carbon;
  */
 class YeoInfo extends Model
 {
-    use HasFactory;
     use HasCompletenessCheck;
+    use HasFactory;
     use PersonInfo;
 
     public function isComplete(): bool

@@ -11,7 +11,6 @@
 |
 */
 
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Database\Eloquent\Model;
@@ -78,11 +77,10 @@ expect()->extend('toBackEnumCase', function ($case) {
 
 function createUserWithRole(string $role): User
 {
-    return User::factory()
-               ->has(Role::factory()->state([
-                   'name' => $role,
-               ]))
-               ->create();
+    $user = User::factory()->create();
+    $user->giveRole($role);
+
+    return $user;
 }
 
 function createInboundRegisteredFor(App\Models\Event $event): User

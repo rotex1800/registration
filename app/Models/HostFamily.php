@@ -37,14 +37,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|HostFamily wherePhone($value)
  * @method static Builder|HostFamily whereUpdatedAt($value)
  * @method static Builder|HostFamily whereUserId($value)
+ * @method static HostFamilyFactory factory(...$parameters)
  *
  * @mixin Eloquent
- *
- * @method static HostFamilyFactory factory(...$parameters)
  */
 class HostFamily extends Model
 {
-    use HasFactory, HasCompletenessCheck;
+    use HasCompletenessCheck, HasFactory;
 
     public function inbound(): BelongsTo
     {

@@ -1,4 +1,4 @@
-<div class="bg-white p-4 rounded-lg shadow-lg flex flex-col">
+<div class="bg-white p-4 rounded-lg shadow-lg flex flex-col mb-5">
     <div class="text-2xl m-2">{{ $this->event->name }}</div>
     <div class="m-1 ml-2 flex flex-row">
         <div class="mr-2">Von:</div>

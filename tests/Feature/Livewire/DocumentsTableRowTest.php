@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\DocumentsTableRow;
+use App\Livewire\DocumentsTableRow;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\View\ViewException;
@@ -25,5 +25,5 @@ it('contains rules', function () {
     Livewire::test(DocumentsTableRow::class, [
         'user' => User::factory()->create(),
     ])
-            ->assertSeeText(__('registration.rules'));
+        ->assertSeeText(__('registration.rules'));
 });

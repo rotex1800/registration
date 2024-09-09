@@ -39,14 +39,14 @@ it('belongs to user', function () {
 
 it('can retrieve user through relation', function () {
     $user = User::factory()
-                ->has(HostFamily::factory())
-                ->create();
+        ->has(HostFamily::factory())
+        ->create();
 
     $family = $user->hostFamilies()->first();
 
     expect($family->inbound)
         ->not->toBeNull()
-             ->toBeInstanceOf(User::class);
+        ->toBeInstanceOf(User::class);
 });
 
 it('has order', function () {

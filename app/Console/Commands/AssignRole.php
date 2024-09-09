@@ -40,12 +40,12 @@ class AssignRole extends Command
 
         $user = User::where('email', $email)->first();
         if ($user == null) {
-            $this->error("There is no user with email '$email'");
+            $this->error("There is no user with email '".$email."'");
 
             return Command::FAILURE;
         }
-        $this->info("Assigning role '$role' to user with email '$email'");
-        $user->giveRole($role);
+        $this->info("Assigning role '".$role."' to user with email '".$email."'");
+        $user->giveRole(''.$role);
 
         return Command::SUCCESS;
     }

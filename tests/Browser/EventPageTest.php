@@ -3,13 +3,14 @@
 use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 
 it('shows main navigation', function () {
     $role = Role::factory()
-                ->has(User::factory())
-                ->has(Event::factory())
-                ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
     $user = $role->users[0];
     $event = $role->events[0];
 
@@ -22,19 +23,19 @@ it('shows main navigation', function () {
 it('is not accessible when logged out', function () {
     $event = Event::factory()->create();
     $this->get("/event/$event->id")
-         ->assertRedirect('/login');
+        ->assertRedirect('/login');
 });
 
 test('event details are not available for mismatching roles', function () {
     $someRole = Role::factory(['name' => 'some'])
-                    ->has(User::factory())
-                    ->has(Event::factory())
-                    ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
 
     $otherRole = Role::factory(['name' => 'other'])
-                     ->has(User::factory())
-                     ->has(Event::factory())
-                     ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
 
     $user = $someRole->users[0];
     $event = $otherRole->events[0];
@@ -46,9 +47,9 @@ test('event details are not available for mismatching roles', function () {
 
 it('shows event details component', function () {
     $role = Role::factory()
-                ->has(User::factory())
-                ->has(Event::factory())
-                ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
     $user = $role->users[0];
     $event = $role->events[0];
 
@@ -60,9 +61,9 @@ it('shows event details component', function () {
 
 it('can link to first part directly', function () {
     $role = Role::factory()
-                ->has(User::factory())
-                ->has(Event::factory())
-                ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
     $user = $role->users[0];
     $event = $role->events[0];
     $user->events()->attach($event);
@@ -75,9 +76,9 @@ it('can link to first part directly', function () {
 
 it('can link to second part directly', function () {
     $role = Role::factory()
-                ->has(User::factory())
-                ->has(Event::factory())
-                ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
     $event = $role->events[0];
     $user = $role->users[0];
     $user->events()->attach($event);
@@ -98,9 +99,9 @@ it('can link to second part directly', function () {
 
 it('defaults to part one if no part defined', function () {
     $role = Role::factory()
-                ->has(User::factory())
-                ->has(Event::factory())
-                ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
     $user = $role->users[0];
     $event = $role->events[0];
     $user->events()->attach($event);
@@ -113,9 +114,9 @@ it('defaults to part one if no part defined', function () {
 
 it('defaults to part one if unknown part defined', function () {
     $role = Role::factory()
-                ->has(User::factory())
-                ->has(Event::factory())
-                ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
     $user = $role->users[0];
     $event = $role->events[0];
     $user->events()->attach($event);
@@ -128,15 +129,15 @@ it('defaults to part one if unknown part defined', function () {
 
 it('requires email to be verfied', function () {
     $role = Role::factory()
-                ->has(User::factory())
-                ->has(Event::factory())
-                ->create();
+        ->has(User::factory())
+        ->has(Event::factory())
+        ->create();
     $user = $role->users[0];
     $event = $role->events[0];
     $user->email_verified_at = null;
     $user->events()->attach($event);
 
     $this->actingAs($user)
-         ->get(route('event.show', $event))
-         ->assertRedirect(route('verification.notice'));
+        ->get(route('event.show', $event))
+        ->assertRedirect(route('verification.notice'));
 });

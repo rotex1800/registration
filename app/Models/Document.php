@@ -44,10 +44,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Document whereType($value)
  * @method static Builder|Document whereUpdatedAt($value)
  *
- * @mixin Eloquent
- *
  * @property-read Collection|Comment[] $comments
  * @property-read int|null $comments_count
+ *
+ * @mixin Eloquent
  */
 class Document extends Model
 {
@@ -79,22 +79,18 @@ class Document extends Model
 
     /**
      * Indicates whether the document is approved.
-     *
-     * @return bool
      */
     public function isApproved(): bool
     {
-        return DocumentState::Approved == $this->state;
+        return $this->state == DocumentState::Approved;
     }
 
     /**
      * Indicates whether the document is submitted.
-     *
-     * @return bool
      */
     public function isSubmitted(): bool
     {
-        return DocumentState::Submitted == $this->state;
+        return $this->state == DocumentState::Submitted;
     }
 
     /**

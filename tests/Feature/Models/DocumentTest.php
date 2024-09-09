@@ -36,11 +36,11 @@ it('can be approved', function () {
 
 it('can be submitted', function () {
     expect(Document::factory()
-                   ->submitted()
-                   ->create()
-                   ->isSubmitted()
+        ->submitted()
+        ->create()
+        ->isSubmitted()
     )->toBeBool()
-     ->toBeTrue();
+        ->toBeTrue();
 });
 
 it('has path', function () {
@@ -50,9 +50,9 @@ it('has path', function () {
 
 it('returns false for isSubmitted if it is already approved', function () {
     expect(Document::factory()
-                   ->approved()
-                   ->create()
-                   ->isSubmitted()
+        ->approved()
+        ->create()
+        ->isSubmitted()
     )->toBeFalse();
 });
 

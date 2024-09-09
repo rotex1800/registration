@@ -9,7 +9,7 @@ return [
      | Application version
      */
     // x-release-please-start-version
-    'version' => '1.11.2',
+    'version' => '1.17.4',
     // x-release-please-end
 
     /*
@@ -24,6 +24,18 @@ return [
     */
 
     'name' => env('APP_NAME', 'Rotex 1800 e.V.'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Availability Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Whether the application availability middleware is enabled or not.
+    |
+    */
+    'availability-middleware' => [
+        'enabled' => env('APP_AVAILABILITY_ENABLED', true),
+    ],
 
     /*
     |--------------------------------------------------------------------------

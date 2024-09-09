@@ -43,9 +43,7 @@ class Role extends Model
     ];
 
     /**
-     * @return BelongsToMany
-     *
-     * @phpstan-return BelongsToMany<User>
+     * @return BelongsToMany<User>
      */
     public function users(): BelongsToMany
     {
@@ -53,9 +51,7 @@ class Role extends Model
     }
 
     /**
-     * @return BelongsToMany
-     *
-     * @phpstan-return BelongsToMany<Event>
+     * @return BelongsToMany<Event>
      */
     public function events(): BelongsToMany
     {

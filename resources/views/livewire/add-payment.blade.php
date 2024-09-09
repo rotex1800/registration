@@ -11,7 +11,7 @@
                id="amount"
                placeholder="{{ __('payment.amount') }}"
                class="block w-auto grow rounded-lg"
-               wire:model.debounce.500ms="amount"
+               wire:model.live.debounce.500ms="amount"
         />
         <button
             class="ml-2 p-2 bg-blue-500 text-white rounded-lg"

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -8,11 +8,11 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Livewire\Redirector;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class MainNavigation extends Component
 {
-    public string $applicationName;
+    public mixed $applicationName;
 
     public string $name;
 
@@ -25,8 +25,8 @@ class MainNavigation extends Component
 
     public function render(): Application|Factory|View
     {
-        $this->applicationName = strval(config('app.name'));
-        $this->name = Auth::user()?->full_name ?: '';
+        $this->applicationName = config('app.name');
+        $this->name = Auth::user()?->first_name ?: '';
 
         return view('livewire.main-navigation');
     }

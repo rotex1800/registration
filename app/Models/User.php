@@ -120,13 +120,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereUuid($value)
  *
- * @mixin Eloquent
- *
  * @property-read AdditionalInfo|null $additionalInfo
  * @property-read string $comment_display_name
  * @property-read string $short_name
  * @property-read Collection|Payment[] $payments
  * @property-read int|null $payments_count
+ *
+ * @mixin Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -165,12 +165,84 @@ class User extends Authenticatable implements MustVerifyEmail
         'birthday' => 'date:Y-m-d',
     ];
 
+    protected static function booted(): void
+    {
+        static::deleting(function (User $user) {
+            $user->authoredComments()->delete();
+            $user->bioFamily()->delete();
+            $user->hostFamilies()->delete();
+            $user->documents()->delete();
+            $user->yeo()->delete();
+            $user->counselor()->delete();
+            $user->passport()->delete();
+            $user->additionalInfo()->delete();
+            $user->payments()->delete();
+        });
+    }
+
+    /**
+     * @return HasMany<Comment>
+     */
+    public function authoredComments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'author_id');
+    }
+
+    /**
+     * @retrun HasOne
+     *
+     * @return HasOne<BioFamily>
+     */
+    public function bioFamily(): HasOne
+    {
+        return $this->hasOne(BioFamily::class, 'user_id');
+    }
+
+    /**
+     * @return HasMany<HostFamily>
+     */
+    public function hostFamilies(): HasMany
+    {
+        return $this->hasMany(HostFamily::class, 'user_id');
+    }
+
+    /**
+     * @retrun HasOne
+     *
+     * @return HasOne<YeoInfo>
+     */
+    public function yeo(): HasOne
+    {
+        return $this->hasOne(YeoInfo::class, 'user_id');
+    }
+
+    /**
+     * @retrun HasOne
+     *
+     * @return HasOne<CounselorInfo>
+     */
+    public function counselor(): HasOne
+    {
+        return $this->hasOne(CounselorInfo::class, 'user_id');
+    }
+
     /**
      * Accessor combining first name and family name
      */
     public function getFullNameAttribute(): string
     {
         return $this->first_name.' '.$this->family_name;
+    }
+
+    /**
+     * Convenience wrapper around the full name accessor, replacing every non-word character
+     * with an underscore.
+     * @return string
+     */
+    public function getFilePathNameAttribute(): string
+    {
+        $onlyWordAndWhitespaceCharacters = preg_replace('/[^\s\w-]/', ' ', $this->full_name) ?? '';
+        return preg_replace('/\s+/', ' ',$onlyWordAndWhitespaceCharacters) ?? '';
     }
 
     /**
@@ -190,7 +262,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      *; @return HasOne
      *
-     * @phpstan-return HasOne<Passport>
+     * @return HasOne<Passport>
      */
     public function passport(): HasOne
     {
@@ -199,9 +271,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Checks whether the user has registered for the given event.
-     *
-     * @param  Event  $event
-     * @return bool
      */
     public function hasRegisteredFor(Event $event): bool
     {
@@ -209,23 +278,11 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return BelongsToMany
-     *
-     * @phpstan-return BelongsToMany<Event>
+     * @return BelongsToMany<Event>
      */
     public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class);
-    }
-
-    /**
-     * @return HasMany
-     *
-     * @phpstan-return HasMany<Comment>
-     */
-    public function authoredComments(): HasMany
-    {
-        return $this->hasMany(Comment::class, 'author_id');
     }
 
     public function registrationComment(): HasOne
@@ -236,41 +293,11 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @retrun HasOne
      *
-     * @phpstan-return HasOne<CounselorInfo>
-     */
-    public function counselor(): HasOne
-    {
-        return $this->hasOne(CounselorInfo::class, 'user_id');
-    }
-
-    /**
-     * @retrun HasOne
-     *
-     * @phpstan-return HasOne<YeoInfo>
-     */
-    public function yeo(): HasOne
-    {
-        return $this->hasOne(YeoInfo::class, 'user_id');
-    }
-
-    /**
-     * @retrun HasOne
-     *
-     * @phpstan-return HasOne<RotaryInfo>
+     * @return HasOne<RotaryInfo>
      */
     public function rotaryInfo(): HasOne
     {
         return $this->hasOne(RotaryInfo::class, 'user_id');
-    }
-
-    /**
-     * @retrun HasOne
-     *
-     * @phpstan-return HasOne<BioFamily>
-     */
-    public function bioFamily(): HasOne
-    {
-        return $this->hasOne(BioFamily::class, 'user_id');
     }
 
     /**
@@ -286,10 +313,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hostFamily(1);
     }
 
-    /**
-     * @param  int  $order
-     * @return HostFamily
-     */
     public function hostFamily(int $order): HostFamily
     {
         $familyOrNull = $this
@@ -304,16 +327,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return HostFamily::factory()->empty()->nth($order)->make();
     }
 
-    /**
-     * @return HasMany
-     *
-     * @phpstan-return HasMany<HostFamily>
-     */
-    public function hostFamilies(): HasMany
-    {
-        return $this->hasMany(HostFamily::class, 'user_id');
-    }
-
     public function secondHostFamily(): HostFamily
     {
         return $this->hostFamily(2);
@@ -325,22 +338,19 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return Collection
-     *
-     * @phpstan-return Collection<Event>
+     * @return Collection<Event>
      */
     public function canRegisterFor(): Collection
     {
         return $this->possibleEvents()
-                    ->diff($this->participatesIn());
+            ->diff($this->participatesIn());
     }
 
     /**
      * All events that the user shares at least one role with.
      *
-     * @return Collection
      *
-     * @phpstan-return Collection<Event>
+     * @return Collection<Event>
      */
     public function possibleEvents(): Collection
     {
@@ -355,18 +365,13 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return Collection
-     *
-     * @phpstan-return Collection<Event>
+     * @return Collection<Event>
      */
     public function participatesIn(): Collection
     {
         return $this->events()->get();
     }
 
-    /**
-     * @return HasMany
-     */
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);
@@ -415,10 +420,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sumPaidFor(Event $event): float
     {
+        /** @var float $sum */
         $sum = Payment::whereEventId($event->id)
                       ->whereUserId($this->id)
                       ->sum('amount');
 
-        return floatval($sum);
+        return $sum;
     }
 }

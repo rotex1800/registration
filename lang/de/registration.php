@@ -84,4 +84,5 @@ return [
     'motivation' => 'Motivationsschreiben',
     'upload-success' => 'Erfolgreich hochgeladen!',
     'upload-no-file-selected' => 'Keine Datei ausgewählt',
+    'desired_group' => 'Deine Wunschgruppe',
 ];

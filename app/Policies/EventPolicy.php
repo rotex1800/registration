@@ -23,8 +23,6 @@ class EventPolicy
 
     /**
      * Indicate whether the given user is allowed to edit an event.
-     *
-     * @return Response
      */
     public function canEditEvent(?User $user): Response
     {
@@ -45,8 +43,6 @@ class EventPolicy
 
     /**
      * Determine whether the given user can see the given event
-     *
-     * @return Response
      */
     public function show(?User $user, Event $event): Response
     {

@@ -33,3 +33,15 @@ it('has diet information', function () {
     expect($info->diet)
         ->toBeString();
 });
+
+it('has internal note', function () {
+    $info = AdditionalInfo::factory()->make();
+    expect($info->note)
+        ->toBeString();
+});
+
+it('has desired group column', function () {
+    $info = AdditionalInfo::factory()->make();
+    expect($info->desired_group)
+        ->toBeString();
+});

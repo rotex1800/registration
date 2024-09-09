@@ -26,10 +26,6 @@ trait ValidatableEnum
         return $validationString;
     }
 
-    /**
-     * @param  int  $index
-     * @return string
-     */
     private static function getValue(int $index): string
     {
         if (is_a(self::class, BackedEnum::class, true)) {

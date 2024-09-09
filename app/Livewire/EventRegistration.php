@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\AdditionalInfo;
 use App\Models\BioFamily;
@@ -15,6 +15,7 @@ use App\Models\YeoInfo;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class EventRegistration extends Component
@@ -23,9 +24,13 @@ class EventRegistration extends Component
 
     private const NULLABLE_EMAIL = 'nullable|email';
 
-    private const NULLABLE_PAST_DATE = 'nullable|date|before:today';
+    private const NULLABLE_PARTICIPANT_BIRTHDAY = 'nullable|date|before:2009-01-01';
+
+    private const NULLABLE_PAST_DATE = 'nullable|date|before:now';
 
     private const NULLABLE_FUTURE_DATE = 'nullable|date|after:today';
+
+    private const NULLABLE_PHONE_MOBILE = 'nullable|phone:mobile';
 
     public const PART_ONE = 'one';
 
@@ -67,6 +72,7 @@ class EventRegistration extends Component
 
     public RegistrationComment $comment;
 
+    #[Url(as: 'part')]
     public string $activePart = self::PART_ONE;
 
     /**
@@ -91,8 +97,8 @@ class EventRegistration extends Component
         'user.first_name' => self::NULLABLE,
         'user.family_name' => self::NULLABLE,
         'user.gender' => 'nullable|in:female,male,diverse,na',
-        'user.birthday' => self::NULLABLE_PAST_DATE,
-        'user.mobile_phone' => self::NULLABLE,
+        'user.birthday' => self::NULLABLE_PARTICIPANT_BIRTHDAY,
+        'user.mobile_phone' => self::NULLABLE_PHONE_MOBILE,
         'user.health_issues' => self::NULLABLE,
 
         'passport.nationality' => self::NULLABLE,
@@ -106,38 +112,39 @@ class EventRegistration extends Component
         'rotary.sponsor_club' => self::NULLABLE,
 
         'counselor.name' => self::NULLABLE,
-        'counselor.phone' => self::NULLABLE,
+        'counselor.phone' => self::NULLABLE_PHONE_MOBILE,
         'counselor.email' => self::NULLABLE_EMAIL,
 
         'yeo.name' => self::NULLABLE,
-        'yeo.phone' => self::NULLABLE,
+        'yeo.phone' => self::NULLABLE_PHONE_MOBILE,
         'yeo.email' => self::NULLABLE_EMAIL,
 
         'bioFamily.parent_one' => self::NULLABLE,
         'bioFamily.parent_two' => self::NULLABLE,
         'bioFamily.email' => self::NULLABLE_EMAIL,
-        'bioFamily.phone' => self::NULLABLE,
+        'bioFamily.phone' => self::NULLABLE_PHONE_MOBILE,
 
         'hostFamilyOne.name' => self::NULLABLE,
         'hostFamilyOne.email' => self::NULLABLE_EMAIL,
         'hostFamilyOne.address' => self::NULLABLE,
-        'hostFamilyOne.phone' => self::NULLABLE,
+        'hostFamilyOne.phone' => self::NULLABLE_PHONE_MOBILE,
 
         'hostFamilyTwo.name' => self::NULLABLE,
         'hostFamilyTwo.email' => self::NULLABLE_EMAIL,
         'hostFamilyTwo.address' => self::NULLABLE,
-        'hostFamilyTwo.phone' => self::NULLABLE,
+        'hostFamilyTwo.phone' => self::NULLABLE_PHONE_MOBILE,
 
         'hostFamilyThree.name' => self::NULLABLE,
         'hostFamilyThree.email' => self::NULLABLE_EMAIL,
         'hostFamilyThree.address' => self::NULLABLE,
-        'hostFamilyThree.phone' => self::NULLABLE,
+        'hostFamilyThree.phone' => self::NULLABLE_PHONE_MOBILE,
 
         'comment.body' => self::NULLABLE,
 
         'additionalInfo.tshirt_size' => self::NULLABLE_CLOTHES_SIZE,
         'additionalInfo.allergies' => self::NULLABLE,
         'additionalInfo.diet' => self::NULLABLE,
+        'additionalInfo.desired_group' => self::NULLABLE,
     ];
 
     public function mount(): void
@@ -175,7 +182,7 @@ class EventRegistration extends Component
 
     public function isPartOneActive(): bool
     {
-        return $this->activePart == self::PART_ONE;
+        return $this->activePart == self::PART_ONE || $this->activePart != self::PART_TWO;
     }
 
     public function isPartTwoActive(): bool
@@ -205,10 +212,6 @@ class EventRegistration extends Component
         $this->user->save();
     }
 
-    /**
-     * @param  string  $propertyName
-     * @return void
-     */
     public function updated(string $propertyName): void
     {
         $this->validateOnly($propertyName);

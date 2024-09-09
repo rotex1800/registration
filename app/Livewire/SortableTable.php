@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -12,14 +12,25 @@ class SortableTable extends Component
     /**
      * @var SortableTableColumn[]
      */
-    public array $columns = [];
+    private array $columns = [];
 
     /**
      * @var object[]
      */
-    public array $rows = [];
+    private array $rows = [];
 
-    public string $extraRowLivewire = '';
+    private string $extraRowLivewire = '';
+
+    /**
+     * @param  SortableTableColumn[]  $columns
+     * @param  object[]  $rows
+     */
+    public function mount(array $columns = [], array $rows = [], string $extraRowLivewire = ''): void
+    {
+        $this->rows = $rows;
+        $this->columns = $columns;
+        $this->extraRowLivewire = $extraRowLivewire;
+    }
 
     public function render(): Factory|View|Application
     {

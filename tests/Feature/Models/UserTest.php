@@ -21,10 +21,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Ramsey\Uuid\Uuid;
+
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use Ramsey\Uuid\Uuid;
 
 uses(RefreshDatabase::class);
 
@@ -83,8 +84,8 @@ it('can check if it has a role', function () {
 
 it('is author of many comments', function () {
     $user = User::factory()
-                ->has(Comment::factory()->count(3), 'authoredComments')
-                ->create();
+        ->has(Comment::factory()->count(3), 'authoredComments')
+        ->create();
     expect($user->authoredComments())
         ->toBeInstanceOf(HasMany::class)
         ->and($user->authoredComments)
@@ -94,8 +95,8 @@ it('is author of many comments', function () {
 
 it('owns documents', function () {
     $user = User::factory()
-                ->has(Document::factory()->count(2))
-                ->create();
+        ->has(Document::factory()->count(2))
+        ->create();
     expect($user->documents())
         ->toBeInstanceOf(HasMany::class)
         ->and($user->documents)
@@ -113,9 +114,9 @@ it('does not own document if owner is null', function () {
 
 it('can find document of given category', function () {
     $user = User::factory()
-                ->has(Document::factory()->withCategory(DocumentCategory::PassportCopy))
-                ->has(Document::factory()->withCategory(DocumentCategory::Unknown))
-                ->create();
+        ->has(Document::factory()->withCategory(DocumentCategory::PassportCopy))
+        ->has(Document::factory()->withCategory(DocumentCategory::Unknown))
+        ->create();
     expect($user->documentBy(DocumentCategory::PassportCopy))
         ->toBeInstanceOf(Document::class)
         ->category->toBe(DocumentCategory::PassportCopy);
@@ -129,8 +130,8 @@ it('returns new document if no matching document pre-exists', function () {
 
 it('can check it owns a document', function () {
     $user = User::factory()
-                ->has(Document::factory())
-                ->create();
+        ->has(Document::factory())
+        ->create();
 
     $document = $user->documents()->first();
 
@@ -163,10 +164,20 @@ it('has full name accessor', function () {
         ->toBe($user->first_name.' '.$user->family_name);
 });
 
+it('has file path name accessor without single quotes', function (string $familyName) {
+    $user = User::factory()->create([
+        'family_name' => $familyName,
+    ]);
+    expect($user->filePathName)
+        ->toBeString()
+        ->toMatch("/^([^']*)$/")
+        ->not->toContain('  ');
+})->with(['Smith', "O' Conner"]);
+
 test('comment display name is full name for any role', function () {
     $user = User::factory()
-                ->has(Role::factory(['name' => 'participant']))
-                ->create();
+        ->has(Role::factory(['name' => 'participant']))
+        ->create();
 
     expect($user->comment_display_name)
         ->toBe($user->full_name);
@@ -174,8 +185,8 @@ test('comment display name is full name for any role', function () {
 
 test('comment display name is "Rotex 1800" for rotex user', function () {
     $user = User::factory()
-                ->has(Role::factory(['name' => 'rotex']))
-                ->create();
+        ->has(Role::factory(['name' => 'rotex']))
+        ->create();
 
     expect($user->comment_display_name)
         ->toBe('Rotex 1800');
@@ -212,8 +223,8 @@ it('has health issues text field', function () {
 
 it('has one passport', function () {
     $user = User::factory()
-                ->has(Passport::factory())
-                ->create();
+        ->has(Passport::factory())
+        ->create();
     expect($user->passport())
         ->toBeInstanceOf(HasOne::class)
         ->and($user->passport)
@@ -302,8 +313,8 @@ it('can access nth host family', function () {
 
     $nthHostFamily = HostFamily::factory()->nth($n)->create();
     $user = User::factory()
-                ->has(HostFamily::factory()->count(3))
-                ->create();
+        ->has(HostFamily::factory()->count(3))
+        ->create();
     $user->hostFamilies()->save($nthHostFamily);
 
     expect($user->hostFamily($n))
@@ -321,8 +332,8 @@ it('can access first host family', function () {
 
     $nthHostFamily = HostFamily::factory()->nth($n)->create();
     $user = User::factory()
-                ->has(HostFamily::factory()->count(3))
-                ->create();
+        ->has(HostFamily::factory()->count(3))
+        ->create();
     $user->hostFamilies()->save($nthHostFamily);
 
     expect($user->firstHostFamily())
@@ -338,8 +349,8 @@ it('can access second host family', function () {
 
     $nthHostFamily = HostFamily::factory()->nth($n)->create();
     $user = User::factory()
-                ->has(HostFamily::factory()->count(3))
-                ->create();
+        ->has(HostFamily::factory()->count(3))
+        ->create();
     $user->hostFamilies()->save($nthHostFamily);
 
     expect($user->secondHostFamily())
@@ -355,8 +366,8 @@ it('can access third host family', function () {
 
     $nthHostFamily = HostFamily::factory()->nth($n)->create();
     $user = User::factory()
-                ->has(HostFamily::factory()->count(3))
-                ->create();
+        ->has(HostFamily::factory()->count(3))
+        ->create();
     $user->hostFamilies()->save($nthHostFamily);
 
     expect($user->thirdHostFamily())
@@ -369,8 +380,8 @@ it('makes a new host family if no matching exists', function () {
     $hostFamily = $user->hostFamily(2);
     expect($hostFamily)
         ->not->toBeNull()
-             ->toBeInstanceOf(HostFamily::class)
-             ->and($hostFamily->exists())->toBeFalse();
+        ->toBeInstanceOf(HostFamily::class)
+        ->and($hostFamily->exists())->toBeFalse();
 });
 
 it('has registration comment', function () {
@@ -397,11 +408,11 @@ it('is complete for expected attributes', function () {
         'family_name' => fake()->lastName,
         'birthday' => fake()->date,
         'gender' => fake()->word,
-        'mobile_phone' => fake()->phoneNumber,
+        'mobile_phone' => fake()->e164PhoneNumber(),
         'health_issues' => fake()->paragraphs(asText: true),
     ])
-                ->has(AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::XXXL]))
-                ->create();
+        ->has(AdditionalInfo::factory()->state(['tshirt_size' => ClothesSize::XXXL]))
+        ->create();
 
     expect($user->isComplete())->toBeTrue();
 });
@@ -415,16 +426,16 @@ it('is NOT complete if one expected attribute is null', function () {
         'family_name' => fake()->lastName,
         'birthday' => fake()->date,
         'gender' => fake()->word,
-        'mobile_phone' => fake()->phoneNumber,
+        'mobile_phone' => fake()->e164PhoneNumber(),
         'health_issues' => fake()->paragraphs(asText: true),
     ];
 
     foreach (array_keys($requiredAttributes) as $attribute) {
         $user = User::factory()->state($requiredAttributes)
-                    ->state([
-                        $attribute => null,
-                    ])
-                    ->make();
+            ->state([
+                $attribute => null,
+            ])
+            ->make();
         $complete = $user->isComplete();
         expect($complete)->toBeFalse();
     }
@@ -514,10 +525,30 @@ test('short name works for "Ab-cbe  Fghijk"', function () {
         ->toMatch('/AF-\d{4}/');
 });
 
+test('short name works for NULL family name', function () {
+    $user = User::factory()->state([
+        'first_name' => 'Test Test',
+        'family_name' => null,
+    ])->make();
+
+    expect($user->short_name)
+        ->toMatch('/TT-\d{4}/');
+});
+
+test('short name works for NULL first name', function () {
+    $user = User::factory()->state([
+        'first_name' => null,
+        'family_name' => 'Foo Bar',
+    ])->make();
+
+    expect($user->short_name)
+        ->toMatch('/FB-\d{4}/');
+});
+
 it('has additional info', function () {
     $user = User::factory()
-                ->has(AdditionalInfo::factory())
-                ->create();
+        ->has(AdditionalInfo::factory())
+        ->create();
     expect($user->additionalInfo())
         ->toBeInstanceOf(HasOne::class)
         ->and($user->additionalInfo)
@@ -582,8 +613,6 @@ test('state for all documents is declined if at least one is declined', function
 
 /**
  * @param  DocumentState[]  $states
- * @param  DocumentState  $expectedOverallState
- * @return void
  */
 function checkOverallStateFor(array $states, DocumentState $expectedOverallState): void
 {
@@ -592,12 +621,12 @@ function checkOverallStateFor(array $states, DocumentState $expectedOverallState
     $categories = DocumentCategory::validCategories();
     expect(count($categories))->toBe(count($states));
     $docs = Document::factory()
-                    ->count(count($categories))
-                    ->sequence(fn ($sequence) => [
-                        'category' => $categories[$sequence->index],
-                        'state' => $states[$sequence->index],
-                    ])
-                    ->make();
+        ->count(count($categories))
+        ->sequence(fn ($sequence) => [
+            'category' => $categories[$sequence->index],
+            'state' => $states[$sequence->index],
+        ])
+        ->make();
     $user->documents()->saveMany($docs);
 
     // Act

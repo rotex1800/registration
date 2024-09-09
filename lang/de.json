@@ -9,5 +9,11 @@
     "If you did not request a password reset, no further action is required.": "Wenn du keinen Reset angefordert hast, musst du nichts weiter tun.",
     "Regards": "Viele Grüße",
     "Hello!": "Hallo!",
-    "today": "heute"
+    "today": "heute",
+    "Available events": "Verfügbare Events",
+    "Logout": "Logout",
+    "Login": "Login",
+    "Home": "Übersicht",
+    "Stay logged in": "Einloggt bleiben",
+    "Available downloads": "Verfügbare Downloads"
 }

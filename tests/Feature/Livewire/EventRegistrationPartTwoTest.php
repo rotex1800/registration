@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Livewire\EventRegistration;
+use App\Livewire\EventRegistration;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
@@ -62,7 +63,7 @@ it('shows button for part two', function () {
 
 it('has methods for part one and two wired', function () {
     $this->component->assertMethodWired('showPartOne')
-                    ->assertMethodWired('showPartTwo');
+        ->assertMethodWired('showPartTwo');
 });
 
 it('hides part one when calling method to show part two', function () {
@@ -72,7 +73,7 @@ it('hides part one when calling method to show part two', function () {
     // Assert it shows
     $this->component->assertStatus(200)
         // headlines from part two
-                    ->assertSeeTextInOrder($this->headlinesPartTwo);
+        ->assertSeeTextInOrder($this->headlinesPartTwo);
     // sets active part to two
     expect($this->component->activePart)
         ->toBe('two');

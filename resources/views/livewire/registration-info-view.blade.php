@@ -2,10 +2,10 @@
 <div>
     <label>
         {{ __('registrations.selected') }}
-        <select wire:model="currentPosition">
+        <select wire:model.live="currentPosition">
             @foreach($attendees as $index => $attendee)
                 <option
-                    value="{{ $index }}">{!! $attendee->overallDocumentState()->displayName().' '.$attendee->full_name !!}</option>
+                    value="{{ $index }}">{{ $attendee->overallDocumentState()->displayName().' '.$attendee->full_name }}</option>
             @endforeach
         </select>
     </label>
@@ -30,6 +30,11 @@
                     :event="$event"
                     wire:key="{{ $currentAttendee->id.'payment' }}"
                 />
+                <div class="mt-2 text-2xl">Notiz</div>
+                <livewire:add-note
+                    :attendee="$currentAttendee"
+                    wire:key="{{ $currentAttendee->id.'note' }}"
+                />
             @endif
         </div>
         <div>
@@ -39,10 +44,11 @@
             <div>{{ __('registration.gender.gender').': '.($currentAttendee?->gender ?: '--') }}</div>
             <div>{{ __('signup.email').': '.($currentAttendee?->email ?: '--') }}</div>
             <div>{{ __('registration.mobile_phone').': '.($currentAttendee?->mobile_phone ?: '--') }}</div>
-            <div>{{ __('registration.tshirt-size').': '.($currentAttendee?->additionalInfo?->tshirt_size->displayName() ?: '--') }}</div>
+            <div>{{ __('registration.tshirt-size').': '.($currentAttendee?->additionalInfo?->tshirt_size?->displayName() ?: '--') }}</div>
             <div>{{ __('registration.allergies').': '.($currentAttendee?->additionalInfo?->allergies ?: '--') }}</div>
             <div>{{ __('registration.diet').': '.($currentAttendee?->additionalInfo?->diet ?: '--') }}</div>
             <div>{{ __('registration.health_issues').': '.($currentAttendee?->health_issues ?: '--') }}</div>
+            <div>{{ __('registration.desired_group').': '.($currentAttendee?->additionalInfo?->desired_group ?: '--') }}</div>
         </div>
         <div>
             <div class="text-2xl">{{ __('registration.passport') }}</div>

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Event;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
@@ -21,15 +20,6 @@ class DatabaseSeeder extends Seeder
 
         if (Role::where('name', 'participant')->count() == 0) {
             Role::factory()->participant()->create();
-        }
-
-        if (Event::where('name', 'Deutschland Tour')->count() == 0) {
-            $tour = Event::factory()->state([
-                'name' => 'Deutschland Tour',
-                'start' => '2023-03-22',
-                'end' => '2023-04-05',
-            ])->create();
-            $tour->giveRole('participant');
         }
     }
 }

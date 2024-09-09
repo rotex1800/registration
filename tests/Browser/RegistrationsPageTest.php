@@ -2,10 +2,8 @@
 
 use App\Models\Event;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use function Pest\Laravel\actingAs;
 
-uses(RefreshDatabase::class);
+use function Pest\Laravel\actingAs;
 
 test('rotex user can access registrations page', function () {
     Event::factory()->create();
@@ -27,7 +25,7 @@ test('other user can not access registrations page', function () {
 test('guest can not access registrations page', function () {
     Event::factory()->create();
     $this->get('/registrations/1')
-         ->assertRedirect('/login');
+        ->assertRedirect('/login');
 });
 
 test('contains event name', function () {
@@ -42,8 +40,8 @@ test('contains event name', function () {
 test('contains download link', function () {
     // Arrange
     $event = Event::factory()
-                  ->has(User::factory()->count(3), 'attendees')
-                  ->create();
+        ->has(User::factory()->count(3), 'attendees')
+        ->create();
 
     $user = createUserWithRole('rotex');
 
@@ -57,8 +55,8 @@ test('contains download link', function () {
 it('shows the sum of registrations', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()
-                  ->has(User::factory()->count(5), 'attendees')
-                  ->create();
+        ->has(User::factory()->count(5), 'attendees')
+        ->create();
     actingAs($user)
         ->get(route('registrations.show', $event))
         ->assertStatus(200)
@@ -69,15 +67,15 @@ it('handles users with missing data', function () {
     $user = createUserWithRole('rotex');
     $event = Event::factory()->create();
     $attendees = User::factory()
-                     ->count(1)
-                     ->create();
+        ->count(1)
+        ->create();
     $event->attendees()->saveMany($attendees);
 
     actingAs($user)
         ->get('/registrations/1')
         ->assertOk()
         ->assertSeeLivewire('registration-info-view')
-        ->assertSee($attendees->first()->full_name, escape: false);
+        ->assertSee($attendees->first()->full_name);
 });
 
 it('shows explanation text if no attendees have registered', function () {
@@ -95,8 +93,8 @@ it('requires email to be verified', function () {
     $user = User::factory()->state(['email_verified_at' => null])->create();
     Event::factory()->create();
     $this->actingAs($user)
-         ->get('/registrations/1')
-         ->assertRedirect(route('verification.notice'));
+        ->get('/registrations/1')
+        ->assertRedirect(route('verification.notice'));
 });
 
 it('contains component to add new payments', function () {
@@ -111,4 +109,15 @@ it('contains component to add new payments', function () {
         ->get('/registrations/1')
         ->assertOk()
         ->assertSeeLivewire('add-payment');
+});
+
+it('contains component to add new note', function () {
+    $user = createUserWithRole('rotex');
+    $event = Event::factory()->create();
+    $attendee = User::factory()->make();
+    $event->attendees()->save($attendee);
+    actingAs($user)
+        ->get('/registrations/1')
+        ->assertOk()
+        ->assertSeeLivewire('add-note');
 });

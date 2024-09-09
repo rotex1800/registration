@@ -16,10 +16,11 @@ php artisan clear-compiled
 
 # Recreate cache
 php artisan optimize
+php artisan event:cache
 
 # Compile npm assets
 npm ci --foreground-scripts
-npm run build
+npm run build -- --ssr
 
 # Run database migrations
 php artisan migrate --force

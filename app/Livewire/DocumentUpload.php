@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Document;
 use App\Models\DocumentCategory;
@@ -17,7 +17,7 @@ use Livewire\WithFileUploads;
 
 class DocumentUpload extends Component
 {
-    use WithFileUploads, HasCommentSection;
+    use HasCommentSection, WithFileUploads;
 
     /**
      * @var string
@@ -38,9 +38,6 @@ class DocumentUpload extends Component
 
     public string $message = '';
 
-    /**
-     * @var User
-     */
     public User $user;
 
     /**
@@ -80,9 +77,6 @@ class DocumentUpload extends Component
         $this->comments = $this->document->comments;
     }
 
-    /**
-     * @return string
-     */
     private function getStringForDocumentState(): string
     {
         $document = $this->user->documentBy(DocumentCategory::read($this->category));
@@ -138,7 +132,7 @@ class DocumentUpload extends Component
     /**
      * @return string[]
      */
-    protected function getRules(): array
+    public function getRules(): array
     {
         if ($this->category == DocumentCategory::Picture->value) {
             return $this->pictureRules;

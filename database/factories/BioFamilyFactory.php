@@ -8,15 +8,13 @@ class BioFamilyFactory extends Factory
 {
     /**
      * Define the model's default state.
-     *
-     * @return array
      */
     public function definition(): array
     {
         return [
             'parent_one' => fake()->name,
             'parent_two' => fake()->name,
-            'phone' => fake()->phoneNumber,
+            'phone' => fake()->e164PhoneNumber(),
             'email' => fake()->email,
         ];
     }

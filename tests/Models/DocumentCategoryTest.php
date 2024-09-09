@@ -41,5 +41,5 @@ test('unknown is not contained in valid categories', function () {
     $actual = DocumentCategory::validCategories();
     expect($actual)
         ->not->toContain(DocumentCategory::Unknown)
-             ->toHaveLength(count(DocumentCategory::cases()) - 1);
+        ->toHaveLength(count(DocumentCategory::cases()) - 1);
 });

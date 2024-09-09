@@ -42,7 +42,7 @@ jobs:
       name: ${{ inputs.environment }}
       url: ${{ needs.select-environment.outputs.url }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -51,3 +51,14 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.SSHKEY_PASSPHRASE }}
           script: 'source "${{ secrets.USER_BASHRC }}" && cd "${{ secrets.PROJECT_LOCATION }}" && ./.scripts/deploy.sh'
+
+  check-deployment:
+    runs-on: ubuntu-latest
+    needs:
+      - deploy
+      - select-environment
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ needs.select-environment.outputs.url }}
+    steps:
+      - run: curl "${{ needs.select-environment.outputs.url }}/health?fresh" --fail -s -o /dev/null

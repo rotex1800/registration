@@ -1,13 +1,17 @@
 name: Check
 
 on:
+  push:
+    branches:
+      - main
+  merge_group:
   pull_request:
     branches: [ "main" ]
-    types: [ opened, edited, reopened, synchronize ]
+    types: [ opened, reopened, synchronize ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.head_ref != 'release-please--branches--main' }}
 
 permissions:
   checks: write
@@ -24,9 +28,9 @@ jobs:
     steps:
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.2'
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
@@ -40,8 +44,8 @@ jobs:
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
 
-      - name: Upgrade Chrome Driver
-        run: php artisan dusk:chrome-driver --detect
+      - name: Install Chrome Driver
+        run: php artisan dusk:chrome-driver 114
 
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
@@ -54,47 +58,71 @@ jobs:
       - name: Run Laravel Server
         run: php artisan serve &
 
-      - name: Execute tests
+#      - name: Run tests
+#        env:
+#          XDEBUG_MODE: coverage
+#          INFECTION_DASHBOARD_API_KEY: ${{ secrets.INFECTION_DASHBOARD_API_KEY }}
+#        run: >-
+#          ./vendor/bin/infection --test-framework=pest
+#          --test-framework-options="--ci --coverage --coverage-clover=coverage-report.xml --min=95"
+#          --show-mutations --configuration=infection.json5 --threads=10
+#          --min-msi=95 --min-covered-msi=95
+
+      # Run normal tests until https://github.com/pestphp/pest/pull/1145 is fixed
+      - name: Run tests
         env:
           XDEBUG_MODE: coverage
         run: vendor/bin/pest --ci --log-junit junit-report.xml --coverage --coverage-clover coverage-report.xml --min=95
 
       - name: Report Coverage in comment
-        uses: lucassabreu/comment-coverage-clover@v0.8.0
+        uses: lucassabreu/comment-coverage-clover@v0.13.0
         with:
           file: coverage-report.xml
 
+      - name: Check per-mutator.md existence
+        id: mutator-report-file
+        uses: andstor/file-existence-action@v3
+        with:
+          files: per-mutator.md
+
+      - name: Read infection per mutator report
+        if: ${{ steps.mutator-report-file.outputs.files_exists == 'true' }}
+        id: mutation-report
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: per-mutator.md
+
+      - if: ${{ steps.mutator-report-file.outputs.files_exists == 'true' }}
+        run: echo "${{ steps.mutation-report.outputs.content }}" >> "$GITHUB_STEP_SUMMARY"
+
       - name: Upload Screenshots
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: screenshots
           path: tests/Browser/screenshots
 
       - name: Upload Console Logs
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: console
           path: tests/Browser/console
 
       - name: Publish Screenshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: screenshots
           path: screenshots/
 
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          junit_files: ./junit-report.xml
-
   pint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - run: ./vendor/bin/pint
@@ -105,7 +133,7 @@ jobs:
   shellcheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: shellcheck
         uses: reviewdog/action-shellcheck@v1
         with:
@@ -114,13 +142,14 @@ jobs:
   actionlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: reviewdog/action-actionlint@v1
 
   scan-for-secrets:
     runs-on: ubuntu-latest
+    if: github.event_name != 'merge_group'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: gitleaks/gitleaks-action@v2
@@ -130,6 +159,7 @@ jobs:
 
   conventional-commits:
     runs-on: ubuntu-latest
+    if: github.event_name != 'merge_group' && github.event_name != 'push'
     steps:
       - name: At least one conventional commit
         env:
@@ -143,11 +173,11 @@ jobs:
   phpstan-linter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.2'
 
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
@@ -159,18 +189,22 @@ jobs:
           level: 'error'
           fail_on_error: 'true'
           target_directory: 'app'
+          phpstan_level: max
 
   dependency-review:
     runs-on: ubuntu-latest
+    if: github.event_name != 'merge_group' && github.event_name != 'push'
     steps:
       - name: 'Checkout Repository'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v3
+        uses: actions/dependency-review-action@v4
+        with:
+          retry-on-snapshot-warnings: true
 
   deploy-into-sandbox:
-    needs: [ dependency-review, actionlint, phpstan-linter, pint, scan-for-secrets, shellcheck, test, conventional-commits ]
-    if: ${{ github.ref_name == 'release-please--branches--main' }}
+    needs: [ dependency-review, actionlint, phpstan-linter, scan-for-secrets, shellcheck, test, conventional-commits ]
+    if: ${{ github.head_ref == 'release-please--branches--main' }}
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
     with:

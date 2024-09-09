@@ -1,0 +1,24 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "app"
+        ]
+    },
+    "timeout": 100,
+    "mutators": {
+        "@default": true
+    },
+       "logs": {
+        "text": "infection.log",
+        "html": "infection.html",
+        "summary": "summary.log",
+        "json": "infection-log.json",
+        "perMutator": "per-mutator.md",
+        "github": true,
+        "stryker": {
+            "report": "main"
+        },
+        "summaryJson": "summary.json"
+    }
+}

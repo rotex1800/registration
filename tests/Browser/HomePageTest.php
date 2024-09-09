@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Livewire\FileDownload;
 use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 
 it('shows main navigation', function () {
@@ -16,8 +18,8 @@ it('shows main navigation', function () {
 
 it('shows events the user attends', function () {
     $user = User::factory()
-                ->has(Event::factory()->count(2))
-                ->create();
+        ->has(Event::factory()->count(2))
+        ->create();
 
     actingAs($user)
         ->get('/home')
@@ -37,18 +39,18 @@ it('shows events the user can attend', function () {
     $role = Role::factory()->create();
 
     $user = User::factory()
-                ->create();
+        ->create();
     $user->roles()->attach($role);
     $user->save();
 
     $event = Event::factory()
-                  ->create();
+        ->create();
     $event->roles()->attach($role);
     $event->save();
 
     actingAs($user)
         ->get('/home')
-        ->assertSee('Weitere Events');
+        ->assertSee('Verfügbare Events');
 });
 
 it('does not show events the user is attending in further events', function () {
@@ -58,7 +60,7 @@ it('does not show events the user is attending in further events', function () {
     actingAs($user)
         ->get('/home')
         ->assertSeeLivewire('event-summary')
-        ->assertDontSee('Weitere Events')
+        ->assertDontSee('Verfügbare Events')
         ->assertSee($event->name);
 });
 
@@ -73,7 +75,7 @@ it('does not show events the user can not attend', function () {
 
     actingAs($user)
         ->get('/home')
-        ->assertDontSee('Weitere Events');
+        ->assertDontSee('Verfügbare Events');
 });
 
 it('shows overview of registrations', function () {
@@ -83,13 +85,22 @@ it('shows overview of registrations', function () {
     $eventTwo = Event::factory()->create();
 
     $this->actingAs($user)
-         ->get('/home')
-         ->assertStatus(200)
-         ->assertSeeTextInOrder([
-             'Anmeldungen',
-             $eventOne->name,
-             $eventTwo->name,
-         ]);
+        ->get('/home')
+        ->assertStatus(200)
+        ->assertSeeTextInOrder([
+            'Anmeldungen',
+            $eventOne->name,
+            $eventTwo->name,
+        ]);
+});
+
+it('shows download section', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user)
+        ->get(route('home'))
+        ->assertStatus(200)
+        ->assertSee(__('Available downloads'))
+        ->assertSeeLivewire(FileDownload::class);
 });
 
 it('shows overview of registrations for non-rotex role', function () {
@@ -99,37 +110,37 @@ it('shows overview of registrations for non-rotex role', function () {
     $eventTwo = Event::factory()->create();
 
     $this->actingAs($user)
-         ->get('/home')
-         ->assertStatus(200)
-         ->assertDontSeeText([
-             'Anmeldungen',
-             $eventOne->name,
-             $eventTwo->name,
-         ]);
+        ->get('/home')
+        ->assertStatus(200)
+        ->assertDontSeeText([
+            'Anmeldungen',
+            $eventOne->name,
+            $eventTwo->name,
+        ]);
 });
 
 it('shows explanation if no events exist at the moment', function () {
     $user = createUserWithRole('rotex');
 
     $this->actingAs($user)
-         ->get('/home')
-         ->assertStatus(200)
-         ->assertSeeTextInOrder([
-             'Anmeldungen',
-             'Derzeit gibt es keine offenen Anmeldungen',
-         ]);
+        ->get('/home')
+        ->assertStatus(200)
+        ->assertSeeTextInOrder([
+            'Anmeldungen',
+            'Derzeit gibt es keine offenen Anmeldungen',
+        ]);
 });
 
 it('requires email to be verfied', function () {
     $user = User::factory()->state(['email_verified_at' => null])->create();
     $this->actingAs($user)
-         ->get('/home')
-         ->assertRedirect(route('verification.notice'));
+        ->get('/home')
+        ->assertRedirect(route('verification.notice'));
 });
 
 it('can access verification notice without verified email', function () {
     $user = User::factory()->state(['email_verified_at' => null])->create();
     $this->actingAs($user)
-         ->get(route('verification.notice'))
-         ->assertStatus(200);
+        ->get(route('verification.notice'))
+        ->assertStatus(200);
 });

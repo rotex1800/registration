@@ -23,8 +23,10 @@ class HostFamilyFactory extends Factory
         return [
             'name' => fake()->name,
             'email' => fake()->email,
-            'address' => fake()->address,
-            'phone' => fake()->phoneNumber,
+            // FIXME: The Newline inside the fake address is not properly dealt with in livewire assertions
+            //            'address' => fake()->address,
+            'address' => fake()->words(asText: true),
+            'phone' => fake()->e164PhoneNumber(),
             'order' => fake()->numberBetween(int1: 20, int2: 50),
         ];
     }

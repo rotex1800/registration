@@ -14,10 +14,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-/**
- * @param  Factory  $factory
- * @return void
- */
 function assertCompletenessCheck(Factory $factory): void
 {
     $attrs = $factory->definition();
@@ -27,10 +23,10 @@ function assertCompletenessCheck(Factory $factory): void
 
     foreach (array_keys($attrs) as $attribute) {
         $model = $factory->state($attrs)
-                         ->state([
-                             $attribute => null,
-                         ])
-                         ->make();
+            ->state([
+                $attribute => null,
+            ])
+            ->make();
         /** @noinspection PhpPossiblePolymorphicInvocationInspection */
         expect($model->isComplete())->toBeFalse();
     }

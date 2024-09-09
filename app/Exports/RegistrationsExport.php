@@ -16,7 +16,7 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize, WithColumnFormatting, WithStyles
+class RegistrationsExport implements FromQuery, ShouldAutoSize, WithColumnFormatting, WithHeadings, WithMapping, WithStyles
 {
     private Event $event;
 
@@ -36,14 +36,14 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
     public function columnFormats(): array
     {
         return [
-            'C' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'J' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'K' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'D' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'I' => NumberFormat::FORMAT_TEXT,
+            'O' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            'P' => NumberFormat::FORMAT_DATE_DDMMYYYY,
         ];
     }
 
     /**
-     * @param  Worksheet  $sheet
      * @return array<mixed>
      */
     public function styles(Worksheet $sheet): array
@@ -64,12 +64,14 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
             'Referenznummer',
             'Geburtstag',
             'Summe bezahlt',
+            'Notiz',
             'Geschlecht',
             'E-Mail',
             'Handy',
             'T-Shirt',
             'Ernährung',
             'Allergien',
+            'Wunschgruppe',
             'Gesundheitliche Probleme',
             'Nationalität',
             'Passnummer',
@@ -107,7 +109,6 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
     }
 
     /**
-     * @param  mixed  $user
      * @return array<int, array<int, mixed>>
      */
     public function map(mixed $user): array
@@ -123,12 +124,14 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
                 $this->transferReferenceForUser($user),
                 $this->getExcelDate($user->birthday),
                 $user->sumPaidFor($this->event),
+                $user->additionalInfo?->note,
                 $user->gender,
                 $user->email,
                 $user->mobile_phone,
-                $user->additionalInfo?->tshirt_size->displayName(),
+                $user->additionalInfo?->tshirt_size?->displayName(),
                 $user->additionalInfo?->diet,
                 $user->additionalInfo?->allergies,
+                $user->additionalInfo?->desired_group,
                 $user->health_issues,
 
                 $user->passport?->nationality ?? '',
@@ -181,10 +184,6 @@ class RegistrationsExport implements FromQuery, WithMapping, WithHeadings, Shoul
         return $user->short_name;
     }
 
-    /**
-     * @param  Carbon|null  $date
-     * @return float|string
-     */
     private function getExcelDate(?Carbon $date): float|string
     {
         if ($date == null) {

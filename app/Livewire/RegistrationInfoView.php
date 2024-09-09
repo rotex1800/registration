@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Event;
 use App\Models\User;
@@ -36,11 +36,11 @@ class RegistrationInfoView extends Component
         $this->attendees = $this
             ->event
             ->attendees
-            ->sortBy([['first_name', 'asc'], ['family_name', 'asc']]);
+            ->sortBy([['first_name', 'asc'], ['family_name', 'asc']])
+            ->values();
         if ($this->attendees != null && count($this->attendees) > 0) {
-            $first = $this->attendees[0];
             $this->currentPosition = 0;
-            $this->currentAttendee = $first;
+            $this->currentAttendee = $this->attendees->first();
         } else {
             $this->attendees = Collection::empty();
         }
@@ -48,16 +48,9 @@ class RegistrationInfoView extends Component
 
     public function render(): View|Factory
     {
-        return view('livewire.registration-info-view')->with([
-            'attendees' => $this->attendees,
-            'event' => $this->event,
-        ]);
+        return view('livewire.registration-info-view');
     }
 
-    /**
-     * @param  int  $position
-     * @return void
-     */
     public function updatedCurrentPosition(int $position): void
     {
         $newCurrent = $this->attendees->slice($position, 1)->first();
@@ -76,8 +69,6 @@ class RegistrationInfoView extends Component
 
     /**
      * Indicates whether there is a previous attendee to show details for.
-     *
-     * @return bool
      */
     public function hasPrevious(): bool
     {
@@ -94,8 +85,6 @@ class RegistrationInfoView extends Component
 
     /**
      * Indicates whether there is a next attendee to show details for.
-     *
-     * @return bool
      */
     public function hasNext(): bool
     {

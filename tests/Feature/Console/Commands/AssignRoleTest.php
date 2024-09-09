@@ -27,10 +27,10 @@ it('fails if user can not be found', function () {
 it('it asks for role and user when called without arguments', function () {
     $user = User::factory()->create();
     $this->artisan('registration:assign')
-         ->expectsQuestion("What's the name of the role?", 'rotex')
-         ->expectsQuestion("What's the email of the user?", $user->email)
-         ->expectsOutput("Assigning role 'rotex' to user with email '$user->email'")
-         ->assertSuccessful();
+        ->expectsQuestion("What's the name of the role?", 'rotex')
+        ->expectsQuestion("What's the email of the user?", $user->email)
+        ->expectsOutput("Assigning role 'rotex' to user with email '$user->email'")
+        ->assertSuccessful();
     expect($user->hasRole('rotex'))->toBeTrue();
 });
 
@@ -40,5 +40,5 @@ it('shows error message if the user can not be found', function () {
         'email' => $email,
         'role' => fake()->word,
     ])->expectsOutput("There is no user with email '$email'")
-         ->assertFailed();
+        ->assertFailed();
 });
