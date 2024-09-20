@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.17.5](https://github.com/rotex1800/registration/compare/v1.17.4...v1.17.5) (2024-09-20)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump @tailwindcss/forms from 0.5.7 to 0.5.9 ([374b49f](https://github.com/rotex1800/registration/commit/374b49fdffb6736ca699db8d67a3a5ee08d11a2b))
+* **deps:** bump autoprefixer from 10.4.19 to 10.4.20 ([8fcdd7e](https://github.com/rotex1800/registration/commit/8fcdd7eac37961a80f6bf22b6bf81348650c228a))
+* **deps:** bump axios from 1.7.3 to 1.7.7 ([29156b9](https://github.com/rotex1800/registration/commit/29156b96565e2ca2af794c14aec38b87e9e1f25d))
+* **deps:** bump infection/infection from 0.27.11 to 0.29.6 ([0d7bfaa](https://github.com/rotex1800/registration/commit/0d7bfaa2d5e942d8d7836976cc67b603bb5f6f56))
+* **deps:** bump laravel/pint from 1.16.1 to 1.17.2 ([c312adc](https://github.com/rotex1800/registration/commit/c312adcee2ac44e7c6b83a747bea2683c255cd64))
+* **deps:** bump livewire/livewire from 3.5.2 to 3.5.6 ([0be2362](https://github.com/rotex1800/registration/commit/0be2362035e494ae3a4a813e645fc5217ba0ed41))
+* **deps:** bump maatwebsite/excel from 3.1.55 to 3.1.57 ([5720953](https://github.com/rotex1800/registration/commit/57209534ec91f82c6ef2a0c71d141f821b283afd))
+* **deps:** bump postcss from 8.4.39 to 8.4.45 ([f58c397](https://github.com/rotex1800/registration/commit/f58c397320bc793fc7d00756bcb8f3ca66ca7288))
+* **deps:** bump spatie/laravel-ray from 1.37.0 to 1.37.1 ([eed427f](https://github.com/rotex1800/registration/commit/eed427fb1bc600a6c9ccd90cf675facb666d670d))
+* **deps:** bump vite from 5.3.5 to 5.4.3 ([fd6bbfc](https://github.com/rotex1800/registration/commit/fd6bbfce6e55c0982be7090f2222695da4764052))
+* **deps:** bump vite from 5.4.3 to 5.4.6 in the npm_and_yarn group ([cb2709a](https://github.com/rotex1800/registration/commit/cb2709a53c22229f5e4f3410c7d4a1c94629c317))
+* update files ([d9c8277](https://github.com/rotex1800/registration/commit/d9c8277a775e619180e89c613e5df13fca123e5c))
+
 ## [1.17.4](https://github.com/rotex1800/registration/compare/v1.17.3...v1.17.4) (2024-08-03)
 
 
