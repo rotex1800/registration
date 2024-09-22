@@ -28,3 +28,4 @@ infection.log
 summary.json
 summary.log
 per-mutator.md
+.phpunit.cache/
