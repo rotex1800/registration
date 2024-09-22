@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.6](https://github.com/rotex1800/registration/compare/v1.17.5...v1.17.6) (2024-09-22)
+
+
+### Miscellaneous Chores
+
+* ignore php unit cache directory ([3a305bb](https://github.com/rotex1800/registration/commit/3a305bbc25298d0271823e8abbaec7c713eea426))
+* update flyer dates ([5535c24](https://github.com/rotex1800/registration/commit/5535c248c2dd9e5719bb1e32225f2a54827ca447))
+
 ## [1.17.5](https://github.com/rotex1800/registration/compare/v1.17.4...v1.17.5) (2024-09-20)
 
 
