@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.7](https://github.com/rotex1800/registration/compare/v1.17.6...v1.17.7) (2024-09-24)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump rollup from 4.21.2 to 4.22.4 in the npm_and_yarn group ([ddfc164](https://github.com/rotex1800/registration/commit/ddfc164a9c05a9f3a63e63cb9893a1ab0b5a2da6))
+
 ## [1.17.6](https://github.com/rotex1800/registration/compare/v1.17.5...v1.17.6) (2024-09-22)
 
 
