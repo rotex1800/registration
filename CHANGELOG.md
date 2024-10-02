@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.17.8](https://github.com/rotex1800/registration/compare/v1.17.7...v1.17.8) (2024-10-02)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/pint from 1.17.2 to 1.18.1 ([35c040d](https://github.com/rotex1800/registration/commit/35c040dd4270024d2b8b61be3417517524fe18d3))
+* **deps:** bump laravel/sail from 1.31.0 to 1.34.0 ([dbc2ff4](https://github.com/rotex1800/registration/commit/dbc2ff4d1dad1f5ebf9103ac9177ae19bdcd2d6b))
+* **deps:** bump lucassabreu/comment-coverage-clover ([b345dce](https://github.com/rotex1800/registration/commit/b345dcec8e5bde2288d24975166dd353b4ee60eb))
+
 ## [1.17.7](https://github.com/rotex1800/registration/compare/v1.17.6...v1.17.7) (2024-09-24)
 
 
