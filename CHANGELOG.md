@@ -1,5 +1,51 @@
 # Changelog
 
+## [1.17.9](https://github.com/rotex1800/registration/compare/v1.17.8...v1.17.9) (2025-01-02)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump axios from 1.7.7 to 1.7.8 ([b80c1cd](https://github.com/rotex1800/registration/commit/b80c1cdf1563cace0d79c876194f73cd0a173b5a))
+* **deps:** bump axios from 1.7.7 to 1.7.8 ([#707](https://github.com/rotex1800/registration/issues/707)) ([ac6e9b1](https://github.com/rotex1800/registration/commit/ac6e9b145807f27a9416a4f065a27562d86ffd4c))
+* **deps:** bump axios from 1.7.8 to 1.7.9 ([2b18f52](https://github.com/rotex1800/registration/commit/2b18f526c31194341f5c29e9fec0dd16af0102bc))
+* **deps:** bump axios from 1.7.8 to 1.7.9 ([#714](https://github.com/rotex1800/registration/issues/714)) ([a972a73](https://github.com/rotex1800/registration/commit/a972a7306c814d07a896105aed7317de098cd701))
+* **deps:** bump christophrumpel/missing-livewire-assertions ([705eb76](https://github.com/rotex1800/registration/commit/705eb760ce8a50d4a1fffe7a3eba771f1252ed2a))
+* **deps:** bump christophrumpel/missing-livewire-assertions from 2.9.0 to 2.9.1 ([#701](https://github.com/rotex1800/registration/issues/701)) ([93d6dac](https://github.com/rotex1800/registration/commit/93d6dac75cb8a818226a26a9a70161c89b5a7a0f))
+* **deps:** bump laravel-vite-plugin from 1.0.5 to 1.1.1 ([6f992ad](https://github.com/rotex1800/registration/commit/6f992adfea4d64339bcac1f4d981ece7091559f6))
+* **deps:** bump laravel-vite-plugin from 1.0.5 to 1.1.1 ([#708](https://github.com/rotex1800/registration/issues/708)) ([b57b00d](https://github.com/rotex1800/registration/commit/b57b00d011816fe316cf5b762351dd658172bd26))
+* **deps:** bump laravel/dusk from 8.2.2 to 8.2.12 ([7496551](https://github.com/rotex1800/registration/commit/7496551f28fb1677d644222fc95e5e9cf4cd248d))
+* **deps:** bump laravel/dusk from 8.2.2 to 8.2.12 ([#698](https://github.com/rotex1800/registration/issues/698)) ([53306b6](https://github.com/rotex1800/registration/commit/53306b6e5243f9b55f1dd6885debca5befe520f7))
+* **deps:** bump laravel/framework from 10.48.22 to 10.48.23 in the composer group ([#696](https://github.com/rotex1800/registration/issues/696)) ([1a35bd9](https://github.com/rotex1800/registration/commit/1a35bd9cc5a2676dfd303e40b36358fcbece3a29))
+* **deps:** bump laravel/framework in the composer group ([aff1883](https://github.com/rotex1800/registration/commit/aff1883881dd456d8cbf89c07cfd9cddf7f95e1c))
+* **deps:** bump laravel/pint from 1.18.1 to 1.18.3 ([1440292](https://github.com/rotex1800/registration/commit/144029225274e85cbef1ebd6d8e85f2507c51dc6))
+* **deps:** bump laravel/pint from 1.18.1 to 1.18.3 ([#700](https://github.com/rotex1800/registration/issues/700)) ([d6e8bbd](https://github.com/rotex1800/registration/commit/d6e8bbdf9b731427e580dc2a930192d36aca67e6))
+* **deps:** bump laravel/pint from 1.18.3 to 1.19.0 ([0900358](https://github.com/rotex1800/registration/commit/0900358f35848b54a3a9b8460bb2922bd7c811e1))
+* **deps:** bump laravel/sail from 1.37.1 to 1.39.1 ([376f030](https://github.com/rotex1800/registration/commit/376f0309ab46c9e59a23ab28ebbecf738d032688))
+* **deps:** bump laravel/sail from 1.37.1 to 1.39.1 ([#702](https://github.com/rotex1800/registration/issues/702)) ([989029e](https://github.com/rotex1800/registration/commit/989029e052bad6ec93339c27b37d5e99c504eb79))
+* **deps:** bump league/commonmark from 2.5.3 to 2.6.0 in the composer group ([#711](https://github.com/rotex1800/registration/issues/711)) ([2ba7555](https://github.com/rotex1800/registration/commit/2ba7555eb67958502f76c7c8febf091b149e2c6e))
+* **deps:** bump league/commonmark in the composer group ([5a2de29](https://github.com/rotex1800/registration/commit/5a2de29092ab225fd073087b88bddfc3595b6666))
+* **deps:** bump livewire/livewire from 3.5.9 to 3.5.15 ([2a622cc](https://github.com/rotex1800/registration/commit/2a622ccb81b1be9c7fbaedd680b153f41bbe5cd3))
+* **deps:** bump livewire/livewire from 3.5.9 to 3.5.15 ([#699](https://github.com/rotex1800/registration/issues/699)) ([80bdd17](https://github.com/rotex1800/registration/commit/80bdd17414fba4ba78a20c351e83b831564085e1))
+* **deps:** bump lucassabreu/comment-coverage-clover ([949ca65](https://github.com/rotex1800/registration/commit/949ca656c3f65f509f9a269f2672be2f8621e37c))
+* **deps:** bump lucassabreu/comment-coverage-clover from 0.14.0 to 0.15.1 ([#720](https://github.com/rotex1800/registration/issues/720)) ([b6beb65](https://github.com/rotex1800/registration/commit/b6beb651b0719bc317fab2ac54298e6b0707a8bf))
+* **deps:** bump phpoffice/phpspreadsheet from 1.29.2 to 1.29.4 in the composer group ([#697](https://github.com/rotex1800/registration/issues/697)) ([8783707](https://github.com/rotex1800/registration/commit/878370706dc2cfd86ccde0fa6ef43e82c96b011e))
+* **deps:** bump phpoffice/phpspreadsheet in the composer group ([2171b19](https://github.com/rotex1800/registration/commit/2171b199a686f33d5a3c0371633e9edb12af313b))
+* **deps:** bump postcss from 8.4.47 to 8.4.49 ([153eaf8](https://github.com/rotex1800/registration/commit/153eaf80e963500869563a7f6317634d1bc7749a))
+* **deps:** bump postcss from 8.4.47 to 8.4.49 ([#703](https://github.com/rotex1800/registration/issues/703)) ([119c511](https://github.com/rotex1800/registration/commit/119c511c94642d7408cceeb1c46120213ffe07da))
+* **deps:** bump prettier from 3.3.3 to 3.4.2 ([558dde5](https://github.com/rotex1800/registration/commit/558dde5a3f733c7b8290ddedff614dd625e75518))
+* **deps:** bump prettier from 3.3.3 to 3.4.2 ([#709](https://github.com/rotex1800/registration/issues/709)) ([591ded9](https://github.com/rotex1800/registration/commit/591ded9eb7efc9709e7bceda1fe511ceb7dbee6e))
+* **deps:** bump spatie/laravel-ray from 1.37.1 to 1.39.0 ([7afbd5a](https://github.com/rotex1800/registration/commit/7afbd5acaa2e7c48d4c01baa8b853f3640e7dc03))
+* **deps:** bump symfony/http-foundation from 6.4.13 to 6.4.14 in the composer group ([#695](https://github.com/rotex1800/registration/issues/695)) ([c11c609](https://github.com/rotex1800/registration/commit/c11c6098ee1bdf2a1c11a4fafbada581d2bba372))
+* **deps:** bump symfony/http-foundation in the composer group ([1a83798](https://github.com/rotex1800/registration/commit/1a8379886048ba7edbc1ed25ff2f37e1ac343016))
+* **deps:** bump symfony/process from 6.4.13 to 6.4.14 in the composer group ([#694](https://github.com/rotex1800/registration/issues/694)) ([de32b0d](https://github.com/rotex1800/registration/commit/de32b0d1e13b872d1d45449082baf477c84817a9))
+* **deps:** bump symfony/process in the composer group ([9b9cfcb](https://github.com/rotex1800/registration/commit/9b9cfcb3b9f9882e8f21b6c6349ae1aba1a77156))
+* **deps:** bump tailwindcss from 3.4.14 to 3.4.16 ([212e621](https://github.com/rotex1800/registration/commit/212e6214ce44bf9b9c47e2050076aa40605718f6))
+* **deps:** bump tailwindcss from 3.4.14 to 3.4.16 ([#710](https://github.com/rotex1800/registration/issues/710)) ([25712a0](https://github.com/rotex1800/registration/commit/25712a0e6e11d182c45ec46181c63107027aad55))
+* **deps:** bump tailwindcss from 3.4.16 to 3.4.17 ([4085b80](https://github.com/rotex1800/registration/commit/4085b80421a468ea423747a9ff52420a095b5a8e))
+* **deps:** bump tailwindcss from 3.4.16 to 3.4.17 ([#713](https://github.com/rotex1800/registration/issues/713)) ([1d36c7a](https://github.com/rotex1800/registration/commit/1d36c7a7c0aa8ea6302085944a344bdbce223c05))
+* **deps:** bump vite from 5.4.10 to 6.0.6 ([2cb82f8](https://github.com/rotex1800/registration/commit/2cb82f8757a5ff28bf447ec7af6a25863b456e4e))
+* **deps:** bump vite from 5.4.10 to 6.0.6 ([#712](https://github.com/rotex1800/registration/issues/712)) ([9ce0392](https://github.com/rotex1800/registration/commit/9ce03923c086dd739f42b7016b620efdafbac699))
+
 ## [1.17.8](https://github.com/rotex1800/registration/compare/v1.17.7...v1.17.8) (2024-10-02)
 
 
