@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb5cb6cce75ff6217dd8a9312991aab6",
+    "content-hash": "96f08cffa8ecd0b2ff09865ef38b1c79",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -256,22 +256,22 @@
         },
         {
             "name": "comcast/php-legal-licenses",
-            "version": "v1.3.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Comcast/php-legal-licenses.git",
-                "reference": "0e003a420a8334d760518f5e7b25fce54384d58a"
+                "reference": "3ebbbc4a9b0bb9c2d43434455aee077ee22ada65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Comcast/php-legal-licenses/zipball/0e003a420a8334d760518f5e7b25fce54384d58a",
-                "reference": "0e003a420a8334d760518f5e7b25fce54384d58a",
+                "url": "https://api.github.com/repos/Comcast/php-legal-licenses/zipball/3ebbbc4a9b0bb9c2d43434455aee077ee22ada65",
+                "reference": "3ebbbc4a9b0bb9c2d43434455aee077ee22ada65",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "symfony/console": "~2.3|~3.0|~4.0|~5.0|~6.0|~7.0",
-                "symfony/process": "~2.3|~3.0|~4.0|~5.0|~6.0|~7.0"
+                "symfony/console": ">=5.4.46 < 6.0.0 || >=6.4.14 < 7.0.0 || >=7.1.7",
+                "symfony/process": ">=5.4.46 < 6.0.0 || >=6.4.14 < 7.0.0 || >=7.1.7"
             },
             "bin": [
                 "bin/php-legal-licenses"
@@ -304,9 +304,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Comcast/php-legal-licenses/issues",
-                "source": "https://github.com/Comcast/php-legal-licenses/tree/v1.3.0"
+                "source": "https://github.com/Comcast/php-legal-licenses/tree/v2.0.0"
             },
-            "time": "2024-05-07T14:53:40+00:00"
+            "time": "2024-11-07T19:17:33+00:00"
         },
         {
             "name": "composer/semver",
