@@ -13,10 +13,10 @@
                         type="email"
                         name="email"
                         placeholder="E-Mail"
-                        class="rounded w-full focus:shadow">
+                        class="rounded-sm w-full focus:shadow-sm">
                 </label>
 
-                <button class="bg-blue-500 rounded p-4 font-semibold text-white mt-2"
+                <button class="bg-blue-500 rounded-sm p-4 font-semibold text-white mt-2"
                         type="submit">{{ __('signup.forgot-password-cta') }}</button>
             </form>
 

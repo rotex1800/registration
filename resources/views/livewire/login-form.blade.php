@@ -15,7 +15,7 @@
                        name="email"
                        id="email"
                        placeholder="E-Mail"
-                       class="rounded w-full focus:shadow">
+                       class="rounded-sm w-full focus:shadow-sm">
             </label>
             <label>Passwort
                 <input wire:model.live="password"
@@ -23,17 +23,17 @@
                        name="password"
                        id="password"
                        placeholder="Passwort"
-                       class="input-form rounded w-full focus:shadow">
+                       class="input-form rounded-sm w-full focus:shadow-sm">
             </label>
             <label>
                 {{ __('Stay logged in') }}
                 <input type="checkbox"
                        name="remember"
-                       class="ml-2 rounded align-middle"
+                       class="ml-2 rounded-sm align-middle"
                        wire:model.live="remember">
             </label>
             <button type="submit"
-                    class="p-2 rounded bg-blue-600 hover:bg-blue-500 h-11 text-white">{{ __('Login') }}
+                    class="p-2 rounded-sm bg-blue-600 hover:bg-blue-500 h-11 text-white">{{ __('Login') }}
             </button>
             <a class="underline text-blue-500"
                href="{{ route('password.request') }}">{{ __('signup.forgot-password') }}</a>

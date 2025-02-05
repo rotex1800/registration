@@ -5,7 +5,7 @@
     <p>{{ __('signup.verify-email-explanation') }}</p>
     <form class="mt-2" method="post" action="{{ route('verification.send') }}">
         @csrf
-        <button class="bg-blue-500 rounded p-4 font-semibold text-white"
+        <button class="bg-blue-500 rounded-sm p-4 font-semibold text-white"
                 type="submit">{{ __('signup.resend-verification-email') }}</button>
     </form>
 

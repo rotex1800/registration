@@ -16,7 +16,7 @@
     </div>
     <div class="text-white my-4">
         @if(!$this->hasUserRegistered())
-            <button class="bg-blue-800 p-3 rounded" wire:click="register">{{ __('registration.apply') }}</button>
+            <button class="bg-blue-800 p-3 rounded-sm" wire:click="register">{{ __('registration.apply') }}</button>
         @endif
     </div>
     @if($this->hasUserRegistered())
@@ -41,10 +41,10 @@
             <h2 class="text-2xl mt-8">{{  __('registration.about-you') }} {{ $user->isComplete() ? '✅' : '' }}</h2>
             <div class="mt-4 grid grid-cols-input gap-4 items-center">
                 <div><label for="firstname">{{ __('registration.first_name') }}</label></div>
-                <input class="rounded" type="text" id="firstname" wire:model.live.debounce.500ms="user.first_name">
+                <input class="rounded-sm" type="text" id="firstname" wire:model.live.debounce.500ms="user.first_name">
 
                 <div><label for="family-name">{{ __('registration.family_name') }}</label></div>
-                <input class="rounded" type="text" id="family-name" wire:model.live.debounce.500ms="user.family_name">
+                <input class="rounded-sm" type="text" id="family-name" wire:model.live.debounce.500ms="user.family_name">
 
                 <div>
                     <label for="birthday">{{ __('registration.birthday') }}</label>
@@ -52,10 +52,10 @@
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input class="rounded" type="date" id="birthday" wire:model.live.debounce.500ms="user.birthday">
+                <input class="rounded-sm" type="date" id="birthday" wire:model.live.debounce.500ms="user.birthday">
 
                 <label for="gender">{{ __('registration.gender.gender') }}</label>
-                <select class="rounded" id="gender" wire:model.live.debounce.500ms="user.gender">
+                <select class="rounded-sm" id="gender" wire:model.live.debounce.500ms="user.gender">
                     <option value="female">{{ __('registration.gender.female') }}</option>
                     <option value="male">{{ __('registration.gender.male') }}</option>
                     <option value="diverse">{{ __('registration.gender.diverse') }}</option>
@@ -69,26 +69,26 @@
                     @enderror
 
                 </div>
-                <input type="tel" id="mobile_phone" class="rounded" wire:model.live.debounce.500ms="user.mobile_phone">
+                <input type="tel" id="mobile_phone" class="rounded-sm" wire:model.live.debounce.500ms="user.mobile_phone">
 
                 <div><label for="tshirt-size">{{ __('registration.tshirt-size') }}</label></div>
-                <select class="rounded" id="tshirt-size" wire:model.live="additionalInfo.tshirt_size">
+                <select class="rounded-sm" id="tshirt-size" wire:model.live="additionalInfo.tshirt_size">
                     @foreach(ClothesSize::cases() as $size)
                         <option value="{{ $size->value }}">{{ $size->displayName() }}</option>
                     @endforeach
                 </select>
 
                 <div><label for="allergies">{{ __('registration.allergies') }}</label></div>
-                <input class="rounded" type="text" id="allergies" wire:model.live.debounce.500ms="additionalInfo.allergies">
+                <input class="rounded-sm" type="text" id="allergies" wire:model.live.debounce.500ms="additionalInfo.allergies">
 
                 <div><label for="diet">{{ __('registration.diet') }}</label></div>
-                <input class="rounded" type="text" id="diet" wire:model.live.debounce.500ms="additionalInfo.diet">
+                <input class="rounded-sm" type="text" id="diet" wire:model.live.debounce.500ms="additionalInfo.diet">
 
                 <div><label for="desired_group">{{ __('registration.desired_group') }}</label></div>
-                <input class="rounded" type="text" id="desired_group" wire:model.live.debounce.500ms="additionalInfo.desired_group">
+                <input class="rounded-sm" type="text" id="desired_group" wire:model.live.debounce.500ms="additionalInfo.desired_group">
 
                 <label for="health-issues">{{ __('registration.health_issues') }}</label>
-                <textarea class="rounded min-h-40" id="health-issues"
+                <textarea class="rounded-sm min-h-40" id="health-issues"
                           wire:model.live.debounce.500ms="user.health_issues"></textarea>
             </div>
 
@@ -96,10 +96,10 @@
             <p>{{ __('registration.passport-explanation') }}</p>
             <div class="grid mt-4 grid-cols-input gap-4 items-center">
                 <div><label for="nationality">{{ __('registration.nationality') }}</label></div>
-                <input id="nationality" type="text" class="rounded" wire:model="passport.nationality">
+                <input id="nationality" type="text" class="rounded-sm" wire:model="passport.nationality">
 
                 <div><label for="passport-number">{{ __('registration.passport-number') }}</label></div>
-                <input type="text" id="passport-number" class="rounded"
+                <input type="text" id="passport-number" class="rounded-sm"
                        wire:model.live.debounce.500ms="passport.passport_number">
 
                 <div><label for="passport-issue-date">{{ __('registration.passport-issue-date') }}</label>
@@ -108,7 +108,7 @@
                     @enderror
                 </div>
 
-                <input type="date" id="passport-issue-date" class="rounded"
+                <input type="date" id="passport-issue-date" class="rounded-sm"
                        wire:model.live.debounce.500ms="passport.issue_date">
 
                 <div>
@@ -117,7 +117,7 @@
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input id="passport-expiration-date" type="date" class="rounded"
+                <input id="passport-expiration-date" type="date" class="rounded-sm"
                        wire:model.live.debounce.500ms="passport.expiration_date">
 
             </div>
@@ -127,16 +127,16 @@
             <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="host-club">{{ __('registration.rotary.host-club') }}</label></div>
-                <input id="host-club" class="rounded" type="text" wire:model.live.debounce.500ms="rotary.host_club">
+                <input id="host-club" class="rounded-sm" type="text" wire:model.live.debounce.500ms="rotary.host_club">
 
                 <div><label for="host-district">{{ __('registration.rotary.host-district') }}</label></div>
-                <input id="host-district" type="text" class="rounded" wire:model.live.debounce.500ms="rotary.host_district">
+                <input id="host-district" type="text" class="rounded-sm" wire:model.live.debounce.500ms="rotary.host_district">
 
                 <div><label for="sponsor-club">{{ __('registration.rotary.sponsor-club') }}</label></div>
-                <input id="sponsor-club" type="text" class="rounded" wire:model.live.debounce.500ms="rotary.sponsor_club">
+                <input id="sponsor-club" type="text" class="rounded-sm" wire:model.live.debounce.500ms="rotary.sponsor_club">
 
                 <div><label for="sponsor-district">{{ __('registration.rotary.sponsor-district') }}</label></div>
-                <select class="rounded" id="sponsor-district" wire:model.live.debounce.500ms="rotary.sponsor_district">
+                <select class="rounded-sm" id="sponsor-district" wire:model.live.debounce.500ms="rotary.sponsor_district">
                     @foreach($this->districts as $district)
                         <option value="{{$district}}">{{$district}}</option>
                     @endforeach
@@ -149,10 +149,10 @@
             <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="counselor-name">{{ __('registration.counselor.name') }}</label></div>
-                <input id="counselor-name" class="rounded" type="text" wire:model.live.debounce.500ms="counselor.name">
+                <input id="counselor-name" class="rounded-sm" type="text" wire:model.live.debounce.500ms="counselor.name">
 
                 <div><label for="counselor-telephone">{{ __('registration.counselor.telephone') }}</label></div>
-                <input id="counselor-telephone" type="tel" class="rounded" wire:model.live.debounce.500ms="counselor.phone">
+                <input id="counselor-telephone" type="tel" class="rounded-sm" wire:model.live.debounce.500ms="counselor.phone">
                 @error('counselor.phone')
                 <div class="text-red-500">{{ $message }}</div>
                 @enderror
@@ -163,7 +163,7 @@
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input id="counselor-email" type="email" class="rounded" wire:model.live.debounce.500ms="counselor.email">
+                <input id="counselor-email" type="email" class="rounded-sm" wire:model.live.debounce.500ms="counselor.email">
 
             </div>
 
@@ -171,10 +171,10 @@
             <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="yeo-name">{{ __('registration.yeo.name') }}</label></div>
-                <input id="yeo-name" class="rounded" type="text" wire:model.live.debounce.500ms="yeo.name">
+                <input id="yeo-name" class="rounded-sm" type="text" wire:model.live.debounce.500ms="yeo.name">
 
                 <div><label for="yeo-telephone">{{ __('registration.yeo.telephone') }}</label></div>
-                <input id="yeo-telephone" type="tel" class="rounded" wire:model.live.debounce.500ms="yeo.phone">
+                <input id="yeo-telephone" type="tel" class="rounded-sm" wire:model.live.debounce.500ms="yeo.phone">
                 @error('yeo.phone')
                 <div class="text-red-500">{{ $message }}</div>
                 @enderror
@@ -184,7 +184,7 @@
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input id="yeo-email" name="Yeo E-Mail" type="email" class="rounded"
+                <input id="yeo-email" name="Yeo E-Mail" type="email" class="rounded-sm"
                        wire:model.live.debounce.500ms="yeo.email">
             </div>
 
@@ -197,21 +197,21 @@
                 <div>
                     <label for="bio-mother">{{ __('registration.bio-family.parent-one') }}</label>
                 </div>
-                <input type="text" id="bio-mother" class="rounded block"
+                <input type="text" id="bio-mother" class="rounded-sm block"
                        wire:model.live.debounce.500ms="bioFamily.parent_one">
 
                 <div><label for="bio-father">{{ __('registration.bio-family.parent-two') }}</label></div>
-                <input type="text" id="bio-father" class="rounded" wire:model.live.debounce.500ms="bioFamily.parent_two">
+                <input type="text" id="bio-father" class="rounded-sm" wire:model.live.debounce.500ms="bioFamily.parent_two">
 
                 <div><label for="bio-email">{{ __('registration.bio-family.email') }}</label>
                     @error('bioFamily.email')
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input type="email" id="bio-email" class="rounded" wire:model.live.debounce.500ms="bioFamily.email">
+                <input type="email" id="bio-email" class="rounded-sm" wire:model.live.debounce.500ms="bioFamily.email">
 
                 <div><label for="bio-telephone">{{ __('registration.bio-family.telephone') }}</label></div>
-                <input type="tel" id="bio-telephone" class="rounded" wire:model.live.debounce.500ms="bioFamily.phone">
+                <input type="tel" id="bio-telephone" class="rounded-sm" wire:model.live.debounce.500ms="bioFamily.phone">
                 @error('bioFamily.phone')
                 <div class="text-red-500">{{ $message }}</div>
                 @enderror
@@ -224,7 +224,7 @@
             <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="host-name-one">{{ __('registration.host-family.name') }}</label></div>
-                <input type="text" id="host-name-one" class="rounded" wire:model.live.debounce.500ms="hostFamilyOne.name">
+                <input type="text" id="host-name-one" class="rounded-sm" wire:model.live.debounce.500ms="hostFamilyOne.name">
 
                 <div>
                     <label for="host-email-one">{{ __('registration.host-family.email') }}</label>
@@ -233,17 +233,17 @@
                     @enderror
                 </div>
 
-                <input type="text" id="host-email-one" class="rounded" wire:model.live.debounce.500ms="hostFamilyOne.email">
+                <input type="text" id="host-email-one" class="rounded-sm" wire:model.live.debounce.500ms="hostFamilyOne.email">
 
                 <div><label for="host-phone-one">{{ __('registration.host-family.phone') }}</label>
                     @error('hostFamilyOne.phone')
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input type="text" id="host-phone-one" class="rounded" wire:model.live.debounce.500ms="hostFamilyOne.phone">
+                <input type="text" id="host-phone-one" class="rounded-sm" wire:model.live.debounce.500ms="hostFamilyOne.phone">
 
                 <div><label for="host-address-one">{{ __('registration.host-family.address') }}</label></div>
-                <input type="text" id="host-address-one" class="rounded"
+                <input type="text" id="host-address-one" class="rounded-sm"
                        wire:model.live.debounce.500ms="hostFamilyOne.address">
 
             </div>
@@ -255,7 +255,7 @@
             <div class="grid mt-4 grid-cols-input gap-4 items-center">
 
                 <div><label for="host-name-two">{{ __('registration.host-family.name') }}</label></div>
-                <input type="text" id="host-name-two" class="rounded" wire:model.live.debounce.500ms="hostFamilyTwo.name">
+                <input type="text" id="host-name-two" class="rounded-sm" wire:model.live.debounce.500ms="hostFamilyTwo.name">
 
                 <div>
                     <label for="host-email-two">{{ __('registration.host-family.email') }}</label>
@@ -263,17 +263,17 @@
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input type="text" id="host-email-two" class="rounded" wire:model.live.debounce.500ms="hostFamilyTwo.email">
+                <input type="text" id="host-email-two" class="rounded-sm" wire:model.live.debounce.500ms="hostFamilyTwo.email">
 
                 <div><label for="host-phone-two">{{ __('registration.host-family.phone') }}</label>
                     @error('hostFamilyTwo.phone')
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input type="text" id="host-phone-two" class="rounded" wire:model.live.debounce.500ms="hostFamilyTwo.phone">
+                <input type="text" id="host-phone-two" class="rounded-sm" wire:model.live.debounce.500ms="hostFamilyTwo.phone">
 
                 <div><label for="host-address-two">{{ __('registration.host-family.address') }}</label></div>
-                <input type="text" id="host-address-two" class="rounded"
+                <input type="text" id="host-address-two" class="rounded-sm"
                        wire:model.live.debounce.500ms="hostFamilyTwo.address">
 
             </div>
@@ -287,7 +287,7 @@
                 <div>
                     <label for="host-name-three">{{ __('registration.host-family.name') }}</label>
                 </div>
-                <input type="text" id="host-name-three" class="rounded"
+                <input type="text" id="host-name-three" class="rounded-sm"
                        wire:model.live.debounce.500ms="hostFamilyThree.name">
 
                 <div>
@@ -296,7 +296,7 @@
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input type="text" id="host-email-three" class="rounded"
+                <input type="text" id="host-email-three" class="rounded-sm"
                        wire:model.live.debounce.500ms="hostFamilyThree.email">
 
                 <div><label for="host-phone-three">{{ __('registration.host-family.phone') }}</label>
@@ -304,11 +304,11 @@
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </div>
-                <input type="text" id="host-phone-three" class="rounded"
+                <input type="text" id="host-phone-three" class="rounded-sm"
                        wire:model.live.debounce.500ms="hostFamilyThree.phone">
 
                 <div><label for="host-address-three">{{ __('registration.host-family.address') }}</label></div>
-                <input type="text" id="host-address-three" class="rounded"
+                <input type="text" id="host-address-three" class="rounded-sm"
                        wire:model.live.debounce.500ms="hostFamilyThree.address">
 
             </div>
@@ -319,7 +319,7 @@
             <p>{{__('registration.comment-explanation')}}</p>
             <div class="grid mt-4 grid-cols-input gap-4 items-center">
                 <label for="comment">{{ __('registration.comment') }}</label>
-                <textarea class="rounded min-h-40" id="comment"
+                <textarea class="rounded-sm min-h-40" id="comment"
                           wire:model="comment.body">{{ $comment->body }}</textarea>
 
             </div>
@@ -369,7 +369,7 @@
             />
         @endif
 
-        <button class="bg-red-500 p-3 rounded mt-5 text-white font-bold"
+        <button class="bg-red-500 p-3 rounded-sm mt-5 text-white font-bold"
                 wire:click="unregister">{{ __('registration.dont-participate') }}</button>
     @endif
 </div>
