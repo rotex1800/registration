@@ -8,7 +8,7 @@
                 <label>{{__('signup.first-name_s')}}
                     <input type="text"
                            name="first_name"
-                           class="rounded w-full focus:shadow"
+                           class="rounded-sm w-full focus:shadow-sm"
                     >
                     @error('first_name')
                     <div class="text-red-500">{{ $message }}</div>
@@ -17,7 +17,7 @@
                 <label>{{__('signup.family-name_s')}}
                     <input type="text"
                            name="family_name"
-                           class="rounded w-full focus:shadow"
+                           class="rounded-sm w-full focus:shadow-sm"
                     >
                     @error('family_name')
                     <div class="text-red-500">{{ $message }}</div>
@@ -26,7 +26,7 @@
                 <label>{{__('signup.email')}}
                     <input type="email"
                            name="email"
-                           class="rounded w-full focus:shadow"
+                           class="rounded-sm w-full focus:shadow-sm"
                     >
                     @error('email')
                     <div class="text-red-500">{{ $message }}</div>
@@ -35,7 +35,7 @@
                 <label>{{__('signup.password')}}
                     <input type="password"
                            name="password"
-                           class="rounded w-full focus:shadow"
+                           class="rounded-sm w-full focus:shadow-sm"
                     >
                     @error('password')
                     <div class="text-red-500">{{ $message }}</div>
@@ -44,14 +44,14 @@
                 <label>{{__('signup.password-confirmation')}}
                     <input type="password"
                            name="password_confirmation"
-                           class="rounded w-full focus:shadow"
+                           class="rounded-sm w-full focus:shadow-sm"
                     >
                     @error('password_confirmation')
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
                 </label>
 
-                <button type="submit" class="p-2 rounded bg-blue-600 hover:bg-blue-500 h-11 text-white">
+                <button type="submit" class="p-2 rounded-sm bg-blue-600 hover:bg-blue-500 h-11 text-white">
                     {{__('signup.register')}}
                 </button>
             </form>

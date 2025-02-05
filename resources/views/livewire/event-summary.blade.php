@@ -8,5 +8,5 @@
         <div class="mr-2">Bis:</div>
         <div>{{ $this->event->end->translatedFormat('d. F Y') }}</div>
     </div>
-    <button wire:click="show" class="bg-blue-800 text-white rounded p-2 m-2">Details</button>
+    <button wire:click="show" class="bg-blue-800 text-white rounded-sm p-2 m-2">Details</button>
 </div>

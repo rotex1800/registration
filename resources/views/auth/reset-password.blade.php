@@ -12,7 +12,7 @@
                         type="email"
                         name="email"
                         placeholder="E-Mail"
-                        class="rounded w-full focus:shadow">
+                        class="rounded-sm w-full focus:shadow-sm">
                 </label>
 
                 <label>{{ __('signup.password') }}
@@ -20,7 +20,7 @@
                         type="password"
                         name="password"
                         placeholder="{{ __('signup.new-password') }}"
-                        class="rounded w-full focus:shadow">
+                        class="rounded-sm w-full focus:shadow-sm">
                     @error('password')
                     <div class="text-red-500">{{ $message }}</div>
                     @enderror
@@ -31,12 +31,12 @@
                         type="password"
                         name="password_confirmation"
                         placeholder="{{ __('signup.new-password-confirmation') }}"
-                        class="rounded w-full focus:shadow">
+                        class="rounded-sm w-full focus:shadow-sm">
                 </label>
 
                 <input type="hidden" name="token" value="{{ request()->route('token') }}">
 
-                <button class="bg-blue-500 rounded p-4 font-semibold text-white mt-2"
+                <button class="bg-blue-500 rounded-sm p-4 font-semibold text-white mt-2"
                         type="submit">{{ __('signup.update-password') }}</button>
             </form>
 
