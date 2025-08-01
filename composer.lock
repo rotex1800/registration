@@ -4537,16 +4537,16 @@
         },
         {
             "name": "spatie/laravel-health",
-            "version": "1.34.3",
+            "version": "1.34.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-health.git",
-                "reference": "d421bc223c7a8c872ad944706d98a74b1056f761"
+                "reference": "8487a3a43551f3d24e73546362f93da2684a0a3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/d421bc223c7a8c872ad944706d98a74b1056f761",
-                "reference": "d421bc223c7a8c872ad944706d98a74b1056f761",
+                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/8487a3a43551f3d24e73546362f93da2684a0a3a",
+                "reference": "8487a3a43551f3d24e73546362f93da2684a0a3a",
                 "shasum": ""
             },
             "require": {
@@ -4618,7 +4618,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-health/tree/1.34.3"
+                "source": "https://github.com/spatie/laravel-health/tree/1.34.5"
             },
             "funding": [
                 {
@@ -4626,20 +4626,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-04T22:04:19+00:00"
+            "time": "2025-07-25T07:00:21+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
-            "version": "1.92.4",
+            "version": "1.92.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "d20b1969f836d210459b78683d85c9cd5c5f508c"
+                "reference": "f09a799850b1ed765103a4f0b4355006360c49a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/d20b1969f836d210459b78683d85c9cd5c5f508c",
-                "reference": "d20b1969f836d210459b78683d85c9cd5c5f508c",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/f09a799850b1ed765103a4f0b4355006360c49a5",
+                "reference": "f09a799850b1ed765103a4f0b4355006360c49a5",
                 "shasum": ""
             },
             "require": {
@@ -4679,7 +4679,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.92.4"
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.92.7"
             },
             "funding": [
                 {
@@ -4687,7 +4687,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-04-11T15:27:14+00:00"
+            "time": "2025-07-17T15:46:43+00:00"
         },
         {
             "name": "spatie/regex",
