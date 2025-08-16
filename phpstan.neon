@@ -5,5 +5,5 @@ parameters:
         - app
     level: max
     ignoreErrors:
+        - identifier: missingType.generics
     excludePaths:
-    checkGenericClassInNonGenericObjectType: false
