@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -13,8 +17,6 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v4
         id: rp
-        with:
-          token: ${{ secrets.PAT }}
 
   deploy-into-production:
     needs: [ release-please ]
