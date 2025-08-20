@@ -21,6 +21,5 @@ it('fails to construct if the closure is missing', function () {
 it('fails to construct if the header is missing', function () {
     /** @noinspection PhpParamsInspection */
     /** @noinspection PhpExpressionResultUnusedInspection */
-    new SortableTableColumn(supplier: function () {
-    });
+    new SortableTableColumn(supplier: function () {});
 })->throws(ArgumentCountError::class);

@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 beforeEach(function () {
-    $this->cut = new EventPolicy();
+    $this->cut = new EventPolicy;
 });
 
 it('denies a user with "rotex" role to edit an event', function () {

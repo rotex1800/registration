@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 uses(RefreshDatabase::class);
 
 it('creates the new user with the participant rule', function () {
-    $action = new CreateNewUser();
+    $action = new CreateNewUser;
     $attributes = User::factory()->definition();
     $attributes['email'] = 'test@rotex1800.de';
     $attributes['password'] = 'password';
@@ -22,7 +22,7 @@ it('creates the new user with the participant rule', function () {
 });
 
 it('assigns a uuid to each new user', function () {
-    $action = new CreateNewUser();
+    $action = new CreateNewUser;
     $attributes = User::factory()->definition();
     $attributes['email'] = 'test@rotex1800.de';
     $attributes['password'] = 'password';
@@ -33,7 +33,7 @@ it('assigns a uuid to each new user', function () {
 });
 
 it('does not allow example.net emails', function () {
-    $action = new CreateNewUser();
+    $action = new CreateNewUser;
     $attributes = User::factory()->definition();
     $attributes['email'] = 'test@example.net';
     $attributes['password'] = 'password';
@@ -43,7 +43,7 @@ it('does not allow example.net emails', function () {
 })->throws(ValidationException::class);
 
 it('does not allow example.org emails', function () {
-    $action = new CreateNewUser();
+    $action = new CreateNewUser;
     $attributes = User::factory()->definition();
     $attributes['email'] = 'test@example.org';
     $attributes['password'] = 'password';
@@ -53,7 +53,7 @@ it('does not allow example.org emails', function () {
 })->throws(ValidationException::class);
 
 it('does not allow example.com emails', function () {
-    $action = new CreateNewUser();
+    $action = new CreateNewUser;
     $attributes = User::factory()->definition();
     $attributes['email'] = 'test@example.com';
     $attributes['password'] = 'password';

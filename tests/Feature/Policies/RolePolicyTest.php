@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 beforeEach(function () {
-    $this->cut = new RolePolicy();
+    $this->cut = new RolePolicy;
 });
 
 it('allows deletion of standalone role', function () {

@@ -135,7 +135,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'first_name',
@@ -285,6 +285,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Event::class);
     }
 
+    /**
+     * @return HasOne<RegistrationComment>
+     */
     public function registrationComment(): HasOne
     {
         return $this->hasOne(RegistrationComment::class);
@@ -338,7 +341,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return Collection<Event>
+     * @return Collection<int, Event>
      */
     public function canRegisterFor(): Collection
     {
@@ -350,7 +353,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * All events that the user shares at least one role with.
      *
      *
-     * @return Collection<Event>
+     * @return Collection<int, Event>
      */
     public function possibleEvents(): Collection
     {
@@ -365,13 +368,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return Collection<Event>
+     * @return Collection<int, Event>
      */
     public function participatesIn(): Collection
     {
         return $this->events()->get();
     }
 
+    /**
+     * @return HasMany<Payment>
+     */
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);

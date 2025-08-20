@@ -13,7 +13,7 @@ uses(RefreshDatabase::class);
 it('requires current password input to match current password', function () {
     // Arrange
     $user = User::factory()->withPassword('12345678')->make();
-    $action = new UpdateUserPassword();
+    $action = new UpdateUserPassword;
     $input = [
         'current_password' => 'abcdefgh',
         'password' => 'abcdefgh',
@@ -29,7 +29,7 @@ it('requires current password input to match current password', function () {
 it('updates password if current matches', function () {
     // Arrange
     $user = User::factory()->withPassword('12345678')->make();
-    $action = new UpdateUserPassword();
+    $action = new UpdateUserPassword;
     $input = [
         'current_password' => '12345678',
         'password' => 'abcdefgh',

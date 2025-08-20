@@ -9,23 +9,23 @@ uses(RefreshDatabase::class);
 
 it('allows rotex user to create payment', function () {
     $user = createUserWithRole('rotex');
-    expect((new PaymentPolicy())->createPayment($user))
+    expect((new PaymentPolicy)->createPayment($user))
         ->toBeAllowed();
 });
 
 it('denies other users to create payment', function () {
     $user = createUserWithRole('other');
-    expect((new PaymentPolicy())->createPayment($user))
+    expect((new PaymentPolicy)->createPayment($user))
         ->toBeDenied();
 });
 
 it('denies guest to create payment', function () {
-    expect((new PaymentPolicy())->createPayment(null))
+    expect((new PaymentPolicy)->createPayment(null))
         ->toBeDenied();
 });
 
 it('denies Authenticatable without HasRoles trait', function () {
-    $authenticatable = new TestAuthenticatableWithoutRoles();
-    expect((new PaymentPolicy())->createPayment($authenticatable))
+    $authenticatable = new TestAuthenticatableWithoutRoles;
+    expect((new PaymentPolicy)->createPayment($authenticatable))
         ->toBeDenied();
 });

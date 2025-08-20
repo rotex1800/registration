@@ -39,6 +39,8 @@ class YeoInfo extends Model
 {
     use HasCompletenessCheck;
     use HasFactory;
+
+    /** @use PersonInfo<YeoInfo> */
     use PersonInfo;
 
     public function isComplete(): bool

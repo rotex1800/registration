@@ -30,7 +30,7 @@ use function PHPUnit\Framework\assertTrue;
 uses(RefreshDatabase::class);
 
 it('has events relation', function () {
-    expect((new User())->events())
+    expect((new User)->events())
         ->toBeInstanceOf(BelongsToMany::class);
 });
 

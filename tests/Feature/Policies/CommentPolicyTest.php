@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 it('allows participant user to comment on own document', function () {
-    $policy = new CommentPolicy();
+    $policy = new CommentPolicy;
     $document = Document::factory()->create();
     $user = $document->owner;
     $user->roles()->delete();
@@ -20,7 +20,7 @@ it('allows participant user to comment on own document', function () {
 });
 
 it('denies participant user to comment other document', function () {
-    $policy = new CommentPolicy();
+    $policy = new CommentPolicy;
     $document = Document::factory()->create();
     $user = createUserWithRole('participant');
 
@@ -29,7 +29,7 @@ it('denies participant user to comment other document', function () {
 });
 
 it('denies other user to comment', function () {
-    $policy = new CommentPolicy();
+    $policy = new CommentPolicy;
     $document = Document::factory()->create();
     $user = createUserWithRole('other');
 
@@ -38,7 +38,7 @@ it('denies other user to comment', function () {
 });
 
 it('allows rotex user to comment on own document', function () {
-    $policy = new CommentPolicy();
+    $policy = new CommentPolicy;
     $document = Document::factory()->create();
     $user = $document->owner;
     $user->roles()->delete();
@@ -50,7 +50,7 @@ it('allows rotex user to comment on own document', function () {
 });
 
 it('allows rotex user to comment on other document', function () {
-    $policy = new CommentPolicy();
+    $policy = new CommentPolicy;
     $document = Document::factory()->create();
     $user = createUserWithRole('rotex');
 

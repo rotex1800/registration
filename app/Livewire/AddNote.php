@@ -28,11 +28,11 @@ class AddNote extends Component
 
     public function updatedNote(string $note): void
     {
-        $allowedToCreateNote = (new NotePolicy())->createNote(Auth::user())->allowed();
+        $allowedToCreateNote = (new NotePolicy)->createNote(Auth::user())->allowed();
         if ($allowedToCreateNote) {
             $info = $this->attendee->additionalInfo;
             if ($info == null) {
-                $info = new AdditionalInfo();
+                $info = new AdditionalInfo;
             }
             $info->note = $note;
             $this->attendee->additionalInfo()->save($info);

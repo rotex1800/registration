@@ -45,11 +45,18 @@ class HostFamily extends Model
 {
     use HasCompletenessCheck, HasFactory;
 
+    /**
+     * @return BelongsTo<User, HostFamily>
+     */
     public function inbound(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * @param  Builder<HostFamily>  $builder
+     * @return Builder<HostFamily>
+     */
     public function scopeOrder(Builder $builder, int $order): Builder
     {
         return $builder->where('order', $order);

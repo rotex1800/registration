@@ -16,6 +16,9 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
+/**
+ * @implements WithMapping<User>
+ */
 class RegistrationsExport implements FromQuery, ShouldAutoSize, WithColumnFormatting, WithHeadings, WithMapping, WithStyles
 {
     private Event $event;
@@ -25,6 +28,9 @@ class RegistrationsExport implements FromQuery, ShouldAutoSize, WithColumnFormat
         $this->event = $event;
     }
 
+    /**
+     * @return Relation<User>
+     */
     public function query(): Relation
     {
         return $this->event->attendees();
@@ -109,6 +115,7 @@ class RegistrationsExport implements FromQuery, ShouldAutoSize, WithColumnFormat
     }
 
     /**
+     * @param  User|mixed  $user
      * @return array<int, array<int, mixed>>
      */
     public function map(mixed $user): array

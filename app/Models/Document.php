@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 
 /**
@@ -72,11 +71,6 @@ class Document extends Model
         'state',
     ];
 
-    public function documentable(): MorphTo
-    {
-        return $this->morphTo();
-    }
-
     /**
      * Indicates whether the document is approved.
      */
@@ -112,7 +106,7 @@ class Document extends Model
     }
 
     /**
-     * @retrun HasMany<Comment>
+     * @return HasMany<Comment>
      */
     public function comments(): HasMany
     {

@@ -169,7 +169,7 @@ it('applies bold style to first row', function () {
     $event = Event::factory()->create();
     $export = new RegistrationsExport($event);
 
-    expect($export->styles(new Worksheet()))
+    expect($export->styles(new Worksheet))
         ->toBeArray()
         ->toHaveKey(1, ['font' => ['bold' => true]]);
 });

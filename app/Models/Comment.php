@@ -45,6 +45,9 @@ class Comment extends Model
         'content',
     ];
 
+    /**
+     * @return BelongsTo<User, Comment>
+     */
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
