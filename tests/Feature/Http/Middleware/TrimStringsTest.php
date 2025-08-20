@@ -10,7 +10,7 @@ it('trims inputs', function () {
         'key' => '            value            ',
     ]);
 
-    (new TrimStrings())->handle(
+    (new TrimStrings)->handle(
         $request,
         function ($req) {
             expect($req->input('key'))->toBe('value');
@@ -24,7 +24,7 @@ it('does not trim password', function () {
         'password' => ' value',
     ]);
 
-    (new TrimStrings())->handle(
+    (new TrimStrings)->handle(
         $request,
         function ($req) {
             expect($req->input('password'))->toBe(' value');
@@ -38,7 +38,7 @@ it('does not trim password_confirmation', function () {
         'password_confirmation' => ' value',
     ]);
 
-    (new TrimStrings())->handle(
+    (new TrimStrings)->handle(
         $request,
         function ($req) {
             expect($req->input('password_confirmation'))->toBe(' value');
@@ -52,7 +52,7 @@ it('does not trim current_password', function () {
         'current_password' => ' value',
     ]);
 
-    (new TrimStrings())->handle(
+    (new TrimStrings)->handle(
         $request,
         function ($req) {
             expect($req->input('current_password'))->toBe(' value');
@@ -75,6 +75,6 @@ it('expects all these inputs', function () {
         }
     }
 
-    $cut = new TestTrimStrings();
+    $cut = new TestTrimStrings;
     $cut->test();
 });

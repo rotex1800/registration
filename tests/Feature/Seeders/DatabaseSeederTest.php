@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 it('creates rotex role', function () {
-    $seeder = new DatabaseSeeder();
+    $seeder = new DatabaseSeeder;
     $seeder->run();
 
     expect(Role::where('name', 'rotex')->get()->first())
@@ -20,7 +20,7 @@ it('creates rotex role', function () {
 it('creates no new rotex role if one exists already', function () {
     Role::factory()->rotex()->create();
 
-    $seeder = new DatabaseSeeder();
+    $seeder = new DatabaseSeeder;
     $seeder->run();
 
     expect(Role::where('name', 'rotex')->get()->count())
@@ -28,7 +28,7 @@ it('creates no new rotex role if one exists already', function () {
 });
 
 it('creates participant role', function () {
-    $seeder = new DatabaseSeeder();
+    $seeder = new DatabaseSeeder;
     $seeder->run();
 
     expect(Role::where('name', 'participant')->get()->first())
@@ -39,7 +39,7 @@ it('creates participant role', function () {
 it('creates no new participant role if one exists already', function () {
     Role::factory()->participant()->create();
 
-    $seeder = new DatabaseSeeder();
+    $seeder = new DatabaseSeeder;
     $seeder->run();
 
     expect(Role::where('name', 'participant')->get()->count())

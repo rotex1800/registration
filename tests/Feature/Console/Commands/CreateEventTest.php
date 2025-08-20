@@ -47,7 +47,7 @@ it('creates a new event with multiple roles', function (array|string $eventRoles
 
 function assertEventCanBeShownToRole(App\Models\Event $event, string $role): void
 {
-    $eventPolicy = new EventPolicy();
+    $eventPolicy = new EventPolicy;
     expect($eventPolicy)
         ->show(createUserWithRole($role), $event)->toBeAllowed();
 }

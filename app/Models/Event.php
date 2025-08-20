@@ -39,7 +39,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Event whereUpdatedAt($value)
  *
  * @property-read string $short_name
- * @property-read Collection|\App\Models\Payment[] $payments
+ * @property-read Collection|Payment[] $payments
  * @property-read int|null $payments_count
  *
  * @mixin Eloquent
@@ -57,7 +57,7 @@ class Event extends Model
     ];
 
     /**
-     * @return Collection<User>
+     * @return Collection<int, User>
      */
     public function attendeesSortedByFirstName(): Collection
     {
@@ -75,6 +75,9 @@ class Event extends Model
         return $this->belongsToMany(User::class);
     }
 
+    /**
+     * @return HasMany<Payment>
+     */
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);

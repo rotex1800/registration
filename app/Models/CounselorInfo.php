@@ -39,6 +39,8 @@ class CounselorInfo extends Model
 {
     use HasCompletenessCheck;
     use HasFactory;
+
+    /** @use PersonInfo<CounselorInfo> */
     use PersonInfo;
 
     public function isComplete(): bool

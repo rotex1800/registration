@@ -12,8 +12,7 @@ trait PersonInfo
     /**
      * Inverse of the one-to-one relation between a user and PersonInfo
      *
-     *
-     * @retrun  BelongsTo<User, T>
+     * @return BelongsTo<User, T>
      */
     public function user(): BelongsTo
     {

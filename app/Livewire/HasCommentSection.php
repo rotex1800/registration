@@ -12,7 +12,7 @@ trait HasCommentSection
     public string $comment = '';
 
     /**
-     * @var Collection<Comment>|null
+     * @var Collection<int, Comment>|null
      */
     public ?Collection $comments = null;
 

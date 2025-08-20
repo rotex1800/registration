@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 uses(RefreshDatabase::class);
 
 test('event has attendees relation', function () {
-    expect((new Event())->attendees())
+    expect((new Event)->attendees())
         ->toBeInstanceOf(BelongsToMany::class);
 });
 

@@ -55,6 +55,9 @@ class Passport extends Model
         'nationality' => 'string',
     ];
 
+    /**
+     * @return BelongsTo<User, Passport>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

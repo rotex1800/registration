@@ -12,7 +12,7 @@ uses(RefreshDatabase::class);
 
 beforeEach(function () {
     $this->user = User::factory()->create();
-    $this->action = new ResetUserPassword();
+    $this->action = new ResetUserPassword;
 });
 
 it('requires a password to be present', function () {

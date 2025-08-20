@@ -46,6 +46,8 @@ use Illuminate\Support\Carbon;
 class AdditionalInfo extends Model
 {
     use HasFactory;
+
+    /** @use PersonInfo<AdditionalInfo> */
     use PersonInfo;
 
     protected $casts = [

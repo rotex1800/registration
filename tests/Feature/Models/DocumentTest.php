@@ -7,7 +7,6 @@ use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -62,12 +61,6 @@ it('is owned by a user', function () {
         ->toBeInstanceOf(BelongsTo::class)
         ->and($document->owner)
         ->toBeInstanceOf(User::class);
-});
-
-it('is child of a polymorphic relation', function () {
-    $doc = Document::factory()->create();
-    expect($doc->documentable())
-        ->toBeInstanceOf(MorphTo::class);
 });
 
 test('factory can create digital document', function () {

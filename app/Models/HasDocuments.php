@@ -20,6 +20,8 @@ trait HasDocuments
     /**
      * Convenience method for getting the relation associated with the given
      * DocumentType.
+     *
+     * @return Relation<Passport>|null
      */
     public function relationFor(DocumentCategory $category): ?Relation
     {
