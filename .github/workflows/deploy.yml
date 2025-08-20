@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.SSHKEY_PASSPHRASE }}
-          script: 'pwd && ls -lah && source "${{ vars.USER_BASHRC }}" && cd "${{ secrets.PROJECT_LOCATION }}" && ./.scripts/deploy.sh'
+          script: 'source "${{ secrets.USER_BASHRC }}" && cd "${{ secrets.PROJECT_LOCATION }}" && ./.scripts/deploy.sh'
 
   check-deployment:
     runs-on: ubuntu-latest
