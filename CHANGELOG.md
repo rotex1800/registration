@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.18.1](https://github.com/rotex1800/registration/compare/v1.18.0...v1.18.1) (2025-08-21)
+
+
+### Bug Fixes
+
+* **ci:** add source command ([68a9d35](https://github.com/rotex1800/registration/commit/68a9d352fc11108b7eb859950a161977c169b77d))
+* **ci:** Adjust path in user rc file ([d58df5e](https://github.com/rotex1800/registration/commit/d58df5e38fe1afa88b59a01eb6531d68ad57716d))
+* **ci:** correct quotes in deploy command ([0469922](https://github.com/rotex1800/registration/commit/046992217938bf36ca4ffa84f3cbdc2fe8ef3b7f))
+
+
+### Miscellaneous Chores
+
+* debug ([9b00aac](https://github.com/rotex1800/registration/commit/9b00aac560cf2b1fb12e66f80355893219d08b7b))
+* debug ([ae59ba4](https://github.com/rotex1800/registration/commit/ae59ba44e4c0cf3d24c8c93627890f2428167dfe))
+* debug ([#813](https://github.com/rotex1800/registration/issues/813)) ([4750144](https://github.com/rotex1800/registration/commit/4750144d2ab6809863d101c6bb219d15d4c16628))
+
 ## [1.18.0](https://github.com/rotex1800/registration/compare/v1.17.9...v1.18.0) (2025-08-20)
 
 
