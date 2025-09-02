@@ -7,6 +7,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -45,6 +46,8 @@ use Illuminate\Support\Carbon;
  */
 class AdditionalInfo extends Model
 {
+    use HasComments;
+
     use HasFactory;
 
     /** @use PersonInfo<AdditionalInfo> */
@@ -53,4 +56,9 @@ class AdditionalInfo extends Model
     protected $casts = [
         'tshirt_size' => ClothesSize::class,
     ];
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

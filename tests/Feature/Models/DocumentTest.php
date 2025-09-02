@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
+use function Pest\Laravel\assertDatabaseHas;
+
 uses(RefreshDatabase::class);
 
 it('has a type', function () {
@@ -162,4 +164,5 @@ it('can create comment on document', function () {
         ->not->toBeFalse()
         ->author_id->toBe($author->id)
         ->content->toBe($content);
+    assertDatabaseHas('comments', ['commentable_type' => 'App\Models\Document']);
 });

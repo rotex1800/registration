@@ -2,7 +2,11 @@
 
 use App\Models\AdditionalInfo;
 use App\Models\PersonInfo;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
+use function Pest\Laravel\assertDatabaseHas;
 
 uses(RefreshDatabase::class);
 
@@ -44,4 +48,30 @@ it('has desired group column', function () {
     $info = AdditionalInfo::factory()->make();
     expect($info->desired_group)
         ->toBeString();
+});
+
+it('is commentable', function () {
+    $info = AdditionalInfo::factory()->make();
+    expect($info->comments())
+        ->toBeInstanceOf(MorphMany::class);
+});
+
+it('can create comment on additional info', function () {
+    // Arrange
+    $info = AdditionalInfo::factory()->create();
+    $content = fake()->words(asText: true);
+    $author = User::factory()->create();
+
+    // Act
+    $comment = $info->createComment($content, $author->id);
+
+    // Assert
+    expect($info->comments()->count())
+        ->toBeOne()
+        ->and($comment)
+        ->not->toBeFalse()
+        ->author_id->toBe($author->id)
+        ->content->toBe($content);
+
+    assertDatabaseHas('comments', ['commentable_type' => 'App\Models\AdditionalInfo']);
 });
