@@ -37,6 +37,7 @@
                 />
             @endif
         </div>
+        <livewire:personal-info-view :current-attendee="$currentAttendee"/>
         <div>
             <div class="text-2xl">{{ __('registration.about-person') }}</div>
             <div>{{ __('event.registration-overview.full-name').': '.$currentAttendee?->full_name }}</div>
