@@ -54,6 +54,9 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return MorphTo<Model, Comment>
+     */
     public function commentable(): MorphTo
     {
         return $this->morphTo();

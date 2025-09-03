@@ -124,20 +124,8 @@ it('shows attributes of currently selected attendee', function () {
     ])
         ->assertOk()
         ->set('currentPosition', 0)
+        ->assertContainsLivewireComponent('personal-info-view')
         ->assertSeeInOrder([
-            __('event.registration-overview.full-name').': '.$firstAttendee->full_name,
-            //                __('registration.birthday').': '.$firstAttendee->birthday->translatedFormat('d. F Y'),
-            __('registration.gender.gender').': '.$firstAttendee->gender,
-            __('signup.email').': '.$firstAttendee->email,
-            __('registration.mobile_phone').': '.$firstAttendee->mobile_phone,
-            // FIXME: Test is broken, because non-ascii characters are replaced in the livewire component rendering, causing the
-            //  assertion with some German translations to fail.
-            //            __('registration.tshirt-size').': '.$firstAttendee->additionalInfo->tshirt_size->displayName(),
-            __('registration.allergies').': '.$firstAttendee->additionalInfo->allergies,
-            //            __('registration.diet').': '.$firstAttendee->additionalInfo->diet,
-            //            __('registration.health_issues').': '.$firstAttendee->health_issues,
-            __('registration.desired_group').': '.$firstAttendee->additionalInfo->desired_group,
-
             __('registration.passport'),
             //            __('registration.nationality').': '.$firstAttendee->passport->nationality,
             __('registration.passport-number').': '.$firstAttendee->passport->passport_number,

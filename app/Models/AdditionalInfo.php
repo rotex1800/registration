@@ -47,7 +47,6 @@ use Illuminate\Support\Carbon;
 class AdditionalInfo extends Model
 {
     use HasComments;
-
     use HasFactory;
 
     /** @use PersonInfo<AdditionalInfo> */
@@ -57,6 +56,9 @@ class AdditionalInfo extends Model
         'tshirt_size' => ClothesSize::class,
     ];
 
+    /**
+     * @return MorphMany<Comment>
+     */
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
