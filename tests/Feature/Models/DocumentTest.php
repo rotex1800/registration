@@ -6,9 +6,11 @@ use App\Models\DocumentCategory;
 use App\Models\DocumentState;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
+use function Pest\Laravel\assertDatabaseHas;
 
 uses(RefreshDatabase::class);
 
@@ -120,7 +122,7 @@ it('has comments relation', function () {
 
     // Act & Assert
     expect($document->comments())
-        ->toBeInstanceOf(HasMany::class);
+        ->toBeInstanceOf(MorphMany::class);
 });
 
 it('can access comments', function () {
@@ -153,15 +155,14 @@ it('can create comment on document', function () {
     $author = User::factory()->create();
 
     // Act
-    $comment = $doc->createComment(withContent: $content, authorId: $author->id);
+    $comment = $doc->createComment($content, $author->id);
 
     // Assert
-
     expect($doc->comments()->count())
-        ->toBeOne();
-
-    expect($comment)
+        ->toBeOne()
+        ->and($comment)
         ->not->toBeFalse()
         ->author_id->toBe($author->id)
         ->content->toBe($content);
+    assertDatabaseHas('comments', ['commentable_type' => 'App\Models\Document']);
 });

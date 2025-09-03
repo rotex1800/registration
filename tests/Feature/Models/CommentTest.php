@@ -3,6 +3,7 @@
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 
@@ -29,4 +30,10 @@ it('references an user as author', function () {
 it('has content', function () {
     expect(Comment::factory()->create()->content)
         ->toBeString();
+});
+
+it('has a polymorphic relation', function () {
+    $comment = Comment::factory()->create();
+    expect($comment->commentable())
+        ->toBeInstanceOf(MorphTo::class);
 });
