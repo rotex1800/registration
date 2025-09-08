@@ -20,6 +20,8 @@ use Livewire\Component;
 
 class EventRegistration extends Component
 {
+    use HasCommentSection;
+
     private const NULLABLE = 'nullable';
 
     private const NULLABLE_EMAIL = 'nullable|email';
@@ -70,7 +72,7 @@ class EventRegistration extends Component
 
     public HostFamily $hostFamilyThree;
 
-    public RegistrationComment $comment;
+    public RegistrationComment $registrationComment;
 
     #[Url(as: 'part')]
     public string $activePart = self::PART_ONE;
@@ -139,7 +141,7 @@ class EventRegistration extends Component
         'hostFamilyThree.address' => self::NULLABLE,
         'hostFamilyThree.phone' => self::NULLABLE_PHONE_MOBILE,
 
-        'comment.body' => self::NULLABLE,
+        'registrationComment.body' => self::NULLABLE,
 
         'additionalInfo.tshirt_size' => self::NULLABLE_CLOTHES_SIZE,
         'additionalInfo.allergies' => self::NULLABLE,
@@ -167,7 +169,10 @@ class EventRegistration extends Component
         $this->hostFamilyOne = $this->user->firstHostFamily();
         $this->hostFamilyTwo = $this->user->secondHostFamily();
         $this->hostFamilyThree = $this->user->thirdHostFamily();
-        $this->comment = $this->user->registrationComment()->firstOrNew();
+        $this->registrationComment = $this->user->registrationComment()->firstOrNew();
+
+        $this->commentable = $this->user->additionalInfo;
+        $this->comments = $this->additionalInfo->comments;
     }
 
     public function showPartOne(): void
@@ -270,8 +275,8 @@ class EventRegistration extends Component
         $this->user->hostFamilies()->save($this->hostFamilyThree);
     }
 
-    public function updatedComment(): void
+    public function updatedRegistrationComment(): void
     {
-        $this->user->registrationComment()->save($this->comment);
+        $this->user->registrationComment()->save($this->registrationComment);
     }
 }

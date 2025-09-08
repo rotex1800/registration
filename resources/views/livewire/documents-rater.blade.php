@@ -2,7 +2,7 @@
 
     @if($this->isDocumentPresent())
 
-        <div wire:click="download" class="px-2 {{ $document != null ? "underline text-blue-500" : "" }}">
+        <div wire:click="download" class="px-2 {{ $commentable != null ? "underline text-blue-500" : "" }}">
             {{ $category?->displayName() }}
         </div>
     @endif
@@ -21,5 +21,5 @@
         </div>
     </div>
     <div class="h-2"></div>
-    <x-comment-section :comments="$this->document->comments"/>
+    <x-comment-section :comments="$this->commentable->comments"/>
 </div>

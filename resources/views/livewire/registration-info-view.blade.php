@@ -21,23 +21,23 @@
         @endif
     </div>
 
+    <div class="text-lg mt-4 grid gap-4 grid-cols-1">
+        @if($currentAttendee != null)
+            <div class="mt-2 text-2xl">Notiz</div>
+            <livewire:add-note
+                :attendee="$currentAttendee"
+                wire:key="{{ $currentAttendee->id.'note' }}"
+            />
+            <livewire:personal-info-view :current-attendee="$currentAttendee"/>
+            <div class="text-2xl">{{ __('registration.payment') }}</div>
+            <livewire:add-payment
+                :payer="$currentAttendee"
+                :event="$event"
+                wire:key="{{ $currentAttendee->id.'payment' }}"
+            />
+        @endif
+    </div>
     <div class="text-lg mt-4 grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <div>
-            @if($currentAttendee != null)
-                <div class="text-2xl">{{ __('registration.payment') }}</div>
-                <livewire:add-payment
-                    :payer="$currentAttendee"
-                    :event="$event"
-                    wire:key="{{ $currentAttendee->id.'payment' }}"
-                />
-                <div class="mt-2 text-2xl">Notiz</div>
-                <livewire:add-note
-                    :attendee="$currentAttendee"
-                    wire:key="{{ $currentAttendee->id.'note' }}"
-                />
-            @endif
-        </div>
-        <livewire:personal-info-view :current-attendee="$currentAttendee"/>
         <div>
             <div class="text-2xl">{{ __('registration.about-person') }}</div>
             <div>{{ __('event.registration-overview.full-name').': '.$currentAttendee?->full_name }}</div>

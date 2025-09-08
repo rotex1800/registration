@@ -10,4 +10,5 @@
     <div>{{ __('registration.diet').': '.($currentAttendee?->additionalInfo?->diet ?: '--') }}</div>
     <div>{{ __('registration.health_issues').': '.($currentAttendee?->health_issues ?: '--') }}</div>
     <div>{{ __('registration.desired_group').': '.($currentAttendee?->additionalInfo?->desired_group ?: '--') }}</div>
+    <x-comment-section :comments="$currentAttendee?->additionalInfo?->comments"/>
 </div>

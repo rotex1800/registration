@@ -23,12 +23,12 @@ beforeEach(function () {
     $this->category = DocumentCategory::SchoolCertificate;
     $this->user = User::factory()->create();
 
-    $this->document = Document::factory([
+    $this->commentable = Document::factory([
         'category' => $this->category->value,
         'state' => DocumentState::Submitted->value,
     ])->make();
 
-    $this->user->documents()->save($this->document);
+    $this->user->documents()->save($this->commentable);
 
     actingAs($this->user);
     $this->component = Livewire::test('documents-rater', [
@@ -236,11 +236,11 @@ it('saves a comment', function () {
         ->set('comment', 'I am a comment!')
         ->call('saveComment');
 
-    $this->document->refresh();
-    expect($this->document->comments)
+    $this->commentable->refresh();
+    expect($this->commentable->comments)
         ->toHaveCount(1);
 
-    expect($this->document->comments[0])
+    expect($this->commentable->comments[0])
         ->author_id->toBe($this->user->id)
         ->content->toBe('I am a comment!');
 });
@@ -269,8 +269,8 @@ it('does not save blank comments', function () {
         ->set('comment', '    ')
         ->call('saveComment');
 
-    $this->document->refresh();
-    expect($this->document->comments)
+    $this->commentable->refresh();
+    expect($this->commentable->comments)
         ->toHaveCount(0);
 });
 
@@ -284,8 +284,8 @@ it('does not save empty comment', function () {
         ->set('comment', '')
         ->call('saveComment');
 
-    $this->document->refresh();
-    expect($this->document->comments)
+    $this->commentable->refresh();
+    expect($this->commentable->comments)
         ->toHaveCount(0);
 });
 
@@ -298,11 +298,11 @@ it('trims comments', function () {
         ->set('comment', 'I am a comment!            ')
         ->call('saveComment');
 
-    $this->document->refresh();
-    expect($this->document->comments)
+    $this->commentable->refresh();
+    expect($this->commentable->comments)
         ->toHaveCount(1);
 
-    expect($this->document->comments[0])
+    expect($this->commentable->comments[0])
         ->author_id->toBe($this->user->id)
         ->content->toBe('I am a comment!');
 });
@@ -310,7 +310,7 @@ it('trims comments', function () {
 it('shows comments', function () {
     // Arrange
     $comments = Comment::factory()->count(3)->make();
-    $this->document->comments()->saveMany($comments);
+    $this->commentable->comments()->saveMany($comments);
 
     // Act
     $component = Livewire::test('documents-rater', [
@@ -342,6 +342,6 @@ test('currently authenticated user is author of comment', function () {
         ->call('saveComment');
 
     // Assert
-    expect($this->document->comments[0])
+    expect($this->commentable->comments[0])
         ->author_id->toBe($attendee->id);
 });

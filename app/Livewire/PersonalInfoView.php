@@ -9,10 +9,18 @@ use Livewire\Component;
 
 class PersonalInfoView extends Component
 {
+    use HasCommentSection;
+
     /**
-     * @var User|null;
+     * @var User|null
      */
     public $currentAttendee;
+
+    public function mount(): void
+    {
+        $this->commentable = $this->currentAttendee?->additionalInfo?->firstOrCreate();
+        $this->comments = $this->currentAttendee?->additionalInfo?->comments;
+    }
 
     public function render(): View|Factory
     {

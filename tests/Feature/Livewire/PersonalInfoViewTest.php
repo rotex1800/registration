@@ -12,7 +12,7 @@ uses(RefreshDatabase::class);
 beforeEach(function () {
 
     $this->addtionalInfo = AdditionalInfo::factory([
-        'tshirt_size' => 'M'
+        'tshirt_size' => 'M',
     ])
         ->for(User::factory([
             'birthday' => '1970-01-01',

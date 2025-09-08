@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\AdditionalInfo;
 use App\Models\Comment;
 use App\Models\Document;
 use Illuminate\Support\Collection;
@@ -16,7 +17,10 @@ trait HasCommentSection
      */
     public ?Collection $comments = null;
 
-    public ?Document $document = null;
+    /**
+     * @var AdditionalInfo|Document|null
+     */
+    public $commentable = null;
 
     public function saveComment(): void
     {
@@ -27,10 +31,10 @@ trait HasCommentSection
         /** @var int $id */
         $id = Auth::user()?->getAuthIdentifier();
         $authorId = intval($id);
-        $result = $this->document?->createComment($this->comment, $authorId);
+        $result = $this->commentable?->createComment($this->comment, $authorId);
         if ($result) {
-            $this->document?->refresh();
-            $this->comments = $this->document?->comments;
+            $this->commentable?->refresh();
+            $this->comments = $this->commentable?->comments;
         }
         $this->comment = '';
     }
