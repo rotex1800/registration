@@ -90,6 +90,11 @@
                 <label for="health-issues">{{ __('registration.health_issues') }}</label>
                 <textarea class="rounded-sm min-h-40" id="health-issues"
                           wire:model.live.debounce.500ms="user.health_issues"></textarea>
+
+                <label for="personal-data-comments">{{ __('registration.comment')  }}</label>
+                <div>
+                    <x-comment-section id="personal-data-comments" :comments="$user?->additionalInfo?->comments"/>
+                </div>
             </div>
 
             <h2 class="text-2xl mt-8">{{  __('registration.passport') }} {{ $passport->isComplete() ? '✅' : '' }}</h2>
@@ -314,13 +319,13 @@
             </div>
 
             <h2 class="text-2xl mt-8">
-                {{  __('registration.comment') }} {{ $comment->isComplete() ? '✅' : '' }}
+                {{  __('registration.comment') }} {{ $registrationComment->isComplete() ? '✅' : '' }}
             </h2>
             <p>{{__('registration.comment-explanation')}}</p>
             <div class="grid mt-4 grid-cols-input gap-4 items-center">
                 <label for="comment">{{ __('registration.comment') }}</label>
                 <textarea class="rounded-sm min-h-40" id="comment"
-                          wire:model="comment.body">{{ $comment->body }}</textarea>
+                          wire:model="comment.body">{{ $registrationComment->body }}</textarea>
 
             </div>
 

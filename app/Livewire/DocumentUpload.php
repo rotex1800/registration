@@ -73,8 +73,8 @@ class DocumentUpload extends Component
 
         $this->user = $user;
         $this->message = $this->getStringForDocumentState();
-        $this->document = $user->documentBy(DocumentCategory::read($this->category));
-        $this->comments = $this->document->comments;
+        $this->commentable = $user->documentBy(DocumentCategory::read($this->category));
+        $this->comments = $this->commentable->comments;
     }
 
     private function getStringForDocumentState(): string

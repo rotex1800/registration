@@ -245,7 +245,7 @@ it('has comment bound to component', function () {
     ]);
 
     $comment = fake()->paragraph;
-    $component->set('comment.body', $comment);
+    $component->set('registrationComment.body', $comment);
 
     $inbound->refresh();
     expect($inbound->registrationComment->body)
@@ -617,7 +617,7 @@ it('displays check for complete comment section', function () {
         'event' => $this->event,
     ]);
 
-    assertSeesCompletenessIndication($component, 'registration.comment', 'comment.body');
+    assertSeesCompletenessIndication($component, 'registration.comment', 'registrationComment.body');
 });
 
 it('displays no checkmark for empty passport on load', function () {

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -50,6 +49,7 @@ use Illuminate\Support\Carbon;
  */
 class Document extends Model
 {
+    use HasComments;
     use HasFactory;
 
     /**
@@ -93,23 +93,5 @@ class Document extends Model
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id');
-    }
-
-    public function createComment(string $withContent, mixed $authorId): Comment|bool
-    {
-        $comment = new Comment([
-            'content' => $withContent,
-            'author_id' => $authorId,
-        ]);
-
-        return $this->comments()->save($comment);
-    }
-
-    /**
-     * @return HasMany<Comment>
-     */
-    public function comments(): HasMany
-    {
-        return $this->hasMany(Comment::class);
     }
 }
