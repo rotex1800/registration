@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.19.0](https://github.com/rotex1800/registration/compare/v1.18.0...v1.19.0) (2025-09-09)
+
+
+### Features
+
+* add comment field for personal info ([#819](https://github.com/rotex1800/registration/issues/819)) ([d4c04c1](https://github.com/rotex1800/registration/commit/d4c04c14aa360b089ebc85bb69d0f3f711395ef8))
+* make additional info commentable ([12f913f](https://github.com/rotex1800/registration/commit/12f913fb1d8ecb20e3af45305a92dd1d921d9184))
+* wip - add comment section to personal info ([6748f57](https://github.com/rotex1800/registration/commit/6748f579dfb6ae68e5db8d18d4d5a6f3ee9fc959))
+
+
+### Bug Fixes
+
+* **ci:** add source command ([68a9d35](https://github.com/rotex1800/registration/commit/68a9d352fc11108b7eb859950a161977c169b77d))
+* **ci:** Adjust path in user rc file ([d58df5e](https://github.com/rotex1800/registration/commit/d58df5e38fe1afa88b59a01eb6531d68ad57716d))
+* **ci:** correct quotes in deploy command ([0469922](https://github.com/rotex1800/registration/commit/046992217938bf36ca4ffa84f3cbdc2fe8ef3b7f))
+* show timestamps in Berlin timezone ([5de6496](https://github.com/rotex1800/registration/commit/5de6496412d2e3a1bd00f6009ce59780e3d6b05f))
+
+
+### Miscellaneous Chores
+
+* debug ([9b00aac](https://github.com/rotex1800/registration/commit/9b00aac560cf2b1fb12e66f80355893219d08b7b))
+* debug ([ae59ba4](https://github.com/rotex1800/registration/commit/ae59ba44e4c0cf3d24c8c93627890f2428167dfe))
+* debug ([#813](https://github.com/rotex1800/registration/issues/813)) ([4750144](https://github.com/rotex1800/registration/commit/4750144d2ab6809863d101c6bb219d15d4c16628))
+* **deps:** bump laravel-vite-plugin from 2.0.0 to 2.0.1 ([#817](https://github.com/rotex1800/registration/issues/817)) ([b56b098](https://github.com/rotex1800/registration/commit/b56b0980999de5d47343bcbae9f72aee194441be))
+* **deps:** bump maatwebsite/excel from 3.1.66 to 3.1.67 ([bc5a9b5](https://github.com/rotex1800/registration/commit/bc5a9b5ef54631b3ee5024a26c22f99d23220782))
+* **deps:** bump maatwebsite/excel from 3.1.66 to 3.1.67 ([#816](https://github.com/rotex1800/registration/issues/816)) ([734edc0](https://github.com/rotex1800/registration/commit/734edc06c54e4526aa2bec55a17ebf00de13e244))
+* **deps:** bump vite from 7.1.2 to 7.1.4 ([7dc1c8c](https://github.com/rotex1800/registration/commit/7dc1c8c3382f37779d95c68be27339f90782c5cc))
+* **deps:** bump vite from 7.1.2 to 7.1.4 ([#818](https://github.com/rotex1800/registration/issues/818)) ([0f67bd2](https://github.com/rotex1800/registration/commit/0f67bd29f18cce0d14468d0361581ce57cfcb286))
+* make comments polymorphic ([0e70690](https://github.com/rotex1800/registration/commit/0e70690d5beef65455c03c3405bd878c2f11df1c))
+* publish sail image for php 8.4 ([a8fdb05](https://github.com/rotex1800/registration/commit/a8fdb05e9887cef38e365e529c01844f80bb4084))
+
 ## [1.18.0](https://github.com/rotex1800/registration/compare/v1.17.9...v1.18.0) (2025-08-20)
 
 
