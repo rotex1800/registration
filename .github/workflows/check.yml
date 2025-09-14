@@ -48,7 +48,7 @@ jobs:
         run: php artisan dusk:chrome-driver 114
 
       - name: Start Chrome Driver
-        run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
 
       - name: Install and Build npm
         run: |
