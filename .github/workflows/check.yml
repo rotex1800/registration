@@ -218,4 +218,4 @@ jobs:
           else echo "PR already approved, skipping additional approvals to minimize emails/notification noise.";
           fi
       - name: Enable auto-merge
-        run: gh pr merge --auto --merge "$PR_URL"
+        run: gh pr merge --auto --squash "$PR_URL"
