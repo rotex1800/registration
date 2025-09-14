@@ -30,4 +30,4 @@ it('navigates to password reset', function () {
             ->clickLink(__('signup.forgot-password'))
             ->assertUrlIs(route('password.request'));
     });
-})->skip('Skipping test until middleware is figured out in Dusk tests');
+});
