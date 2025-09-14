@@ -23,12 +23,13 @@
 
     <div class="text-lg mt-4 grid gap-4 grid-cols-1">
         @if($currentAttendee != null)
-            <div class="mt-2 text-2xl">Notiz</div>
+            <div class="mt-2 text-2xl">Interne Notiz</div>
             <livewire:add-note
                 :attendee="$currentAttendee"
                 wire:key="{{ $currentAttendee->id.'note' }}"
             />
-            <livewire:personal-info-view :current-attendee="$currentAttendee"/>
+            <livewire:personal-info-view :current-attendee="$currentAttendee"
+                                         wire:key="{{ $currentAttendee->id.'personal-info-view' }}"/>
             <div class="text-2xl">{{ __('registration.payment') }}</div>
             <livewire:add-payment
                 :payer="$currentAttendee"
@@ -38,19 +39,6 @@
         @endif
     </div>
     <div class="text-lg mt-4 grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <div>
-            <div class="text-2xl">{{ __('registration.about-person') }}</div>
-            <div>{{ __('event.registration-overview.full-name').': '.$currentAttendee?->full_name }}</div>
-            <div>{{ __('registration.birthday').': '.($currentAttendee?->birthday?->translatedFormat('d. F Y') ?: '--') }}</div>
-            <div>{{ __('registration.gender.gender').': '.($currentAttendee?->gender ?: '--') }}</div>
-            <div>{{ __('signup.email').': '.($currentAttendee?->email ?: '--') }}</div>
-            <div>{{ __('registration.mobile_phone').': '.($currentAttendee?->mobile_phone ?: '--') }}</div>
-            <div>{{ __('registration.tshirt-size').': '.($currentAttendee?->additionalInfo?->tshirt_size?->displayName() ?: '--') }}</div>
-            <div>{{ __('registration.allergies').': '.($currentAttendee?->additionalInfo?->allergies ?: '--') }}</div>
-            <div>{{ __('registration.diet').': '.($currentAttendee?->additionalInfo?->diet ?: '--') }}</div>
-            <div>{{ __('registration.health_issues').': '.($currentAttendee?->health_issues ?: '--') }}</div>
-            <div>{{ __('registration.desired_group').': '.($currentAttendee?->additionalInfo?->desired_group ?: '--') }}</div>
-        </div>
         <div>
             <div class="text-2xl">{{ __('registration.passport') }}</div>
             <div>{{ __('registration.nationality').': '.($currentAttendee?->passport?->nationality ?: '--') }}</div>

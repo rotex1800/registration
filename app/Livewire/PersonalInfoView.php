@@ -12,14 +12,15 @@ class PersonalInfoView extends Component
     use HasCommentSection;
 
     /**
-     * @var User|null
+     * @var User
      */
     public $currentAttendee;
 
     public function mount(): void
     {
-        $this->commentable = $this->currentAttendee?->additionalInfo?->firstOrCreate();
-        $this->comments = $this->currentAttendee?->additionalInfo?->comments;
+        $additionalInfo = $this->currentAttendee->additionalInfo();
+        $this->commentable = $additionalInfo->firstOrCreate();
+        $this->comments = $this->commentable->comments;
     }
 
     public function render(): View|Factory
