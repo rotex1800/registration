@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.19.1](https://github.com/rotex1800/registration/compare/v1.19.0...v1.19.1) (2025-09-14)
+
+
+### Bug Fixes
+
+* add wire:key to personal-info-view ([#822](https://github.com/rotex1800/registration/issues/822)) ([26103df](https://github.com/rotex1800/registration/commit/26103df123e5ca4476cd7526fc571a8a2aad67cd))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump vite from 7.1.4 to 7.1.5 in the npm_and_yarn group across 1 directory ([#820](https://github.com/rotex1800/registration/issues/820)) ([f1755b9](https://github.com/rotex1800/registration/commit/f1755b9ffdb64feb39cae13f31a5bd7d5c8da1a2))
+* stop skipping dusk tests ([#821](https://github.com/rotex1800/registration/issues/821)) ([2a2ff92](https://github.com/rotex1800/registration/commit/2a2ff92e2f9a88a39fff015e332fe57367c16315))
+
 ## [1.19.0](https://github.com/rotex1800/registration/compare/v1.18.0...v1.19.0) (2025-09-09)
 
 
