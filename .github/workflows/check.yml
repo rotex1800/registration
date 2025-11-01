@@ -86,20 +86,20 @@ jobs:
 
       - name: Upload Screenshots
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: screenshots
           path: tests/Browser/screenshots
 
       - name: Upload Console Logs
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: console
           path: tests/Browser/console
 
       - name: Publish Screenshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: screenshots
