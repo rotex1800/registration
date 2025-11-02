@@ -45,7 +45,7 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
 
       - name: Install Chrome Driver
-        run: php artisan dusk:chrome-driver
+        run: php artisan dusk:chrome-driver --detect
 
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
