@@ -30,7 +30,7 @@ jobs:
         with:
           php-version: '8.4'
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
@@ -108,7 +108,7 @@ jobs:
   pint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
@@ -122,7 +122,7 @@ jobs:
   shellcheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: shellcheck
         uses: reviewdog/action-shellcheck@v1
         with:
@@ -131,14 +131,14 @@ jobs:
   actionlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: reviewdog/action-actionlint@v1
 
   scan-for-secrets:
     runs-on: ubuntu-latest
     if: github.event_name != 'merge_group'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - uses: gitleaks/gitleaks-action@v2
@@ -162,7 +162,7 @@ jobs:
   phpstan-linter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -185,7 +185,7 @@ jobs:
     if: github.event_name != 'merge_group' && github.event_name != 'push'
     steps:
       - name: 'Checkout Repository'
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v4
         with:
@@ -209,7 +209,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Approve a PR if not already approved
         run: |
           gh pr checkout "$PR_URL" # sets the upstream metadata for `gh pr status`
