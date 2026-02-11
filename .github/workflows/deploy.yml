@@ -1,4 +1,5 @@
 name: Deploy
+permissions: {}
 
 on:
   workflow_call:
