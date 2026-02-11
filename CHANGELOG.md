@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.19.2](https://github.com/rotex1800/registration/compare/v1.19.1...v1.19.2) (2026-02-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies with vulnerabilities ([#850](https://github.com/rotex1800/registration/issues/850)) ([41442fd](https://github.com/rotex1800/registration/commit/41442fd77701df275af73e289795bd9b753c230a))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump @tailwindcss/forms from 0.5.10 to 0.5.11 ([#839](https://github.com/rotex1800/registration/issues/839)) ([862d313](https://github.com/rotex1800/registration/commit/862d313bc490b70d3a6bb646ccef366657cfbe95))
+* **deps:** bump @tailwindcss/postcss from 4.1.12 to 4.1.14 ([#827](https://github.com/rotex1800/registration/issues/827)) ([a698fc0](https://github.com/rotex1800/registration/commit/a698fc0441ebc0c61c0f0fd929b19f2192e06c2a))
+* **deps:** bump @tailwindcss/postcss from 4.1.16 to 4.1.17 ([#835](https://github.com/rotex1800/registration/issues/835)) ([c85f326](https://github.com/rotex1800/registration/commit/c85f3266f1ac91943fefe0b54a95082d5d8dfe10))
+* **deps:** bump @tailwindcss/postcss from 4.1.17 to 4.1.18 ([#838](https://github.com/rotex1800/registration/issues/838)) ([71c1729](https://github.com/rotex1800/registration/commit/71c1729d60f716b84f4f61952888290f415ab9ed))
+* **deps:** bump actions/checkout from 5 to 6 ([#830](https://github.com/rotex1800/registration/issues/830)) ([4ad022b](https://github.com/rotex1800/registration/commit/4ad022b8b505f10734a37f423885a537f0ecdced))
+* **deps:** bump actions/upload-artifact from 4 to 5 ([#829](https://github.com/rotex1800/registration/issues/829)) ([cfa88c0](https://github.com/rotex1800/registration/commit/cfa88c0c581fc79c3a7b8293115d6f48c74e38ab))
+* **deps:** bump actions/upload-artifact from 5 to 6 ([#836](https://github.com/rotex1800/registration/issues/836)) ([b773492](https://github.com/rotex1800/registration/commit/b7734922bac056fcef06623716af3eec5d7c3edb))
+* **deps:** bump axios from 1.11.0 to 1.12.2 ([#826](https://github.com/rotex1800/registration/issues/826)) ([907d74e](https://github.com/rotex1800/registration/commit/907d74e7e65177932ccc62aab00acde3218f1f38))
+* **deps:** bump axios from 1.12.2 to 1.13.2 ([#831](https://github.com/rotex1800/registration/issues/831)) ([fb5afa7](https://github.com/rotex1800/registration/commit/fb5afa7f50c74952d24689f04a9446240f8a3bd0))
+* **deps:** bump axios from 1.13.2 to 1.13.4 ([#845](https://github.com/rotex1800/registration/issues/845)) ([d077cdb](https://github.com/rotex1800/registration/commit/d077cdb53a2d464fdbc5f1513bb0ed05020c7489))
+* **deps:** bump laravel-vite-plugin from 2.0.1 to 2.1.0 ([#844](https://github.com/rotex1800/registration/issues/844)) ([bc24d29](https://github.com/rotex1800/registration/commit/bc24d29395c22264a3a8a044f52cc3113eb1efbb))
+* **deps:** bump lodash from 4.17.21 to 4.17.23 in the npm_and_yarn group across 1 directory ([#842](https://github.com/rotex1800/registration/issues/842)) ([f734e46](https://github.com/rotex1800/registration/commit/f734e46e44eb75ec29102f8bc19b3aee5d32d622))
+* **deps:** bump lucassabreu/comment-coverage-clover from 0.15.4 to 0.15.6 ([#843](https://github.com/rotex1800/registration/issues/843)) ([559304c](https://github.com/rotex1800/registration/commit/559304c763c9fd399ec2f6ff48ba0f30c37747ce))
+* **deps:** bump prettier from 3.7.3 to 3.7.4 ([#837](https://github.com/rotex1800/registration/issues/837)) ([f0f4074](https://github.com/rotex1800/registration/commit/f0f40749a8b3b2475b2f3a22b23dc10413c63e65))
+* **deps:** bump tailwindcss from 4.1.16 to 4.1.17 ([#833](https://github.com/rotex1800/registration/issues/833)) ([a5673cf](https://github.com/rotex1800/registration/commit/a5673cfaabd8f0c1064af23058c3be2cd9d4bb6c))
+* **deps:** bump vite from 7.1.12 to 7.2.6 ([#832](https://github.com/rotex1800/registration/issues/832)) ([f4340ec](https://github.com/rotex1800/registration/commit/f4340eca0ca9aa93a3b9c11cd37709e01d2f45da))
+* **deps:** bump vite from 7.1.5 to 7.1.11 in the npm_and_yarn group across 1 directory ([#828](https://github.com/rotex1800/registration/issues/828)) ([2b7fd3b](https://github.com/rotex1800/registration/commit/2b7fd3bbf828e62c3a0857446e623b0ac7ca76c1))
+* **deps:** bump vite from 7.2.6 to 7.3.0 ([#840](https://github.com/rotex1800/registration/issues/840)) ([1e69076](https://github.com/rotex1800/registration/commit/1e69076af5a5f5fa0c662de437d4207889f95fca))
+* Potential fix for code scanning alert no. 3: Workflow does not contain permissions ([#847](https://github.com/rotex1800/registration/issues/847)) ([1d7c4f0](https://github.com/rotex1800/registration/commit/1d7c4f00c056cc08a389e87e1670a1e0c6c8cb32))
+
 ## [1.19.1](https://github.com/rotex1800/registration/compare/v1.19.0...v1.19.1) (2025-09-14)
 
 
