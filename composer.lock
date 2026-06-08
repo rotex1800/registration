@@ -256,16 +256,16 @@
         },
         {
             "name": "comcast/php-legal-licenses",
-            "version": "v2.0.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Comcast/php-legal-licenses.git",
-                "reference": "3ebbbc4a9b0bb9c2d43434455aee077ee22ada65"
+                "reference": "2b01ea19268a4ff1998b539c1cbee49b6e251221"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Comcast/php-legal-licenses/zipball/3ebbbc4a9b0bb9c2d43434455aee077ee22ada65",
-                "reference": "3ebbbc4a9b0bb9c2d43434455aee077ee22ada65",
+                "url": "https://api.github.com/repos/Comcast/php-legal-licenses/zipball/2b01ea19268a4ff1998b539c1cbee49b6e251221",
+                "reference": "2b01ea19268a4ff1998b539c1cbee49b6e251221",
                 "shasum": ""
             },
             "require": {
@@ -304,9 +304,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Comcast/php-legal-licenses/issues",
-                "source": "https://github.com/Comcast/php-legal-licenses/tree/v2.0.0"
+                "source": "https://github.com/Comcast/php-legal-licenses/tree/v2.2.0"
             },
-            "time": "2024-11-07T19:17:33+00:00"
+            "time": "2026-04-20T03:02:08+00:00"
         },
         {
             "name": "composer/pcre",
