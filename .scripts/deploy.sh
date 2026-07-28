@@ -20,7 +20,7 @@ php artisan event:cache
 
 # Compile npm assets
 npm ci --foreground-scripts
-npm run build -- --ssr
+npm run build --
 
 # Run database migrations
 php artisan migrate --force
