@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.4](https://github.com/rotex1800/registration/compare/v1.19.3...v1.19.4) (2026-07-28)
+
+
+### Bug Fixes
+
+* improve deployment script ([#912](https://github.com/rotex1800/registration/issues/912)) ([b55cfb7](https://github.com/rotex1800/registration/commit/b55cfb7ee85d1b312e66e12d328ad163eddf9439))
+
 ## [1.19.3](https://github.com/rotex1800/registration/compare/v1.19.2...v1.19.3) (2026-07-28)
 
 
