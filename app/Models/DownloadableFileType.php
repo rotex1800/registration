@@ -13,9 +13,9 @@ enum DownloadableFileType: string
     public function path(): string
     {
         return match ($this) {
-            self::APPF => 'APPF 2026.pdf',
-            self::Rules => 'Verhaltensregeln 2026.pdf',
-            self::Flyer => 'Flyer ET 2026.pdf'
+            self::APPF => 'APPF 2027.pdf',
+            self::Rules => 'Verhaltensregeln 2027.pdf',
+            self::Flyer => 'Flyer ET 2027.pdf'
         };
     }
 
