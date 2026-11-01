@@ -27,7 +27,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
-        "infection/infection": "^0.31.0",
+        "infection/infection": "^0.35.8",
         "larastan/larastan": "^2.11",
         "laravel/dusk": "^8.2",
         "laravel/pint": "^1.0",
